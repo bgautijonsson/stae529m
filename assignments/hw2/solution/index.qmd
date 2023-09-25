@@ -250,7 +250,7 @@ p(\theta \vert Y) &\propto f(Y\vert\theta)\pi(\theta) \\
 \end{aligned}
 $$
 
-which is the kernel of a Beta(m + a, x + b) distribution.
+which is the kernel of a Beta(m + a, Y + b) distribution.
 
 -----
 
