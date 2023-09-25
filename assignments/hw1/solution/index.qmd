@@ -13,7 +13,7 @@ author:
             city: Reykjavík
             url: https://english.hi.is/school_of_engineering_and_natural_sciences
 # Change this to pdf if you'd rather work in that format
-format: pdf 
+format: html 
 editor: source
 theme: flatly
 title-block-banner: true
