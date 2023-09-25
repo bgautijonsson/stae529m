@@ -20,7 +20,7 @@ I would recommend you look at the following materials to acquaint yourselves wit
     
 ### GitHub
 
-This whole page is built from a GitHub repository at https://github.com/bgautijonsson/stae529m. Instead of manually downloading each file you can clone the repository and pull the contents regularly to your computer to receive the newest versions of all documents.
+This whole page is built from a GitHub repository at [github.com/bgautijonsson/stae529m](https://github.com/bgautijonsson/stae529m). Instead of manually downloading each file you can clone the repository and pull the contents regularly to your computer to receive the newest versions of all documents.
 
 Git, GitHub and version control in general are essential skills so I would recommend you practice their use.
 
