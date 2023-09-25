@@ -1,0 +1,86 @@
+---
+title: "Homework #2"
+subtitle: Chapters 2.1, 2.2, 2.3 and 2.4
+description: |
+    **Assigned:** Friday, September 1st, 2023 <br>
+    **Due:** Friday, September 8th, 2023
+author: 
+    -   name: Brynjólfur Gauti Guðrúnar Jónsson
+        email: brynjolfur@hi.is
+        url: https://www.hi.is/staff/brynjolfur
+        affiliation: 
+        -   name: School of Engineering and Natural Sciences, University of Iceland
+            city: Reykjavík
+            url: https://english.hi.is/school_of_engineering_and_natural_sciences
+# Change this to pdf if you'd rather work in that format
+format: html 
+editor: source
+theme: flatly
+title-block-banner: true
+# The setting below makes our HTML document self-contained so that we can turn it in
+embed-resources: true 
+---
+
+# Chapter 2.4
+
+## Exercise 1
+
+Assume $Y_1, \dots, Y_n \vert \mu \overset{\mathrm{iid}}{\sim}$ where $\sigma^2$ is fixed and the unknown mean $\mu$ has prior $\mu\sim\mathrm{Normal}(0, \sigma^2/m)$
+
+a. Give a 95% posterior interval for $\mu$
+
+-----
+
+**Solution:**
+
+-----
+
+b. Select a value of $m$ and argue that for this choice your 95% posterior credible interval ahs frequentist coverage 0.95 (that is, if you draw many samples of size $n$ and compute the 95% interval following the formula in *a.* for each sample, in the long run 95% of the intervals will contain the true value of $\mu$).
+
+-----
+
+**Solution:**
+
+-----
+
+## Exercise 2
+
+The Major League Baseball player Reggie Jackson is known as "Mr October" for his outstanding performances in the World Series (which takes place in October). Over his long career he played in 2820 regular-season games and hit 563 home runs in these games (a player can hit 0, 1, 2, ... home runs in a game). He also played in 27 world series games and hit 10 home runs in these games. 
+
+Assuming uninformative conjugate priors, summarize the posterior distribution of his home-run rate in the regular season and World Series. Is there sufficient evidence to claim that he performs better in the World Series?
+
+-----
+
+**Solution:**
+
+-----
+
+## Exercise 4
+
+Assume that $Y\vert\theta \sim \mathrm{NegBinomial}(\theta, m)$ and $\theta\sim\mathrm{Beta}(a, b)$.
+
+a. Derive the posterior of $\theta$
+
+-----
+
+**Solution:**
+
+-----
+
+b. Plot the posterior of $\theta$ and give its 95% credible interval assuming $m = 5$, $Y = 10$, and $a=b=1$.
+
+-----
+
+**Solution:**
+
+-----
+
+## Exercise 5
+
+Over the past 50 years California ahs experienced an average of $\lambda_0=75$ large wildfires per year. For the next 10 years you will record the number of large fires in California and then fit a Poisson/gamma model to these data. Let the rate of large fires in this future period, $\lambda$, have prior $\lambda\sim\mathrm{Gamma}(a,b)$. Select $a$ and $b$ so that the prior is uninformative with prior variance around 100 and gives prior probability approximately $\mathrm{Prob}(\lambda > \lambda_0) = 0.5$ so that the prior places equal probability on both hypotheses in the test for a change in the rate.
+
+-----
+
+**Solution:**
+
+-----

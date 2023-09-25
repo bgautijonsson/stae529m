@@ -1,0 +1,178 @@
+---
+title: "Homework #3"
+subtitle: Chapters 2.1, 2.2, 2.3 and 2.4
+description: |
+    **Assigned:** Friday, September 8th, 2023 <br>
+    **Due:** Friday, September 15th, 2023
+author: 
+    -   name: Brynjólfur Gauti Guðrúnar Jónsson
+        email: brynjolfur@hi.is
+        url: https://www.hi.is/staff/brynjolfur
+        affiliation: 
+        -   name: School of Engineering and Natural Sciences, University of Iceland
+            city: Reykjavík
+            url: https://english.hi.is/school_of_engineering_and_natural_sciences
+# Change this to pdf if you'd rather work in that format
+format: html 
+editor: source
+theme: flatly
+title-block-banner: true
+# The setting below makes our HTML document self-contained so that we can turn it in
+embed-resources: true 
+---
+
+```{r}
+#| echo: fenced
+#| output: hide
+
+library(tidyr)
+library(dplyr, warn.conflicts = FALSE)
+library(ggplot2)
+library(patchwork)
+library(invgamma)
+theme_set(theme_classic())
+```
+
+# Chapter 2.4
+
+## Exercise 6
+
+An assembly line relies on accurate measurements from an image-recognition algorithm at the first stage of the process. It is known that the algorithm is unbiased, so assume that measurements follow a normal distribution with mean zero, 
+
+$$
+Y_i\vert \sigma^2\overset{\mathrm{iid}}{\sim}\mathrm{Normal}(0, \sigma^2).
+$$
+
+Some errors are permissible, but if $\sigma$ exceeds the threshold $c$ then the algorithm must be replaced. 
+
+You make $n = 20$ measurements and observe 
+
+$$
+\sum_{i=1}^n Y_i = -2 \quad \mathrm{and} \quad \sum_{i=1}^n Y_i^2 = 15,
+$$ 
+
+and conduct a Bayesian analysis with $\mathrm{InvGamma}(a,b)$ prior. compute the posterior probability that $\sigma > c$ for:
+
+a. $c=1$ and $a=b=0.1$
+
+-----
+
+**Solution:**
+
+
+
+-----
+
+b. $c=1$ and $a=b=1.0$
+
+-----
+
+**Solution:** 
+
+
+
+-----
+
+c. $c=2$ and $a=b=0.1$
+
+-----
+
+**Solution:**
+
+
+
+-----
+
+d. $c=2$ and $a=b=1.0$
+
+-----
+
+**Solution:**
+
+
+
+
+-----
+
+## Exercise 16
+
+Say $Y\vert\lambda \sim \mathrm{Gamma}(1, \lambda).$
+
+a. Derive and plot the Jeffreys' prior for $\lambda$
+
+-----
+
+**Solution:** 
+
+-----
+
+b. Is this prior proper?
+
+-----
+
+**Solution:** This is not a proper prior since it does not integrate to one.
+
+-----
+
+c. Derive the posterior and give conditions on $Y$ to ensure it is proper.
+
+-----
+
+**Solution:**
+
+
+
+-----
+
+## Exercise 18
+
+The data in the table below are the result of a survey of commuters in 10 counties likely to be affected by a proposed addition of a high occupancy vehicle (HOV) lane.
+
+```{r}
+tibble::tribble(
+    ~County, ~Approve, ~Disapprove,
+    1, 12, 50,
+    2, 90, 150,
+    3, 80, 63,
+    4, 5, 10,
+    5, 63, 63,
+    6, 15, 8,
+    7, 67, 56,
+    8, 22, 19,
+    9, 56, 63,
+    10, 33, 19
+)
+```
+
+a. Analyze the data in each county sepparately using the Jeffreys' prior distribution and report the posterior 95% credible set for each county.
+
+-----
+
+**Solution:**
+
+-----
+
+b. Let $\hat p_i$ be the sample proportion of commuters in county $i$ that approve of the HIV lane (e.g. $\hat p_1 = 12/(12+50)=0.194$). Select $a$ abd $b$ so that the mean and variance of the $\mathrm{Beta}(a,b)$ distribution match the mean and variance of the sample proportions $\hat p_1, \dots, \hat p_{10}$.
+
+-----
+
+**Solution:**
+
+-----
+
+c. Conduct an empirical Bayesian analysis by computing the 95% posterior credible sets that results from analyzing each coutny separately using the $\mathrm{Beta}(a,b)$ prior you computed in *b.*
+
+-----
+
+**Solution:**
+
+-----
+
+d. How do the results from *a.* and *c.* differ? What are the advantages and disadvantages of these two analyses?
+
+-----
+
+**Solution:**
+
+-----
+

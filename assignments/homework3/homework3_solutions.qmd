@@ -1,0 +1,725 @@
+---
+title: "Homework #3"
+subtitle: Chapters 2.1, 2.2, 2.3 and 2.4
+description: |
+    **Assigned:** Friday, September 8th, 2023 <br>
+    **Due:** Friday, September 15th, 2023
+author: 
+    -   name: Brynjólfur Gauti Guðrúnar Jónsson
+        email: brynjolfur@hi.is
+        url: https://www.hi.is/staff/brynjolfur
+        affiliation: 
+        -   name: School of Engineering and Natural Sciences, University of Iceland
+            city: Reykjavík
+            url: https://english.hi.is/school_of_engineering_and_natural_sciences
+# Change this to pdf if you'd rather work in that format
+format: html 
+editor: source
+theme: flatly
+title-block-banner: true
+# The setting below makes our HTML document self-contained so that we can turn it in
+embed-resources: true 
+---
+
+```{r}
+#| echo: fenced
+#| output: hide
+
+library(tidyr)
+library(dplyr, warn.conflicts = FALSE)
+library(ggplot2)
+library(patchwork)
+library(gt)
+library(invgamma)
+theme_set(theme_classic())
+```
+
+# Chapter 2.4
+
+## Exercise 6
+
+An assembly line relies on accurate measurements from an image-recognition algorithm at the first stage of the process. It is known that the algorithm is unbiased, so assume that measurements follow a normal distribution with mean zero, 
+
+$$
+Y_i\vert \sigma^2\overset{\mathrm{iid}}{\sim}\mathrm{Normal}(0, \sigma^2).
+$$
+
+Some errors are permissible, but if $\sigma$ exceeds the threshold $c$ then the algorithm must be replaced. 
+
+You make $n = 20$ measurements and observe 
+
+$$
+\sum_{i=1}^n Y_i = -2 \quad \mathrm{and} \quad \sum_{i=1}^n Y_i^2 = 15,
+$$ 
+
+and conduct a Bayesian analysis with $\mathrm{InvGamma}(a,b)$ prior. compute the posterior probability that $\sigma > c$ for:
+
+a. $c=1$ and $a=b=0.1$
+
+-----
+
+**Solution:**
+
+Our likelihood is
+
+$$
+\begin{aligned}
+f(\mathbf Y\vert \sigma^2) &\propto \prod_{i=1}^n \frac1\sigma \exp\left[-\frac{(Y_i - \mu)^2}{2\sigma^2}\right] \\
+&\propto (\sigma^2)^{-n/2}\exp\left(-\frac{\mathrm{SSE}}{2\sigma^2}
+\right).
+\end{aligned}
+$$
+
+In our case, we can write out SSE as
+
+$$
+\begin{aligned}
+\mathrm{SSE} &= \sum_{i=1}^n (Y_i - \mu)^2 \\
+&= \sum_{i=1}^n Y_i^2 - 2 Y_i\mu + \mu^2 \\
+&= \sum_{i=1}^n Y_i^2, \quad\quad \mu = 0.
+\end{aligned}
+$$
+
+Our inverse gamma prior is
+
+$$
+\pi(\sigma^2) \propto (\sigma^2)^{-(a+1)}\exp\left(- \frac{b}{\sigma^2}\right).
+$$
+
+Combining our likelihood and prior we get the posterior
+
+$$
+\begin{aligned}
+p(\sigma^2\vert\mathbf Y) &\propto f(\mathbf Y\vert \sigma^2)\pi(\sigma^2) \\
+&\propto (\sigma^2)^{-(A+1)}\exp\left(- \frac{B}{\sigma^2}\right),
+\end{aligned}
+$$
+
+where $A = n/2 + a$ and $B = \mathrm{SSE}/2 + b$, and we therefore see that
+
+$$
+\sigma^2 \vert \mathbf Y \sim \mathrm{InvGamma}(A, B).
+$$
+
+By using the right values for $n$, SSE, $a$, $b$, and $c$ we can easily use `R`'s inbuilt `pgamma` function to answer the question. To use the `pgamma` function, we just need to remember that if 
+
+$$
+X \sim \mathrm{Gamma}(\alpha, \beta),
+$$
+
+then 
+
+$$
+\frac1X \sim \mathrm{InvGamma}(\alpha, \beta).
+$$
+
+Thus, since $\sigma^2$ is assumed to follow an inverse gamma distribution we can answer the question by calculating
+
+$$
+P\left(\frac1{\sigma^2} < \frac 1{c^2}\right).
+$$
+
+
+```{r}
+#| echo: fenced
+n <- 20
+SSE <- 15
+c <- 1
+a <- 0.1
+b <- 0.1
+
+A <- n/2 + a
+B <- SSE/2 + b
+
+pgamma(1/c^2, shape = A, rate = B)
+```
+
+We could also use the `pinvgamma` function from the `invgamma` package
+
+```{r}
+1 - pinvgamma(c^2, shape = A, rate = B)
+```
+
+```{r}
+#| code-fold: true
+#| message: false
+#| warning: false
+
+plot_solution <- function(A, B, c) {
+    p1 <- ggplot() +
+        stat_function(
+            geom = "area",
+            fun = dinvgamma,
+            xlim = c(0, c^2),
+            args = list(shape = A, rate = B),
+            alpha = 0.4
+        ) +
+        stat_function(
+            geom = "area",
+            fun = dinvgamma,
+            xlim = c(c^2, qinvgamma(0.99999, shape = A, rate = B)),
+            args = list(shape = A, rate = B)
+        ) +
+        annotate(
+            geom = "text",
+            x = 1.1 * c^2 + 0.1,
+            y = dgamma(1/c^2, shape = A, rate = B) + 0.05,
+            label = expression(sigma^2>c^2)
+        ) +
+        coord_cartesian(expand = FALSE) +
+        labs(
+            subtitle = "Inverse gamma",
+            x = expression(sigma^2)
+        )
+    
+    p2 <- ggplot() +
+        stat_function(
+            geom = "area",
+            fun = dgamma,
+            xlim = c(0, 1/c^2),
+            args = list(shape = A, rate = B)
+        ) +
+        stat_function(
+            geom = "area",
+            fun = dgamma,
+            xlim = c(1/c^2, qgamma(0.99999, shape = A , rate = B)),
+            args = list(shape = A, rate = B),
+            alpha = 0.4
+        ) +
+        annotate(
+            geom = "text",
+            x = 1/ (c^2 * 1.3) - 0.1,
+            y = dgamma(1/c^2, shape = A, rate = B) + 0.05,
+            label = expression(frac(1,sigma^2)<frac(1,c^2))
+        ) +
+        coord_cartesian(expand = FALSE, clip = "off") +
+        labs(
+            subtitle = "Gamma",
+            x = expression(frac(1,sigma^2))
+        )
+    
+    p1 + p2 +
+        plot_annotation(
+            title = "Comparing solutions using the Gamma or Inverse Gamma"
+        ) &
+        theme(
+            axis.text.y = element_blank(),
+            axis.ticks.y = element_blank(),
+            axis.title.y = element_blank(),
+            axis.line.y = element_blank()
+        )
+    
+}
+
+plot_solution(A, B, c)
+```
+
+
+-----
+
+b. $c=1$ and $a=b=1.0$
+
+-----
+
+**Solution:** 
+
+```{r}
+#| echo: fenced
+n <- 20
+SSE <- 15
+c <- 1
+a <- 1
+b <- 1
+
+A <- n/2 + a
+B <- SSE/2 + b
+
+pgamma(1/c^2, shape = A, rate = B)
+```
+
+```{r}
+1 - pinvgamma(c^2, shape = A, rate = B)
+```
+
+
+```{r}
+#| code-fold: true
+#| message: false
+#| warning: false
+
+plot_solution(A, B, c)
+```
+
+-----
+
+c. $c=2$ and $a=b=0.1$
+
+-----
+
+**Solution:**
+
+```{r}
+#| echo: fenced
+n <- 20
+SSE <- 15
+c <- 2
+a <- 0.1
+b <- 0.1
+
+A <- n/2 + a
+B <- SSE/2 + b
+
+pgamma(1/c^2, shape = A, rate = B)
+```
+
+```{r}
+1 - pinvgamma(c^2, shape = A, rate = B)
+```
+
+
+```{r}
+#| code-fold: true
+#| message: false
+#| warning: false
+
+plot_solution(A, B, c)
+```
+
+-----
+
+d. $c=2$ and $a=b=1.0$
+
+-----
+
+**Solution:**
+
+```{r}
+#| echo: fenced
+n <- 20
+SSE <- 15
+c <- 2
+a <- 1
+b <- 1
+
+A <- n/2 + a
+B <- SSE/2 + b
+
+pgamma(1/c^2, shape = A, rate = B)
+```
+
+```{r}
+1 - pinvgamma(c^2, shape = A, rate = B)
+```
+
+```{r}
+#| code-fold: true
+#| message: false
+#| warning: false
+
+plot_solution(A, B, c)
+```
+
+-----
+
+For each $c$, compute the ratio of probabilities for the two priors. Which, if any of the results are sensitive to the prior?
+
+-----
+
+**Solution:** In the table below, we compare the two choices of priors for each value of $c$. We see that the ration between the two probabilities is close to $1$ for $c=1$, so it is relatively insensitive to the priors. On the other hand the ratio is $0.56$ for $c=2$ which tells us that our inference is sensitive to the choice of prior distribution when $c=2$.
+
+```{r}
+#| code-fold: true
+
+crossing(
+    c = c(1, 2),
+    ab = c(0.1, 1)
+) |> 
+    mutate(
+        A = n/2 + ab,
+        B = SSE/2 + ab,
+        prob = 1 - pinvgamma(c^2, shape = A, rate = B)
+    ) |> 
+    select(c, ab, prob) |> 
+    pivot_wider(names_from = ab, values_from = prob) |> 
+    mutate(
+        ratio = `1` / `0.1`
+    ) |> 
+    gt() |> 
+    tab_spanner(
+        label = "Probability for each prior",
+        columns = c(`0.1`, `1`)
+    ) |> 
+    cols_label(
+        `0.1` = "a,b=0.1",
+        `1` = "a,b=1"
+    ) |> 
+    fmt_number(
+        decimals = 5, rows = 2
+    ) |> 
+    fmt_number(
+        decimals = 3, rows = 1
+    ) |> 
+    fmt_number(decimals = 0, columns = 1)
+```
+
+---
+
+## Exercise 16
+
+Say $Y\vert\lambda \sim \mathrm{Gamma}(1, \lambda).$
+
+a. Derive and plot the Jeffreys' prior for $\lambda$
+
+-----
+
+**Solution:** Jeffreys' prior is
+
+$$
+\pi(\theta) \propto \sqrt{I(\theta)},
+$$
+
+where $I(\theta)$ is the expected Fisher information, defined as
+
+$$
+I(\theta) = -E\left( \frac{d^2\log f(Y\vert \theta)}{d\theta^2}\right).
+$$
+
+The PDF of the Gamma distribution can be written
+
+$$
+f(x \vert a, b) = \frac{b^a}{\Gamma(a)}x^{a-1}\exp\left(-xb\right).
+$$
+
+In our case, $a=1$ and $b=\lambda$
+
+$$
+\begin{aligned}
+f(Y\vert \lambda) &= \frac{\lambda^1}{\Gamma(1)}Y^0\exp(-\lambda Y) \\
+&= \lambda \exp(-\lambda Y).
+\end{aligned}
+$$
+
+Taking the log we get
+
+$$
+\begin{aligned}
+l(Y\vert\theta) &=\log f(Y\vert\lambda) \\
+&= \log\lambda - \lambda Y \\
+\frac{dl}{d\lambda} &= \frac1\lambda - Y \\
+\frac{dl^2}{d\lambda^2} &= -\frac{1}{\lambda^2} \\
+&= -I(\lambda).
+\end{aligned}
+$$
+
+We thus see that
+
+$$
+\begin{aligned}
+\pi(\theta) &= \sqrt{I(\theta)} \\
+&= \sqrt{\frac{1}{\lambda^2}} \\
+&= \frac1\lambda
+\end{aligned}
+$$
+
+```{r}
+ggplot() +
+    stat_function(
+        geom = "area",
+        fun = function(x) 1 / x,
+        xlim = c(0, 20),
+        col = "black",
+        alpha = 0.5
+    ) +
+    coord_cartesian(expand = FALSE) +
+    labs(
+        x = expression(lambda),
+        y = expression(paste(pi, "(", lambda, ")"))
+    )
+```
+
+
+-----
+
+b. Is this prior proper?
+
+-----
+
+**Solution:** This is not a proper prior since it does not integrate to one.
+
+-----
+
+c. Derive the posterior and give conditions on $Y$ to ensure it is proper.
+
+-----
+
+**Solution:**
+
+Our posterior is
+
+$$
+\begin{aligned}
+p(\lambda\vert Y) &= \frac{f(\mathbf y\vert \lambda)\pi(\lambda)}{\int_0^\infty f(\mathbf y\vert \lambda)\pi(\lambda)d\lambda} \\
+&= \frac{\lambda \exp(-\lambda Y) \cdot \frac1\lambda}{\int_0^\infty \lambda \exp(-\lambda Y) \cdot \frac1\lambda d\lambda} \\
+&= \frac{\exp(-\lambda Y)}{\int_0^\infty \exp(-\lambda Y) d\lambda}
+\end{aligned}
+$$
+
+The indefinite integral of $\exp(-\lambda Y)$ is
+
+$$
+\int_0^\infty \exp(-\lambda Y)d\lambda =-\frac1Y \exp(-\lambda Y).
+$$
+
+If $Y>0$, then this becomes $\frac1Y$, giving us the posterior distribution
+
+$$
+p(\lambda\vert Y) = Y \exp(-Y\lambda),
+$$
+
+which is proper, since we assumed that $Y>0$.
+
+If $Y = 0$, then our posterior distribution will not integrate to one and thus will not be proper. We therefore require that $Y > 0$. Luckily $Y=0$ with probability 0 as Y is a continuous variable.
+
+-----
+
+## Exercise 18
+
+The data in the table below are the result of a survey of commuters in 10 counties likely to be affected by a proposed addition of a high occupancy vehicle (HOV) lane.
+
+```{r}
+d <- tribble(
+    ~County, ~Approve, ~Disapprove,
+    1, 12, 50,
+    2, 90, 150,
+    3, 80, 63,
+    4, 5, 10,
+    5, 63, 63,
+    6, 15, 8,
+    7, 67, 56,
+    8, 22, 19,
+    9, 56, 63,
+    10, 33, 19
+)
+
+d |> 
+    gt()
+```
+
+a. Analyze the data in each county separately using the Jeffreys' prior distribution and report the posterior 95% credible set for each county.
+
+-----
+
+**Solution:** We assume the data follow a binomial distribution
+
+$$
+f(Y\vert p) = \binom{N}{Y}p^Y(1-p)^{N-Y}.
+$$
+
+To derive Jeffreys' prior we first find the expected Fisher information
+
+$$
+\begin{aligned}
+l(Y\vert p) &= \log f(Y\vert p) \\
+&= \log\binom{N}{Y} + Y\log p + (N - Y)\log(1 - p) \\
+\frac{dl}{dp} &= \frac Yp + \frac{N-Y}{1-p} \\
+\frac{dl^2}{dp^2} &= -\frac{Y}{p^2} - \frac{N - Y}{(1 - p)^2}.
+\end{aligned}
+$$
+
+The expected value of $Y$ is $Np$ and the expected value of $N - Y$ is $N - Np$.
+
+$$
+\begin{aligned}
+I(p) &= \frac{Np}{p^2} + \frac{N - Np}{(1 - p)^2} \\
+&= \frac{N}{p} + \frac{N}{1 - p} \\
+&= \frac{N}{p(1 - p)}.
+\end{aligned}
+$$
+
+Jeffreys' prior is therefore
+
+$$
+\pi(p) \propto \sqrt{\frac{n}{p(1 - p)}} \propto p^{1/2-1}(1-p)^{1/2-1},
+$$
+
+which is the kernel of a $\mathrm{Beta}(0.5, 0.5)$ PDF. We can thus see that Jeffreys' prior for a binomial proportion is a $\mathrm{Beta}(0.5, 0.5)$ distribution, and the posterior will be a $\mathrm{Beta}(0.5 + Y, 0.5 + (N - Y))$ distribution.
+
+```{r}
+#| echo: fenced
+jeffreys_results <- d |> 
+    mutate(
+        A = Approve + 0.5,
+        B = Disapprove + 0.5,
+        Lower = qbeta(0.025, A, B),
+        Upper = qbeta(0.975, A, B)
+    ) 
+
+jeffreys_results |> 
+    gt() |> 
+    cols_hide(
+        columns = c(Approve, Disapprove, A, B)
+    ) |> 
+    tab_spanner(
+        label = "95% Credible Interval", 
+        columns = c(Lower, Upper)
+    ) |> 
+    fmt_percent(
+        columns = c(Lower, Upper)
+    )
+```
+
+
+-----
+
+b. Let $\hat p_i$ be the sample proportion of commuters in county $i$ that approve of the HIV lane (e.g. $\hat p_1 = 12/(12+50)=0.194$). Select $a$ abd $b$ so that the mean and variance of the $\mathrm{Beta}(a,b)$ distribution match the mean and variance of the sample proportions $\hat p_1, \dots, \hat p_{10}$.
+
+-----
+
+**Solution:**
+
+```{r}
+d |> 
+    mutate(
+        p = Approve / (Approve + Disapprove)
+    ) |> 
+    summarise(
+        mean = mean(p),
+        var = var(p)
+    ) |> 
+    gt() |> 
+    cols_label(
+        mean = "Mean",
+        var = "Variance"
+    )
+```
+
+So we want the following to be approximately true
+
+$$
+\frac{\alpha}{\beta} = 0.48 \qquad \frac{\alpha\beta}{(\alpha + \beta)^2(\alpha + \beta + 1)} =0.02
+$$
+
+We can solve this simply by creating a target function and using `R`'s built-in `optim` function
+
+```{r}
+#| echo: fenced
+my_fun <- function(pars) {
+    
+    alpha <- pars[1]
+    beta <- pars[2]
+    
+    # Calculate difference between current mean and desired mean
+    diff_mean <- alpha / (alpha + beta) - 0.48
+    
+    # Calculate difference between current variance and desired variance
+    diff_var <- (alpha * beta) / ((alpha + beta)^2 * (alpha + beta + 1)) - 0.02
+    
+    # Return the squared differences of both
+    diff_mean^2 + diff_var^2
+}
+
+results <- optim(c(1, 1), fn = my_fun)
+
+alpha <- results$par[1]
+beta <- results$par[2]
+
+alpha
+beta
+```
+
+-----
+
+c. Conduct an empirical Bayesian analysis by computing the 95% posterior credible sets that results from analyzing each county separately using the $\mathrm{Beta}(a,b)$ prior you computed in *b.*
+
+-----
+
+**Solution:**
+
+```{r}
+#| echo: fenced
+emp_bayes_results <- d |> 
+    mutate(
+        A = Approve + alpha,
+        B = Disapprove + beta,
+        Lower = qbeta(0.025, A, B),
+        Upper = qbeta(0.975, A, B)
+    ) 
+
+emp_bayes_results |> 
+    gt() |> 
+    cols_hide(
+        columns = c(Approve, Disapprove, A, B)
+    ) |> 
+    tab_spanner(
+        label = "95% Credible Interval", 
+        columns = c(Lower, Upper)
+    ) |> 
+    fmt_percent(
+        columns = c(Lower, Upper)
+    )
+```
+
+-----
+
+d. How do the results from *a.* and *c.* differ? What are the advantages and disadvantages of these two analyses?
+
+
+-----
+
+**Solution:** The Empirical Bayes (EB) prior pulls each individual proportion slightly towards the overall mean. Since each county gets the same EB prior the effect is that counties with fewer votes get pulled more towards the overall mean, thus stabilizing the inferences in smaller counties by *"borrowing"* information from other counties. 
+
+The downside to using the EB prior is that the inference for each county is slightly biased to wards the overall mean. 
+
+This is an example of the bias/variance trade-off in statistics. We often want to reduce the variance in our statistical inference at the cost of increasing the bias in our inferences.
+
+```{r}
+#| echo: fenced
+#| code-fold: true
+
+
+emp_bayes_results |> 
+    mutate(
+        type = "Empirical Bayes"
+    ) |> 
+    bind_rows(
+        jeffreys_results |> 
+            mutate(
+                type = "Jeffreys"
+            )
+    ) |> 
+    ggplot(aes(x = County, ymin = Lower, ymax = Upper, col = type)) +
+    geom_hline(
+        yintercept = 0.48,
+        lty = 2,
+        linewidth = 0.5
+    ) +
+    geom_linerange(
+        linewidth = 1,
+        position = position_dodge(width = 0.3)
+        ) +
+    scale_x_continuous(
+        breaks = 1:10
+    ) +
+    scale_y_continuous(
+        limits = c(0, 1),
+        labels = scales::label_percent(),
+        expand = expansion()
+    ) +
+    annotate(
+        geom = "text",
+        x = 1.5,
+        y = 0.51,
+        label = "Overall Mean"
+    ) +
+    theme(legend.position = c(0.15, 0.9)) +
+    labs(
+        x = "County",
+        y = expression(hat(p)),
+        col = NULL,
+        title = "Comparing the Jeffreys and Empirical Bayes intervals",
+        subtitle = "Empirical Bayes pulls the intervalls slightly towards the overall mean"
+    )
+```
+
+-----
+
