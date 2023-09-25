@@ -4,4 +4,4 @@
 # Bayesian Data Analysis (STÆ529M)
 
 This repository handles the webpage
-[www.bggj.is/stae529m](www.bggj.is/stae529m).
+[bggj.is/stae529m](https://bggj.is/stae529m).
