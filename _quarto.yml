@@ -1,0 +1,32 @@
+project:
+  type: website
+  output-dir: docs
+  preview: 
+    port: 4200
+    
+    
+website:
+  title: "STÆ529M"
+  sidebar:
+    contents:
+      - section: "Assignments"
+        contents:
+          - assignments/hw1/index.qmd
+          - assignments/hw2/index.qmd
+          - assignments/hw3/index.qmd
+          - assignments/hw4/index.qmd
+      - section: "Solutions"
+        contents:
+          - assignments/hw1/solution/index.qmd
+          - assignments/hw2/solution/index.qmd
+          - assignments/hw3/solution/index.qmd
+
+format: 
+  html:
+    theme: [flatly, theme.scss]
+    execute:
+      freeze: auto
+      warning: false
+      message: false
+
+editor: source

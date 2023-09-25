@@ -21,17 +21,6 @@ title-block-banner: true
 embed-resources: true 
 ---
 
-```{r}
-#| echo: fenced
-#| output: hide
-
-library(tidyr)
-library(dplyr, warn.conflicts = FALSE)
-library(ggplot2)
-library(patchwork)
-library(invgamma)
-theme_set(theme_classic())
-```
 
 # Chapter 2.4
 
