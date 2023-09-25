@@ -1,5 +1,5 @@
 ---
-title: "Homework #3"
+title: "Homework #3 (Solution)"
 subtitle: Chapters 2.1, 2.2, 2.3 and 2.4
 description: |
     **Assigned:** Friday, September 8th, 2023 <br>
@@ -15,11 +15,13 @@ author:
 # Change this to pdf if you'd rather work in that format
 format: html 
 editor: source
-theme: flatly
 title-block-banner: true
-# The setting below makes our HTML document self-contained so that we can turn it in
-embed-resources: true 
+#### The setting below makes our HTML document self-contained so that we can turn it in ####
+#### UNCOMMENT THE LONE BELOW SO THAT YOU CAN TURN IN YOUR HTML DOCUMENT ###################
+# embed-resources: true 
 ---
+
+{{< downloadthis index.qmd dname="hw3_solution" label="Download the Quarto document used to render this file" type=primary class=downloadbutton >}}
 
 ```{r}
 #| echo: fenced

@@ -15,11 +15,13 @@ author:
 # Change this to pdf if you'd rather work in that format
 format: html 
 editor: source
-theme: flatly
 title-block-banner: true
-# The setting below makes our HTML document self-contained so that we can turn it in
-embed-resources: true 
+#### The setting below makes our HTML document self-contained so that we can turn it in ####
+#### UNCOMMENT THE LONE BELOW SO THAT YOU CAN TURN IN YOUR HTML DOCUMENT ###################
+# embed-resources: true  
 ---
+
+{{< downloadthis index.qmd dname="hw2" label="Download the Quarto document used to render this file" type=primary class=downloadbutton >}}
 
 # Chapter 2.4
 

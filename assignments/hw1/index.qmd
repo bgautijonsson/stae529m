@@ -15,11 +15,14 @@ author:
 # Change this to pdf if you'd rather work in that format
 format: html 
 editor: source
-theme: flatly
 title-block-banner: true
-# The setting below makes our HTML document self-contained so that we can turn it in
-embed-resources: true 
+#### The setting below makes our HTML document self-contained so that we can turn it in ####
+#### UNCOMMENT THE LONE BELOW SO THAT YOU CAN TURN IN YOUR HTML DOCUMENT ###################
+# embed-resources: true 
 ---
+
+{{< downloadthis index.qmd dname="hw1" label="Download the Quarto document used to render this file" type=primary class=downloadbutton >}}
+
 # 1. Sample survey
 
 Suppose we are going to sample 100 individuals from a county (with population size much larger than 100) and ask each sampled person whether they support policy Z or not. Let $Y_i = 1$ if person $i$ in the sample supports the policy, and $Y_i = 0$ otherwise.

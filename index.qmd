@@ -1,1 +1,30 @@
-# Applied Bayesian Data Analysis (STÆ529M)
+
+### Bayesian Data Analysis (STÆ529M)
+
+This page contains Quarto templates for the assignments as well as solutions when they have been made available.
+
+On each assignment/solution's page there is a button that can be clicked in order to download the template for that assignment/solution. The student can then write their solution into the premade Quarto template and render it to HTML for turnin if they wish.
+
+
+---
+
+### Quarto
+
+All of the templates are written usen Quarto Markdown Documents *(.qmd)*. Quarto is basically the same as RMarkdown so you should not have a hard time switching over to using Quarto. The good thing about Quarto is that you can easily use it to create website. This website was created using Quarto, for example. 
+
+I would recommend you look at the following materials to acquaint yourselves with the use of Quarto:
+
+* [**The Quarto Webpage**](https://quarto.org)
+    - [*Quarto for Academics*](https://www.youtube.com/watch?v=EbAAmrB0luA)
+    - [*Beautiful reports and presentations with Quarto*](https://www.youtube.com/watch?v=hbf7Ai3jnxY)
+    
+### GitHub
+
+This whole page is built from a GitHub repository at https://github.com/bgautijonsson/stae529m. Instead of manually downloading each file you can clone the repository and pull the contents regularly to your computer to receive the newest versions of all documents.
+
+Git, GitHub and version control in general are essential skills so I would recommend you practice their use.
+
+I recommend the following material to get acquainted with Git and GitHub. 
+
+* [**Git and Github with R**](https://happygitwithr.com)
+* [**Git in general**](https://git-scm.com/book/en/v2)
