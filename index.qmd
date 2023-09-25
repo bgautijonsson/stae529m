@@ -1,5 +1,5 @@
 
-### Bayesian Data Analysis (STÆ529M)
+# Bayesian Data Analysis (STÆ529M)
 
 This page contains Quarto templates for the assignments as well as solutions when they have been made available.
 
