@@ -19,6 +19,8 @@ title-block-banner: true
 #### The setting below makes our HTML document self-contained so that we can turn it in ####
 #### UNCOMMENT THE LONE BELOW SO THAT YOU CAN TURN IN YOUR HTML DOCUMENT ###################
 # embed-resources: true 
+bibliography: references.bib
+citation-location: margin
 ---
 
 {{< downloadthis index.qmd dname="hw4" label="Download the Quarto document used to render this file" type=primary class=downloadbutton >}}
@@ -27,83 +29,91 @@ title-block-banner: true
 
 Assume that $Y_i\vert\mu\overset{\mathrm{indep}}{\sim} \mathrm{Normal}(\mu,\sigma_i^2)$ for $i \in \{1, \dots, n\}$, with $\sigma_i$ known and improper prior distribution $\pi(\mu)=1$ for all $\mu$.
 
-a. Give a formula for the MAP estimator for $\mu$
+a.  Give a formula for the MAP estimator for $\mu$
 
------
-
-**Solution:**
-
------
-
-b. We observe $n=3, Y_1=12, Y_2=10, Y_3=22, \sigma_2=\sigma_2=3$ and $\sigma_3=10$, compute the MAP estimate of $\mu$.
-
------
+------------------------------------------------------------------------
 
 **Solution:**
 
------
+------------------------------------------------------------------------
 
-c. Use numerical integration to compute the posterior mean of $\mu$.
+b.  We observe $n=3, Y_1=12, Y_2=10, Y_3=22, \sigma_2=\sigma_2=3$ and $\sigma_3=10$, compute the MAP estimate of $\mu$.
 
------
-
-**Solution:**
-
------
-
-d. Plot the posterior distribution of $\mu$ and indicate the MAP and the posterior mean estimates on the plot.
-
------
+------------------------------------------------------------------------
 
 **Solution:**
 
------
+------------------------------------------------------------------------
+
+c.  Use numerical integration to compute the posterior mean of $\mu$.
+
+------------------------------------------------------------------------
+
+**Solution:**
+
+------------------------------------------------------------------------
+
+d.  Plot the posterior distribution of $\mu$ and indicate the MAP and the posterior mean estimates on the plot.
+
+------------------------------------------------------------------------
+
+**Solution:**
+
+------------------------------------------------------------------------
 
 # 4
 
-Consider the model 
+Consider the model
 
 $$
 Y_i\vert\mu\overset{\mathrm{indep}}{\sim} \mathrm{Normal}(\mu,\sigma_i^2),
-$$ 
+$$
 
-for $i \in \{1, \dots, n\}$ where 
+for $i \in \{1, \dots, n\}$ where
 
 $$
 \sigma_i^2\vert b \sim \mathrm{InvGamma}(a,b) \\ b\sim\mathrm{Gamma}(1,1)
 $$
 
-a. Derive the full conditional posterior distributions for $\sigma^2_2$ and $b$.
+a.  Derive the full conditional posterior distributions for $\sigma^2_2$ and $b$.
 
------
-
-**Solution:**
-
------
-
-b. Write pseudocode for Gibbs sampling, i.e. describe in detail each step of the Gibbs sampling algorithm.
-
------
+------------------------------------------------------------------------
 
 **Solution:**
 
------
+------------------------------------------------------------------------
 
-c. Write your own Gibbs sampling code (not in `JAGS`) and plot the marginal posterior density of each parameter. Assume $n=10$, $a=10$ and $Y_i=i$ for $i=1, \dots, 10$.
+b.  Write pseudocode for Gibbs sampling, i.e. describe in detail each step of the Gibbs sampling algorithm.
 
------
-
-**Solution:**
-
------
-
-d. Repeat the analysis with $a=1$ and comment on the convergence of the MCMC chain.
-
------
+------------------------------------------------------------------------
 
 **Solution:**
 
------
+------------------------------------------------------------------------
+
+c.  Write your own Gibbs sampling code (not in `JAGS`) and plot the marginal posterior density of each parameter. Assume $n=10$, $a=10$ and $Y_i=i$ for $i=1, \dots, 10$.
+
+------------------------------------------------------------------------
+
+**Solution:**
+
+------------------------------------------------------------------------
+
+d.  Repeat the analysis with $a=1$ and comment on the convergence of the MCMC chain.
+
+------------------------------------------------------------------------
+
+**Solution:**
+
+------------------------------------------------------------------------
+
+e.  Implement the model in *c.* using `JAGS` and compare the results with the results in *c.*
+
+------------------------------------------------------------------------
+
+**Solution:**
+
+------------------------------------------------------------------------
 
 # 5
 
@@ -126,50 +136,52 @@ $$
 \sigma^2\sim\mathrm{InvGamma}(0.01, 0.01).
 $$
 
-a. Give an example of a real experiment for which this would be an appropriate model.
+a.  Give an example of a real experiment for which this would be an appropriate model.
 
------
-
-**Solution:**
-
------
-
-b. Derive the full conditional posterior distributions for $\mu$, $\delta$, and $\sigma^2$.
-
------
+------------------------------------------------------------------------
 
 **Solution:**
 
------
+------------------------------------------------------------------------
 
-c. Simulate a dataset from this model with $n=m=50$, $\mu=10$, $\delta=1$ and $\sigma=2$. Write your own Gibbs sampling code (not in `JAGS`) to fit the model above to the simulated data and plot the marginal posterior density for each parameter. Are you able to recover the true values reasonably well?
+b.  Derive the full conditional posterior distributions for $\mu$, $\delta$, and $\sigma^2$.
 
------
-
-**Solution:**
-
------
-
-d. Implement this model using `JAGS` and compare the results with the results in **.c**.
-
------
+------------------------------------------------------------------------
 
 **Solution:**
 
------
+------------------------------------------------------------------------
+
+c.  Simulate a dataset from this model with $n=m=50$, $\mu=10$, $\delta=1$ and $\sigma=2$. Write your own Gibbs sampling code (not in `JAGS`) to fit the model above to the simulated data and plot the marginal posterior density for each parameter. Are you able to recover the true values reasonably well?
+
+------------------------------------------------------------------------
+
+**Solution:**
+
+------------------------------------------------------------------------
+
+d.  Implement this model using `JAGS` and compare the results with the results in **.c**.
+
+------------------------------------------------------------------------
+
+**Solution:**
+
+------------------------------------------------------------------------
 
 # 10
 
-As discussed in section 1.6, [24] report that the number of marine bivalve species discovered each year from 2010-2015 was 64, 13, 33, 18, 30 and 20. Denote $Y_t$ as the number of species discovered in year $2009+t$ (so that $Y_1=64$ is the count for 2010). Use `JAGS` to fit the model 
+
+
+
+
+As discussed in section 1.6, [@edie2017] report that the number of marine bivalve species discovered each year from 2010-2015 was 64, 13, 33, 18, 30 and 20. Denote $Y_t$ as the number of species discovered in year $2009+t$ (so that $Y_1=64$ is the count for 2010). Use `JAGS` to fit the model
 
 $$
+\begin{gathered}
 Y_t\vert \alpha, \beta \overset{\mathrm{indep}}{\sim} \mathrm{Poisson}(\lambda_t)\\
 \lambda_t = \exp(\alpha + \beta t) \text{ or equivalently } \log(\lambda_t) = \alpha + \beta t \\
 \alpha,\beta \overset{\mathrm{indep}}{\sim} \mathrm{Normal}(0,10^2).
+\end{gathered}
 $$
 
 Summarize the posterior of $\alpha$ and $\beta$ and verify that the MCMC sampler has converged. Does this analysis provide evidence that the rate of discovery is changing over time?
-
-
-
-

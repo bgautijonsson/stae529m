@@ -124,7 +124,7 @@ Assuming uninformative conjugate priors, summarize the posterior distribution of
 
 **Solution:** We are dealing with numbers of events over fixed periods of time, so the Poisson-gamma model is the logical choice.
 
-Our Poisson likelihood with rate $\lambda$ over a period of time $T$ is
+Our Poisson likelihood with rate $\lambda       $ over a period of time $T$ is
 
 $$
 f(Y\vert \lambda) = \frac{(T\lambda)^Y}{Y!} \exp(-T\lambda),
