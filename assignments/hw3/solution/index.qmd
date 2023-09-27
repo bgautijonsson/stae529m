@@ -466,10 +466,10 @@ p(\lambda\vert Y) &= \frac{f(\mathbf y\vert \lambda)\pi(\lambda)}{\int_0^\infty 
 \end{aligned}
 $$
 
-The indefinite integral of $\exp(-\lambda Y)$ is
+The integral of $\exp(-\lambda Y)$ from $0$ to $\infty$ is
 
 $$
-\int_0^\infty \exp(-\lambda Y)d\lambda =-\frac1Y \exp(-\lambda Y).
+\int_0^\infty \exp(-\lambda Y)d\lambda =  -\frac1Y \left[\exp(-\lambda Y) \right]_0^\infty.
 $$
 
 If $Y>0$, then this becomes $\frac1Y$, giving us the posterior distribution
