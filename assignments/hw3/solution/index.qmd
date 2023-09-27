@@ -598,7 +598,7 @@ d |>
 So we want the following to be approximately true
 
 $$
-\frac{\alpha}{\beta} = 0.48 \qquad \frac{\alpha\beta}{(\alpha + \beta)^2(\alpha + \beta + 1)} =0.02
+\frac{\alpha}{\alpha + \beta} = 0.48 \qquad \frac{\alpha\beta}{(\alpha + \beta)^2(\alpha + \beta + 1)} =0.02
 $$
 
 We can solve this simply by creating a target function and using `R`'s built-in `optim` function
