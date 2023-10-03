@@ -1,0 +1,98 @@
+---
+title: "Homework #5"
+subtitle: "Exercises from Chapter 4.6: 1 and 2"
+description: |
+    **Assigned:** Friday, September 29th, 2023 <br>
+    **Due:** Friday, October 6th, 2023
+author: 
+    -   name: Brynjólfur Gauti Guðrúnar Jónsson
+        email: brynjolfur@hi.is
+        url: https://www.hi.is/staff/brynjolfur
+        affiliation: 
+        -   name: School of Engineering and Natural Sciences, University of Iceland
+            city: Reykjavík
+            url: https://english.hi.is/school_of_engineering_and_natural_sciences
+# Change this to pdf if you'd rather work in that format
+format: html 
+editor: source
+title-block-banner: true
+#### The setting below makes our HTML document self-contained so that we can turn it in ####
+#### UNCOMMENT THE LONE BELOW SO THAT YOU CAN TURN IN YOUR HTML DOCUMENT ###################
+# embed-resources: true 
+---
+
+{{< downloadthis index.qmd dname="hw5" label="Download the Quarto document used to render this file" type=primary class=downloadbutton >}}
+
+# 1
+
+A clinical trial gave six subjects a placebo and six subjects a new weight loss medication. The response variable is the change in weight *(pounds)* from baseline *(so -2.0 means the subject lost 2 pounds)*. The data for the 12 subjects are:
+
+```{r}
+#| echo: false
+dplyr::tribble(
+    ~Placebo, ~Treatment,
+    2.0, -3.5,
+    -3.1, -1.6,
+    -1.0, -4.6,
+    0.2, -0.9,
+    0.3, -5.1,
+    0.4, 0.1
+) |> 
+    gt::gt()
+```
+
+Conduct a Bayesian analysis to compare the means of these two groups. Would you say the treatment is effective? Is your conclusion sensitive to the prior?
+
+---
+
+**Solution:**
+
+
+---
+
+# 2
+
+Load the classic Boston Housing Data in R:
+
+```{r}
+data(Boston, package = "MASS")
+```
+
+The response variable is `medv`, the median value of owner-occupied homes *(in $1,000s)*, and the other 13 variables are covariates that describe the neighborhood.
+
+
+a. Fit a Bayesian linear regression model with uninformative Gaussian priors for the regression coefficients. Verify the MCMC sampler has converged, and summarize the posterior distribution of all regression coefficients.
+
+---
+
+**Solution:**
+
+---
+
+b. Perform a classic least squares *(e.g. using the `lm` function in `R`)*. Compare the results numerically and conceptually with the Bayesian results.
+
+
+
+---
+
+**Solution:**
+
+
+---
+
+
+c. Refit the Bayesian model with double exponential priors for the regression coefficients, and discuss how the results differ from the analysis with uninformative priors.
+
+---
+
+**Solution:**
+
+---
+
+d. Fit a Bayesian linear regression model in *a.* using only the first 500 observations and compute the posterior predictive distribution for the final 6 observations. Plot the posterior predictive distribution versus the actual value for these 6 observations and comment on whether the predictions are reasonable.
+
+---
+
+**Solution:**
+
+---

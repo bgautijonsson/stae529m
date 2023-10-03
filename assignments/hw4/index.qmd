@@ -37,7 +37,7 @@ a.  Give a formula for the MAP estimator for $\mu$
 
 ------------------------------------------------------------------------
 
-b.  We observe $n=3, Y_1=12, Y_2=10, Y_3=22, \sigma_2=\sigma_2=3$ and $\sigma_3=10$, compute the MAP estimate of $\mu$.
+b.  We observe $n=3, Y_1=12, Y_2=10, Y_3=22, \sigma_1=\sigma_2=3$ and $\sigma_3=10$, compute the MAP estimate of $\mu$.
 
 ------------------------------------------------------------------------
 
@@ -66,7 +66,7 @@ d.  Plot the posterior distribution of $\mu$ and indicate the MAP and the poster
 Consider the model
 
 $$
-Y_i\vert\mu\overset{\mathrm{indep}}{\sim} \mathrm{Normal}(\mu,\sigma_i^2),
+Y_i\vert\sigma^2_i\overset{\mathrm{indep}}{\sim} \mathrm{Normal}(\mu,\sigma_i^2),
 $$
 
 for $i \in \{1, \dots, n\}$ where
@@ -75,7 +75,7 @@ $$
 \sigma_i^2\vert b \sim \mathrm{InvGamma}(a,b) \\ b\sim\mathrm{Gamma}(1,1)
 $$
 
-a.  Derive the full conditional posterior distributions for $\sigma^2_2$ and $b$.
+a.  Derive the full conditional posterior distributions for $\sigma^2_1$ and $b$.
 
 ------------------------------------------------------------------------
 

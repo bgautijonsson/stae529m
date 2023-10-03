@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Brynjólfur Gauti Guðrúnar Jónsson">
-<meta name="description" content="Assigned: Friday, September 8th, 2023   Due: Friday, September 15th, 2023">
+<meta name="description" content="Assigned: Friday, September 29th, 2023   Due: Friday, October 6th, 2023">
 
-<title>STÆ529M - Homework #3</title>
+<title>STÆ529M - Homework #5</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -97,8 +97,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 </head>
 
@@ -111,7 +109,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../assignments/hw1/index.html">Assignments</a></li><li class="breadcrumb-item"><a href="../../assignments/hw3/index.html">Homework #3</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../assignments/hw1/index.html">Assignments</a></li><li class="breadcrumb-item"><a href="../../assignments/hw5/index.html">Homework #5</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -124,11 +122,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Homework #3</h1>
-            <p class="subtitle lead">Chapters 2.1, 2.2, 2.3 and 2.4</p>
+      <h1 class="title">Homework #5</h1>
+            <p class="subtitle lead">Exercises from Chapter 4.6: 1 and 2</p>
                   <div>
         <div class="description">
-          <p><strong>Assigned:</strong> Friday, September 8th, 2023 <br> <strong>Due:</strong> Friday, September 15th, 2023</p>
+          <p><strong>Assigned:</strong> Friday, September 29th, 2023 <br> <strong>Due:</strong> Friday, October 6th, 2023</p>
         </div>
       </div>
                 </div>
@@ -196,7 +194,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../assignments/hw3/index.html" class="sidebar-item-text sidebar-link active">
+  <a href="../../assignments/hw3/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Homework #3</span></a>
   </div>
 </li>
@@ -208,7 +206,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../assignments/hw5/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../../assignments/hw5/index.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Homework #5</span></a>
   </div>
 </li>
@@ -255,136 +253,527 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<p><a href="#dnldts19876" onclick="fetch('data:text/plain;base64,LS0tCnRpdGxlOiAiSG9tZXdvcmsgIzMiCnN1YnRpdGxlOiBDaGFwdGVycyAyLjEsIDIuMiwgMi4zIGFuZCAyLjQKZGVzY3JpcHRpb246IHwKICAgICoqQXNzaWduZWQ6KiogRnJpZGF5LCBTZXB0ZW1iZXIgOHRoLCAyMDIzIDxicj4KICAgICoqRHVlOioqIEZyaWRheSwgU2VwdGVtYmVyIDE1dGgsIDIwMjMKYXV0aG9yOiAKICAgIC0gICBuYW1lOiBCcnluasOzbGZ1ciBHYXV0aSBHdcOwcsO6bmFyIErDs25zc29uCiAgICAgICAgZW1haWw6IGJyeW5qb2xmdXJAaGkuaXMKICAgICAgICB1cmw6IGh0dHBzOi8vd3d3LmhpLmlzL3N0YWZmL2JyeW5qb2xmdXIKICAgICAgICBhZmZpbGlhdGlvbjogCiAgICAgICAgLSAgIG5hbWU6IFNjaG9vbCBvZiBFbmdpbmVlcmluZyBhbmQgTmF0dXJhbCBTY2llbmNlcywgVW5pdmVyc2l0eSBvZiBJY2VsYW5kCiAgICAgICAgICAgIGNpdHk6IFJleWtqYXbDrWsKICAgICAgICAgICAgdXJsOiBodHRwczovL2VuZ2xpc2guaGkuaXMvc2Nob29sX29mX2VuZ2luZWVyaW5nX2FuZF9uYXR1cmFsX3NjaWVuY2VzCiMgQ2hhbmdlIHRoaXMgdG8gcGRmIGlmIHlvdSdkIHJhdGhlciB3b3JrIGluIHRoYXQgZm9ybWF0CmZvcm1hdDogaHRtbCAKZWRpdG9yOiBzb3VyY2UKdGl0bGUtYmxvY2stYmFubmVyOiB0cnVlCiMjIyMgVGhlIHNldHRpbmcgYmVsb3cgbWFrZXMgb3VyIEhUTUwgZG9jdW1lbnQgc2VsZi1jb250YWluZWQgc28gdGhhdCB3ZSBjYW4gdHVybiBpdCBpbiAjIyMjCiMjIyMgVU5DT01NRU5UIFRIRSBMT05FIEJFTE9XIFNPIFRIQVQgWU9VIENBTiBUVVJOIElOIFlPVVIgSFRNTCBET0NVTUVOVCAjIyMjIyMjIyMjIyMjIyMjIyMjCiMgZW1iZWQtcmVzb3VyY2VzOiB0cnVlIAotLS0KCnt7PCBkb3dubG9hZHRoaXMgaW5kZXgucW1kIGRuYW1lPSJodzMiIGxhYmVsPSJEb3dubG9hZCB0aGUgUXVhcnRvIGRvY3VtZW50IHVzZWQgdG8gcmVuZGVyIHRoaXMgZmlsZSIgdHlwZT1wcmltYXJ5IGNsYXNzPWRvd25sb2FkYnV0dG9uID59fQoKIyBDaGFwdGVyIDIuNAoKIyMgRXhlcmNpc2UgNgoKQW4gYXNzZW1ibHkgbGluZSByZWxpZXMgb24gYWNjdXJhdGUgbWVhc3VyZW1lbnRzIGZyb20gYW4gaW1hZ2UtcmVjb2duaXRpb24gYWxnb3JpdGhtIGF0IHRoZSBmaXJzdCBzdGFnZSBvZiB0aGUgcHJvY2Vzcy4gSXQgaXMga25vd24gdGhhdCB0aGUgYWxnb3JpdGhtIGlzIHVuYmlhc2VkLCBzbyBhc3N1bWUgdGhhdCBtZWFzdXJlbWVudHMgZm9sbG93IGEgbm9ybWFsIGRpc3RyaWJ1dGlvbiB3aXRoIG1lYW4gemVybywgCgokJApZX2lcdmVydCBcc2lnbWFeMlxvdmVyc2V0e1xtYXRocm17aWlkfX17XHNpbX1cbWF0aHJte05vcm1hbH0oMCwgXHNpZ21hXjIpLgokJAoKU29tZSBlcnJvcnMgYXJlIHBlcm1pc3NpYmxlLCBidXQgaWYgJFxzaWdtYSQgZXhjZWVkcyB0aGUgdGhyZXNob2xkICRjJCB0aGVuIHRoZSBhbGdvcml0aG0gbXVzdCBiZSByZXBsYWNlZC4gCgpZb3UgbWFrZSAkbiA9IDIwJCBtZWFzdXJlbWVudHMgYW5kIG9ic2VydmUgCgokJApcc3VtX3tpPTF9Xm4gWV9pID0gLTIgXHF1YWQgXG1hdGhybXthbmR9IFxxdWFkIFxzdW1fe2k9MX1ebiBZX2leMiA9IDE1LAokJCAKCmFuZCBjb25kdWN0IGEgQmF5ZXNpYW4gYW5hbHlzaXMgd2l0aCAkXG1hdGhybXtJbnZHYW1tYX0oYSxiKSQgcHJpb3IuIGNvbXB1dGUgdGhlIHBvc3RlcmlvciBwcm9iYWJpbGl0eSB0aGF0ICRcc2lnbWEgPiBjJCBmb3I6CgphLiAkYz0xJCBhbmQgJGE9Yj0wLjEkCgotLS0tLQoKKipTb2x1dGlvbjoqKgoKCgotLS0tLQoKYi4gJGM9MSQgYW5kICRhPWI9MS4wJAoKLS0tLS0KCioqU29sdXRpb246KiogCgoKCi0tLS0tCgpjLiAkYz0yJCBhbmQgJGE9Yj0wLjEkCgotLS0tLQoKKipTb2x1dGlvbjoqKgoKCgotLS0tLQoKZC4gJGM9MiQgYW5kICRhPWI9MS4wJAoKLS0tLS0KCioqU29sdXRpb246KioKCgoKCi0tLS0tCgojIyBFeGVyY2lzZSAxNgoKU2F5ICRZXHZlcnRcbGFtYmRhIFxzaW0gXG1hdGhybXtHYW1tYX0oMSwgXGxhbWJkYSkuJAoKYS4gRGVyaXZlIGFuZCBwbG90IHRoZSBKZWZmcmV5cycgcHJpb3IgZm9yICRcbGFtYmRhJAoKLS0tLS0KCioqU29sdXRpb246KiogCgotLS0tLQoKYi4gSXMgdGhpcyBwcmlvciBwcm9wZXI/CgotLS0tLQoKKipTb2x1dGlvbjoqKiBUaGlzIGlzIG5vdCBhIHByb3BlciBwcmlvciBzaW5jZSBpdCBkb2VzIG5vdCBpbnRlZ3JhdGUgdG8gb25lLgoKLS0tLS0KCmMuIERlcml2ZSB0aGUgcG9zdGVyaW9yIGFuZCBnaXZlIGNvbmRpdGlvbnMgb24gJFkkIHRvIGVuc3VyZSBpdCBpcyBwcm9wZXIuCgotLS0tLQoKKipTb2x1dGlvbjoqKgoKCgotLS0tLQoKIyMgRXhlcmNpc2UgMTgKClRoZSBkYXRhIGluIHRoZSB0YWJsZSBiZWxvdyBhcmUgdGhlIHJlc3VsdCBvZiBhIHN1cnZleSBvZiBjb21tdXRlcnMgaW4gMTAgY291bnRpZXMgbGlrZWx5IHRvIGJlIGFmZmVjdGVkIGJ5IGEgcHJvcG9zZWQgYWRkaXRpb24gb2YgYSBoaWdoIG9jY3VwYW5jeSB2ZWhpY2xlIChIT1YpIGxhbmUuCgpgYGB7cn0KdGliYmxlOjp0cmliYmxlKAogICAgfkNvdW50eSwgfkFwcHJvdmUsIH5EaXNhcHByb3ZlLAogICAgMSwgMTIsIDUwLAogICAgMiwgOTAsIDE1MCwKICAgIDMsIDgwLCA2MywKICAgIDQsIDUsIDEwLAogICAgNSwgNjMsIDYzLAogICAgNiwgMTUsIDgsCiAgICA3LCA2NywgNTYsCiAgICA4LCAyMiwgMTksCiAgICA5LCA1NiwgNjMsCiAgICAxMCwgMzMsIDE5CikKYGBgCgphLiBBbmFseXplIHRoZSBkYXRhIGluIGVhY2ggY291bnR5IHNlcHBhcmF0ZWx5IHVzaW5nIHRoZSBKZWZmcmV5cycgcHJpb3IgZGlzdHJpYnV0aW9uIGFuZCByZXBvcnQgdGhlIHBvc3RlcmlvciA5NSUgY3JlZGlibGUgc2V0IGZvciBlYWNoIGNvdW50eS4KCi0tLS0tCgoqKlNvbHV0aW9uOioqCgotLS0tLQoKYi4gTGV0ICRcaGF0IHBfaSQgYmUgdGhlIHNhbXBsZSBwcm9wb3J0aW9uIG9mIGNvbW11dGVycyBpbiBjb3VudHkgJGkkIHRoYXQgYXBwcm92ZSBvZiB0aGUgSElWIGxhbmUgKGUuZy4gJFxoYXQgcF8xID0gMTIvKDEyKzUwKT0wLjE5NCQpLiBTZWxlY3QgJGEkIGFiZCAkYiQgc28gdGhhdCB0aGUgbWVhbiBhbmQgdmFyaWFuY2Ugb2YgdGhlICRcbWF0aHJte0JldGF9KGEsYikkIGRpc3RyaWJ1dGlvbiBtYXRjaCB0aGUgbWVhbiBhbmQgdmFyaWFuY2Ugb2YgdGhlIHNhbXBsZSBwcm9wb3J0aW9ucyAkXGhhdCBwXzEsIFxkb3RzLCBcaGF0IHBfezEwfSQuCgotLS0tLQoKKipTb2x1dGlvbjoqKgoKLS0tLS0KCmMuIENvbmR1Y3QgYW4gZW1waXJpY2FsIEJheWVzaWFuIGFuYWx5c2lzIGJ5IGNvbXB1dGluZyB0aGUgOTUlIHBvc3RlcmlvciBjcmVkaWJsZSBzZXRzIHRoYXQgcmVzdWx0cyBmcm9tIGFuYWx5emluZyBlYWNoIGNvdXRueSBzZXBhcmF0ZWx5IHVzaW5nIHRoZSAkXG1hdGhybXtCZXRhfShhLGIpJCBwcmlvciB5b3UgY29tcHV0ZWQgaW4gKmIuKgoKLS0tLS0KCioqU29sdXRpb246KioKCi0tLS0tCgpkLiBIb3cgZG8gdGhlIHJlc3VsdHMgZnJvbSAqYS4qIGFuZCAqYy4qIGRpZmZlcj8gV2hhdCBhcmUgdGhlIGFkdmFudGFnZXMgYW5kIGRpc2FkdmFudGFnZXMgb2YgdGhlc2UgdHdvIGFuYWx5c2VzPwoKLS0tLS0KCioqU29sdXRpb246KioKCi0tLS0tCgo=').then(res => res.blob()).then(blob => {
+<p><a href="#dnldts9375" onclick="fetch('data:text/plain;base64,LS0tCnRpdGxlOiAiSG9tZXdvcmsgIzUiCnN1YnRpdGxlOiAiRXhlcmNpc2VzIGZyb20gQ2hhcHRlciA0LjY6IDEgYW5kIDIiCmRlc2NyaXB0aW9uOiB8CiAgICAqKkFzc2lnbmVkOioqIEZyaWRheSwgU2VwdGVtYmVyIDI5dGgsIDIwMjMgPGJyPgogICAgKipEdWU6KiogRnJpZGF5LCBPY3RvYmVyIDZ0aCwgMjAyMwphdXRob3I6IAogICAgLSAgIG5hbWU6IEJyeW5qw7NsZnVyIEdhdXRpIEd1w7Byw7puYXIgSsOzbnNzb24KICAgICAgICBlbWFpbDogYnJ5bmpvbGZ1ckBoaS5pcwogICAgICAgIHVybDogaHR0cHM6Ly93d3cuaGkuaXMvc3RhZmYvYnJ5bmpvbGZ1cgogICAgICAgIGFmZmlsaWF0aW9uOiAKICAgICAgICAtICAgbmFtZTogU2Nob29sIG9mIEVuZ2luZWVyaW5nIGFuZCBOYXR1cmFsIFNjaWVuY2VzLCBVbml2ZXJzaXR5IG9mIEljZWxhbmQKICAgICAgICAgICAgY2l0eTogUmV5a2phdsOtawogICAgICAgICAgICB1cmw6IGh0dHBzOi8vZW5nbGlzaC5oaS5pcy9zY2hvb2xfb2ZfZW5naW5lZXJpbmdfYW5kX25hdHVyYWxfc2NpZW5jZXMKIyBDaGFuZ2UgdGhpcyB0byBwZGYgaWYgeW91J2QgcmF0aGVyIHdvcmsgaW4gdGhhdCBmb3JtYXQKZm9ybWF0OiBodG1sIAplZGl0b3I6IHNvdXJjZQp0aXRsZS1ibG9jay1iYW5uZXI6IHRydWUKIyMjIyBUaGUgc2V0dGluZyBiZWxvdyBtYWtlcyBvdXIgSFRNTCBkb2N1bWVudCBzZWxmLWNvbnRhaW5lZCBzbyB0aGF0IHdlIGNhbiB0dXJuIGl0IGluICMjIyMKIyMjIyBVTkNPTU1FTlQgVEhFIExPTkUgQkVMT1cgU08gVEhBVCBZT1UgQ0FOIFRVUk4gSU4gWU9VUiBIVE1MIERPQ1VNRU5UICMjIyMjIyMjIyMjIyMjIyMjIyMKIyBlbWJlZC1yZXNvdXJjZXM6IHRydWUgCi0tLQoKe3s8IGRvd25sb2FkdGhpcyBpbmRleC5xbWQgZG5hbWU9Imh3NSIgbGFiZWw9IkRvd25sb2FkIHRoZSBRdWFydG8gZG9jdW1lbnQgdXNlZCB0byByZW5kZXIgdGhpcyBmaWxlIiB0eXBlPXByaW1hcnkgY2xhc3M9ZG93bmxvYWRidXR0b24gPn19CgojIDEKCkEgY2xpbmljYWwgdHJpYWwgZ2F2ZSBzaXggc3ViamVjdHMgYSBwbGFjZWJvIGFuZCBzaXggc3ViamVjdHMgYSBuZXcgd2VpZ2h0IGxvc3MgbWVkaWNhdGlvbi4gVGhlIHJlc3BvbnNlIHZhcmlhYmxlIGlzIHRoZSBjaGFuZ2UgaW4gd2VpZ2h0ICoocG91bmRzKSogZnJvbSBiYXNlbGluZSAqKHNvIC0yLjAgbWVhbnMgdGhlIHN1YmplY3QgbG9zdCAyIHBvdW5kcykqLiBUaGUgZGF0YSBmb3IgdGhlIDEyIHN1YmplY3RzIGFyZToKCmBgYHtyfQojfCBlY2hvOiBmYWxzZQpkcGx5cjo6dHJpYmJsZSgKICAgIH5QbGFjZWJvLCB+VHJlYXRtZW50LAogICAgMi4wLCAtMy41LAogICAgLTMuMSwgLTEuNiwKICAgIC0xLjAsIC00LjYsCiAgICAwLjIsIC0wLjksCiAgICAwLjMsIC01LjEsCiAgICAwLjQsIDAuMQopIHw+IAogICAgZ3Q6Omd0KCkKYGBgCgpDb25kdWN0IGEgQmF5ZXNpYW4gYW5hbHlzaXMgdG8gY29tcGFyZSB0aGUgbWVhbnMgb2YgdGhlc2UgdHdvIGdyb3Vwcy4gV291bGQgeW91IHNheSB0aGUgdHJlYXRtZW50IGlzIGVmZmVjdGl2ZT8gSXMgeW91ciBjb25jbHVzaW9uIHNlbnNpdGl2ZSB0byB0aGUgcHJpb3I/CgotLS0KCioqU29sdXRpb246KioKCgotLS0KCiMgMgoKTG9hZCB0aGUgY2xhc3NpYyBCb3N0b24gSG91c2luZyBEYXRhIGluIFI6CgpgYGB7cn0KZGF0YShCb3N0b24sIHBhY2thZ2UgPSAiTUFTUyIpCmBgYAoKVGhlIHJlc3BvbnNlIHZhcmlhYmxlIGlzIGBtZWR2YCwgdGhlIG1lZGlhbiB2YWx1ZSBvZiBvd25lci1vY2N1cGllZCBob21lcyAqKGluICQxLDAwMHMpKiwgYW5kIHRoZSBvdGhlciAxMyB2YXJpYWJsZXMgYXJlIGNvdmFyaWF0ZXMgdGhhdCBkZXNjcmliZSB0aGUgbmVpZ2hib3Job29kLgoKCmEuIEZpdCBhIEJheWVzaWFuIGxpbmVhciByZWdyZXNzaW9uIG1vZGVsIHdpdGggdW5pbmZvcm1hdGl2ZSBHYXVzc2lhbiBwcmlvcnMgZm9yIHRoZSByZWdyZXNzaW9uIGNvZWZmaWNpZW50cy4gVmVyaWZ5IHRoZSBNQ01DIHNhbXBsZXIgaGFzIGNvbnZlcmdlZCwgYW5kIHN1bW1hcml6ZSB0aGUgcG9zdGVyaW9yIGRpc3RyaWJ1dGlvbiBvZiBhbGwgcmVncmVzc2lvbiBjb2VmZmljaWVudHMuCgotLS0KCioqU29sdXRpb246KioKCi0tLQoKYi4gUGVyZm9ybSBhIGNsYXNzaWMgbGVhc3Qgc3F1YXJlcyAqKGUuZy4gdXNpbmcgdGhlIGBsbWAgZnVuY3Rpb24gaW4gYFJgKSouIENvbXBhcmUgdGhlIHJlc3VsdHMgbnVtZXJpY2FsbHkgYW5kIGNvbmNlcHR1YWxseSB3aXRoIHRoZSBCYXllc2lhbiByZXN1bHRzLgoKCgotLS0KCioqU29sdXRpb246KioKCgotLS0KCgpjLiBSZWZpdCB0aGUgQmF5ZXNpYW4gbW9kZWwgd2l0aCBkb3VibGUgZXhwb25lbnRpYWwgcHJpb3JzIGZvciB0aGUgcmVncmVzc2lvbiBjb2VmZmljaWVudHMsIGFuZCBkaXNjdXNzIGhvdyB0aGUgcmVzdWx0cyBkaWZmZXIgZnJvbSB0aGUgYW5hbHlzaXMgd2l0aCB1bmluZm9ybWF0aXZlIHByaW9ycy4KCi0tLQoKKipTb2x1dGlvbjoqKgoKLS0tCgpkLiBGaXQgYSBCYXllc2lhbiBsaW5lYXIgcmVncmVzc2lvbiBtb2RlbCBpbiAqYS4qIHVzaW5nIG9ubHkgdGhlIGZpcnN0IDUwMCBvYnNlcnZhdGlvbnMgYW5kIGNvbXB1dGUgdGhlIHBvc3RlcmlvciBwcmVkaWN0aXZlIGRpc3RyaWJ1dGlvbiBmb3IgdGhlIGZpbmFsIDYgb2JzZXJ2YXRpb25zLiBQbG90IHRoZSBwb3N0ZXJpb3IgcHJlZGljdGl2ZSBkaXN0cmlidXRpb24gdmVyc3VzIHRoZSBhY3R1YWwgdmFsdWUgZm9yIHRoZXNlIDYgb2JzZXJ2YXRpb25zIGFuZCBjb21tZW50IG9uIHdoZXRoZXIgdGhlIHByZWRpY3Rpb25zIGFyZSByZWFzb25hYmxlLgoKLS0tCgoqKlNvbHV0aW9uOioqCgotLS0K').then(res => res.blob()).then(blob => {
       const downloadURL = window.URL.createObjectURL(blob);
       const a = document.createElement('a');
       document.body.appendChild(a);
       a.href = downloadURL;
-      a.download = 'hw3.qmd'; a.click();
+      a.download = 'hw5.qmd'; a.click();
       window.URL.revokeObjectURL(downloadURL);
       document.body.removeChild(a);
-        });"><button class="btn btn-primary downloadthis  downloadbutton" id="dnldts19876"><i class="bi bi-download"></i> Download the Quarto document used to render this file </button></a></p>
-<section id="chapter-2.4" class="level1">
-<h1>Chapter 2.4</h1>
-<section id="exercise-6" class="level2">
-<h2 class="anchored" data-anchor-id="exercise-6">Exercise 6</h2>
-<p>An assembly line relies on accurate measurements from an image-recognition algorithm at the first stage of the process. It is known that the algorithm is unbiased, so assume that measurements follow a normal distribution with mean zero,</p>
-<p><span class="math display">\[
-Y_i\vert \sigma^2\overset{\mathrm{iid}}{\sim}\mathrm{Normal}(0, \sigma^2).
-\]</span></p>
-<p>Some errors are permissible, but if <span class="math inline">\(\sigma\)</span> exceeds the threshold <span class="math inline">\(c\)</span> then the algorithm must be replaced.</p>
-<p>You make <span class="math inline">\(n = 20\)</span> measurements and observe</p>
-<p><span class="math display">\[
-\sum_{i=1}^n Y_i = -2 \quad \mathrm{and} \quad \sum_{i=1}^n Y_i^2 = 15,
-\]</span></p>
-<p>and conduct a Bayesian analysis with <span class="math inline">\(\mathrm{InvGamma}(a,b)\)</span> prior. compute the posterior probability that <span class="math inline">\(\sigma &gt; c\)</span> for:</p>
-<ol type="a">
-<li><span class="math inline">\(c=1\)</span> and <span class="math inline">\(a=b=0.1\)</span></li>
-</ol>
-<hr>
-<p><strong>Solution:</strong></p>
-<hr>
-<ol start="2" type="a">
-<li><span class="math inline">\(c=1\)</span> and <span class="math inline">\(a=b=1.0\)</span></li>
-</ol>
-<hr>
-<p><strong>Solution:</strong></p>
-<hr>
-<ol start="3" type="a">
-<li><span class="math inline">\(c=2\)</span> and <span class="math inline">\(a=b=0.1\)</span></li>
-</ol>
-<hr>
-<p><strong>Solution:</strong></p>
-<hr>
-<ol start="4" type="a">
-<li><span class="math inline">\(c=2\)</span> and <span class="math inline">\(a=b=1.0\)</span></li>
-</ol>
-<hr>
-<p><strong>Solution:</strong></p>
-<hr>
-</section>
-<section id="exercise-16" class="level2">
-<h2 class="anchored" data-anchor-id="exercise-16">Exercise 16</h2>
-<p>Say <span class="math inline">\(Y\vert\lambda \sim \mathrm{Gamma}(1, \lambda).\)</span></p>
-<ol type="a">
-<li>Derive and plot the Jeffreys’ prior for <span class="math inline">\(\lambda\)</span></li>
-</ol>
-<hr>
-<p><strong>Solution:</strong></p>
-<hr>
-<ol start="2" type="a">
-<li>Is this prior proper?</li>
-</ol>
-<hr>
-<p><strong>Solution:</strong> This is not a proper prior since it does not integrate to one.</p>
-<hr>
-<ol start="3" type="a">
-<li>Derive the posterior and give conditions on <span class="math inline">\(Y\)</span> to ensure it is proper.</li>
-</ol>
-<hr>
-<p><strong>Solution:</strong></p>
-<hr>
-</section>
-<section id="exercise-18" class="level2">
-<h2 class="anchored" data-anchor-id="exercise-18">Exercise 18</h2>
-<p>The data in the table below are the result of a survey of commuters in 10 counties likely to be affected by a proposed addition of a high occupancy vehicle (HOV) lane.</p>
+        });"><button class="btn btn-primary downloadthis  downloadbutton" id="dnldts9375"><i class="bi bi-download"></i> Download the Quarto document used to render this file </button></a></p>
+<section id="section" class="level1">
+<h1>1</h1>
+<p>A clinical trial gave six subjects a placebo and six subjects a new weight loss medication. The response variable is the change in weight <em>(pounds)</em> from baseline <em>(so -2.0 means the subject lost 2 pounds)</em>. The data for the 12 subjects are:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>tibble<span class="sc">::</span><span class="fu">tribble</span>(</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="sc">~</span>County, <span class="sc">~</span>Approve, <span class="sc">~</span>Disapprove,</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="dv">1</span>, <span class="dv">12</span>, <span class="dv">50</span>,</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="dv">2</span>, <span class="dv">90</span>, <span class="dv">150</span>,</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="dv">3</span>, <span class="dv">80</span>, <span class="dv">63</span>,</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">10</span>,</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="dv">5</span>, <span class="dv">63</span>, <span class="dv">63</span>,</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    <span class="dv">6</span>, <span class="dv">15</span>, <span class="dv">8</span>,</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    <span class="dv">7</span>, <span class="dv">67</span>, <span class="dv">56</span>,</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    <span class="dv">8</span>, <span class="dv">22</span>, <span class="dv">19</span>,</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    <span class="dv">9</span>, <span class="dv">56</span>, <span class="dv">63</span>,</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    <span class="dv">10</span>, <span class="dv">33</span>, <span class="dv">19</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 10 × 3
-   County Approve Disapprove
-    &lt;dbl&gt;   &lt;dbl&gt;      &lt;dbl&gt;
- 1      1      12         50
- 2      2      90        150
- 3      3      80         63
- 4      4       5         10
- 5      5      63         63
- 6      6      15          8
- 7      7      67         56
- 8      8      22         19
- 9      9      56         63
-10     10      33         19</code></pre>
+<div class="cell-output-display">
+
+<div id="dhmrgoyeln" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#dhmrgoyeln table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#dhmrgoyeln thead, #dhmrgoyeln tbody, #dhmrgoyeln tfoot, #dhmrgoyeln tr, #dhmrgoyeln td, #dhmrgoyeln th {
+  border-style: none;
+}
+
+#dhmrgoyeln p {
+  margin: 0;
+  padding: 0;
+}
+
+#dhmrgoyeln .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#dhmrgoyeln .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#dhmrgoyeln .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#dhmrgoyeln .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#dhmrgoyeln .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#dhmrgoyeln .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#dhmrgoyeln .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#dhmrgoyeln .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#dhmrgoyeln .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#dhmrgoyeln .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#dhmrgoyeln .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#dhmrgoyeln .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#dhmrgoyeln .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#dhmrgoyeln .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#dhmrgoyeln .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#dhmrgoyeln .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#dhmrgoyeln .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#dhmrgoyeln .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#dhmrgoyeln .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#dhmrgoyeln .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#dhmrgoyeln .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#dhmrgoyeln .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#dhmrgoyeln .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#dhmrgoyeln .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#dhmrgoyeln .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#dhmrgoyeln .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#dhmrgoyeln .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#dhmrgoyeln .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#dhmrgoyeln .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#dhmrgoyeln .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#dhmrgoyeln .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#dhmrgoyeln .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#dhmrgoyeln .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#dhmrgoyeln .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#dhmrgoyeln .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#dhmrgoyeln .gt_left {
+  text-align: left;
+}
+
+#dhmrgoyeln .gt_center {
+  text-align: center;
+}
+
+#dhmrgoyeln .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#dhmrgoyeln .gt_font_normal {
+  font-weight: normal;
+}
+
+#dhmrgoyeln .gt_font_bold {
+  font-weight: bold;
+}
+
+#dhmrgoyeln .gt_font_italic {
+  font-style: italic;
+}
+
+#dhmrgoyeln .gt_super {
+  font-size: 65%;
+}
+
+#dhmrgoyeln .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#dhmrgoyeln .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#dhmrgoyeln .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#dhmrgoyeln .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#dhmrgoyeln .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#dhmrgoyeln .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#dhmrgoyeln .gt_indent_5 {
+  text-indent: 25px;
+}
+</style>
+<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+  <thead>
+    
+    <tr class="gt_col_headings">
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Placebo">Placebo</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Treatment">Treatment</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td headers="Placebo" class="gt_row gt_right">2.0</td>
+<td headers="Treatment" class="gt_row gt_right">-3.5</td></tr>
+    <tr><td headers="Placebo" class="gt_row gt_right">-3.1</td>
+<td headers="Treatment" class="gt_row gt_right">-1.6</td></tr>
+    <tr><td headers="Placebo" class="gt_row gt_right">-1.0</td>
+<td headers="Treatment" class="gt_row gt_right">-4.6</td></tr>
+    <tr><td headers="Placebo" class="gt_row gt_right">0.2</td>
+<td headers="Treatment" class="gt_row gt_right">-0.9</td></tr>
+    <tr><td headers="Placebo" class="gt_row gt_right">0.3</td>
+<td headers="Treatment" class="gt_row gt_right">-5.1</td></tr>
+    <tr><td headers="Placebo" class="gt_row gt_right">0.4</td>
+<td headers="Treatment" class="gt_row gt_right">0.1</td></tr>
+  </tbody>
+  
+  
+</table>
 </div>
 </div>
+</div>
+<p>Conduct a Bayesian analysis to compare the means of these two groups. Would you say the treatment is effective? Is your conclusion sensitive to the prior?</p>
+<hr>
+<p><strong>Solution:</strong></p>
+<hr>
+</section>
+<section id="section-1" class="level1">
+<h1>2</h1>
+<p>Load the classic Boston Housing Data in R:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(Boston, <span class="at">package =</span> <span class="st">"MASS"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The response variable is <code>medv</code>, the median value of owner-occupied homes <em>(in $1,000s)</em>, and the other 13 variables are covariates that describe the neighborhood.</p>
 <ol type="a">
-<li>Analyze the data in each county sepparately using the Jeffreys’ prior distribution and report the posterior 95% credible set for each county.</li>
+<li>Fit a Bayesian linear regression model with uninformative Gaussian priors for the regression coefficients. Verify the MCMC sampler has converged, and summarize the posterior distribution of all regression coefficients.</li>
 </ol>
 <hr>
 <p><strong>Solution:</strong></p>
 <hr>
 <ol start="2" type="a">
-<li>Let <span class="math inline">\(\hat p_i\)</span> be the sample proportion of commuters in county <span class="math inline">\(i\)</span> that approve of the HIV lane (e.g.&nbsp;<span class="math inline">\(\hat p_1 = 12/(12+50)=0.194\)</span>). Select <span class="math inline">\(a\)</span> abd <span class="math inline">\(b\)</span> so that the mean and variance of the <span class="math inline">\(\mathrm{Beta}(a,b)\)</span> distribution match the mean and variance of the sample proportions <span class="math inline">\(\hat p_1, \dots, \hat p_{10}\)</span>.</li>
+<li>Perform a classic least squares <em>(e.g.&nbsp;using the <code>lm</code> function in <code>R</code>)</em>. Compare the results numerically and conceptually with the Bayesian results.</li>
 </ol>
 <hr>
 <p><strong>Solution:</strong></p>
 <hr>
 <ol start="3" type="a">
-<li>Conduct an empirical Bayesian analysis by computing the 95% posterior credible sets that results from analyzing each coutny separately using the <span class="math inline">\(\mathrm{Beta}(a,b)\)</span> prior you computed in <em>b.</em></li>
+<li>Refit the Bayesian model with double exponential priors for the regression coefficients, and discuss how the results differ from the analysis with uninformative priors.</li>
 </ol>
 <hr>
 <p><strong>Solution:</strong></p>
 <hr>
 <ol start="4" type="a">
-<li>How do the results from <em>a.</em> and <em>c.</em> differ? What are the advantages and disadvantages of these two analyses?</li>
+<li>Fit a Bayesian linear regression model in <em>a.</em> using only the first 500 observations and compute the posterior predictive distribution for the final 6 observations. Plot the posterior predictive distribution versus the actual value for these 6 observations and comment on whether the predictions are reasonable.</li>
 </ol>
 <hr>
 <p><strong>Solution:</strong></p>
 <hr>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
