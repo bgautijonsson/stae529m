@@ -1,0 +1,917 @@
+---
+title: "Homework #4 (Solution)"
+subtitle: "Exercises from Chapter 3.5: 2, 4, 5 and 10"
+description: |
+    **Assigned:** Friday, September 15th, 2023 <br>
+    **Due:** Friday, September 29th, 2023
+author: 
+    -   name: Brynjólfur Gauti Guðrúnar Jónsson
+        email: brynjolfur@hi.is
+        url: https://www.hi.is/staff/brynjolfur
+        affiliation: 
+        -   name: School of Engineering and Natural Sciences, University of Iceland
+            city: Reykjavík
+            url: https://english.hi.is/school_of_engineering_and_natural_sciences
+# Change this to pdf if you'd rather work in that format
+format: html 
+editor: source
+title-block-banner: true
+#### The setting below makes our HTML document self-contained so that we can turn it in ####
+#### UNCOMMENT THE LONE BELOW SO THAT YOU CAN TURN IN YOUR HTML DOCUMENT ###################
+# embed-resources: true 
+bibliography: references.bib
+citation-location: margin
+---
+<!-- REMOVE THIS PART SO THAT YOU CAN RENDER YOUR DOCUMENT BEFORE TURNING IN YOUR ASSIGNMENT -->
+{{< downloadthis index.qmd dname="hw4_solution" label="Download the Quarto document used to render this file" type=primary class=downloadbutton >}}
+<!-- --------------------------------------------------------------------------------------- -->
+
+```{r}
+#| echo: fenced
+#| output: hide
+
+library(tidyr)
+library(dplyr, warn.conflicts = FALSE)
+library(stringr)
+library(forcats)
+library(ggplot2)
+library(readr)
+library(patchwork)
+library(gt)
+library(cubature)
+library(purrr)
+library(scales)
+library(glue)
+library(rjags)
+library(posterior)
+library(bayesplot)
+theme_set(theme_classic())
+```
+
+
+# 2
+
+Assume that $Y_i\vert\mu\overset{\mathrm{indep}}{\sim} \mathrm{Normal}(\mu,\sigma_i^2)$ for $i \in \{1, \dots, n\}$, with $\sigma_i$ known and improper prior distribution $\pi(\mu)=1$ for all $\mu$.
+
+a.  Give a formula for the MAP estimator for $\mu$
+
+------------------------------------------------------------------------
+
+**Solution:**
+
+With a flat prior, our posterior distribution is simply equal to our likelihood.
+
+$$
+\begin{aligned}
+p(\mu \vert \mathbf Y) &= f(\mathbf Y \vert \mu, \mathbf \sigma) \\
+&= \prod_{i = 1}^n\sigma_i^{-1} (2\pi)^{-1/2}\exp\left[-\frac{(Y_i - \mu)^2}{2\sigma_i^2}\right] \\
+&\propto \prod_{i = 1}^n\sigma_i^{-1} \exp\left[-\frac{(Y_i - \mu)^2}{2\sigma_i^2}\right] \\
+&= G(\mu)
+\end{aligned}
+$$
+
+Take the log on both sides
+
+$$
+\begin{aligned}
+\log G(\mu) &= g(\mu) \\
+&=\sum_{i=1}^n-\log\sigma_i - \frac{1}{2\sigma_i^2}(Y_i - \mu)^2 \\
+&= -\sum_{i=1}^n n_i\log\sigma_i - \frac{1}{2\sigma_i^2}(Y_i^2 - 2Y_i\mu + \mu^2) \\
+\frac{dg}{d\mu} &= \sum_{i=1}^n\frac{1}{2\sigma_i^2}(2\mu - 2Y_i) \\
+&= \sum_{i=1}^n\frac{1}{\sigma_i^2}(\mu - Y_i)
+\end{aligned}
+$$
+
+To find the MAP estimator, we find where this is equal to zero, i.e. $dg/d\mu = 0$.
+
+$$
+\begin{aligned}
+\sum_{i=1}^n\frac{1}{\sigma_i^2}\mu &= \sum_{i=1}^n\frac{1}{\sigma_i^2}Y_i \\
+\rightarrow \mu &= \frac{\sum_{i=1}^n\frac{1}{\sigma_i^2}Y_i}{\sum_{i=1}^n\frac{1}{\sigma_i^2}}.
+\end{aligned}
+$$
+
+We that the MAP estimator is simply a weighted average of the $Y_i$'s, where each observations contribution to the mean is inversely proportional to its variance. If all $Y_i$ have the same variance, then this simplifies to the usual mean.
+
+
+------------------------------------------------------------------------
+
+b.  We observe $n=3, Y_1=12, Y_2=10, Y_3=22, \sigma_1=\sigma_2=3$ and $\sigma_3=10$, compute the MAP estimate of $\mu$.
+
+------------------------------------------------------------------------
+
+**Solution:**
+
+```{r}
+my_MAP <- function(n, Y, sigma) {
+    if (length(Y) != n) stop("Y should have length equal to n")
+    if (length(sigma) != n) stop("sigma should have length equal to n")
+    
+    sum(Y / sigma^2) / sum(1/sigma^2)
+}
+
+n <- 3
+Y <- c(12, 10, 22)
+sigma <- c(3, 3, 10)
+
+mu_MAP <- my_MAP(n, Y, sigma)
+
+mu_MAP
+```
+
+------------------------------------------------------------------------
+
+c.  Use numerical integration to compute the posterior mean of $\mu$.
+
+------------------------------------------------------------------------
+
+**Solution:**
+
+The posterior distribution, being equal to the likelihood, is normalized with respect to $Y$, but not necessarily with respect to $\mu$. Therefore we first integrate over $\mu$ to calculate the normalizing constant and then we can calculate the posterior mean.
+
+```{r}
+posterior_unnormalized <- function(mu) {
+    n <- length(mu) 
+    out <- numeric(n)
+    
+    for (i in seq_len(n)) {
+        out <- exp(sum(dnorm(Y, mean = mu[i], sd = sigma, log = TRUE)))
+    }
+    
+    out
+}
+
+marginal <- adaptIntegrate(
+    posterior_unnormalized,
+    lowerLimit = -Inf,
+    upperLimit = Inf
+)$int
+
+
+posterior <- function(mu) {
+    n <- length(mu) 
+    out <- numeric(n)
+    
+    for (i in seq_len(n)) {
+        out[i] <- posterior_unnormalized(mu[i]) / marginal
+    }
+    
+    out
+}
+```
+
+
+
+```{r}
+my_mean <- function(mu) {
+    n <- length(mu) 
+    out <- numeric(n)
+    
+    for (i in seq_len(n)) {
+        out[i] <- mu[i] * posterior(mu[i])
+    }
+    
+    out
+}
+
+mu_MEAN <- adaptIntegrate(
+    my_mean,
+    lowerLimit = -Inf,
+    upperLimit = Inf
+)$int
+
+mu_MEAN
+```
+
+
+------------------------------------------------------------------------
+
+d.  Plot the posterior distribution of $\mu$ and indicate the MAP and the posterior mean estimates on the plot.
+
+------------------------------------------------------------------------
+
+**Solution:**
+
+```{r}
+tibble(
+    mu = 11.47 + 7 * seq(-1, 1, length.out = 1e2)
+) |> 
+    mutate(
+        post = posterior(mu)
+    ) |> 
+    ggplot(aes(mu, post)) +
+    geom_area(
+        alpha = 0.5
+    ) +
+    geom_vline(xintercept = mu_MAP, lty = 4, col = "red") +
+    geom_vline(xintercept = mu_MEAN, lty = 2, col = "blue") +
+    scale_x_continuous(
+        breaks = c(mu_MEAN, seq(7, 16, by = 3)),
+        labels = label_number(accuracy = 0.01)
+    ) +
+    coord_cartesian(expand = FALSE) +
+    labs(
+        x = expression(mu),
+        y = expression(paste(p, "(", mu, "|", Y, ")")),
+        title = expression(paste("Posterior distribution of ", mu)),
+        subtitle = "The MAP and posterior mean are equal"
+    )
+```
+
+
+------------------------------------------------------------------------
+
+# 4
+
+Consider the model
+
+$$
+Y_i\vert\sigma^2_i\overset{\mathrm{indep}}{\sim} \mathrm{Normal}(0,\sigma_i^2),
+$$
+
+for $i \in \{1, \dots, n\}$ where 
+
+$$
+\begin{gathered}
+\sigma_i^2\vert b \sim \mathrm{InvGamma}(a,b) \\ b\sim\mathrm{Gamma}(1,1)
+\end{gathered}
+$$
+
+a.  Derive the full conditional posterior distributions for $\sigma^2_1$ and $b$.
+
+------------------------------------------------------------------------
+
+**Solution:**
+
+
+
+$$
+\begin{aligned}
+p(\sigma^1_2\vert Y, b) &\propto f(Y \vert \sigma_1^2) \pi(\sigma_1^2\vert b) \\
+&= \mathrm{Normal}(Y\vert \sigma_1^2) \cdot \mathrm{InvGamma}(\sigma_1^2\vert a,b)\\
+&= {\sigma_1}^{-1}(2\pi)^{-1/2}\exp\left[-\frac{{Y_1}^2}{2{\sigma_1^2}}\right] \frac{{b}^{a}}{\Gamma(a)}{(\sigma_1^2)}^{-{a}-1}\exp\left(-{b}/{\sigma_1^2}\right) \\
+&\propto {(\sigma_1^2)}^{-1/2}\exp\left[-\frac{{Y_1}^2}{2{\sigma_1^2}}\right] {(\sigma_1^2)}^{-{a}-1}\exp\left(-{b}/{\sigma_1^2}\right) \\
+&= (\sigma_1^2)^{-(a+1/2) - 1} \exp\left[-\left(\frac{Y_1^2}{2} + b\right)/\sigma_1^2\right].
+\end{aligned}
+$$
+
+We see that the full conditional posterior for $\sigma_1^2$ is an $\mathrm{InvGamma}(a + 1/2, b + Y_1^2/2)$ distribution.
+
+$$
+\begin{aligned}
+p(b\vert \sigma_1, \dots, \sigma_n) &\propto \pi(b) \prod_{i=1}^n\pi(\sigma_i^2\vert b) \\
+&= \exp\left(-b\right)\prod_{i=1}^n \frac{{b}^{a}}{\Gamma(a)}{(\sigma_i^2)}^{-{a}-1}\exp\left(-{b}/{\sigma_i^2}\right) \\
+&\propto  \exp\left(-b\right)\prod_{i=1}^n {b}^{a}\exp\left(-{b}/{\sigma_i^2}\right) \\
+&= \exp\left(-b\right)b^{na} \exp\left( \sum_{i=1}^{n}{-b/\sigma_i^2}\right) \\
+&= b^{(1+na)-1}\exp\left(-b - \sum_{i=1}^{n}{}\frac{1}{ \sigma_i^2}b\right) \\
+&= b^{(1+na)-1} \exp\left(-\left(1 + \sum_{i=1}^{n}{}\frac{1}{\sigma_i^2}\right)b\right).
+\end{aligned}
+$$
+
+We also see that the full conditional posterior for $b$ is an $\mathrm{Gamma}(1 + na, 1 + \sum_{i=1}^{n}{}\frac{1}{\sigma_i^2})$ distribution.
+
+------------------------------------------------------------------------
+
+b.  Write pseudocode for Gibbs sampling, i.e. describe in detail each step of the Gibbs sampling algorithm.
+
+------------------------------------------------------------------------
+
+**Solution:** In Gibbs sampling we iterate over each unknown parameter and sample from its full conditional posterior distribution. In our case the unknown parameters are the $\sigma_i^2$'s and $b$. To perform Gibbs sampling we would therefore do the following:
+
+```{default}
+set a large value for N_samples
+set a value for a
+read in data Y as length n vector
+
+initialize b by sampling from prior
+initialize sigma2 as a length n vector by sampling from prior
+
+for i from 1 to N_samples:
+    for j from 1 to n:
+    sample sigma2[i] from InvGamma(a + 1/2, b + Y[i]^2/2) 
+end for
+sample b from InvGamma(n*a, 1 + sum(1/sigma2))
+```
+
+
+
+------------------------------------------------------------------------
+
+c.  Write your own Gibbs sampling code (not in `JAGS`) and plot the marginal posterior density of each parameter. Assume $n=10$, $a=10$ and $Y_i=i$ for $i=1, \dots, 10$.
+
+------------------------------------------------------------------------
+
+**Solution:**
+
+We're going to use the [posterior package](https://mc-stan.org/posterior/index.html) to easily analyze our posterior distribution after we've run our Gibbs sampler. The `posterior` package gives us acces to a `draws_df` data type that we can create using the `as_draws_df()` function. To be able to convert our posterior into a `draws_df`, we want to save our results in an array with dimensions $\mathrm{N_{sample}\times N_{chain} \times N_{variable}}$. I am planning on performing 10000 samples in each of 4 chains and there are 11 total variables, so our array will have the shape $10000 \times 4 \times 11$. We then have to keep track of which dimension we are indexing at each time.
+
+
+First we define functions for sampling from each parameter's full conditional distribution. 
+
+```{r}
+sample_sigma2 <- function(a, b, Y) {
+    1/rgamma(length(Y), shape = a + 1/2, rate = b + Y^2/2)
+}
+```
+
+```{r}
+sample_b <- function(n, a, sigma2) {
+    rgamma(1, shape = n * a + 1, rate = 1 + sum(1/sigma2))
+}
+```
+
+We then write a function for Gibbs sampling that wraps around these two functions defined above. The `gibbs_sampler` function needs five inputs:
+
+* `n_samples`: The number of samples we want from our posterior within each chain
+* `n_chain`: The number of chains we want to run
+* `n_variables`: The number of variables in our posterior
+* `Y`: Our observed data
+* `a`: For our inverse gamma prior
+* `n_burnin`: The number of samples we want to draw as part of our burn-in. This is by default equal to `n_samples`
+
+```{r}
+gibbs_sampler <- function(n_samples, n_chains, n_variables, Y, a, n_burnin = n_samples) {
+    
+    posterior <- array(dim = c(n_samples, n_chains, n_variables))
+    dimnames(posterior)[[3]] <- c("b", glue("sigma[{1:10}]"))
+    
+    for (chain in seq_len(n_chains)) {
+        # Initial values for the Gibbs sampler
+        b_value <- 1
+        sigma2_value <- sample_sigma2(a, b_value, Y)
+        
+        # Burn-in period
+        # Run the sampler without saving our values
+        for (i in seq_len(n_burnin)) {
+            b_value <- sample_b(n, a, sigma2_value)
+            sigma2_value <- sample_sigma2(a, b_value, Y)
+        }
+        
+        # Running the Gibbs sampler for n_samples iterations
+        for (i in seq_len(n_samples)) {
+            # Here we perform the sampling
+            b_value <- sample_b(n, a, sigma2_value)
+            sigma2_value <- sample_sigma2(a, b_value, Y)
+            
+            # Here we store the samples in our array
+            # Pay close attention to the indexing
+            posterior[i, chain, 1] <- b_value
+            posterior[i, chain, -1] <- sigma2_value
+        }
+    }
+    # Convert our array into a draws_df
+    posterior |> 
+        as_draws_df()
+}
+```
+
+
+
+
+```{r}
+n <- 10
+a <- 10
+Y <- 1:10
+
+# 10xsigma2 + b = 11
+n_variables <- n + 1
+n_chains <- 4
+n_samples <- 1e4
+
+posterior <- gibbs_sampler(n_samples, n_chains, n_variables, Y, a)
+```
+
+Having done the preparatory work of converting our results into a `draws_df` object, we are rewarded with access the great `bayesplot` package for plotting our posterior.
+
+```{r}
+posterior |> 
+    mcmc_dens()
+```
+
+```{r}
+summarised_results_gibbs <- posterior |> 
+    summarise_draws()
+
+summarised_results_gibbs |> 
+    gt() |> 
+    fmt_number(
+        decimals = 2,
+        columns = mean:rhat
+    ) |> 
+    fmt_number(
+        decimals = 0,
+        columns = starts_with("ess")
+    ) |> 
+    tab_header(
+        title = "Summarizing the posterior distribution of our model"
+    )
+```
+
+------------------------------------------------------------------------
+
+d.  Repeat the analysis with $a=1$ and comment on the convergence of the MCMC chain.
+
+------------------------------------------------------------------------
+
+**Solution:** We can now reuse our code from above, only having to change the value of `a`
+
+
+
+```{r}
+a <- 1
+
+posterior <- gibbs_sampler(n_samples, n_chains, n_variables, Y, a)
+```
+
+Having done the preparatory work of converting our results into a `draws_df` object, we are rewarded with the great functions available in the `posterior` package. The `summarise_draws()` function is a great way to easily obtain summarized results about our posterior.
+
+The table below shows us that $\hat R$ and our effective sample size *(ESS)* are both acceptable, so it seems our sampler has converged. 
+
+The $\hat R$ is not the same as in the book, since the `posterior` package has implemented  the proposed updates from @vehtariRankNormalizationFoldingLocalization2021 that increase its ability to find faulty convergence. Have a look at the article to learn more about convergence. You can also read about $\mathrm{ESS_{bulk}}$ and $\mathrm{ESS_{tail}}$ there, but in simple terms, they calculate the ESS for the center and the tails of the posterior distributions.
+
+```{r}
+summarised_results_gibbs <- posterior |> 
+    summarise_draws()
+
+summarised_results_gibbs |> 
+    gt() |> 
+    fmt_number(
+        decimals = 2,
+        columns = mean:rhat
+    ) |> 
+    fmt_number(
+        decimals = 0,
+        columns = starts_with("ess")
+    ) |> 
+    tab_header(
+        title = "Summarizing the posterior distribution of our model"
+    )
+```
+
+------------------------------------------------------------------------
+
+e.  Implement the model in *c.* using `JAGS` and compare the results with the results in *c.*
+
+------------------------------------------------------------------------
+
+**Solution:**
+
+```{r}
+data = list(
+    Y = 1:10
+)
+model_string <- textConnection("model{
+    # Likelihood
+    for (i in 1:10) {
+        Y[i] ~ dnorm(0, tau[i])
+    }
+    # Priors
+    for (i in 1:10) {
+        tau[i] ~ dgamma(10, b)
+        sigma[i] <- 1 / tau[i]
+    }
+    b ~ dgamma(1, 1)
+}")
+
+inits <- list(
+    b = 1,
+    tau = rep(1, 10)
+)
+
+model <- jags.model(
+    model_string,
+    data = data,
+    inits = inits,
+    n.chains = 4
+)
+
+update(model, 10000)
+
+params <- names(inits)
+samples <- coda.samples(
+    model,
+    variable.names = c("b", "sigma"),
+    n.iter = 10000
+)
+
+posterior_jags <- samples |> 
+    as_draws_df()
+```
+
+
+The `posterior` package allows us to take our `samples` object that was output by `coda.samples()` and use `as_draws_df()` to convert it into a comfortable data type.
+
+```{r}
+summarised_results_jags <- posterior_jags |> 
+    summarise_draws()
+
+summarised_results_jags |> 
+    gt() |> 
+    fmt_number(
+        decimals = 2,
+        columns = mean:rhat
+    ) |> 
+    fmt_number(
+        decimals = 0,
+        columns = starts_with("ess")
+    ) |> 
+    tab_header(
+        title = "Summarizing the posterior distribution of our model"
+    )
+```
+
+```{r}
+summarised_results_gibbs <- gibbs_sampler(n_samples, n_chains, n_variables, Y, a = 10) |> 
+    summarise_draws()
+
+summarised_results_combined <- summarised_results_gibbs |> 
+    mutate(
+        type = "Bespoke Gibbs"
+    ) |> 
+    bind_rows(
+        summarised_results_jags |> 
+            mutate(
+                type = "JAGS"
+            )
+    )
+
+
+summarised_results_combined |> 
+    filter(str_detect(variable, "sigma")) |> 
+    mutate(
+        variable = fct_reorder(variable, -parse_number(variable))
+    ) |> 
+    ggplot(aes(
+        y = variable,
+        x = mean, xmin = q5, xmax = q95,
+        col = type
+    )) +
+    geom_pointrange(
+        position = position_dodge(width = 0.7)
+    ) +
+    scale_color_brewer(palette = "Set1") +
+    labs(
+        x = NULL,
+        y = NULL,
+        title = "Comparing our bespoke Gibbs sampler to JAGS",
+        subtitle = "The results seem to be identical",
+        col = "Sampler"
+    )
+```
+
+
+```{r}
+#| fig-asp: 0.2
+#| code-fold: true
+
+summarised_results_combined |> 
+    filter(!str_detect(variable, "sigma")) |> 
+    ggplot(aes(
+        y = variable,
+        x = mean, xmin = q5, xmax = q95,
+        col = type
+    )) +
+    geom_pointrange(
+        position = position_dodge(width = 0.7)
+    ) +
+    scale_color_brewer(palette = "Set1") +
+    theme(legend.position = "none") +
+    labs(
+        x = NULL,
+        y = NULL,
+        title = "Comparing our bespoke Gibbs sampler to JAGS",
+        subtitle = "The results seem to be identical",
+        col = "Sampler"
+    )
+```
+
+
+
+------------------------------------------------------------------------
+
+# 5
+
+Consider the model
+
+$$
+Y_i\vert\mu, \sigma^2 \sim \mathrm{Normal}(\mu,\sigma^2),\quad i=1,\dots,n,
+$$
+
+and
+
+$$
+Y_i\vert\mu,\delta, \sigma^2 \sim \mathrm{Normal}(\mu+\delta,\sigma^2),\quad i=n+1,\dots,n+m,
+$$
+
+where
+
+$$
+\begin{gathered}
+\mu,\delta\sim\mathrm{Normal}(0, 100^2) \\
+\sigma^2\sim\mathrm{InvGamma}(0.01, 0.01).
+\end{gathered}
+$$
+
+a.  Give an example of a real experiment for which this would be an appropriate model.
+
+------------------------------------------------------------------------
+
+**Solution:** A simple example would be a clinical trial for a pharmaceutical company wanting to know if a drug has a positive effect on patients. In this case, $\mu$ could be the average outcome of patients in the control group *(who did not get the drug)*, and $\mu + \delta$ the average outcome of patients in the case group *(who did get the drug)*. The effect of the drug could then be estimated as $\delta$.
+
+------------------------------------------------------------------------
+
+b.  Derive the full conditional posterior distributions for $\mu$, $\delta$, and $\sigma^2$.
+
+------------------------------------------------------------------------
+
+**Solution:**
+
+We have three unknown parameters: $\mu$, $\delta$ and $\sigma^2$. 
+
+$$
+\begin{aligned}
+p(\mu \vert \mathbf Y, \sigma^2, \delta) &\propto f(\mathbf Y \vert \mu, \sigma^2, \delta)\pi(\mu) \\
+&= \prod_{i=1}^{n}{\mathrm{Normal}(Y_i\vert \mu, \sigma^2)} \prod_{j=n+1}^{n+m}{\mathrm{Normal}(Y_j\vert \mu, \delta, \sigma^2)} \mathrm{Normal}(\mu\vert 0, 100^2) \\
+&= \prod_{i=1}^{n}\left({ {\sigma}^{-1}(2\pi)^{-1/2}\exp\left[-\frac{({Y_i} - {\mu})^2}{2{\sigma}^2}\right]}\right) \prod_{j=n+1}^{n+m}\left({ {\sigma}^{-1}(2\pi)^{-1/2}\exp\left[-\frac{({Y_j} - {(\mu + \delta)})^2}{2{\sigma}^2}\right]}\right) {100}^{-1}(2\pi)^{-1/2}\exp\left[-\frac{\mu^2}{2\cdot {100}^2}\right] \\
+&\propto \prod_{i=1}^{n}\left({\exp\left[-\frac{({Y_i} - {\mu})^2}{2{\sigma}^2}\right]}\right) \prod_{j=n+1}^{n+m}\left({ \exp\left[-\frac{({Y_j} - {[\mu + \delta
+}])^2}{2{\sigma}^2}\right]}\right) \exp\left[-\frac{\mu^2}{2\cdot {100}^2}\right] \\
+&= \exp\left[ -\frac{1}{2\sigma^2}\left( \sum_{i=1}^{n}{(Y_i - \mu)^2 + \sum_{j=n+1}^{n+m}{(Y_j - \mu - \delta)^2}}\right) - \frac{1}{2\cdot100^2}\mu^2\right].
+\end{aligned}
+$$
+
+Simplifying and completing the square, we eventually end up with
+
+$$
+p(\mu \vert \mathbf Y, \sigma^2, \delta) = \mathrm{Normal}\left( \frac{\frac{1}{\sigma^2} \sum_{i=1}^{n}{Y_i} + \frac{1}{\sigma^2} \sum_{j=n+1}^{n+m}{(Y_i- \delta)}}{ \frac{(n+m)}{\sigma^2} + 1/100^2}, \frac{1}{\frac{(n+m)}{\sigma^2} + 1/100^2}\right).
+$$
+
+Similarly, we find out that
+
+$$
+p(\delta \vert \mathbf Y, \mu, \sigma^2) = \mathrm{Normal}\left( \frac{ \frac{1}{\sigma^2} \sum_{j=n+1}^{n+m}{(Y_i-\mu)}}{ \frac{m}{\sigma^2} + 1/100^2}, \frac{1}{{ \frac{m}{\sigma^2} + 1/100^2}}\right).
+$$
+
+The posterior for $\sigma^2$ is
+
+$$
+p(\sigma^2 \vert \mathbf Y, \mu, \delta) = \mathrm{InvGamma}\left(0.01 + (n+m)/2, 0.01 + \sum_{i=1}^{n}{(Y_i-\mu)^2/2} + \sum_{j=n+1}^{n+m}{(Y_i - \mu - \delta)^2/2}\right)
+$$
+
+------------------------------------------------------------------------
+
+c.  Simulate a dataset from this model with $n=m=50$, $\mu=10$, $\delta=1$ and $\sigma=2$. Write your own Gibbs sampling code (not in `JAGS`) to fit the model above to the simulated data and plot the marginal posterior density for each parameter. Are you able to recover the true values reasonably well?
+
+------------------------------------------------------------------------
+
+**Solution:**
+
+```{r}
+n <- 50
+m <- 50
+mu <- 10
+delta <- 1
+sigma <- 2
+
+Y1 <- rnorm(n, mu, sigma)
+Y2 <- rnorm(m, mu + delta, sigma)
+```
+
+```{r}
+sample_mu <- function(Y1, Y2, sigma2, delta) {
+    n <- length(Y1)
+    m <- length(Y2)
+    numerator <- 1/sigma2 * (sum(Y1) + sum(Y2 - delta))
+    denominator <- (n + m) / (sigma2) + 1/100^2
+    rnorm(
+        n = 1,
+        mean = numerator / denominator,
+        sd = 1 / sqrt(denominator)
+    )
+}
+
+sample_delta <- function(Y2, mu, sigma2) {
+    m <- length(Y2)
+    numerator <- 1/sigma2 * sum(Y2 - mu)
+    denominator <- m/sigma2 + 1/100^2
+    rnorm(
+        n = 1,
+        mean = numerator / denominator,
+        sd = 1 / sqrt(denominator)
+    )
+}
+
+sample_sigma2 <- function(Y1, Y2, mu, delta) {
+    shape <- 0.01 + (n + m) / 2
+    rate <- 0.01 + sum((Y1 - mu)^2)/2 + sum((Y2 - mu - delta)^2)/2
+    n <- length(Y1)
+    m <- length(Y2)
+    1 / rgamma(
+        n = 1,
+        shape = shape,
+        rate = rate
+    )
+}
+```
+
+```{r}
+gibbs_sampler <- function(n_samples, n_chains, n_variables, Y1, Y2, n_burnin = n_samples) {
+    posterior <- array(dim = c(n_samples, n_chains, n_variables))
+    dimnames(posterior)[[3]] <- c("mu", "delta", "sigma2")
+    
+    for (chain in seq_len(n_chains)) {
+        # Initial values for the Gibbs sampler
+        mu_value <- rnorm(1, 0, 100)
+        delta_value <- rnorm(1, 0, 100)
+        sigma2_value <- 1 / rgamma(1, shape = 0.01, rate = 0.01)
+        
+        # Burn-in period
+        # Run the sampler without saving our values
+        for (i in seq_len(n_burnin)) {
+            mu_value <- sample_mu(Y1, Y2, sigma2_value, delta_value)
+            delta_value <- sample_delta(Y2, mu_value, sigma2_value)
+            sigma2_value <- sample_sigma2(Y1, Y2, mu_value, delta_value)
+        }
+        
+        # Running the Gibbs sampler for n_samples iterations
+        for (i in seq_len(n_samples)) {
+            # Here we perform the sampling
+            mu_value <- sample_mu(Y1, Y2, sigma2_value, delta_value)
+            delta_value <- sample_delta(Y2, mu_value, sigma2_value)
+            sigma2_value <- sample_sigma2(Y1, Y2, mu_value, delta_value)
+            
+            # Here we store the samples in our array
+            # Pay close attention to the indexing
+            posterior[i, chain, ] <- c(mu_value, delta_value, sigma2_value)
+        }
+    }
+    # Convert our array into a draws_df
+    posterior |> 
+        as_draws_df()
+}
+```
+
+```{r}
+n_samples <- 1e3
+n_chains <- 4
+n_variables <- 3
+
+posterior <- gibbs_sampler(n_samples, n_chains, n_variables, Y1, Y2)
+```
+
+
+```{r}
+posterior |> 
+    mcmc_areas(
+        pars = "mu"
+    ) +
+    geom_vline(xintercept = mu)
+```
+
+```{r}
+posterior |> 
+    mcmc_areas(
+        pars = "delta"
+    ) +
+    geom_vline(xintercept = delta)
+```
+
+```{r}
+posterior |> 
+    mcmc_areas(
+        pars = "sigma2"
+    ) +
+    geom_vline(xintercept = sigma^2)
+```
+
+------------------------------------------------------------------------
+
+d.  Implement this model using `JAGS` and compare the results with the results in **.c**.
+
+------------------------------------------------------------------------
+
+**Solution:**
+
+```{r}
+data = list(
+    Y1 = Y1,
+    Y2 = Y2,
+    n = n,
+    m = m
+)
+model_string <- textConnection("model{
+    # Likelihood
+    for (i in 1:n) {
+        Y1[i] ~ dnorm(mu, tau)
+    }
+    
+    for (i in 1:m) {
+        Y2[i] ~ dnorm(mu + delta, tau)
+    }
+    # Priors
+    mu ~ dnorm(0, 0.01^2)
+    delta ~ dnorm(0, 0.01^2)
+    tau ~ dgamma(0.01, 0.01)
+    sigma2 <- 1 / tau
+}")
+
+inits <- list(
+    mu = mean(Y1),
+    delta = mean(Y2) - mean(Y1),
+    tau = 1 / var(Y1)
+)
+
+model <- jags.model(
+    model_string,
+    data = data,
+    inits = inits,
+    n.chains = 4
+)
+
+update(model, 10000)
+
+params <- names(inits)
+samples <- coda.samples(
+    model,
+    variable.names = params,
+    n.iter = 10000
+)
+
+posterior_jags <- samples |> 
+    as_draws_df()
+```
+
+
+
+------------------------------------------------------------------------
+
+# 10
+
+As discussed in section 1.6, report that the number of marine bivalve species discovered each year from 2010-2015 was 64, 13, 33, 18, 30 and 20. Denote $Y_t$ as the number of species discovered in year $2009+t$ (so that $Y_1=64$ is the count for 2010). Use `JAGS` to fit the model
+
+$$
+\begin{gathered}
+Y_t\vert \alpha, \beta \overset{\mathrm{indep}}{\sim} \mathrm{Poisson}(\lambda_t)\\
+\lambda_t = \exp(\alpha + \beta t) \text{ or equivalently } \log(\lambda_t) = \alpha + \beta t \\
+\alpha,\beta \overset{\mathrm{indep}}{\sim} \mathrm{Normal}(0,10^2).
+\end{gathered}
+$$
+
+Summarize the posterior of $\alpha$ and $\beta$ and verify that the MCMC sampler has converged. Does this analysis provide evidence that the rate of discovery is changing over time?
+
+
+```{r}
+data = list(
+    Y = c(64, 13, 33, 18, 30, 20),
+    n = 6
+)
+model_string <- textConnection("model{
+    # Likelihood
+    for (i in 1:n) {
+        Y[i] ~ dpois(lambda[i])
+        lambda[i] <- exp(alpha + beta * i)
+    }
+    
+    alpha ~ dnorm(0, 0.1^2)
+    beta ~ dnorm(0, 0.1^2)
+}")
+
+inits <- list(
+    alpha = 0,
+    beta = 0
+)
+
+model <- jags.model(
+    model_string,
+    data = data,
+    inits = inits,
+    n.chains = 4
+)
+
+update(model, 10000)
+
+params <- names(inits)
+samples <- coda.samples(
+    model,
+    variable.names = params,
+    n.iter = 10000
+)
+
+posterior_jags <- samples |> 
+    as_draws_df()
+```
+
+```{r}
+posterior_jags |> 
+    summarise_draws() |> 
+    gt()
+```
+
+
+
+```{r}
+posterior_jags |> 
+    mcmc_areas(
+        pars = "beta"
+    )
+```
+
