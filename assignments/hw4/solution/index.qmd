@@ -307,7 +307,7 @@ We then write a function for Gibbs sampling that wraps around these two function
 gibbs_sampler <- function(n_samples, n_chains, n_variables, Y, a, n_burnin = n_samples) {
     
     posterior <- array(dim = c(n_samples, n_chains, n_variables))
-    dimnames(posterior)[[3]] <- c("b", glue("sigma[{1:10}]"))
+    dimnames(posterior)[[3]] <- c("b", glue("sigma2[{1:10}]"))
     
     for (chain in seq_len(n_chains)) {
         # Initial values for the Gibbs sampler
@@ -422,6 +422,31 @@ summarised_results_gibbs |>
     )
 ```
 
+We also look at trace plots below. It is a good habit to visually inspect our chains even though calculated statistics tell us that the sampler has converged. 
+
+```{r}
+posterior |> 
+    mcmc_trace(
+        regex_pars = "sigma",
+        transformations = "log"
+    ) +
+    labs(
+        title = expression(paste("Trace plots of log(", sigma^2, ")")),
+        subtitle = "The trace plots show us that the Markov chain is stationary and the chains have converged\nto the same value"
+    )
+```
+
+```{r}
+posterior |> 
+    mcmc_trace(
+        regex_pars = "b"
+    ) +
+    labs(
+        title = expression(paste("Trace plot of ", b)),
+        subtitle = "The trace plots show us that the Markov chain is stationary and the chains have converged\nto the same value"
+    )
+```
+
 ------------------------------------------------------------------------
 
 e.  Implement the model in *c.* using `JAGS` and compare the results with the results in *c.*
@@ -442,7 +467,7 @@ model_string <- textConnection("model{
     # Priors
     for (i in 1:10) {
         tau[i] ~ dgamma(10, b)
-        sigma[i] <- 1 / tau[i]
+        sigma2[i] <- 1 / tau[i]
     }
     b ~ dgamma(1, 1)
 }")
@@ -464,7 +489,7 @@ update(model, 10000)
 params <- names(inits)
 samples <- coda.samples(
     model,
-    variable.names = c("b", "sigma"),
+    variable.names = c("b", "sigma2"),
     n.iter = 10000
 )
 
@@ -835,6 +860,7 @@ posterior_jags <- samples |>
 ```
 
 ```{r}
+#| fig-asp: 0.4
 summarised_results_combined <- posterior |> 
     summarise_draws() |> 
     mutate(
@@ -846,6 +872,13 @@ summarised_results_combined <- posterior |>
             mutate(
                 type = "JAGS"
             )
+    ) |> 
+    mutate(
+        variable = ifelse(
+            variable == "sigma2",
+            "sigma^2",
+            variable
+        )
     )
 
 
@@ -859,7 +892,8 @@ summarised_results_combined |>
         position = position_dodge(width = 0.7)
     ) +
     scale_color_brewer(palette = "Set1") +
-    facet_wrap("variable", scales = "free_x", ncol = 1) +
+    facet_wrap("variable", scales = "free_x", nrow = 1, labeller = label_parsed) +
+    theme(legend.position = "top") +
     labs(
         x = NULL,
         y = NULL,
