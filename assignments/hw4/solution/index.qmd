@@ -91,7 +91,7 @@ $$
 \end{aligned}
 $$
 
-We that the MAP estimator is simply a weighted average of the $Y_i$'s, where each observations contribution to the mean is inversely proportional to its variance. If all $Y_i$ have the same variance, then this simplifies to the usual mean.
+We see that the MAP estimator is simply a weighted average of the $Y_i$'s, where each observations contribution to the mean is inversely proportional to its variance. If all $Y_i$ have the same variance, then this simplifies to the usual mean.
 
 
 ------------------------------------------------------------------------
@@ -130,56 +130,30 @@ c.  Use numerical integration to compute the posterior mean of $\mu$.
 The posterior distribution, being equal to the likelihood, is normalized with respect to $Y$, but not necessarily with respect to $\mu$. Therefore we first integrate over $\mu$ to calculate the normalizing constant and then we can calculate the posterior mean.
 
 ```{r}
-posterior_unnormalized <- function(mu) {
-    n <- length(mu) 
-    out <- numeric(n)
-    
-    for (i in seq_len(n)) {
-        out <- exp(sum(dnorm(Y, mean = mu[i], sd = sigma, log = TRUE)))
+unnormalized_posterior <- function(mu) {
+    logpost_unnormalized <- 0
+    for (i in seq_along(Y)) {
+        logpost_unnormalized <- logpost_unnormalized + dnorm(Y[i], mean = mu, sd = sigma[i], log = TRUE)
     }
-    
-    out
+    exp(logpost_unnormalized)
 }
 
-marginal <- adaptIntegrate(
-    posterior_unnormalized,
-    lowerLimit = -Inf,
-    upperLimit = Inf
-)$int
-
-
-posterior <- function(mu) {
-    n <- length(mu) 
-    out <- numeric(n)
-    
-    for (i in seq_len(n)) {
-        out[i] <- posterior_unnormalized(mu[i]) / marginal
-    }
-    
-    out
-}
+marginal <- integrate(unnormalized_posterior, lower = -Inf, upper = Inf)$value
+marginal
 ```
 
-
-
 ```{r}
-my_mean <- function(mu) {
-    n <- length(mu) 
-    out <- numeric(n)
-    
-    for (i in seq_len(n)) {
-        out[i] <- mu[i] * posterior(mu[i])
+unnormalized_posterior_mean <- function(mu) {
+    logpost_unnormalized <- 0
+    for (i in seq_along(Y)) {
+        logpost_unnormalized <- logpost_unnormalized + dnorm(Y[i], mean = mu, sd = sigma[i], log = TRUE)
     }
-    
-    out
+    mu * exp(logpost_unnormalized)
 }
 
-mu_MEAN <- adaptIntegrate(
-    my_mean,
-    lowerLimit = -Inf,
-    upperLimit = Inf
-)$int
+post_mean_unnorm <- integrate(unnormalized_posterior_mean, lower = -Inf, upper = Inf)$value
 
+mu_MEAN <- post_mean_unnorm / marginal
 mu_MEAN
 ```
 
@@ -197,7 +171,7 @@ tibble(
     mu = 11.47 + 7 * seq(-1, 1, length.out = 1e2)
 ) |> 
     mutate(
-        post = posterior(mu)
+        post = unnormalized_posterior(mu) / marginal
     ) |> 
     ggplot(aes(mu, post)) +
     geom_area(
@@ -214,7 +188,7 @@ tibble(
         x = expression(mu),
         y = expression(paste(p, "(", mu, "|", Y, ")")),
         title = expression(paste("Posterior distribution of ", mu)),
-        subtitle = "The MAP and posterior mean are equal"
+        subtitle = "The MAP and posterior mean are equal (expected result since posterior is symmetrical)"
     )
 ```
 
@@ -247,7 +221,7 @@ a.  Derive the full conditional posterior distributions for $\sigma^2_1$ and $b$
 
 $$
 \begin{aligned}
-p(\sigma^1_2\vert Y, b) &\propto f(Y \vert \sigma_1^2) \pi(\sigma_1^2\vert b) \\
+p(\sigma^2_1\vert Y, b) &\propto f(Y \vert \sigma_1^2) \pi(\sigma_1^2\vert b) \\
 &= \mathrm{Normal}(Y\vert \sigma_1^2) \cdot \mathrm{InvGamma}(\sigma_1^2\vert a,b)\\
 &= {\sigma_1}^{-1}(2\pi)^{-1/2}\exp\left[-\frac{{Y_1}^2}{2{\sigma_1^2}}\right] \frac{{b}^{a}}{\Gamma(a)}{(\sigma_1^2)}^{-{a}-1}\exp\left(-{b}/{\sigma_1^2}\right) \\
 &\propto {(\sigma_1^2)}^{-1/2}\exp\left[-\frac{{Y_1}^2}{2{\sigma_1^2}}\right] {(\sigma_1^2)}^{-{a}-1}\exp\left(-{b}/{\sigma_1^2}\right) \\
@@ -759,28 +733,48 @@ posterior <- gibbs_sampler(n_samples, n_chains, n_variables, Y1, Y2)
 ```
 
 
+The three plots below show us that out Gibbs sampler manages to adequately capture the true values of our parameters.
+
 ```{r}
 posterior |> 
     mcmc_areas(
-        pars = "mu"
+        pars = "mu",
+        prob = 0.95,
+        prob_outer = 0.99
     ) +
-    geom_vline(xintercept = mu)
+    geom_vline(xintercept = mu) +
+    labs(
+        title = expression(paste("Comparing the true value of ", mu, " to our posterior distribution")),
+        subtitle = "The vertical line is the true value, the blue interval is the 95% interval and the white mass\nis the 99% interval"
+    )
 ```
 
 ```{r}
 posterior |> 
     mcmc_areas(
-        pars = "delta"
+        pars = "delta",
+        prob = 0.95,
+        prob_outer = 0.99
     ) +
-    geom_vline(xintercept = delta)
+    geom_vline(xintercept = delta) +
+    labs(
+        title = expression(paste("Comparing the true value of ", delta, " to our posterior distribution")),
+        subtitle = "The vertical line is the true value, the blue interval is the 95% interval and the white mass\nis the 99% interval"
+    )
 ```
 
 ```{r}
 posterior |> 
     mcmc_areas(
-        pars = "sigma2"
+        pars = "sigma2",
+        prob = 0.95,
+        prob_outer = 0.99
     ) +
-    geom_vline(xintercept = sigma^2)
+    geom_vline(xintercept = sigma^2) +
+    labs(
+        title = expression(paste("Comparing the true value of ", sigma^2, " to our posterior distribution")),
+        subtitle = "The vertical line is the true value, the blue interval is the 95% interval and the white mass\nis the 99% interval"
+    )
 ```
 
 ------------------------------------------------------------------------
@@ -832,7 +826,7 @@ update(model, 10000)
 params <- names(inits)
 samples <- coda.samples(
     model,
-    variable.names = params,
+    variable.names = c("mu", "delta", "sigma2"),
     n.iter = 10000
 )
 
@@ -840,6 +834,40 @@ posterior_jags <- samples |>
     as_draws_df()
 ```
 
+```{r}
+summarised_results_combined <- posterior |> 
+    summarise_draws() |> 
+    mutate(
+        type = "Bespoke Gibbs"
+    ) |> 
+    bind_rows(
+        posterior_jags |> 
+            summarise_draws() |> 
+            mutate(
+                type = "JAGS"
+            )
+    )
+
+
+summarised_results_combined |> 
+    ggplot(aes(
+        y = type,
+        x = mean, xmin = q5, xmax = q95,
+        col = type
+    )) +
+    geom_pointrange(
+        position = position_dodge(width = 0.7)
+    ) +
+    scale_color_brewer(palette = "Set1") +
+    facet_wrap("variable", scales = "free_x", ncol = 1) +
+    labs(
+        x = NULL,
+        y = NULL,
+        title = "Comparing our bespoke Gibbs sampler to JAGS",
+        subtitle = "The results seem to be identical",
+        col = "Sampler"
+    )
+```
 
 
 ------------------------------------------------------------------------
@@ -900,18 +928,18 @@ posterior_jags <- samples |>
     as_draws_df()
 ```
 
+The table below shows us that that here is a high posterior probability that $\beta < 0$. Thus we can infer that the rate is changing over time.
+
 ```{r}
 posterior_jags |> 
     summarise_draws() |> 
-    gt()
-```
-
-
-
-```{r}
-posterior_jags |> 
-    mcmc_areas(
-        pars = "beta"
+    gt() |> 
+    tab_header(
+        title = "Summary of our posterior distribution"
+    ) |> 
+    fmt_number(
+        decimals = 2
     )
 ```
+
 
