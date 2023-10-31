@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.4.449">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -24,7 +24,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -82,7 +82,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   "collapse-after": 3,
   "panel-placement": "start",
   "type": "textbox",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -111,9 +117,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../assignments/hw1/index.html">Assignments</a></li><li class="breadcrumb-item"><a href="../../assignments/hw1/index.html">Homework #1</a></li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../assignments/hw1/index.html">Assignments</a></li><li class="breadcrumb-item"><a href="../../assignments/hw1/index.html">Homework #1</a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
@@ -121,7 +127,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </nav>
 </header>
 <!-- content -->
-<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+<header id="title-block-header" class="quarto-title-block default page-columns page-full"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../assignments/hw1/index.html">Assignments</a></li><li class="breadcrumb-item"><a href="../../assignments/hw1/index.html">Homework #1</a></li></ol></nav>
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
       <h1 class="title">Homework #1</h1>
@@ -139,7 +145,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div class="quarto-title-meta-heading">Affiliation</div>
     
       <div class="quarto-title-meta-contents">
-      <p class="author"><a href="https://www.hi.is/staff/brynjolfur">Brynjólfur Gauti Guðrúnar Jónsson</a> </p>
+      <p class="author"><a href="https://www.hi.is/staff/brynjolfur">Brynjólfur Gauti Guðrúnar Jónsson</a> <a href="mailto:brynjolfur@hi.is" class="quarto-title-author-email"><i class="bi bi-envelope"></i></a> </p>
     </div>
       <div class="quarto-title-meta-contents">
           <p class="affiliation">
@@ -247,6 +253,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">Homework #4 (Solution)</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../assignments/hw5/solution/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Homework #5 (Solution)</span></a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -261,7 +273,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<p><a href="#dnldts46466" onclick="fetch('data:text/plain;base64,LS0tCnRpdGxlOiAiSG9tZXdvcmsgIzEiCnN1YnRpdGxlOiBDaGFwdGVycyAxLjEsIDEuMiBhbmQgMS4zCmRlc2NyaXB0aW9uOiB8CiAgICAqKkFzc2lnbmVkOioqIEZyaWRheSwgQXVndXN0IDI1dGgsIDIwMjMgPGJyPgogICAgKipEdWU6KiogRnJpZGF5LCBTZXB0ZW1iZXIgMXN0LCAyMDIzCmF1dGhvcjogCiAgICAtICAgbmFtZTogQnJ5bmrDs2xmdXIgR2F1dGkgR3XDsHLDum5hciBKw7Nuc3NvbgogICAgICAgIGVtYWlsOiBicnluam9sZnVyQGhpLmlzCiAgICAgICAgdXJsOiBodHRwczovL3d3dy5oaS5pcy9zdGFmZi9icnluam9sZnVyCiAgICAgICAgYWZmaWxpYXRpb246IAogICAgICAgIC0gICBuYW1lOiBTY2hvb2wgb2YgRW5naW5lZXJpbmcgYW5kIE5hdHVyYWwgU2NpZW5jZXMsIFVuaXZlcnNpdHkgb2YgSWNlbGFuZAogICAgICAgICAgICBjaXR5OiBSZXlramF2w61rCiAgICAgICAgICAgIHVybDogaHR0cHM6Ly9lbmdsaXNoLmhpLmlzL3NjaG9vbF9vZl9lbmdpbmVlcmluZ19hbmRfbmF0dXJhbF9zY2llbmNlcwojIENoYW5nZSB0aGlzIHRvIHBkZiBpZiB5b3UnZCByYXRoZXIgd29yayBpbiB0aGF0IGZvcm1hdApmb3JtYXQ6IGh0bWwgCmVkaXRvcjogc291cmNlCnRpdGxlLWJsb2NrLWJhbm5lcjogdHJ1ZQojIyMjIFRoZSBzZXR0aW5nIGJlbG93IG1ha2VzIG91ciBIVE1MIGRvY3VtZW50IHNlbGYtY29udGFpbmVkIHNvIHRoYXQgd2UgY2FuIHR1cm4gaXQgaW4gIyMjIwojIyMjIFVOQ09NTUVOVCBUSEUgTE9ORSBCRUxPVyBTTyBUSEFUIFlPVSBDQU4gVFVSTiBJTiBZT1VSIEhUTUwgRE9DVU1FTlQgIyMjIyMjIyMjIyMjIyMjIyMjIwojIGVtYmVkLXJlc291cmNlczogdHJ1ZSAKLS0tCgp7ezwgZG93bmxvYWR0aGlzIGluZGV4LnFtZCBkbmFtZT0iaHcxIiBsYWJlbD0iRG93bmxvYWQgdGhlIFF1YXJ0byBkb2N1bWVudCB1c2VkIHRvIHJlbmRlciB0aGlzIGZpbGUiIHR5cGU9cHJpbWFyeSBjbGFzcz1kb3dubG9hZGJ1dHRvbiA+fX0KCiMgMS4gU2FtcGxlIHN1cnZleQoKU3VwcG9zZSB3ZSBhcmUgZ29pbmcgdG8gc2FtcGxlIDEwMCBpbmRpdmlkdWFscyBmcm9tIGEgY291bnR5ICh3aXRoIHBvcHVsYXRpb24gc2l6ZSBtdWNoIGxhcmdlciB0aGFuIDEwMCkgYW5kIGFzayBlYWNoIHNhbXBsZWQgcGVyc29uIHdoZXRoZXIgdGhleSBzdXBwb3J0IHBvbGljeSBaIG9yIG5vdC4gTGV0ICRZX2kgPSAxJCBpZiBwZXJzb24gJGkkIGluIHRoZSBzYW1wbGUgc3VwcG9ydHMgdGhlIHBvbGljeSwgYW5kICRZX2kgPSAwJCBvdGhlcndpc2UuCgphLiBBc3N1bWUgJFlfMSwgXGRvdHMsIFlfezEwMH0kIGFyZSwgY29uZGl0b2luYWwgb24gJFx0aGV0YSQsIGkuaS5kLiBiaW5hcnkgcmFuZG9tIHZhcmlhYmxlcyB3aXRoIGV4cGVjdGF0aW9uICRcdGhldGEkLiBXcml0ZSBkb3duIHRoZSBqb2ludCBkaXN0cmlidXRpb24gb2YgJFxtYXRocm17UHJ9KFlfMSA9IHlfMSwgXGRvdHMsIFlfezEwMH0gPSB5X3sxMDB9KSQgaW4gYSBjb21wYWN0IGZvcm0uIEFsc28gd3JpdGUgZG93biB0aGUgZm9ybSBvZiAkXG1hdGhybXtQcn0oXHN1bV97aV8xfV57MTAwfVlfaT15KSQuCgoqKlNvbHV0aW9uOioqIAoKLS0tLS0KCmIuIEZvciB0aGUgbW9tZW50LCBzdXBwb3NlIHlvdSBiZWxpZXZlZCB0aGF0ICRcdGhldGEgXGluIFx7MCwgMC4xLCBcZG90cywgMC45LCAxLjBcfSQuIEdpdmVuIHRoYXQgdGhlIHJlc3VsdHMgb2YgdGhlIHN1cnZleSB3ZXJlICRcc3VtX3tpPTF9XnsxMDB9WV9pPTczJCwgY29tcHV0ZSAkXG1hdGhybXtQcn0oXHN1bV97aT0xfV57MTAwfVlfaT03M1x2ZXJ0XHRoZXRhKSQgZm9yIGVhY2ggb2YgdGhlc2UgJDExJCB2YWx1ZXMgb2YgJFx0aGV0YSQgYW5kIHBsb3QgdGhlc2UgcHJvYmFiaWxpdGllcyBhcyBhIGZ1bmN0aW9uIG9mICRcdGhldGEkIChwb2ludCBtYXNzIGF0IGVhY2ggdmFsdWUgb2YgJFx0aGV0YSQpLgoKKipTb2x1dGlvbjoqKiAKCmBgYHtyfQojfCBlY2hvOiBmZW5jZWQKIyBJbmNsdWRlIHlvdXIgY29kZSBoZXJlCmBgYAoKLS0tLS0KCmMuIE5vdyBzdXBwb3NlIHlvdSBvcmlnaW5hbGx5IGhhZCBubyBwcmlvciBpbmZvcm1hdGlvbiB0byBiZWxpZXZlIG9uZSBvZiB0aGVzZSAkXHRoZXRhJC12YWx1ZXMgb3ZlciBhbm90aGVyLCBhbmQgdGh1cyAkXG1hdGhybXtQcn0oXHRoZXRhPTAuMCkgPSBcbWF0aHJte1ByfShcdGhldGE9MC4xKSA9IFxkb3RzID0gXG1hdGhybXtQcn0oXHRoZXRhPTAuOSkgPSBcbWF0aHJte1ByfShcdGhldGEgPSAxLjApID0gXGZyYWN7MX17MTF9JC4gVXNlIEJheWVzJyBydWxlIHRvIGNvbXB1dGUgJHAoXHRoZXRhXHZlcnQgXHN1bV97aT0xfV57MTAwfVlfaT03MykkIGZvciBlYWNoICRcdGhldGEkLXZhbHVlLiBNYWtlIGEgcGxvdCBvZiB0aGlzIHBvc3RlcmlvciBkaXN0cmlidXRpb24gYXMgYSBmdW5jdGlvbiBvZiAkXHRoZXRhJCAocG9pbnQgbWFzcyBhdCBlYWNoIHZhbHVlIG9mICRcdGhldGEkKS4KCioqU29sdXRpb246KioKCmBgYHtyfQojfCBlY2hvOiBmZW5jZWQKCiMgSW5jbHVkZSB5b3VyIGNvZGUgaGVyZQpgYGAKCi0tLS0tCgpkLiBOb3cgc3VwcG9zZSB5b3UgYWxsb3cgJFx0aGV0YSQgdG8gYmUgYW55IHZhbHVlIGluIHRoZSBpbnRlcnZhbCAkWzAsIDFdJC4gVXNpbmcgdGhlIHVuaWZvcm0gcHJpb3IgZGVuc2l0eSBmb3IgJFx0aGV0YSQsIG5hbWVseSwgJHAoXHRoZXRhKSA9IDEkLCBkZXJpdmUgYW5kIHBsb3QgdGhlIHBvc3RlcmlvciBkZW5zaXR5IG9mICRcdGhldGEkIGFzIGEgZnVuY3Rpb24gb2YgJFx0aGV0YSQuIEFjY29yZGluZyB0byB0aGUgcG9zdGVyaW9yIGRlbnNpdHksIHdoYXQgaXMgdGhlIHByb2JhYmlsaXR5IG9mICRcdGhldGEgPiAwLjgkPwoKKipTb2x1dGlvbjoqKgoKYGBge3J9CiN8IGVjaG86IGZlbmNlZAojIEluY2x1ZGUgeW91ciBjb2RlIGhlcmUKYGBgCgotLS0tLQoKZS4gV2h5IGFyZSB0aGUgaGVpZ2h0cyBvZiBwb3N0ZXJpb3IgZGVuc2l0aWVzIGluICpjLiogYW5kICpkLiogbm90IHRoZSBzYW1lPwoKKipTb2x1dGlvbjoqKgoKCi0tLS0tCgojIDIuIFJhbmRvbSBudW1iZXJzLCBwcm9iYWJpbGl0eSBkZW5zaXR5IGZ1bmN0aW9ucyAocGRmKSBhbmQgY3VtdWxhdGl2ZSBkZW5zaXR5IGZ1bmN0aW9ucyAoY2RmKQoKVGhlIGdvYWwgb2YgdGhpcyBleGVyY2lzZSBpcyB0byBnZW5lcmF0ZSByYW5kb20gbnVtYmVycywgcGxvdCB0aGUgaGlzdG9ncmFtLCB0aGUgZW1waXJpY2FsIHBkZiBhbmQgY2RmIGZvciB0aGVzZSBudW1iZXJzLCBhbmQgc2VlIGhvdyB0aGV5IGNvbXBhcmUgdG8gdGhlIHRoZW9yZXRpY2FsIHBkZiBhbmQgY2RmLiBUaGUgZ29hbCBpcyBhbHNvIHRvIGNvbXBhcmUgdGhlIHNhbXBsZSBtZWFuIGFuZCBzdGFuZGFyZCBkZXZpYXRpb24gdG8gdGhlIHRoZW9yZXRpY2FsIG1lYW4gYW5kIHN0YW5kYXJkIGRldmlhdGlvbi4KCmEuIEdlbmVyYXRlICRCID0gMzAwMCQgbnVtYmVycyBmcm8gdGhlIGdhbW1hIGRpc3RyaWJ1dGlvbiB3aXRoIHBhcmFtZXRlcnMgJFxhbHBoYSA9IDIkIGFuZCAkXGJldGEgPSAwLjEkLiBDb21wdXRlIHRoZSBzYW1wbGUgbWVhbiBhbmQgdGhlIHNhbXBsZSBzdGFuZGFyZCBkZXZpYXRpb24gYW5kIGNvbXBhcmUgdG8gdGhlIHRoZW9yZXRpY2FsIG1lYW4gYW5kIHN0YW5kYXJkIGRldmlhdGlvbi4KCioqU29sdXRpb246KioKCmBgYHtyfQojfCBlY2hvOiBmZW5jZWQKIyBJbmNsdWRlIHlvdXIgY29kZSBoZXJlCmBgYAoKLS0tLS0KCmIuIFBsb3QgdGhlIHRoZW9yZXRpY2FsIGRlbnNpdHkgKHBkZikgb2YgdGhlIGdhbW1hIGRpc3RyaWJ1dGlvbi4gUGxvdCB0aGUgZW1waXJpY2FsIGRlbnNpdHkgYmFzZWQgb24gdGhlIGRhdGEgb24gdGhlIHNhbWUgZ3JhcGguIFBsb3QgdGhlIGhpc3RvZ3JhbSBvZiB0aGUgZGF0YSBvbiBhbm90aGVyIGdyYXBoLgoKKipTb2x1dGlvbjoqKgoKYGBge3J9CiN8IGVjaG86IGZlbmNlZAojIEluY2x1ZGUgeW91ciBjb2RlIGhlcmUKYGBgCgotLS0tLQoKYy4gUGxvdCB0aGUgdGhlb3JldGljYWwgY3VtdWxhdGl2ZSBkZW5zaXR5IGZ1bmN0aW9uIChjZGYpIG9mIHRoZSBnYW1tYSBkaXN0cmlidXRpb24uIFBsb3QgdGhlIGVtcGlyaWNhbCBjdW11bGF0aXZlIGRlbnNpdHkgYmFzZWQgb24gdGhlIGRhdGEgb24gdGhlIHNhbWUgZ3JhcGguCgoqKlNvbHV0aW9uOioqCgpgYGB7cn0KI3wgZWNobzogZmVuY2VkCiMgSW5jbHVkZSB5b3VyIGNvZGUgaGVyZQpgYGA=').then(res => res.blob()).then(blob => {
+
+<p><a href="#dnldts28627" onclick="fetch('data:text/plain;base64,LS0tCnRpdGxlOiAiSG9tZXdvcmsgIzEiCnN1YnRpdGxlOiBDaGFwdGVycyAxLjEsIDEuMiBhbmQgMS4zCmRlc2NyaXB0aW9uOiB8CiAgICAqKkFzc2lnbmVkOioqIEZyaWRheSwgQXVndXN0IDI1dGgsIDIwMjMgPGJyPgogICAgKipEdWU6KiogRnJpZGF5LCBTZXB0ZW1iZXIgMXN0LCAyMDIzCmF1dGhvcjogCiAgICAtICAgbmFtZTogQnJ5bmrDs2xmdXIgR2F1dGkgR3XDsHLDum5hciBKw7Nuc3NvbgogICAgICAgIGVtYWlsOiBicnluam9sZnVyQGhpLmlzCiAgICAgICAgdXJsOiBodHRwczovL3d3dy5oaS5pcy9zdGFmZi9icnluam9sZnVyCiAgICAgICAgYWZmaWxpYXRpb246IAogICAgICAgIC0gICBuYW1lOiBTY2hvb2wgb2YgRW5naW5lZXJpbmcgYW5kIE5hdHVyYWwgU2NpZW5jZXMsIFVuaXZlcnNpdHkgb2YgSWNlbGFuZAogICAgICAgICAgICBjaXR5OiBSZXlramF2w61rCiAgICAgICAgICAgIHVybDogaHR0cHM6Ly9lbmdsaXNoLmhpLmlzL3NjaG9vbF9vZl9lbmdpbmVlcmluZ19hbmRfbmF0dXJhbF9zY2llbmNlcwojIENoYW5nZSB0aGlzIHRvIHBkZiBpZiB5b3UnZCByYXRoZXIgd29yayBpbiB0aGF0IGZvcm1hdApmb3JtYXQ6IGh0bWwgCmVkaXRvcjogc291cmNlCnRpdGxlLWJsb2NrLWJhbm5lcjogdHJ1ZQojIyMjIFRoZSBzZXR0aW5nIGJlbG93IG1ha2VzIG91ciBIVE1MIGRvY3VtZW50IHNlbGYtY29udGFpbmVkIHNvIHRoYXQgd2UgY2FuIHR1cm4gaXQgaW4gIyMjIwojIyMjIFVOQ09NTUVOVCBUSEUgTE9ORSBCRUxPVyBTTyBUSEFUIFlPVSBDQU4gVFVSTiBJTiBZT1VSIEhUTUwgRE9DVU1FTlQgIyMjIyMjIyMjIyMjIyMjIyMjIwojIGVtYmVkLXJlc291cmNlczogdHJ1ZSAKLS0tCgp7ezwgZG93bmxvYWR0aGlzIGluZGV4LnFtZCBkbmFtZT0iaHcxIiBsYWJlbD0iRG93bmxvYWQgdGhlIFF1YXJ0byBkb2N1bWVudCB1c2VkIHRvIHJlbmRlciB0aGlzIGZpbGUiIHR5cGU9cHJpbWFyeSBjbGFzcz1kb3dubG9hZGJ1dHRvbiA+fX0KCiMgMS4gU2FtcGxlIHN1cnZleQoKU3VwcG9zZSB3ZSBhcmUgZ29pbmcgdG8gc2FtcGxlIDEwMCBpbmRpdmlkdWFscyBmcm9tIGEgY291bnR5ICh3aXRoIHBvcHVsYXRpb24gc2l6ZSBtdWNoIGxhcmdlciB0aGFuIDEwMCkgYW5kIGFzayBlYWNoIHNhbXBsZWQgcGVyc29uIHdoZXRoZXIgdGhleSBzdXBwb3J0IHBvbGljeSBaIG9yIG5vdC4gTGV0ICRZX2kgPSAxJCBpZiBwZXJzb24gJGkkIGluIHRoZSBzYW1wbGUgc3VwcG9ydHMgdGhlIHBvbGljeSwgYW5kICRZX2kgPSAwJCBvdGhlcndpc2UuCgphLiBBc3N1bWUgJFlfMSwgXGRvdHMsIFlfezEwMH0kIGFyZSwgY29uZGl0b2luYWwgb24gJFx0aGV0YSQsIGkuaS5kLiBiaW5hcnkgcmFuZG9tIHZhcmlhYmxlcyB3aXRoIGV4cGVjdGF0aW9uICRcdGhldGEkLiBXcml0ZSBkb3duIHRoZSBqb2ludCBkaXN0cmlidXRpb24gb2YgJFxtYXRocm17UHJ9KFlfMSA9IHlfMSwgXGRvdHMsIFlfezEwMH0gPSB5X3sxMDB9KSQgaW4gYSBjb21wYWN0IGZvcm0uIEFsc28gd3JpdGUgZG93biB0aGUgZm9ybSBvZiAkXG1hdGhybXtQcn0oXHN1bV97aV8xfV57MTAwfVlfaT15KSQuCgoqKlNvbHV0aW9uOioqIAoKLS0tLS0KCmIuIEZvciB0aGUgbW9tZW50LCBzdXBwb3NlIHlvdSBiZWxpZXZlZCB0aGF0ICRcdGhldGEgXGluIFx7MCwgMC4xLCBcZG90cywgMC45LCAxLjBcfSQuIEdpdmVuIHRoYXQgdGhlIHJlc3VsdHMgb2YgdGhlIHN1cnZleSB3ZXJlICRcc3VtX3tpPTF9XnsxMDB9WV9pPTczJCwgY29tcHV0ZSAkXG1hdGhybXtQcn0oXHN1bV97aT0xfV57MTAwfVlfaT03M1x2ZXJ0XHRoZXRhKSQgZm9yIGVhY2ggb2YgdGhlc2UgJDExJCB2YWx1ZXMgb2YgJFx0aGV0YSQgYW5kIHBsb3QgdGhlc2UgcHJvYmFiaWxpdGllcyBhcyBhIGZ1bmN0aW9uIG9mICRcdGhldGEkIChwb2ludCBtYXNzIGF0IGVhY2ggdmFsdWUgb2YgJFx0aGV0YSQpLgoKKipTb2x1dGlvbjoqKiAKCmBgYHtyfQojfCBlY2hvOiBmZW5jZWQKIyBJbmNsdWRlIHlvdXIgY29kZSBoZXJlCmBgYAoKLS0tLS0KCmMuIE5vdyBzdXBwb3NlIHlvdSBvcmlnaW5hbGx5IGhhZCBubyBwcmlvciBpbmZvcm1hdGlvbiB0byBiZWxpZXZlIG9uZSBvZiB0aGVzZSAkXHRoZXRhJC12YWx1ZXMgb3ZlciBhbm90aGVyLCBhbmQgdGh1cyAkXG1hdGhybXtQcn0oXHRoZXRhPTAuMCkgPSBcbWF0aHJte1ByfShcdGhldGE9MC4xKSA9IFxkb3RzID0gXG1hdGhybXtQcn0oXHRoZXRhPTAuOSkgPSBcbWF0aHJte1ByfShcdGhldGEgPSAxLjApID0gXGZyYWN7MX17MTF9JC4gVXNlIEJheWVzJyBydWxlIHRvIGNvbXB1dGUgJHAoXHRoZXRhXHZlcnQgXHN1bV97aT0xfV57MTAwfVlfaT03MykkIGZvciBlYWNoICRcdGhldGEkLXZhbHVlLiBNYWtlIGEgcGxvdCBvZiB0aGlzIHBvc3RlcmlvciBkaXN0cmlidXRpb24gYXMgYSBmdW5jdGlvbiBvZiAkXHRoZXRhJCAocG9pbnQgbWFzcyBhdCBlYWNoIHZhbHVlIG9mICRcdGhldGEkKS4KCioqU29sdXRpb246KioKCmBgYHtyfQojfCBlY2hvOiBmZW5jZWQKCiMgSW5jbHVkZSB5b3VyIGNvZGUgaGVyZQpgYGAKCi0tLS0tCgpkLiBOb3cgc3VwcG9zZSB5b3UgYWxsb3cgJFx0aGV0YSQgdG8gYmUgYW55IHZhbHVlIGluIHRoZSBpbnRlcnZhbCAkWzAsIDFdJC4gVXNpbmcgdGhlIHVuaWZvcm0gcHJpb3IgZGVuc2l0eSBmb3IgJFx0aGV0YSQsIG5hbWVseSwgJHAoXHRoZXRhKSA9IDEkLCBkZXJpdmUgYW5kIHBsb3QgdGhlIHBvc3RlcmlvciBkZW5zaXR5IG9mICRcdGhldGEkIGFzIGEgZnVuY3Rpb24gb2YgJFx0aGV0YSQuIEFjY29yZGluZyB0byB0aGUgcG9zdGVyaW9yIGRlbnNpdHksIHdoYXQgaXMgdGhlIHByb2JhYmlsaXR5IG9mICRcdGhldGEgPiAwLjgkPwoKKipTb2x1dGlvbjoqKgoKYGBge3J9CiN8IGVjaG86IGZlbmNlZAojIEluY2x1ZGUgeW91ciBjb2RlIGhlcmUKYGBgCgotLS0tLQoKZS4gV2h5IGFyZSB0aGUgaGVpZ2h0cyBvZiBwb3N0ZXJpb3IgZGVuc2l0aWVzIGluICpjLiogYW5kICpkLiogbm90IHRoZSBzYW1lPwoKKipTb2x1dGlvbjoqKgoKCi0tLS0tCgojIDIuIFJhbmRvbSBudW1iZXJzLCBwcm9iYWJpbGl0eSBkZW5zaXR5IGZ1bmN0aW9ucyAocGRmKSBhbmQgY3VtdWxhdGl2ZSBkZW5zaXR5IGZ1bmN0aW9ucyAoY2RmKQoKVGhlIGdvYWwgb2YgdGhpcyBleGVyY2lzZSBpcyB0byBnZW5lcmF0ZSByYW5kb20gbnVtYmVycywgcGxvdCB0aGUgaGlzdG9ncmFtLCB0aGUgZW1waXJpY2FsIHBkZiBhbmQgY2RmIGZvciB0aGVzZSBudW1iZXJzLCBhbmQgc2VlIGhvdyB0aGV5IGNvbXBhcmUgdG8gdGhlIHRoZW9yZXRpY2FsIHBkZiBhbmQgY2RmLiBUaGUgZ29hbCBpcyBhbHNvIHRvIGNvbXBhcmUgdGhlIHNhbXBsZSBtZWFuIGFuZCBzdGFuZGFyZCBkZXZpYXRpb24gdG8gdGhlIHRoZW9yZXRpY2FsIG1lYW4gYW5kIHN0YW5kYXJkIGRldmlhdGlvbi4KCmEuIEdlbmVyYXRlICRCID0gMzAwMCQgbnVtYmVycyBmcm8gdGhlIGdhbW1hIGRpc3RyaWJ1dGlvbiB3aXRoIHBhcmFtZXRlcnMgJFxhbHBoYSA9IDIkIGFuZCAkXGJldGEgPSAwLjEkLiBDb21wdXRlIHRoZSBzYW1wbGUgbWVhbiBhbmQgdGhlIHNhbXBsZSBzdGFuZGFyZCBkZXZpYXRpb24gYW5kIGNvbXBhcmUgdG8gdGhlIHRoZW9yZXRpY2FsIG1lYW4gYW5kIHN0YW5kYXJkIGRldmlhdGlvbi4KCioqU29sdXRpb246KioKCmBgYHtyfQojfCBlY2hvOiBmZW5jZWQKIyBJbmNsdWRlIHlvdXIgY29kZSBoZXJlCmBgYAoKLS0tLS0KCmIuIFBsb3QgdGhlIHRoZW9yZXRpY2FsIGRlbnNpdHkgKHBkZikgb2YgdGhlIGdhbW1hIGRpc3RyaWJ1dGlvbi4gUGxvdCB0aGUgZW1waXJpY2FsIGRlbnNpdHkgYmFzZWQgb24gdGhlIGRhdGEgb24gdGhlIHNhbWUgZ3JhcGguIFBsb3QgdGhlIGhpc3RvZ3JhbSBvZiB0aGUgZGF0YSBvbiBhbm90aGVyIGdyYXBoLgoKKipTb2x1dGlvbjoqKgoKYGBge3J9CiN8IGVjaG86IGZlbmNlZAojIEluY2x1ZGUgeW91ciBjb2RlIGhlcmUKYGBgCgotLS0tLQoKYy4gUGxvdCB0aGUgdGhlb3JldGljYWwgY3VtdWxhdGl2ZSBkZW5zaXR5IGZ1bmN0aW9uIChjZGYpIG9mIHRoZSBnYW1tYSBkaXN0cmlidXRpb24uIFBsb3QgdGhlIGVtcGlyaWNhbCBjdW11bGF0aXZlIGRlbnNpdHkgYmFzZWQgb24gdGhlIGRhdGEgb24gdGhlIHNhbWUgZ3JhcGguCgoqKlNvbHV0aW9uOioqCgpgYGB7cn0KI3wgZWNobzogZmVuY2VkCiMgSW5jbHVkZSB5b3VyIGNvZGUgaGVyZQpgYGA=').then(res => res.blob()).then(blob => {
       const downloadURL = window.URL.createObjectURL(blob);
       const a = document.createElement('a');
       document.body.appendChild(a);
@@ -269,7 +282,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       a.download = 'hw1.qmd'; a.click();
       window.URL.revokeObjectURL(downloadURL);
       document.body.removeChild(a);
-        });"><button class="btn btn-primary downloadthis  downloadbutton" id="dnldts46466"><i class="bi bi-download"></i> Download the Quarto document used to render this file </button></a></p>
+        });"><button class="btn btn-primary downloadthis  downloadbutton" id="dnldts28627"><i class="bi bi-download"></i> Download the Quarto document used to render this file </button></a></p>
 <section id="sample-survey" class="level1">
 <h1>1. Sample survey</h1>
 <p>Suppose we are going to sample 100 individuals from a county (with population size much larger than 100) and ask each sampled person whether they support policy Z or not. Let <span class="math inline">\(Y_i = 1\)</span> if person <span class="math inline">\(i\)</span> in the sample supports the policy, and <span class="math inline">\(Y_i = 0\)</span> otherwise.</p>
@@ -284,7 +297,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><strong>Solution:</strong></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Include your code here</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="in"># Include your code here</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <hr>
@@ -294,7 +307,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><strong>Solution:</strong></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Include your code here</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="in"># Include your code here</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <hr>
@@ -304,7 +317,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><strong>Solution:</strong></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Include your code here</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="in"># Include your code here</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <hr>
@@ -323,7 +336,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><strong>Solution:</strong></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Include your code here</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="in"># Include your code here</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <hr>
@@ -333,7 +346,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><strong>Solution:</strong></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Include your code here</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="in"># Include your code here</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <hr>
@@ -343,7 +356,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><strong>Solution:</strong></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Include your code here</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="in"># Include your code here</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
@@ -430,10 +443,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -443,8 +455,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -457,6 +478,128 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
       return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    const typesetMath = (el) => {
+      if (window.MathJax) {
+        // MathJax Typeset
+        window.MathJax.typeset([el]);
+      } else if (window.katex) {
+        // KaTeX Render
+        var mathElements = el.getElementsByClassName("math");
+        var macros = [];
+        for (var i = 0; i < mathElements.length; i++) {
+          var texText = mathElements[i].firstChild;
+          if (mathElements[i].tagName == "SPAN") {
+            window.katex.render(texText.data, mathElements[i], {
+              displayMode: mathElements[i].classList.contains('display'),
+              throwOnError: false,
+              macros: macros,
+              fleqn: false
+            });
+          }
+        }
+      }
+    }
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        for (let i = 0; i < 2; i++) {
+          container.appendChild(note.children[i].cloneNode(true));
+        }
+        typesetMath(container);
+        return container.innerHTML
+      } else {
+        typesetMath(note);
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      typesetMath(note);
+      return note.innerHTML;
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -500,6 +643,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -525,6 +669,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -585,6 +755,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
+
 
 
 

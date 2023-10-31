@@ -22,6 +22,7 @@ website:
           - assignments/hw2/solution/index.qmd
           - assignments/hw3/solution/index.qmd
           - assignments/hw4/solution/index.qmd
+          - assignments/hw5/solution/index.qmd
 
 format: 
   html:
