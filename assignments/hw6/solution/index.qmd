@@ -1,5 +1,5 @@
 ---
-title: "Homework #6"
+title: "Homework #6 (Solution)"
 subtitle: "Exercises from Chapter 4.6: 4, 7 and 8"
 description: |
     **Assigned:** Friday, October 6th, 2023 <br>
@@ -21,18 +21,12 @@ title-block-banner: true
 # embed-resources: true 
 ---
 
-```{r}
-#| echo: fenced
-#| output: hide
 
 
-```
+{{< downloadthis index.qmd dname="hw6_solution" label="Download the Quarto document used to render this file" type=primary class=downloadbutton >}}
 
 
-{{< downloadthis index.qmd dname="hw5" label="Download the Quarto document used to render this file" type=primary class=downloadbutton >}}
-
-
-```{r}
+```{r setup}
 #| echo: fenced
 #| output: hide
 library(tidyverse)
@@ -47,26 +41,21 @@ theme_set(theme_classic())
 
 # 4
 
----
+Download the US gun control data from the book's website. For state $i$, let $Y_i$ be the number of homicides and $N_i$ be the population.
 
-a.
+a. Fit the model $Y_i \vert \beta \sim \mathrm{Poisson}(N_i\lambda_i)$ where $\log(\lambda_i) = \mathbf X_i\beta$. Use uninformative priors and $p = 7$ covariates in $\mathbf X_i$: the intercept, the five confounders $\mathbf Z_i$, and the total number of gun laws in state $i$. Provide justification that the MCMC sampler has converged and sufficiently explored the posterior distribution and summarize the posterior of $\beta$
 
 ---
 
 **Solution:**
 
-```{r}
-tmp <- tempfile()
-download.file(
-    url = "https://www4.stat.ncsu.edu/~bjreich/BSMdata/guns.RData",
-    destfile = tmp
-)
-
-load(tmp)
-rm(tmp)
-```
+---
 
 ```{r}
+#| cache: true
+load(url("https://www4.stat.ncsu.edu/~bjreich/BSMdata/guns.RData",))
+
+
 GunLaws <- rowSums(X)
 my_X <- cbind(Z, GunLaws) |> scale()
 
@@ -74,7 +63,7 @@ model_string <- textConnection("model{
     # Likelihood
     for (i in 1:N_obs) {
         Y[i] ~ dpois(N[i] * lambda[i])
-        log(lambda[i]) <- exp(alpha + inprod(X[i, ], beta[]))
+        log(lambda[i]) <- alpha + (X[i, ] %*% beta)
     }
     for (j in 1:6) {
         beta[j] ~ dnorm(0, 0.1)
@@ -84,53 +73,58 @@ model_string <- textConnection("model{
 }")
 
 data = list(
-    X = my_X,
-    N = N,
-    Y = Y,
-    N_obs = length(Y)
+  X = my_X,
+  N = N,
+  Y = Y,
+  N_obs = length(Y)
 )
 
 model <- jags.model(
-    model_string,
-    data = data,
-    n.chains = 4
+  model_string,
+  data = data,
+  n.chains = 4,
+  quiet = TRUE
 )
 
-update(model, 10000)
+update(model, 10000, progress.bar = "none")
 
 
 samples <- coda.samples(
-    model,
-    variable.names = c("alpha", "beta"),
-    n.iter = 10000
+  model,
+  variable.names = c("alpha", "beta"),
+  n.iter = 10000,
+  progress.bar = "none"
 )
 
 posterior_jags <- samples |> 
-    as_draws_df()
+  as_draws_df()
 ```
+
+The table below shows us that the $\hat R$ and ESS of our variables is sufficiently low and the trace plot shows no signs of a lack of convergence. The table below also shows a summary of the posterior distrubution of each model parameter.
 
 ```{r}
 posterior_jags |> 
-    summarise_draws() |> 
-    gt() |> 
-    fmt_number(
-        decimals = 2
-    ) 
+  summarise_draws() |> 
+  gt() |> 
+  fmt_number(
+    decimals = 2
+  ) 
 ```
 
 ```{r}
 mcmc_trace(
-    posterior_jags
+  posterior_jags
 )
 ```
 
-b.
+b. Fit a Negative binomial regression model and compare with the results from Poisson regression.
 
 ---
 
 **Solution:**
 
 ```{r}
+#| cache: true
 model_string <- textConnection("model{
     # Likelihood
     for (i in 1:N_obs) {
@@ -147,54 +141,183 @@ model_string <- textConnection("model{
 }")
 
 data = list(
-    X = my_X,
-    N = N,
-    Y = Y,
-    N_obs = length(Y)
+  X = my_X,
+  N = N,
+  Y = Y,
+  N_obs = length(Y)
 )
 
 model <- jags.model(
-    model_string,
-    data = data,
-    n.chains = 4
+  model_string,
+  data = data,
+  n.chains = 4,
+  quiet = TRUE
 )
 
-update(model, 10000)
+update(model, 10000, progress.bar = "none")
 
 
 samples <- coda.samples(
-    model,
-    variable.names = c("alpha", "beta", "m"),
-    n.iter = 10000
+  model,
+  variable.names = c("alpha", "beta", "m"),
+  n.iter = 10000,
+  progress.bar = "none"
 )
 
 posterior_jags <- samples |> 
-    as_draws_df()
+  as_draws_df()
 ```
+
+The table below shows us that the $\hat R$ and ESS of our variables is sufficiently low and the trace plot shows no signs of a lack of convergence. The table below also shows a summary of the posterior distrubution of each model parameter.
 
 ```{r}
 posterior_jags |> 
-    summarise_draws() |> 
-    mutate(
-        plot_col = 1
-    ) |> 
-    gt() |> 
-    fmt_number(
-        decimals = 2
-    ) 
+  summarise_draws() |> 
+  mutate(
+    plot_col = 1
+  ) |> 
+  gt() |> 
+  fmt_number(
+    decimals = 2
+  ) 
 ```
 
 ```{r}
 mcmc_trace(
-    posterior_jags
+  posterior_jags
 )
+```
+
+
+c. For the Poisson model in (a), compute the posterior predictive distribution for each state with the number of gun laws set to zero. Repeat this with the number of gun laws set to 25 (the maximum number). According to these calculations, how would the number of deaths nationwide be affected by these policy changes? Do you trust these projections?
+
+---
+
+**Solution:**
+
+Here it is important to keep in mind that if we scale the original X predictors, we need to apply the same scaling to the new values we use for 0 or 25 gun laws, i.e.
+
+$$
+0_{\mathrm{scaled}} = \frac{0 - \mathrm{mean}(X)}{ \mathrm{SD}(X)}
+$$
+
+and
+
+$$
+25_{\mathrm{scaled}} = \frac{25 - \mathrm{mean}(X)}{ \mathrm{SD}(X)}
+$$
+
+where X is a vector containing the number of gun laws in each state.
+
+```{r}
+#| cache: true
+
+mean_gunlaws <- mean(GunLaws)
+sd_gunlaws <- sd(GunLaws)
+
+scaled_zero <- (0 - mean_gunlaws) / sd_gunlaws
+scaled_25 <- (25 - mean_gunlaws) / sd_gunlaws
+
+data = list(
+  X = my_X,
+  scaled_zero = scaled_zero,
+  scaled_25 = scaled_25,
+  N = N,
+  Y = Y,
+  N_obs = length(Y)
+)
+
+model_string <- textConnection("model{
+    # Likelihood
+    for (i in 1:N_obs) {
+        Y[i] ~ dnegbin(q[i], m)
+        q[i] <- m / (m + N[i] * lambda[i])
+        log(lambda[i]) <- alpha + inprod(X[i, ], beta[])
+    
+        Y0[i] ~ dnegbin(q0[i], m)
+        q0[i] <- m / (m + N[i] * lambda0[i])
+        log(lambda0[i]) <- alpha + inprod(X[i, 1:5], beta[1:5]) + scaled_zero * beta[6]
+    
+        Y25[i] ~ dnegbin(q25[i], m)
+        q25[i] <- m / (m + N[i] * lambda25[i])
+        log(lambda25[i]) <- alpha + inprod(X[i, 1:5], beta[1:5]) + scaled_25 * beta[6]
+        
+    }
+    for (j in 1:6) {
+        beta[j] ~ dnorm(0, 0.0001)
+    }
+    
+    national_difference <- sum(Y25 - Y0)
+    alpha ~ dnorm(0, 0.0001)
+    m ~ dgamma(0.1, 0.1)
+}")
+
+model <- jags.model(
+  model_string,
+  data = data,
+  n.chains = 4,
+  quiet = TRUE
+)
+
+update(model, 10000, progress.bar = "none")
+
+
+samples <- coda.samples(
+  model,
+  variable.names = c("national_difference"),
+  n.iter = 10000,
+  progress.bar = "none"
+)
+
+```
+
+The plot below shows the posterior distribution of the nation-wide reduction in homicides when all counties implement all 25 gun laws, versus if all counties implement zero gun laws. We see that 98% of the posterior mass lies beneath 0, so the model still estimates a 2% chance that implementing all gun laws will not reduce homicides by a measurable amount.
+
+```{r}
+samples |> 
+  as_draws_df() |> 
+  subset_draws(variable = "national_difference") |> 
+  summarise_draws("P(x < 0)" = function(x) mean(x < 0))
+```
+
+The plot below shows the posterior distribution of the reduction in homicides.
+
+```{r}
+samples |> 
+  mcmc_areas(
+    pars = "national_difference",
+    prob = 0.95,
+    prob_outer = 1
+  ) +
+  labs(
+    title = "Posterior distribution of reduction in homicides",
+    subtitle = "The blue area is a 95% credible interval for the reduction in total deaths\nif all counties implemented all 25 gun laws versus 0 gun laws"
+  )
 ```
 
 
 
 ---
 
+
+
+---
+
 # 7
+
+Consider the one-way random effects model
+
+$$
+Y_{ij} \vert \alpha_i, \sigma^2 \sim \mathrm{Normal}(\alpha_i, \sigma^2)
+$$
+
+and
+
+$$
+\alpha_i \sim \mathrm{Normal}(0, \tau^2)
+$$
+
+for $i = 1, \dots, n$ and $j = 1, \dots, m$. Assuming conjugate priors $\sigma^2, \tau^2 \sim \mathrm{InvGamma}(a, b)$ derive the full conditional distributions of $\alpha_1$, $\sigma^2$ and $\tau^2$ and outline (but do not code) an MCMC algorithm to sample from the posterior.
 
 ---
 
@@ -205,9 +328,202 @@ mcmc_trace(
 
 # 8
 
+Load the `gambia` data from the `geoR` package in `R`. The response variable $Y_i$ is the binary indicator that child $i$ tested positive for malaria (`pos`) and the remaining seven variables are covariates.
+
+a. Fit the logistic regression model
+
+$$
+\mathrm{logit[Prob(Y_i=1)]} = \sum_{j=1}^p X_{ij}\beta_j
+$$
+
+with uninformative priors for the $\beta_j$. Verify that the MCMC sampler has converged and summarize the effects of the covariates.
+
+---
+
+**Solution:**
+
+```{r}
+data(gambia, package = "geoR")
+Y <- gambia$pos
+
+X <- gambia |> select(-pos) |> as.matrix() |> scale()
+
+data <- list(
+  Y = Y, 
+  N_obs = length(Y),
+  P = ncol(X), 
+  X = X
+)
+
+model_string <- textConnection("model{
+  #likelihood
+  for(i in 1:N_obs){
+    Y[i] ~ dbern(p[i])
+    logit(p[i]) <- alpha + inprod(X[i,], beta[])
+  }
+  #priors
+  for(j in 1:P) {
+    beta[j] ~ dnorm(0, 0.01)
+  }
+  
+  alpha ~ dnorm(0, 0.0001)
+}")
+
+
+# model <- jags.model(model_string, data = data, n.chains = 2, )
+# update(model, 5000)
+# samples <- coda.samples(model, variable.names = c("alpha", "beta"), thin = 1, n.iter = 5000)
+# 
+# write_rds(samples, "8a_samples.rds")
+
+samples <- read_rds("8a_samples.rds")
+```
+
+The table below shows us that the $\hat R$ of our variables is sufficiently low and the trace plot shows no signs of a lack of convergence.
+
+```{r}
+samples |> 
+  summarise_draws() |> 
+  gt() |> 
+  fmt_number()
+```
+
+```{r}
+samples |> 
+  mcmc_trace()
+```
+
+
+---
+
+b. In this dataset, the 2035 children reside in $L = 65$ unique locations (defined by the x and y coordinates in the dataset). Let $s_i \in \{1, \dots, L\}$ be the label of the location for observation $i$. Fit the random effects logistic regression model
+
+$$
+\begin{gathered}
+\mathrm{logit[Prob(Y_i=1)]} = \sum_{j=1}^p X_{ij}\beta_j + \alpha_{s_i} \\
+\alpha_l \sim \mathrm{Normal}(0, \tau^2)
+\end{gathered}
+$$
+
+and the $\beta_j$ and $\tau^2$ have uninformative priors. Verify that the MCMC sampler has converged; explain why random effects might be needed here; discuss and explain any differences in the posteriors of the regression coefficients that occur when random effects are added to the model; plot the posterior means of the $\alpha_l$ by their spatial locations and suggest how this map might be useful to malaria researchers.
+
 ---
 
 **Solution:**
 
 ---
+
+
+```{r}
+
+loc <- gambia |> group_by(x, y) |> mutate(id = cur_group_id()) |> pull(id)
+# 
+# data <- list(
+#   Y = Y, 
+#   N_obs = length(Y),
+#   P = ncol(X), 
+#   X = X,
+#   loc = loc,
+#   N_locations = max(loc)
+# )
+# 
+# model_string <- textConnection("model{
+#   #likelihood
+#   for(i in 1:N_obs){
+#     Y[i] ~ dbern(p[i])
+#     logit(p[i]) <- inprod(X[i,], beta[]) + alpha + alpha_location[loc[i]]
+#   }
+#   #priors
+#   for (j in 1:P) {
+#     beta[j] ~ dnorm(0, 0.01)
+#   }
+#   
+#   for (l in 1:N_locations) {
+#     alpha_location[l] ~ dnorm(0, tau)
+#   }
+#   
+#   alpha ~ dnorm(0, 0.0001)
+#   tau ~ dgamma(0.01, 0.01)
+# }")
+# 
+# model <- jags.model(model_string, data = data, n.chains = 2, )
+# update(model, 5000)
+# samples <- coda.samples(model, variable.names = c("alpha", "alpha_location", "beta", "tau"), thin = 1, n.iter = 5000)
+# write_rds(samples, "8b_samples.rds")
+
+samples <- read_rds("8b_samples.rds")
+```
+
+
+
+```{r}
+samples |> 
+  summarise_draws() |> 
+  arrange(desc(rhat)) |> 
+  slice_head(n = 15) |> 
+  gt() |> 
+  fmt_number()
+```
+
+```{r}
+samples |> 
+  mcmc_trace(
+    regex_pars = c("beta", "alpha$")
+  )
+```
+
+
+
+
+
+```{r}
+alpha_means <- samples |> 
+  as_draws_df() |> 
+  subset_draws(variable = "alpha_location", regex = TRUE) |> 
+  summarise_draws(mean)
+
+
+plot_dat <- gambia |> 
+  mutate(loc = loc) |> 
+  distinct(loc, x, y) |> 
+  arrange(loc) |> 
+  mutate(
+    alpha = alpha_means$mean
+  )
+```
+
+
+```{r}
+library(sf)
+library(leaflet)
+
+pal <- colorNumeric(
+  "RdBu",
+  domain = range(alpha_means$mean),
+  reverse = FALSE
+)
+
+plot_dat |> 
+  st_as_sf(
+    coords = c("x", "y"),
+    crs = "+proj=utm +zone=28"
+  ) |> 
+  st_make_valid() |> 
+  st_transform("WGS84") |> 
+  leaflet() |> 
+  addProviderTiles(providers$OpenStreetMap) |> 
+  addCircleMarkers(
+    fillColor = ~ pal(alpha),
+    weight = 0,
+    fillOpacity = 0.8,
+    radius = ~ 4 * (alpha + 2),
+    label = ~ paste("alpha: ", round(alpha, 3))
+  ) |> 
+  addLegend(
+    "topright",
+    pal = pal,
+    values = ~ alpha,
+    labFormat = labelFormat(transform = function(x) sort(x, decreasing = TRUE)),
+  )
+```
 

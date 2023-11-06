@@ -16,6 +16,7 @@ website:
           - assignments/hw3/index.qmd
           - assignments/hw4/index.qmd
           - assignments/hw5/index.qmd
+          - assignments/hw6/index.qmd
       - section: "Solutions"
         contents:
           - assignments/hw1/solution/index.qmd
@@ -23,6 +24,7 @@ website:
           - assignments/hw3/solution/index.qmd
           - assignments/hw4/solution/index.qmd
           - assignments/hw5/solution/index.qmd
+          - assignments/hw6/solution/index.qmd
 
 format: 
   html:

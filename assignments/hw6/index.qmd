@@ -21,9 +21,29 @@ title-block-banner: true
 # embed-resources: true 
 ---
 
-{{< downloadthis index.qmd dname="hw5" label="Download the Quarto document used to render this file" type=primary class=downloadbutton >}}
+{{< downloadthis index.qmd dname="hw6" label="Download the Quarto document used to render this file" type=primary class=downloadbutton >}}
 
 # 4
+
+Download the US gun control data from the book's website. For state $i$, let $Y_i$ be the number of homicides and $N_i$ be the population.
+
+a. Fit the model $Y_i \vert \beta \sim \mathrm{Poisson}(N_i\lambda_i)$ where $\log(\lambda_i) = \mathbf X_i\beta$. Use uninformative priors and $p = 7$ covariates in $\mathbf X_i$: the intercept, the five confounders $\mathbf Z_i$, and the total number of gun laws in state $i$. Provide justification that the MCMC sampler has converged and sufficiently explored the posterior distribution and summarize the posterior of $\beta$
+
+---
+
+**Solution:**
+
+---
+
+b. Fit a Negative binomial regression model and compare with the results from Poisson regression.
+
+---
+
+**Solution:**
+
+---
+
+c. For the Poisson model in (a), compute the posterior predictive distribution for each state with the number of gun laws set to zero. Repeat this with the number of gun laws set to 25 (the maximum number). According to these calculations, how would the number of deaths nationwide be affected by these policy changes? Do you trust these projections?
 
 ---
 
@@ -32,6 +52,20 @@ title-block-banner: true
 ---
 
 # 7
+
+Consider the one-way random effects model
+
+$$
+Y_{ij} \vert \alpha_i, \sigma^2 \sim \mathrm{Normal}(\alpha_i, \sigma^2)
+$$
+
+and
+
+$$
+\alpha_i \sim \mathrm{Normal}(0, \tau^2)
+$$
+
+for $i = 1, \dots, n$ and $j = 1, \dots, m$. Assuming conjugate priors $\sigma^2, \tau^2 \sim \mathrm{InvGamma}(a, b)$ derive the full conditional distributions of $\alpha_1$, $\sigma^2$ and $\tau^2$ and outline (but do not code) an MCMC algorithm to sample from the posterior.
 
 ---
 
@@ -42,9 +76,29 @@ title-block-banner: true
 
 # 8
 
+Load the `gambia` data from the `geoR` package in `R`. The response variable $Y_i$ is the binary indicator that child $i$ tested positive for malaria (`pos`) and the remaining seven variables are covariates.
+
+a. Fit the logistic regression model
+
+$$
+\mathrm{logit[Prob(Y_i=1)]} = \sum_{j=1}^p X_{ij}\beta_j
+$$
+
+with uninformative priors for the $\beta_j$. Verify that the MCMC sampler has converged and summarize the effects of the covariates.
+
 ---
 
 **Solution:**
 
 ---
 
+b. In this dataset, the 2035 children reside in $L = 65$ unique locations (defined by the x and y coordinates in the dataset). Let $s_i \in \{1, \dots, L\}$ be the label of the location for observation $i$. Fit the random effects logistic regression model
+
+$$
+\begin{gathered}
+\mathrm{logit[Prob(Y_i=1)]} = \sum_{j=1}^p X_{ij}\beta_j + \alpha_{s_i} \\
+\alpha_l \sim \mathrm{Normal}(0, \tau^2)
+\end{gathered}
+$$
+
+and the $\beta_j$ and $\tau^2$ have uninformative priors. Verify that the MCMC sampler has converged; explain why random effects might be needed here; discuss and explain any differences in the posteriors of the regression coefficients that occur when random effects are added to the model; plot the posterior means of the $\alpha_l$ by their spatial locations and suggest how this map might be useful to malaria researchers.

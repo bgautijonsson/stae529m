@@ -1,9 +1,9 @@
 ---
-title: "Homework #6"
-subtitle: "Exercises from Chapter 4.6: 4, 7 and 8"
+title: "Homework #7"
+subtitle: "Exercises from Chapter 5.7: 2, 4 and 10"
 description: |
-    **Assigned:** Friday, October 6th, 2023 <br>
-    **Due:** Friday, October 20th, 2023
+    **Assigned:** Friday, October 20th, 2023 <br>
+    **Due:** Friday, November 3rd, 2023
 author: 
     -   name: Brynjólfur Gauti Guðrúnar Jónsson
         email: brynjolfur@hi.is
@@ -21,199 +21,354 @@ title-block-banner: true
 # embed-resources: true 
 ---
 
-```{r}
-#| echo: fenced
-#| output: hide
-
-
-```
-
-
-{{< downloadthis index.qmd dname="hw5" label="Download the Quarto document used to render this file" type=primary class=downloadbutton >}}
-
+{{< downloadthis index.qmd dname="hw7" label="Download the Quarto document used to render this file" type=primary class=downloadbutton >}}
 
 ```{r}
 #| echo: fenced
 #| output: hide
-
+library(tidyverse)
 library(ggplot2)
 library(rjags)
 library(posterior)
 library(bayesplot)
 library(gt)
-library(dplyr)
 theme_set(theme_classic())
 ```
 
+# 2 
+
+Download the `airquality` dataset in R. Fit the following model to the data
+
+$$
+\mathrm{ozone_i} \sim \mathrm{Normal}(\beta_1 + \beta_2\mathrm{solar.R_i} + \beta_3\mathrm{temp_i} + \beta_4\mathrm{wind_i}, \sigma^2)
+$$
+
+---
+
+**Solution:**
+
+```{r}
+d <- na.omit(airquality)
+ozone <- d$Ozone
+X <- d[ , c("Solar.R", "Wind", "Temp")] |> as.matrix() |> scale()
+
+data <- list(
+    ozone = ozone,
+    X = X,
+    n = nrow(X),
+    p = ncol(X)
+)
+
+model_string <- textConnection("model{
+    #Likelihood
+    for (i in 1:n) {
+        ozone[i] ~ dnorm(mu[i], tau)
+        mu[i] = alpha + inprod(X[i, ], beta[])
+        Y_rep[i] ~ dnorm(mu[i], tau)
+    }
+    
+    for (i in 1:p) {
+        beta[i] ~ dnorm(0, 0.001)
+    }
+    
+    alpha ~ dnorm(0, 0.001)
+    tau ~ dgamma(0.01, 0.01)
+    sigma2 = 1 / tau;
+    
+}")
+
+model <- jags.model(
+    model_string,
+    data = data,
+    n.chains = 4,
+    quiet = TRUE
+)
+
+update(model, 10000)
+
+params <- c("alpha", "beta", "sigma2", "Y_rep")
+samples <- coda.samples(
+    model,
+    variable.names = params,
+    n.iter = 10000
+)
+
+posterior_jags <- samples |> 
+    as_draws_df()
+```
+
+```{r}
+posterior_jags |> 
+    subset_draws(variable = c("alpha", "beta", "sigma2")) |> 
+    summarise_draws() |> 
+    gt() |> 
+    fmt_number()
+```
+
+
+
+```{r}
+y_rep <- posterior_jags |> 
+    subset_draws(variable = "Y_rep") |> 
+    resample_draws(ndraws = 200) |> 
+    as_draws_matrix()
+
+ppc_dens_overlay(ozone, y_rep)
+```
+
+```{r}
+ppc_stat(ozone, y_rep, stat = max)
+```
+
+---
 
 # 4
 
+Use the "Mr. October" data. Compare the two models:
+
+![](fig1.png)
+
+using Bayes factors, DIC and WAIC. Assume the Uniform(0, c) prior for all $\lambda_j$ and compare the results for $c = 1$ and $c = 10$.
+
 ---
 
-a.
+```{r}
+Y <- c(563, 10)
+N <- c(2820, 27)
 
----
+data <- list(
+    Y = Y,
+    N = N,
+    c = 1
+)
+
+model_string <- textConnection("model{
+    #Likelihood
+    for (i in 1:2) {
+        Y[i] ~ dpois(N[i] * ifelse(z_0 == 1, lambda_0, lambda[i]))
+        lambda[i] ~ dunif(0, c)
+        like[i] <- dpois(Y[i], lambda[i] * N[i])
+    }
+    
+    z_0 ~ dbern(0.5)
+    lambda_0 ~ dunif(0, c)
+}")
+
+
+model <- jags.model(
+    model_string,
+    data = data,
+    n.chains = 4,
+    quiet = TRUE
+)
+
+update(model, 10000, progress.bar = "none")
+
+params <- c( "z_0", "lambda", "lambda_0")
+samples <- coda.samples(
+    model,
+    variable.names = params,
+    n.iter = 10000,
+    progress.bar = "none"
+)
+
+samples |> 
+    summarise_draws()
+
+    samples |> 
+    mcmc_trace()
+```
+
 
 **Solution:**
 
 ```{r}
-tmp <- tempfile()
-download.file(
-    url = "https://www4.stat.ncsu.edu/~bjreich/BSMdata/guns.RData",
-    destfile = tmp
-)
-
-load(tmp)
-rm(tmp)
-```
-
-```{r}
-GunLaws <- rowSums(X)
-```
-
-```{r}
-my_X <- cbind(Z, GunLaws) |> scale()
-```
-
-```{r}
-model_string <- textConnection("model{
-    # Likelihood
-    for (i in 1:N_obs) {
+fit_model <- function(c) {
+    Y <- c(563, 10)
+    N <- c(2820, 27)
+    
+    data <- list(
+        Y = Y,
+        N = N,
+        c = c
+    )
+    
+    model_string1 <- textConnection("model{
+    #Likelihood
+    for (i in 1:2) {
         Y[i] ~ dpois(N[i] * lambda[i])
-        log(lambda[i]) <- exp(alpha + inprod(X[i, ], beta[]))
+        lambda[i] ~ dunif(0, c)
+        like[i] <- dpois(Y[i], lambda[i] * N[i])
     }
-    for (j in 1:6) {
-        beta[j] ~ dnorm(0, 0.0001)
-    }
-    
-    alpha ~ dnorm(0, 0.0001)
 }")
-
-data = list(
-    X = my_X,
-    N = N,
-    Y = Y,
-    N_obs = length(Y)
-)
-
-model <- jags.model(
-    model_string,
-    data = data,
-    n.chains = 4
-)
-
-update(model, 10000)
-
-
-samples <- coda.samples(
-    model,
-    variable.names = c("alpha", "beta"),
-    n.iter = 10000
-)
-
-posterior_jags <- samples |> 
-    as_draws_df()
-```
-
-```{r}
-posterior_jags |> 
-    summarise_draws() |> 
-    gt() |> 
-    fmt_number(
-        decimals = 2
-    ) 
-```
-
-```{r}
-mcmc_trace(
-    posterior_jags
-)
-```
-
-b.
-
----
-
-**Solution:**
-
-```{r}
-model_string <- textConnection("model{
-    # Likelihood
-    for (i in 1:N_obs) {
-        Y[i] ~ dnegbin(q[i], m)
-        q[i] <- m / (m + N[i] * lambda[i])
-        log(lambda[i]) <- alpha + inprod(X[i, ], beta[])
-    }
-    for (j in 1:6) {
-        beta[j] ~ dnorm(0, 0.0001)
-    }
     
-    alpha ~ dnorm(0, 0.0001)
-    m ~ dgamma(0.1, 0.1)
+    model_string2 <- textConnection("model{
+    #Likelihood
+    for (i in 1:2) {
+        Y[i] ~ dpois(N[i] * lambda)
+        like[i] <- dpois(Y[i], lambda * N[i])
+    }
+    lambda ~ dunif(0, c)
 }")
+    
+    model1 <- jags.model(
+        model_string1,
+        data = data,
+        n.chains = 4,
+        quiet = TRUE
+    )
+    
+    model2 <- jags.model(
+        model_string2,
+        data = data,
+        n.chains = 4,
+        quiet = TRUE
+    )
+    
+    update(model1, 10000, progress.bar = "none")
+    update(model2, 10000, progress.bar = "none")
+    
+    params <- c( "like")
+    samples <- coda.samples(
+        model1,
+        variable.names = params,
+        n.iter = 10000,
+        progress.bar = "none"
+    )
+    
+    DIC1 <- dic.samples(model1, n.iter = 50000, progress.bar = "none")
+    DIC1 <- sum(DIC1$deviance + DIC1$penalty)
+    
+    like <- rbind(samples[[1]], samples[[2]], samples[[3]], samples[[4]])
+    fbar <- colMeans(like)
+    Pw <- sum(apply(log(like), 2, var))
+    WAIC1 <- -2 * sum(log(fbar)) + 2 * Pw
+    
+    lpp <- 
+        
+        
+        samples <- coda.samples(
+            model2,
+            variable.names = params,
+            n.iter = 10000
+        )
+    
+    DIC2 <- dic.samples(model2, n.iter = 50000, progress.bar = "none")
+    DIC2 <- sum(DIC2$deviance + DIC2$penalty)
+    
+    like <- rbind(samples[[1]], samples[[2]], samples[[3]], samples[[4]])
+    fbar <- colMeans(like)
+    Pw <- sum(apply(log(like), 2, var))
+    WAIC2 <- -2 * sum(log(fbar)) + 2 * Pw
+    
+    tibble(
+        model = c("Two lambdas", "One lambda"),
+        DIC = c(DIC1, DIC2),
+        WAIC = c(WAIC1, WAIC2)
+    )
+}
 
-data = list(
-    X = my_X,
-    N = N,
-    Y = Y,
-    N_obs = length(Y)
-)
-
-model <- jags.model(
-    model_string,
-    data = data,
-    n.chains = 4
-)
-
-update(model, 10000)
-
-
-samples <- coda.samples(
-    model,
-    variable.names = c("alpha", "beta", "m"),
-    n.iter = 10000
-)
-
-posterior_jags <- samples |> 
-    as_draws_df()
-```
-
-```{r}
-posterior_jags |> 
-    summarise_draws() |> 
+results <- tibble(
+    c = c(1, 10)
+) |> 
     mutate(
-        plot_col = 1
+        results = map(c, fit_model)
+    )
+
+results |> 
+    unnest(results) |> 
+    mutate(
+        c = str_c("c = ", c)
     ) |> 
-    gt() |> 
-    fmt_number(
-        decimals = 2
-    ) 
+    group_by(c) |> 
+    gt()
 ```
+
+
+---
+
+
+# 10
+
+Download the `WWWusage` dataset in R. Using data from times $t = 5, \dots, 100$ as outcomes, fit the autoregressive model
+
+$$
+Y_t \vert Y_{t-1}, \dots, Y_1 \sim \mathrm{Normal}(\beta_0 + \beta_1 Y_{t-1} + \dots + \beta_L Y_{t-L}, \sigma^2),
+$$
+
+where $Y_t$ is the WWW usage at time $t$. Compare the models with $L = 1, 2, 3, 4$ and select the best time lag L.
+
+
+---
+
+**Solution:**
 
 ```{r}
-mcmc_trace(
-    posterior_jags
-)
+fit_ar_model <- function(L) {
+    Y <- WWWusage
+    
+    data <- list(
+        Y = Y,
+        L = L
+    )
+    
+    model_string <- textConnection("model{
+    #Likelihood
+    for (t in 5:100) {
+        Y[t] ~ dnorm(mu[t], tau)
+        mu[t] <- alpha + inprod(Y[(t-L):(t-1)], beta[])
+        like[t] <- dnorm(Y[t], mu[t], tau)
+    }
+    
+    for (i in 1:L) {
+        beta[i] ~ dnorm(0, 0.001)
+    }
+    
+    alpha ~ dnorm(0, 0.001)
+    tau ~ dgamma(0.01, 0.01)
+    sigma2 <- 1 / tau
+}")
+    
+    model <- jags.model(
+        model_string,
+        data = data,
+        n.chains = 4,
+        quiet = TRUE
+    )
+    update(model, 10000, progress.bar = "none")
+    
+    
+    params <- c("like")
+    
+    samples <- coda.samples(
+        model,
+        variable.names = params,
+        n.iter = 10000,
+        progress.bar = "none"
+    )
+    
+    DIC <- dic.samples(model, n.iter = 50000, progress.bar = "none")
+    DIC <- sum(DIC$deviance + DIC$penalty)
+    
+    like <- rbind(samples[[1]], samples[[2]], samples[[3]], samples[[4]])
+    fbar <- colMeans(like)
+    Pw <- sum(apply(log(like), 2, var))
+    WAIC <- -2 * sum(log(fbar)) + 2 * Pw
+    
+    tibble(
+        L = L,
+        DIC = DIC,
+        WAIC = WAIC
+    )
+}
+
+results <- map_dfr(1:4, fit_ar_model)
+
+results |>
+    gt() |> 
+    fmt_number()
 ```
 
-
-
----
-
-# 7
-
----
-
-**Solution:**
-
----
-
-
-# 8
-
----
-
-**Solution:**
 
 ---
 
