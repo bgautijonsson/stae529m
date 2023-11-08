@@ -1,5 +1,5 @@
 ---
-title: "Homework #7"
+title: "Homework #7 (Solution)"
 subtitle: "Exercises from Chapter 5.7: 2, 4 and 10"
 description: |
     **Assigned:** Friday, October 20th, 2023 <br>
@@ -16,14 +16,17 @@ author:
 format: html 
 editor: source
 title-block-banner: true
+execute:
+    warning: false
+    message: false
 #### The setting below makes our HTML document self-contained so that we can turn it in ####
 #### UNCOMMENT THE LONE BELOW SO THAT YOU CAN TURN IN YOUR HTML DOCUMENT ###################
 # embed-resources: true 
 ---
 
-{{< downloadthis index.qmd dname="hw7" label="Download the Quarto document used to render this file" type=primary class=downloadbutton >}}
+{{< downloadthis index.qmd dname="hw7_solution" label="Download the Quarto document used to render this file" type=primary class=downloadbutton >}}
 
-```{r}
+```{r setup}
 #| echo: fenced
 #| output: hide
 library(tidyverse)
@@ -32,6 +35,9 @@ library(rjags)
 library(posterior)
 library(bayesplot)
 library(gt)
+library(purrr)
+library(patchwork)
+library(psych, include.only = c("kurtosi", "skew"))
 theme_set(theme_classic())
 ```
 
@@ -42,6 +48,8 @@ Download the `airquality` dataset in R. Fit the following model to the data
 $$
 \mathrm{ozone_i} \sim \mathrm{Normal}(\beta_1 + \beta_2\mathrm{solar.R_i} + \beta_3\mathrm{temp_i} + \beta_4\mathrm{wind_i}, \sigma^2)
 $$
+
+Use posterior predictive checks to verify that the model fits well. If you find model misspecification, suggest (but do not fit) alternatives.
 
 ---
 
@@ -84,18 +92,20 @@ model <- jags.model(
     quiet = TRUE
 )
 
-update(model, 10000)
+update(model, 5000)
 
 params <- c("alpha", "beta", "sigma2", "Y_rep")
 samples <- coda.samples(
     model,
     variable.names = params,
-    n.iter = 10000
+    n.iter = 5000
 )
 
 posterior_jags <- samples |> 
     as_draws_df()
 ```
+
+We first look at summary statistics and trace plots and see that our chains seem to have converged well.
 
 ```{r}
 posterior_jags |> 
@@ -105,7 +115,18 @@ posterior_jags |>
     fmt_number()
 ```
 
+```{r}
+samples |> 
+    mcmc_trace(
+        regex_pars = c("alpha", "beta", "sigma")
+    )
+```
 
+
+
+Then we can use the `bayesplot` package for easy posterior predictive checks. To do this we first create a matrix `y_rep` containing some of the draws from our posterior predictive distribution (PPD) we sampled using JAGS above. We choose to use only a subset of the posterior draws in order to make our plotting go faster.
+
+First we look at the whole distribution of our predictions and compare it to the observed distribution in our data. We notice the observed distribution is right-skewed. This does not necessarily mean we should use a non-normal likelihood. It could also mean we simply didn't capture enough of the variance in the data with the predictor variable available to us.
 
 ```{r}
 y_rep <- posterior_jags |> 
@@ -113,11 +134,57 @@ y_rep <- posterior_jags |>
     resample_draws(ndraws = 200) |> 
     as_draws_matrix()
 
-ppc_dens_overlay(ozone, y_rep)
+ppc_dens_overlay(ozone, y_rep) +
+    labs(
+        title = "Our PPD is less skewed than the observed data"
+    )
 ```
 
+The plots below tell us that the range and standard deviation of predictions are adequate but our model performs very badly on max, min, skew and kurtosis. Kurtosis is a measure of heavy the tails of a distribution is, a higher kurtosis means that the distribution has longer tails (think student-t versus normal). A large positive value of skew means that a distribution slopes longer to the right, a large negative value means it slopes longer to the right and a value of 0 means symmetry. 
+
+
+
 ```{r}
-ppc_stat(ozone, y_rep, stat = max)
+range <- function(x) max(x) - min(x)
+my_stats <- list("max", "min", "range", "sd", "skew", "kurtosi")
+plot_gof_check <- function(check) {
+    ppc_stat(ozone, y_rep, stat = check) +
+        labs(
+            title = check
+        )
+}
+
+my_stats |> 
+    map(plot_gof_check) |> 
+    wrap_plots()
+```
+
+These goodness of fit checks imply that we might need to use a likelihood that has longer tails and is positively skewed. One way to model the data in that way is to model it on the log scale (since all the observed values are > 0) and maybe using a student-t instead of a normal distribution.
+
+Such a model might look something like this in JAGS code
+
+```{r}
+model_string <- textConnection("model{
+    #Likelihood
+    for (i in 1:n) {
+        ##### New likelihood #####
+        ozone[i] ~ dt(mu[i], tau, k)
+        ##### Log link function ##
+        log(mu[i]) = alpha + inprod(X[i, ], beta[])
+        Y_rep[i] ~ dnorm(mu[i], tau)
+    }
+    
+    for (i in 1:p) {
+        beta[i] ~ dnorm(0, 0.001)
+    }
+    
+    alpha ~ dnorm(0, 0.001)
+    tau ~ dgamma(0.01, 0.01)
+    sigma2 = 1 / tau;
+    ##### Prior for k, the degrees of freedom ######
+    k ~ dgamma(0.01, 0.01);
+    
+}")
 ```
 
 ---
@@ -132,72 +199,167 @@ using Bayes factors, DIC and WAIC. Assume the Uniform(0, c) prior for all $\lamb
 
 ---
 
-```{r}
-Y <- c(563, 10)
-N <- c(2820, 27)
 
-data <- list(
-    Y = Y,
-    N = N,
-    c = 1
-)
-
-model_string <- textConnection("model{
-    #Likelihood
-    for (i in 1:2) {
-        Y[i] ~ dpois(N[i] * ifelse(z_0 == 1, lambda_0, lambda[i]))
-        lambda[i] ~ dunif(0, c)
-        like[i] <- dpois(Y[i], lambda[i] * N[i])
-    }
-    
-    z_0 ~ dbern(0.5)
-    lambda_0 ~ dunif(0, c)
-}")
-
-
-model <- jags.model(
-    model_string,
-    data = data,
-    n.chains = 4,
-    quiet = TRUE
-)
-
-update(model, 10000, progress.bar = "none")
-
-params <- c( "z_0", "lambda", "lambda_0")
-samples <- coda.samples(
-    model,
-    variable.names = params,
-    n.iter = 10000,
-    progress.bar = "none"
-)
-
-samples |> 
-    summarise_draws()
-
-    samples |> 
-    mcmc_trace()
-```
 
 
 **Solution:**
 
+There are two ways of calculating the Bayes factors in this assignment: 
+
+1. Since this is a comparison of relatively simple models we can write out the equations for $P(\mathcal M_1 \vert Y)$ and $P(\mathcal M_2 \vert Y)$
+
+$$
+\begin{aligned}
+P(\mathcal M_2 \vert Y) &= \frac{P(Y\vert\mathcal M_2) P(\mathcal M_2)}{P(Y)} \\
+&\propto P(Y\vert \mathcal M_2)P(\mathcal M_2) \\
+&= P(\mathcal M_2)\int_0^c \prod_{i=1}^2f(Y_i \vert \lambda_0)\pi(\lambda_0)d\lambda_0 \\
+&= P(\mathcal M_2)\int_0^c \prod_{i=1}^2f(Y_i \vert \lambda_0)\frac{1}{c} d\lambda_0 \\
+&= \frac{1}{c}P(\mathcal M_2)\int_0^c \prod_{i=1}^2 \frac{(N_i\lambda_0)^{Y_i}e^{-N_i\lambda_0}}{Y_i!} d\lambda_0 \\
+&= \frac1c P(\mathcal M_2) \int_0^c \frac{N_1^{Y_1}N_2^{Y_2}}{Y_1!Y_2!}\lambda_0^{Y_1+Y_2}e^{-(N_1+N_2)\lambda_0}d\lambda_0 \\
+&= \frac1c P(\mathcal M_2) \frac{N_1^{Y_1}N_2^{Y_2}}{Y_1!Y_2!}\int_0^c \lambda_0^{Y_1+Y_2}e^{-(N_1+N_2)\lambda_0}d\lambda_0 
+\end{aligned}
+$$
+
+This looks like the kernel of a Gamma(A, B) distribution with $A = Y_1 + Y_2 + 1$ and $B = N_1 + N_2$. 
+
+$$
+\begin{aligned}
+P(\mathcal M_2 \vert Y) &= \frac1c P(\mathcal M_2) \frac{N_1^{Y_1}N_2^{Y_2}}{Y_1!Y_2!} \frac{\Gamma(A)}{B^A} \int_0^c \frac{B^A}{\Gamma(A)} \lambda_0^{A - 1}e^{-B\lambda_0}d\lambda_0 \\
+&= \frac1c P(\mathcal M_2) \frac{N_1^{Y_1}N_2^{Y_2}}{Y_1!Y_2!} \frac{(Y_1 + Y_2)!}{(N_1 + N_2)^{Y_1 + Y_2 + 1}} P(\lambda_0 < c \vert Y),
+\end{aligned}
+$$
+
+where $\lambda_0 \sim \mathrm{Gamma}(Y_1 + Y_2 + 1, N_1 + N_2)$.
+
+In a similar way we end up getting
+
+$$
+\begin{aligned}
+P(\mathcal M_1 \vert Y) &= \frac{1}{c^2} P(\mathcal M_1) \frac{1}{N_1N_2} \int_0^c \frac{N_1^{Y_1+1}}{\Gamma(Y_1+1)} \lambda_1^{Y_1 + 1 - 1}e^{-N_1\lambda_1}d\lambda_1 \int_0^c \frac{N_2^{Y_2+1}}{\Gamma(Y_2+1)} \lambda_2^{Y_2 + 1 - 1}e^{-N_2\lambda_2}d\lambda_2 \\
+&= \frac{1}{c^2} P(\mathcal M_1)\frac{1}{N_1N_2} P(\lambda_1 < c \vert Y) P(\lambda_2 < c \vert Y),
+\end{aligned}
+$$
+
+where $\lambda_1 \sim \mathrm{Gamma}(Y_1 + 1, N_1)$ and $\lambda_2 \sim \mathrm{Gamma}(Y_2 + 1, N_2)$. Writing up the ratio of these two, we get
+
+$$
+\begin{aligned}
+BF &= \frac{P(Y\vert \mathcal M_1)}{P(Y \vert \mathcal M_2)} \\
+&= \frac{P(\mathcal M_1 \vert Y) / P(\mathcal M_1)}{P(\mathcal M_2 \vert Y) / P(\mathcal M_2)} \\
+&= \frac{\frac{1}{c^2} \frac{1}{N_1N_2} P(\lambda_1 < c \vert Y) P(\lambda_2 < c \vert Y)}{\frac1c \frac{N_1^{Y_1}N_2^{Y_2}}{Y_1!Y_2!} \frac{\Gamma(A)}{B^A} P(\lambda_0 < c \vert Y)} \\
+&= \frac1c \frac{Y_1!Y_2!}{N_1^{Y_1+1}N_2^{Y_2+1}} \frac{B^A}{\Gamma(A)} \frac{P(\lambda_1 < c \vert Y) P(\lambda_2 < c \vert Y)}{P(\lambda_0 < c \vert Y)} \\
+&= \frac1c \frac{Y_1!Y_2!}{(Y_1+Y_2)!} \frac{(N_1+N_2)^{Y_1+Y_2+1}}{N_1^{Y_1+1}N_2^{Y_2+1}} \frac{P(\lambda_1 < c \vert Y) P(\lambda_2 < c \vert Y)}{P(\lambda_0 < c \vert Y)},
+\end{aligned}
+$$
+
+where $\lambda_0 \sim \mathrm{Gamma}(Y_1 + Y_2 + 1, N_1 + N_2)$, $\lambda_1 \sim \mathrm{Gamma}(Y_1 + 1, N_1)$ and $\lambda_2 \sim \mathrm{Gamma}(Y_2 + 1, N_2)$
+
+Writing this as an R function, we get
+
 ```{r}
-fit_model <- function(c) {
+#| echo: fenced
+bf <- function(C, Y = c(563, 10), N = c(2820, 27)) {
+    
+    out <- lfactorial(Y[1]) + lfactorial(Y[2]) - lfactorial(sum(Y))
+    out <- out + (sum(Y) + 1) * log(sum(N)) - sum((Y + 1) * log(N))
+    out <- out + pgamma(C, shape = Y[1] + 1, rate = N[1], log.p = TRUE)
+    out <- out + pgamma(C, shape = Y[2] + 1, rate = N[2], log.p = TRUE)
+    out <- out - pgamma(C, shape = sum(Y) + 1, rate = sum(N), log.p = TRUE)
+    out <- out - log(C)
+    
+    exp(out)
+}
+
+bf(C = 1)
+bf(C = 10)
+```
+
+2. The other possibility is to use JAGS to calculate the posterior probability of each model for us and then calculate the Bayes factor based on the posterior distribution. To do this, we add an auxiliary variable, $z$, to our sampler and write the two models into the same sampler as below. For each sample in our posterior where $z=1$, our sampler will sample from $\mathcal M_2$ and otherwise sample from $\mathcal M_2$. If our sampler converges, we can then calculate the posterior mean of $z$ as a close approximation to the Bayes factor.
+
+```{r}
+#| eval: false
+#| echo: fenced
+model_string_bf <- textConnection("model{
+    #Likelihood
+    for (i in 1:2) {
+        Y[i] ~ dpois(N[i] * ifelse(z == 1, lambda_0, lambda[i]))
+        lambda[i] ~ dunif(0, C)
+        like[i] <- dpois(Y[i], lambda[i] * N[i])
+    }
+    
+    z ~ dbern(0.5)
+    lambda_0 ~ dunif(0, C)
+}")
+```
+
+
+```{r}
+#| code-fold: true
+bf_jags <- function(C, Y = c(563, 10), N = c(2820, 27)) {
     Y <- c(563, 10)
     N <- c(2820, 27)
     
     data <- list(
         Y = Y,
         N = N,
-        c = c
+        C = C
+    )
+    
+    model_string_bf <- textConnection("model{
+    #Likelihood
+    for (i in 1:2) {
+        Y[i] ~ dpois(N[i] * ifelse(z == 1, lambda_0, lambda[i]))
+        lambda[i] ~ dunif(0, C)
+        like[i] <- dpois(Y[i], lambda[i] * N[i])
+    }
+    
+    z ~ dbern(0.5)
+    lambda_0 ~ dunif(0, C)
+}")
+    
+    
+    model_bf <- jags.model(
+        model_string_bf,
+        data = data,
+        n.chains = 4,
+        quiet = TRUE
+    )
+    
+    update(model_bf, 100000, progress.bar = "none")
+    
+    samples_bf <- coda.samples(
+        model_bf,
+        variable.names = c("z"),
+        n.iter = 100000,
+        progress.bar = "none"
+    )
+    
+    p_m2 <- samples_bf |> 
+        as_draws_df() |> 
+        subset_draws(variable = "z") |> 
+        summarise_draws(mean) |> 
+        pull(mean)
+    
+    p_m1 <- 1 - p_m2
+    
+    p_m1 / (1 - p_m1)
+}
+```
+
+```{r}
+#| code-fold: true
+fit_model <- function(C, Y = c(563, 10), N = c(2820, 27)) {
+    data <- list(
+        Y = Y,
+        N = N,
+        C = C
     )
     
     model_string1 <- textConnection("model{
     #Likelihood
     for (i in 1:2) {
         Y[i] ~ dpois(N[i] * lambda[i])
-        lambda[i] ~ dunif(0, c)
+        lambda[i] ~ dunif(0, C)
         like[i] <- dpois(Y[i], lambda[i] * N[i])
     }
 }")
@@ -208,7 +370,7 @@ fit_model <- function(c) {
         Y[i] ~ dpois(N[i] * lambda)
         like[i] <- dpois(Y[i], lambda * N[i])
     }
-    lambda ~ dunif(0, c)
+    lambda ~ dunif(0, C)
 }")
     
     model1 <- jags.model(
@@ -244,14 +406,13 @@ fit_model <- function(c) {
     Pw <- sum(apply(log(like), 2, var))
     WAIC1 <- -2 * sum(log(fbar)) + 2 * Pw
     
-    lpp <- 
-        
-        
-        samples <- coda.samples(
-            model2,
-            variable.names = params,
-            n.iter = 10000
-        )
+    
+    samples <- coda.samples(
+        model2,
+        variable.names = params,
+        n.iter = 10000,
+        progress.bar = "none"
+    )
     
     DIC2 <- dic.samples(model2, n.iter = 50000, progress.bar = "none")
     DIC2 <- sum(DIC2$deviance + DIC2$penalty)
@@ -261,27 +422,86 @@ fit_model <- function(c) {
     Pw <- sum(apply(log(like), 2, var))
     WAIC2 <- -2 * sum(log(fbar)) + 2 * Pw
     
+    bf <- bf_jags(C, Y, N)
+    
     tibble(
         model = c("Two lambdas", "One lambda"),
+        BF = c(bf, 1 / bf),
         DIC = c(DIC1, DIC2),
         WAIC = c(WAIC1, WAIC2)
     )
 }
+```
 
+
+```{r}
 results <- tibble(
-    c = c(1, 10)
+    C = c(1, 10)
 ) |> 
     mutate(
-        results = map(c, fit_model)
+        results = map(C, fit_model)
     )
 
 results |> 
     unnest(results) |> 
     mutate(
-        c = str_c("c = ", c)
+        C = str_c("c = ", C)
     ) |> 
-    group_by(c) |> 
-    gt()
+    group_by(C) |> 
+    gt() |> 
+    fmt_number(decimals = 3) |> 
+    cols_label(
+        BF = "Bayes Factor",
+        model = "Model"
+    )
+```
+
+```{r}
+# sampling_distribution <- crossing(
+#     iter = 1:500,
+#     C = c(1, 10),
+#     N = c(2820, 27),
+# ) |> 
+#     mutate(
+#         Y = rpois(2, 0.2 * N),
+#         .by = c(iter, C)
+#     ) |> 
+#     group_by(iter, C) |> 
+#     reframe(
+#         results = fit_model(unique(C), Y, N)
+#     ) 
+# 
+# sampling_distribution |> write_rds("sampling_distribution.rds")
+
+read_rds("sampling_distribution.rds") |> 
+    unnest(results) |> 
+    filter(model == "Two lambdas") |> 
+    select(iter, C, simul = BF) |> 
+    inner_join(
+        results |> 
+            unnest(results) |> 
+            filter(model == "Two lambdas") |> 
+            select(C, obs = BF),
+        by = join_by(C)
+    ) |> 
+    mutate(
+        C = str_c("c = ", C)
+    ) |> 
+    ggplot() +
+    geom_histogram(aes(x = simul), alpha = 0.5) +
+    geom_vline(
+        aes(xintercept = obs),
+        lty = 2,
+        linewidth = 0.5,
+        alpha = 0.5
+    ) +
+    facet_grid(cols = vars(C), scales = "free") +
+    labs(
+        title = "Sampling distribution of the Bayes Factor for Model 1",
+        subtitle = "Calculated by sampling data from Model 2 and rerunning our analysis many times.",
+        x = "Distribution of simulated Bayes Factors (histogram)\nand observed Bayes Factors (broken lines)",
+        y = NULL
+    )
 ```
 
 

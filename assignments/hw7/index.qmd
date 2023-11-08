@@ -37,206 +37,47 @@ theme_set(theme_classic())
 
 # 2
 
+Download the `airquality` dataset in R. Fit the following model to the data
+
+$$
+\mathrm{ozone_i} \sim \mathrm{Normal}(\beta_1 + \beta_2\mathrm{solar.R_i} + \beta_3\mathrm{temp_i} + \beta_4\mathrm{wind_i}, \sigma^2)
+$$
+
+Use posterior predictive checks to verify that the model fits well. If you find model misspecification, suggest (but do not fit) alternatives.
+
 ---
 
 **Solution:**
-
-```{r}
-d <- na.omit(airquality)
-ozone <- d$Ozone
-X <- d[ , c("Solar.R", "Wind", "Temp")] |> as.matrix() |> scale()
-
-data <- list(
-    ozone = ozone,
-    X = X,
-    n = nrow(X),
-    p = ncol(X)
-)
-
-model_string <- textConnection("model{
-    #Likelihood
-    for (i in 1:n) {
-        ozone[i] ~ dnorm(mu[i], tau)
-        mu[i] = alpha + inprod(X[i, ], beta[])
-        Y_rep[i] ~ dnorm(mu[i], tau)
-    }
-    
-    for (i in 1:p) {
-        beta[i] ~ dnorm(0, 0.001)
-    }
-    
-    alpha ~ dnorm(0, 0.001)
-    tau ~ dgamma(0.01, 0.01)
-    sigma2 = 1 / tau;
-    
-}")
-
-model <- jags.model(
-    model_string,
-    data = data,
-    n.chains = 4,
-    quiet = TRUE
-)
-
-update(model, 10000)
-
-params <- c("alpha", "beta", "sigma2", "Y_rep")
-samples <- coda.samples(
-    model,
-    variable.names = params,
-    n.iter = 10000
-)
-
-posterior_jags <- samples |> 
-    as_draws_df()
-```
-
-```{r}
-posterior_jags |> 
-    subset_draws(variable = c("alpha", "beta", "sigma2")) |> 
-    summarise_draws() |> 
-    gt() |> 
-    fmt_number()
-```
-
-
-
-```{r}
-y_rep <- posterior_jags |> 
-    subset_draws(variable = "Y_rep") |> 
-    resample_draws(ndraws = 200) |> 
-    as_draws_matrix()
-
-ppc_dens_overlay(ozone, y_rep)
-```
-
-```{r}
-ppc_stat(ozone, y_rep, stat = max)
-```
-
-
-
-```{r}
-posterior_jags |> 
-    subset_draws(variable = c("alpha", "beta")) |> 
-    thin_draws(thin = 100)
-```
-
 
 
 ---
 
 # 4
 
+Use the "Mr. October" data. Compare the two models:
+
+![](fig1.png)
+
+using Bayes factors, DIC and WAIC. Assume the Uniform(0, c) prior for all $\lambda_j$ and compare the results for $c = 1$ and $c = 10$.
+
 ---
 
 **Solution:**
-
-```{r}
-fit_model <- function(c) {
-    Y <- c(563, 10)
-    N <- c(2820, 27)
-    
-    data <- list(
-        Y = Y,
-        N = N,
-        c = c
-    )
-    
-    model_string1 <- textConnection("model{
-    #Likelihood
-    for (i in 1:2) {
-        Y[i] ~ dpois(N[i] * lambda[i])
-        lambda[i] ~ dunif(0, c)
-        like[i] <- dpois(Y[i], lambda[i] * N[i])
-    }
-}")
-    
-    model_string2 <- textConnection("model{
-    #Likelihood
-    for (i in 1:2) {
-        Y[i] ~ dpois(N[i] * lambda)
-        like[i] <- dpois(Y[i], lambda * N[i])
-    }
-    lambda ~ dunif(0, c)
-}")
-    
-    model1 <- jags.model(
-        model_string1,
-        data = data,
-        n.chains = 4,
-        quiet = TRUE
-    )
-    
-    model2 <- jags.model(
-        model_string2,
-        data = data,
-        n.chains = 4,
-        quiet = TRUE
-    )
-    
-    update(model1, 10000, progress.bar = "none")
-    update(model2, 10000, progress.bar = "none")
-    
-    params <- c( "like")
-    samples <- coda.samples(
-        model1,
-        variable.names = params,
-        n.iter = 10000,
-        progress.bar = "none"
-    )
-    
-    DIC1 <- dic.samples(model1, n.iter = 50000, progress.bar = "none")
-    DIC1 <- sum(DIC1$deviance + DIC1$penalty)
-    
-    like <- rbind(samples[[1]], samples[[2]], samples[[3]], samples[[4]])
-    fbar <- colMeans(like)
-    Pw <- sum(apply(log(like), 2, var))
-    WAIC1 <- -2 * sum(log(fbar)) + 2 * Pw
-    
-    
-    samples <- coda.samples(
-        model2,
-        variable.names = params,
-        n.iter = 10000
-    )
-    
-    DIC2 <- dic.samples(model2, n.iter = 50000, progress.bar = "none")
-    DIC2 <- sum(DIC2$deviance + DIC2$penalty)
-    
-    like <- rbind(samples[[1]], samples[[2]], samples[[3]], samples[[4]])
-    fbar <- colMeans(like)
-    Pw <- sum(apply(log(like), 2, var))
-    WAIC2 <- -2 * sum(log(fbar)) + 2 * Pw
-    
-    tibble(
-        model = c("Two lambdas", "One lambda"),
-        DIC = c(DIC1, DIC2),
-        WAIC = c(WAIC1, WAIC2)
-    )
-}
-
-results <- tibble(
-    c = c(0.1, 1, 10)
-) |> 
-    mutate(
-        results = map(c, fit_model)
-    )
-
-results |> 
-    unnest(results) |> 
-    mutate(
-        c = str_c("c = ", c)
-    ) |> 
-    group_by(c) |> 
-    gt()
-```
 
 
 ---
 
 
 # 10
+
+Download the `WWWusage` dataset in R. Using data from times $t = 5, \dots, 100$ as outcomes, fit the autoregressive model
+
+$$
+Y_t \vert Y_{t-1}, \dots, Y_1 \sim \mathrm{Normal}(\beta_0 + \beta_1 Y_{t-1} + \dots + \beta_L Y_{t-L}, \sigma^2),
+$$
+
+where $Y_t$ is the WWW usage at time $t$. Compare the models with $L = 1, 2, 3, 4$ and select the best time lag L.
+
 
 ---
 

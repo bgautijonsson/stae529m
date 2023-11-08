@@ -323,7 +323,18 @@ for $i = 1, \dots, n$ and $j = 1, \dots, m$. Assuming conjugate priors $\sigma^2
 
 **Solution:**
 
+$$
+\begin{aligned}
+\alpha_j \vert rest &\sim \mathrm{Normal}\left( \frac{\sum_{i=1}^n Y_{ij}}{n + \sigma^2/\tau^2}, \frac{\sigma^2}{n + \sigma^2/\tau^2}\right) \\
+\sigma^2 \vert rest &\sim \mathrm{InvGamma}\left(nm/2 + a, \sum_{i=1}^{n} \sum_{j=1}^{m}(Y_{ij} - a)^2/2 + b\right) \\
+\tau^2\vert rest &\sim \mathrm{InvGamma}\left(m/2+a, \sum_{j=1}^{m}\alpha^2_j/2 + b\right)
+\end{aligned}
+$$
+
+To implement the Gibbs sampler we first choose initial values for the parameters, then we go through the parameters sequentially and sample from their full conditional distributions outlined above.
+
 ---
+
 
 
 # 8
