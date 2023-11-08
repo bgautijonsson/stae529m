@@ -274,7 +274,7 @@ bf(C = 1)
 bf(C = 10)
 ```
 
-2. The other possibility is to use JAGS to calculate the posterior probability of each model for us and then calculate the Bayes factor based on the posterior distribution. To do this, we add an auxiliary variable, $z$, to our sampler and write the two models into the same sampler as below. For each sample in our posterior where $z=1$, our sampler will sample from $\mathcal M_2$ and otherwise sample from $\mathcal M_2$. If our sampler converges, we can then calculate the posterior mean of $z$ as a close approximation to the Bayes factor.
+2. The other possibility is to use JAGS to approximate the posterior probability of each model for us and then calculate the Bayes factor based on the posterior distribution. To do this, we add an auxiliary variable, $z$, to our sampler and write the two models into the same sampler as below. For each sample in our posterior where $z=1$, our sampler will sample from $\mathcal M_2$ and otherwise sample from $\mathcal M_2$. If our sampler converges, we can then calculate the posterior mean of $z$ as a close approximation to the Bayes factor.
 
 ```{r}
 #| eval: false
@@ -291,6 +291,8 @@ model_string_bf <- textConnection("model{
     lambda_0 ~ dunif(0, C)
 }")
 ```
+
+We now define two functions for comparing the two models. Expand the code blocks to see the code.
 
 
 ```{r}
@@ -325,12 +327,13 @@ bf_jags <- function(C, Y = c(563, 10), N = c(2820, 27)) {
         quiet = TRUE
     )
     
-    update(model_bf, 100000, progress.bar = "none")
+    update(model_bf, 10000, progress.bar = "none")
     
     samples_bf <- coda.samples(
         model_bf,
         variable.names = c("z"),
-        n.iter = 100000,
+        n.iter = 300000,
+        thin = 10,
         progress.bar = "none"
     )
     
@@ -433,6 +436,7 @@ fit_model <- function(C, Y = c(563, 10), N = c(2820, 27)) {
 }
 ```
 
+The table below shows us the results. We see that the Bayes factors we calculated using JAGS are not far away from the correct values calculated above.
 
 ```{r}
 results <- tibble(
@@ -456,54 +460,6 @@ results |>
     )
 ```
 
-```{r}
-# sampling_distribution <- crossing(
-#     iter = 1:500,
-#     C = c(1, 10),
-#     N = c(2820, 27),
-# ) |> 
-#     mutate(
-#         Y = rpois(2, 0.2 * N),
-#         .by = c(iter, C)
-#     ) |> 
-#     group_by(iter, C) |> 
-#     reframe(
-#         results = fit_model(unique(C), Y, N)
-#     ) 
-# 
-# sampling_distribution |> write_rds("sampling_distribution.rds")
-
-read_rds("sampling_distribution.rds") |> 
-    unnest(results) |> 
-    filter(model == "Two lambdas") |> 
-    select(iter, C, simul = BF) |> 
-    inner_join(
-        results |> 
-            unnest(results) |> 
-            filter(model == "Two lambdas") |> 
-            select(C, obs = BF),
-        by = join_by(C)
-    ) |> 
-    mutate(
-        C = str_c("c = ", C)
-    ) |> 
-    ggplot() +
-    geom_histogram(aes(x = simul), alpha = 0.5) +
-    geom_vline(
-        aes(xintercept = obs),
-        lty = 2,
-        linewidth = 0.5,
-        alpha = 0.5
-    ) +
-    facet_grid(cols = vars(C), scales = "free") +
-    labs(
-        title = "Sampling distribution of the Bayes Factor for Model 1",
-        subtitle = "Calculated by sampling data from Model 2 and rerunning our analysis many times.",
-        x = "Distribution of simulated Bayes Factors (histogram)\nand observed Bayes Factors (broken lines)",
-        y = NULL
-    )
-```
-
 
 ---
 
@@ -521,7 +477,7 @@ where $Y_t$ is the WWW usage at time $t$. Compare the models with $L = 1, 2, 3, 
 
 ---
 
-**Solution:**
+**Solution:** We define the function `fit_ar_model()` below that allows us to skip writing extra code.
 
 ```{r}
 fit_ar_model <- function(L) {
@@ -581,7 +537,11 @@ fit_ar_model <- function(L) {
         WAIC = WAIC
     )
 }
+```
 
+We then apply the `fit_ar_model()` four times to get results for the four models. The table below tells us that the model that uses the last four days as predictors fits the data best.
+
+```{r}
 results <- map_dfr(1:4, fit_ar_model)
 
 results |>

@@ -271,13 +271,13 @@ samples <- coda.samples(
 
 ```
 
-The plot below shows the posterior distribution of the nation-wide reduction in homicides when all counties implement all 25 gun laws, versus if all counties implement zero gun laws. We see that 98% of the posterior mass lies beneath 0, so the model still estimates a 2% chance that implementing all gun laws will not reduce homicides by a measurable amount.
+The plot below shows the posterior distribution of the nation-wide reduction in homicides when all counties implement all 25 gun laws, versus if all counties implement zero gun laws. The output below shows us the posterior probability that the number of deaths would be lower with 25 gun laws than with zero gun laws.
 
 ```{r}
 samples |> 
   as_draws_df() |> 
   subset_draws(variable = "national_difference") |> 
-  summarise_draws("P(x < 0)" = function(x) mean(x < 0))
+  summarise_draws("P(25 laws < 0 laws)" = function(x) mean(x < 0))
 ```
 
 The plot below shows the posterior distribution of the reduction in homicides.
