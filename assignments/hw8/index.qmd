@@ -1,0 +1,87 @@
+---
+title: "Homework #8"
+subtitle: "Exercise from Chapter 6.5: 4"
+description: |
+    **Assigned:** Friday, November 3rd, 2023 <br>
+    **Due:** Friday, November 10th, 2023
+author: 
+    -   name: Brynjólfur Gauti Guðrúnar Jónsson
+        email: brynjolfur@hi.is
+        url: https://www.hi.is/staff/brynjolfur
+        affiliation: 
+        -   name: School of Engineering and Natural Sciences, University of Iceland
+            city: Reykjavík
+            url: https://english.hi.is/school_of_engineering_and_natural_sciences
+# Change this to pdf if you'd rather work in that format
+format: html 
+editor: source
+title-block-banner: true
+#### The setting below makes our HTML document self-contained so that we can turn it in ####
+#### UNCOMMENT THE LONE BELOW SO THAT YOU CAN TURN IN YOUR HTML DOCUMENT ###################
+# embed-resources: true 
+---
+
+{{< downloadthis index.qmd dname="hw8" label="Download the Quarto document used to render this file" type=primary class=downloadbutton >}}
+
+```{r}
+#| echo: fenced
+#| output: hide
+library(tidyverse)
+library(ggplot2)
+library(rjags)
+library(posterior)
+library(bayesplot)
+library(gt)
+theme_set(theme_classic())
+```
+
+
+# 4
+
+Download the marathon data of Section 6.4 from the course webpage. Let $Y_{ij}$ be the speed of runner $i$ in mile $j$. Fit the hierarchical model
+
+$$
+\begin{aligned}
+Y_{i1} &\sim \mathrm{Normal}(\mu_i, \sigma_0^2) \\
+Y_{ij} \vert Y_{ij-1} &\sim \mathrm{Normal}\left(\mu_i + \rho_i(Y_{ij-1} - \mu_i), \sigma_i^2\right) \\
+\mu_i &\sim \mathrm{Normal}(\theta_1, \theta_2) \\
+\rho_i &\sim \mathrm{Normal}(\theta_3, \theta_4) \\
+\sigma_i^2 &\sim \mathrm{InvGamma}(\theta_5, \theta_6)
+\end{aligned}
+$$
+
+
+
+a. Drag a DAG for this model and give an interpretation for each parameter in the model.
+
+---
+
+**Solution:**
+
+---
+
+b. Select uninformative prior distributions for $\theta_1, \dots, \theta_6$.
+
+---
+
+**Solution:**
+
+---
+
+c. Fit the model in `JAGS` using three chains each with 25,000 iterationsand thoroughly assess MCMC convergence for the $\theta_j$.
+
+---
+
+**Solution:**
+
+---
+
+d. Are the data informative about the $\theta_j$? That is, are the posterior distributions more concentrated than the prior distributions?
+
+---
+
+**Solution:**
+
+---
+
+e. In light of *c.* and *d.*, are there any simplifications you might consider and if so, how would you compare the full and simplified models?

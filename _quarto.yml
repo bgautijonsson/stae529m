@@ -18,6 +18,7 @@ website:
           - assignments/hw5/index.qmd
           - assignments/hw6/index.qmd
           - assignments/hw7/index.qmd
+          - assignments/hw8/index.qmd
       - section: "Solutions"
         contents:
           - assignments/hw1/solution/index.qmd

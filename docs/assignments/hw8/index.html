@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Brynjólfur Gauti Guðrúnar Jónsson">
+<meta name="description" content="Assigned: Friday, November 3rd, 2023   Due: Friday, November 10th, 2023">
 
-<title>STÆ529M</title>
+<title>STÆ529M - Homework #8</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,25 +22,60 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/quarto-contrib/downloadthis-1.9.1/downloadthis.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -66,6 +103,8 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 </head>
 
@@ -78,9 +117,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">
-      STÆ529M
-      </li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../assignments/hw1/index.html">Assignments</a></li><li class="breadcrumb-item"><a href="../../assignments/hw8/index.html">Homework #8</a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -90,12 +127,49 @@ ul.task-list li input[type="checkbox"] {
   </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<header id="title-block-header" class="quarto-title-block default page-columns page-full"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../assignments/hw1/index.html">Assignments</a></li><li class="breadcrumb-item"><a href="../../assignments/hw8/index.html">Homework #8</a></li></ol></nav>
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Homework #8</h1>
+            <p class="subtitle lead">Exercise from Chapter 6.5: 4</p>
+                  <div>
+        <div class="description">
+          <p><strong>Assigned:</strong> Friday, November 3rd, 2023 <br> <strong>Due:</strong> Friday, November 10th, 2023</p>
+        </div>
+      </div>
+                </div>
+  </div>
+    
+  <div class="quarto-title-meta-author">
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-heading">Affiliation</div>
+    
+      <div class="quarto-title-meta-contents">
+      <p class="author"><a href="https://www.hi.is/staff/brynjolfur">Brynjólfur Gauti Guðrúnar Jónsson</a> <a href="mailto:brynjolfur@hi.is" class="quarto-title-author-email"><i class="bi bi-envelope"></i></a> </p>
+    </div>
+      <div class="quarto-title-meta-contents">
+          <p class="affiliation">
+              <a href="https://english.hi.is/school_of_engineering_and_natural_sciences">
+              School of Engineering and Natural Sciences, University of Iceland
+              </a>
+            </p>
+        </div>
+      </div>
+
+  <div class="quarto-title-meta">
+
+        
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">STÆ529M</a> 
+      <a href="../../">STÆ529M</a> 
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -116,49 +190,49 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./assignments/hw1/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../../assignments/hw1/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Homework #1</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./assignments/hw2/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../../assignments/hw2/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Homework #2</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./assignments/hw3/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../../assignments/hw3/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Homework #3</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./assignments/hw4/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../../assignments/hw4/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Homework #4</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./assignments/hw5/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../../assignments/hw5/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Homework #5</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./assignments/hw6/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../../assignments/hw6/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Homework #6</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./assignments/hw7/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../../assignments/hw7/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Homework #7</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./assignments/hw8/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../../assignments/hw8/index.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Homework #8</span></a>
   </div>
 </li>
@@ -175,43 +249,43 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./assignments/hw1/solution/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../../assignments/hw1/solution/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Homework #1 (Solution)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./assignments/hw2/solution/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../../assignments/hw2/solution/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Homework #2 (Solution)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./assignments/hw3/solution/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../../assignments/hw3/solution/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Homework #3 (Solution)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./assignments/hw4/solution/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../../assignments/hw4/solution/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Homework #4 (Solution)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./assignments/hw5/solution/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../../assignments/hw5/solution/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Homework #5 (Solution)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./assignments/hw6/solution/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../../assignments/hw6/solution/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Homework #6 (Solution)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./assignments/hw7/solution/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../../assignments/hw7/solution/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Homework #7 (Solution)</span></a>
   </div>
 </li>
@@ -224,40 +298,74 @@ ul.task-list li input[type="checkbox"] {
 <!-- margin-sidebar -->
     
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content quarto-banner-title-block" id="quarto-document-content">
 
 
 
 
-<section id="bayesian-data-analysis-stæ529m" class="level1">
-<h1>Bayesian Data Analysis (STÆ529M)</h1>
-<p>This page contains Quarto templates for the assignments as well as solutions when they have been made available.</p>
-<p>On each assignment/solution’s page there is a button that can be clicked in order to download the template for that assignment/solution. The student can then write their solution into the premade Quarto template and render it to HTML for turnin if they wish.</p>
+
+<p><a href="#dnldts31821" onclick="fetch('data:text/plain;base64,LS0tCnRpdGxlOiAiSG9tZXdvcmsgIzgiCnN1YnRpdGxlOiAiRXhlcmNpc2UgZnJvbSBDaGFwdGVyIDYuNTogNCIKZGVzY3JpcHRpb246IHwKICAgICoqQXNzaWduZWQ6KiogRnJpZGF5LCBOb3ZlbWJlciAzcmQsIDIwMjMgPGJyPgogICAgKipEdWU6KiogRnJpZGF5LCBOb3ZlbWJlciAxMHRoLCAyMDIzCmF1dGhvcjogCiAgICAtICAgbmFtZTogQnJ5bmrDs2xmdXIgR2F1dGkgR3XDsHLDum5hciBKw7Nuc3NvbgogICAgICAgIGVtYWlsOiBicnluam9sZnVyQGhpLmlzCiAgICAgICAgdXJsOiBodHRwczovL3d3dy5oaS5pcy9zdGFmZi9icnluam9sZnVyCiAgICAgICAgYWZmaWxpYXRpb246IAogICAgICAgIC0gICBuYW1lOiBTY2hvb2wgb2YgRW5naW5lZXJpbmcgYW5kIE5hdHVyYWwgU2NpZW5jZXMsIFVuaXZlcnNpdHkgb2YgSWNlbGFuZAogICAgICAgICAgICBjaXR5OiBSZXlramF2w61rCiAgICAgICAgICAgIHVybDogaHR0cHM6Ly9lbmdsaXNoLmhpLmlzL3NjaG9vbF9vZl9lbmdpbmVlcmluZ19hbmRfbmF0dXJhbF9zY2llbmNlcwojIENoYW5nZSB0aGlzIHRvIHBkZiBpZiB5b3UnZCByYXRoZXIgd29yayBpbiB0aGF0IGZvcm1hdApmb3JtYXQ6IGh0bWwgCmVkaXRvcjogc291cmNlCnRpdGxlLWJsb2NrLWJhbm5lcjogdHJ1ZQojIyMjIFRoZSBzZXR0aW5nIGJlbG93IG1ha2VzIG91ciBIVE1MIGRvY3VtZW50IHNlbGYtY29udGFpbmVkIHNvIHRoYXQgd2UgY2FuIHR1cm4gaXQgaW4gIyMjIwojIyMjIFVOQ09NTUVOVCBUSEUgTE9ORSBCRUxPVyBTTyBUSEFUIFlPVSBDQU4gVFVSTiBJTiBZT1VSIEhUTUwgRE9DVU1FTlQgIyMjIyMjIyMjIyMjIyMjIyMjIwojIGVtYmVkLXJlc291cmNlczogdHJ1ZSAKLS0tCgp7ezwgZG93bmxvYWR0aGlzIGluZGV4LnFtZCBkbmFtZT0iaHc4IiBsYWJlbD0iRG93bmxvYWQgdGhlIFF1YXJ0byBkb2N1bWVudCB1c2VkIHRvIHJlbmRlciB0aGlzIGZpbGUiIHR5cGU9cHJpbWFyeSBjbGFzcz1kb3dubG9hZGJ1dHRvbiA+fX0KCmBgYHtyfQojfCBlY2hvOiBmZW5jZWQKI3wgb3V0cHV0OiBoaWRlCmxpYnJhcnkodGlkeXZlcnNlKQpsaWJyYXJ5KGdncGxvdDIpCmxpYnJhcnkocmphZ3MpCmxpYnJhcnkocG9zdGVyaW9yKQpsaWJyYXJ5KGJheWVzcGxvdCkKbGlicmFyeShndCkKdGhlbWVfc2V0KHRoZW1lX2NsYXNzaWMoKSkKYGBgCgoKIyA0CgpEb3dubG9hZCB0aGUgbWFyYXRob24gZGF0YSBvZiBTZWN0aW9uIDYuNCBmcm9tIHRoZSBjb3Vyc2Ugd2VicGFnZS4gTGV0ICRZX3tpan0kIGJlIHRoZSBzcGVlZCBvZiBydW5uZXIgJGkkIGluIG1pbGUgJGokLiBGaXQgdGhlIGhpZXJhcmNoaWNhbCBtb2RlbAoKJCQKXGJlZ2lue2FsaWduZWR9Cllfe2kxfSAmXHNpbSBcbWF0aHJte05vcm1hbH0oXG11X2ksIFxzaWdtYV8wXjIpIFxcCllfe2lqfSBcdmVydCBZX3tpai0xfSAmXHNpbSBcbWF0aHJte05vcm1hbH1cbGVmdChcbXVfaSArIFxyaG9faShZX3tpai0xfSAtIFxtdV9pKSwgXHNpZ21hX2leMlxyaWdodCkgXFwKXG11X2kgJlxzaW0gXG1hdGhybXtOb3JtYWx9KFx0aGV0YV8xLCBcdGhldGFfMikgXFwKXHJob19pICZcc2ltIFxtYXRocm17Tm9ybWFsfShcdGhldGFfMywgXHRoZXRhXzQpIFxcClxzaWdtYV9pXjIgJlxzaW0gXG1hdGhybXtJbnZHYW1tYX0oXHRoZXRhXzUsIFx0aGV0YV82KQpcZW5ke2FsaWduZWR9CiQkCgoKCmEuIERyYWcgYSBEQUcgZm9yIHRoaXMgbW9kZWwgYW5kIGdpdmUgYW4gaW50ZXJwcmV0YXRpb24gZm9yIGVhY2ggcGFyYW1ldGVyIGluIHRoZSBtb2RlbC4KCi0tLQoKKipTb2x1dGlvbjoqKgoKLS0tCgpiLiBTZWxlY3QgdW5pbmZvcm1hdGl2ZSBwcmlvciBkaXN0cmlidXRpb25zIGZvciAkXHRoZXRhXzEsIFxkb3RzLCBcdGhldGFfNiQuCgotLS0KCioqU29sdXRpb246KioKCi0tLQoKYy4gRml0IHRoZSBtb2RlbCBpbiBgSkFHU2AgdXNpbmcgdGhyZWUgY2hhaW5zIGVhY2ggd2l0aCAyNSwwMDAgaXRlcmF0aW9uc2FuZCB0aG9yb3VnaGx5IGFzc2VzcyBNQ01DIGNvbnZlcmdlbmNlIGZvciB0aGUgJFx0aGV0YV9qJC4KCi0tLQoKKipTb2x1dGlvbjoqKgoKLS0tCgpkLiBBcmUgdGhlIGRhdGEgaW5mb3JtYXRpdmUgYWJvdXQgdGhlICRcdGhldGFfaiQ/IFRoYXQgaXMsIGFyZSB0aGUgcG9zdGVyaW9yIGRpc3RyaWJ1dGlvbnMgbW9yZSBjb25jZW50cmF0ZWQgdGhhbiB0aGUgcHJpb3IgZGlzdHJpYnV0aW9ucz8KCi0tLQoKKipTb2x1dGlvbjoqKgoKLS0tCgplLiBJbiBsaWdodCBvZiAqYy4qIGFuZCAqZC4qLCBhcmUgdGhlcmUgYW55IHNpbXBsaWZpY2F0aW9ucyB5b3UgbWlnaHQgY29uc2lkZXIgYW5kIGlmIHNvLCBob3cgd291bGQgeW91IGNvbXBhcmUgdGhlIGZ1bGwgYW5kIHNpbXBsaWZpZWQgbW9kZWxzPwo=').then(res => res.blob()).then(blob => {
+      const downloadURL = window.URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      document.body.appendChild(a);
+      a.href = downloadURL;
+      a.download = 'hw8.qmd'; a.click();
+      window.URL.revokeObjectURL(downloadURL);
+      document.body.removeChild(a);
+        });"><button class="btn btn-primary downloadthis  downloadbutton" id="dnldts31821"><i class="bi bi-download"></i> Download the Quarto document used to render this file </button></a></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="in">#| output: hide</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="in">library(tidyverse)</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="in">library(ggplot2)</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="in">library(rjags)</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="in">library(posterior)</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="in">library(bayesplot)</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="in">library(gt)</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="in">theme_set(theme_classic())</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="section" class="level1">
+<h1>4</h1>
+<p>Download the marathon data of Section 6.4 from the course webpage. Let <span class="math inline">\(Y_{ij}\)</span> be the speed of runner <span class="math inline">\(i\)</span> in mile <span class="math inline">\(j\)</span>. Fit the hierarchical model</p>
+<p><span class="math display">\[
+\begin{aligned}
+Y_{i1} &amp;\sim \mathrm{Normal}(\mu_i, \sigma_0^2) \\
+Y_{ij} \vert Y_{ij-1} &amp;\sim \mathrm{Normal}\left(\mu_i + \rho_i(Y_{ij-1} - \mu_i), \sigma_i^2\right) \\
+\mu_i &amp;\sim \mathrm{Normal}(\theta_1, \theta_2) \\
+\rho_i &amp;\sim \mathrm{Normal}(\theta_3, \theta_4) \\
+\sigma_i^2 &amp;\sim \mathrm{InvGamma}(\theta_5, \theta_6)
+\end{aligned}
+\]</span></p>
+<ol type="a">
+<li>Drag a DAG for this model and give an interpretation for each parameter in the model.</li>
+</ol>
 <hr>
-<section id="quarto" class="level3">
-<h3 class="anchored" data-anchor-id="quarto">Quarto</h3>
-<p>All of the templates are written usen Quarto Markdown Documents <em>(.qmd)</em>. Quarto is basically the same as RMarkdown so you should not have a hard time switching over to using Quarto. The good thing about Quarto is that you can easily use it to create website. This website was created using Quarto, for example.</p>
-<p>I would recommend you look at the following materials to acquaint yourselves with the use of Quarto:</p>
-<ul>
-<li><a href="https://quarto.org"><strong>The Quarto Webpage</strong></a>
-<ul>
-<li><a href="https://www.youtube.com/watch?v=EbAAmrB0luA"><em>Quarto for Academics</em></a></li>
-<li><a href="https://www.youtube.com/watch?v=hbf7Ai3jnxY"><em>Beautiful reports and presentations with Quarto</em></a></li>
-</ul></li>
-</ul>
-</section>
-<section id="github" class="level3">
-<h3 class="anchored" data-anchor-id="github">GitHub</h3>
-<p>This whole page is built from a GitHub repository at <a href="https://github.com/bgautijonsson/stae529m">github.com/bgautijonsson/stae529m</a>. Instead of manually downloading each file you can clone the repository and pull the contents regularly to your computer to receive the newest versions of all documents.</p>
-<p>Git, GitHub and version control in general are essential skills so I would recommend you practice their use.</p>
-<p>I recommend the following material to get acquainted with Git and GitHub.</p>
-<ul>
-<li><a href="https://happygitwithr.com"><strong>Git and Github with R</strong></a></li>
-<li><a href="https://git-scm.com/book/en/v2"><strong>Git in general</strong></a></li>
-</ul>
+<p><strong>Solution:</strong></p>
+<hr>
+<ol start="2" type="a">
+<li>Select uninformative prior distributions for <span class="math inline">\(\theta_1, \dots, \theta_6\)</span>.</li>
+</ol>
+<hr>
+<p><strong>Solution:</strong></p>
+<hr>
+<ol start="3" type="a">
+<li>Fit the model in <code>JAGS</code> using three chains each with 25,000 iterationsand thoroughly assess MCMC convergence for the <span class="math inline">\(\theta_j\)</span>.</li>
+</ol>
+<hr>
+<p><strong>Solution:</strong></p>
+<hr>
+<ol start="4" type="a">
+<li>Are the data informative about the <span class="math inline">\(\theta_j\)</span>? That is, are the posterior distributions more concentrated than the prior distributions?</li>
+</ol>
+<hr>
+<p><strong>Solution:</strong></p>
+<hr>
+<ol start="5" type="a">
+<li>In light of <em>c.</em> and <em>d.</em>, are there any simplifications you might consider and if so, how would you compare the full and simplified models?</li>
+</ol>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->

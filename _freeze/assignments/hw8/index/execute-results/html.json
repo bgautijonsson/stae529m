@@ -1,0 +1,15 @@
+{
+  "hash": "63fca3f0649664fc332401c378f75036",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Homework #8\"\nsubtitle: \"Exercise from Chapter 6.5: 4\"\ndescription: |\n    **Assigned:** Friday, November 3rd, 2023 <br>\n    **Due:** Friday, November 10th, 2023\nauthor: \n    -   name: Brynjólfur Gauti Guðrúnar Jónsson\n        email: brynjolfur@hi.is\n        url: https://www.hi.is/staff/brynjolfur\n        affiliation: \n        -   name: School of Engineering and Natural Sciences, University of Iceland\n            city: Reykjavík\n            url: https://english.hi.is/school_of_engineering_and_natural_sciences\n# Change this to pdf if you'd rather work in that format\nformat: html \neditor: source\ntitle-block-banner: true\n#### The setting below makes our HTML document self-contained so that we can turn it in ####\n#### UNCOMMENT THE LONE BELOW SO THAT YOU CAN TURN IN YOUR HTML DOCUMENT ###################\n# embed-resources: true \n---\n\n{{< downloadthis index.qmd dname=\"hw8\" label=\"Download the Quarto document used to render this file\" type=primary class=downloadbutton >}}\n\n\n::: {.cell}\n\n````{.cell-code}\n```{{r}}\n#| output: hide\nlibrary(tidyverse)\nlibrary(ggplot2)\nlibrary(rjags)\nlibrary(posterior)\nlibrary(bayesplot)\nlibrary(gt)\ntheme_set(theme_classic())\n```\n````\n:::\n\n\n\n# 4\n\nDownload the marathon data of Section 6.4 from the course webpage. Let $Y_{ij}$ be the speed of runner $i$ in mile $j$. Fit the hierarchical model\n\n$$\n\\begin{aligned}\nY_{i1} &\\sim \\mathrm{Normal}(\\mu_i, \\sigma_0^2) \\\\\nY_{ij} \\vert Y_{ij-1} &\\sim \\mathrm{Normal}\\left(\\mu_i + \\rho_i(Y_{ij-1} - \\mu_i), \\sigma_i^2\\right) \\\\\n\\mu_i &\\sim \\mathrm{Normal}(\\theta_1, \\theta_2) \\\\\n\\rho_i &\\sim \\mathrm{Normal}(\\theta_3, \\theta_4) \\\\\n\\sigma_i^2 &\\sim \\mathrm{InvGamma}(\\theta_5, \\theta_6)\n\\end{aligned}\n$$\n\n\n\na. Drag a DAG for this model and give an interpretation for each parameter in the model.\n\n---\n\n**Solution:**\n\n---\n\nb. Select uninformative prior distributions for $\\theta_1, \\dots, \\theta_6$.\n\n---\n\n**Solution:**\n\n---\n\nc. Fit the model in `JAGS` using three chains each with 25,000 iterationsand thoroughly assess MCMC convergence for the $\\theta_j$.\n\n---\n\n**Solution:**\n\n---\n\nd. Are the data informative about the $\\theta_j$? That is, are the posterior distributions more concentrated than the prior distributions?\n\n---\n\n**Solution:**\n\n---\n\ne. In light of *c.* and *d.*, are there any simplifications you might consider and if so, how would you compare the full and simplified models?\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}
