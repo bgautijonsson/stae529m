@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Brynjólfur Gauti Guðrúnar Jónsson">
-<meta name="description" content="Assigned: Friday, October 20th, 2023   Due: Friday, November 3rd, 2023">
+<meta name="description" content="Assigned: Friday, November 3rd, 2023   Due: Friday, November 10th, 2023">
 
-<title>STÆ529M - Homework #7 (Solution)</title>
+<title>STÆ529M - Homework #8</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -132,11 +132,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Homework #7 (Solution)</h1>
-            <p class="subtitle lead">Exercises from Chapter 5.7: 2, 4 and 10</p>
+      <h1 class="title">Homework #8</h1>
+            <p class="subtitle lead">Exercise from Chapter 6.5: 4</p>
                   <div>
         <div class="description">
-          <p><strong>Assigned:</strong> Friday, October 20th, 2023 <br> <strong>Due:</strong> Friday, November 3rd, 2023</p>
+          <p><strong>Assigned:</strong> Friday, November 3rd, 2023 <br> <strong>Due:</strong> Friday, November 10th, 2023</p>
         </div>
       </div>
                 </div>
@@ -306,17 +306,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<p><a href="#dnldts26290" onclick="fetch('data:text/plain;base64,LS0tCnRpdGxlOiAiSG9tZXdvcmsgIzcgKFNvbHV0aW9uKSIKc3VidGl0bGU6ICJFeGVyY2lzZXMgZnJvbSBDaGFwdGVyIDUuNzogMiwgNCBhbmQgMTAiCmRlc2NyaXB0aW9uOiB8CiAgICAqKkFzc2lnbmVkOioqIEZyaWRheSwgT2N0b2JlciAyMHRoLCAyMDIzIDxicj4KICAgICoqRHVlOioqIEZyaWRheSwgTm92ZW1iZXIgM3JkLCAyMDIzCmF1dGhvcjogCiAgICAtICAgbmFtZTogQnJ5bmrDs2xmdXIgR2F1dGkgR3XDsHLDum5hciBKw7Nuc3NvbgogICAgICAgIGVtYWlsOiBicnluam9sZnVyQGhpLmlzCiAgICAgICAgdXJsOiBodHRwczovL3d3dy5oaS5pcy9zdGFmZi9icnluam9sZnVyCiAgICAgICAgYWZmaWxpYXRpb246IAogICAgICAgIC0gICBuYW1lOiBTY2hvb2wgb2YgRW5naW5lZXJpbmcgYW5kIE5hdHVyYWwgU2NpZW5jZXMsIFVuaXZlcnNpdHkgb2YgSWNlbGFuZAogICAgICAgICAgICBjaXR5OiBSZXlramF2w61rCiAgICAgICAgICAgIHVybDogaHR0cHM6Ly9lbmdsaXNoLmhpLmlzL3NjaG9vbF9vZl9lbmdpbmVlcmluZ19hbmRfbmF0dXJhbF9zY2llbmNlcwojIENoYW5nZSB0aGlzIHRvIHBkZiBpZiB5b3UnZCByYXRoZXIgd29yayBpbiB0aGF0IGZvcm1hdApmb3JtYXQ6IGh0bWwgCmVkaXRvcjogc291cmNlCnRpdGxlLWJsb2NrLWJhbm5lcjogdHJ1ZQpleGVjdXRlOgogICAgd2FybmluZzogZmFsc2UKICAgIG1lc3NhZ2U6IGZhbHNlCiMjIyMgVGhlIHNldHRpbmcgYmVsb3cgbWFrZXMgb3VyIEhUTUwgZG9jdW1lbnQgc2VsZi1jb250YWluZWQgc28gdGhhdCB3ZSBjYW4gdHVybiBpdCBpbiAjIyMjCiMjIyMgVU5DT01NRU5UIFRIRSBMT05FIEJFTE9XIFNPIFRIQVQgWU9VIENBTiBUVVJOIElOIFlPVVIgSFRNTCBET0NVTUVOVCAjIyMjIyMjIyMjIyMjIyMjIyMjCiMgZW1iZWQtcmVzb3VyY2VzOiB0cnVlIAotLS0KCnt7PCBkb3dubG9hZHRoaXMgaW5kZXgucW1kIGRuYW1lPSJodzdfc29sdXRpb24iIGxhYmVsPSJEb3dubG9hZCB0aGUgUXVhcnRvIGRvY3VtZW50IHVzZWQgdG8gcmVuZGVyIHRoaXMgZmlsZSIgdHlwZT1wcmltYXJ5IGNsYXNzPWRvd25sb2FkYnV0dG9uID59fQoKYGBge3Igc2V0dXB9CiN8IGVjaG86IGZlbmNlZAojfCBvdXRwdXQ6IGhpZGUKbGlicmFyeSh0aWR5dmVyc2UpCmxpYnJhcnkoZ2dwbG90MikKbGlicmFyeShyamFncykKbGlicmFyeShwb3N0ZXJpb3IpCmxpYnJhcnkoYmF5ZXNwbG90KQpsaWJyYXJ5KGd0KQpsaWJyYXJ5KHB1cnJyKQpsaWJyYXJ5KHBhdGNod29yaykKbGlicmFyeShwc3ljaCwgaW5jbHVkZS5vbmx5ID0gYygia3VydG9zaSIsICJza2V3IikpCnRoZW1lX3NldCh0aGVtZV9jbGFzc2ljKCkpCmBgYAoKIyAyIAoKRG93bmxvYWQgdGhlIGBhaXJxdWFsaXR5YCBkYXRhc2V0IGluIFIuIEZpdCB0aGUgZm9sbG93aW5nIG1vZGVsIHRvIHRoZSBkYXRhCgokJApcbWF0aHJte296b25lX2l9IFxzaW0gXG1hdGhybXtOb3JtYWx9KFxiZXRhXzEgKyBcYmV0YV8yXG1hdGhybXtzb2xhci5SX2l9ICsgXGJldGFfM1xtYXRocm17dGVtcF9pfSArIFxiZXRhXzRcbWF0aHJte3dpbmRfaX0sIFxzaWdtYV4yKQokJAoKVXNlIHBvc3RlcmlvciBwcmVkaWN0aXZlIGNoZWNrcyB0byB2ZXJpZnkgdGhhdCB0aGUgbW9kZWwgZml0cyB3ZWxsLiBJZiB5b3UgZmluZCBtb2RlbCBtaXNzcGVjaWZpY2F0aW9uLCBzdWdnZXN0IChidXQgZG8gbm90IGZpdCkgYWx0ZXJuYXRpdmVzLgoKLS0tCgoqKlNvbHV0aW9uOioqCgpgYGB7cn0KZCA8LSBuYS5vbWl0KGFpcnF1YWxpdHkpCm96b25lIDwtIGQkT3pvbmUKWCA8LSBkWyAsIGMoIlNvbGFyLlIiLCAiV2luZCIsICJUZW1wIildIHw+IGFzLm1hdHJpeCgpIHw+IHNjYWxlKCkKCmRhdGEgPC0gbGlzdCgKICAgIG96b25lID0gb3pvbmUsCiAgICBYID0gWCwKICAgIG4gPSBucm93KFgpLAogICAgcCA9IG5jb2woWCkKKQoKbW9kZWxfc3RyaW5nIDwtIHRleHRDb25uZWN0aW9uKCJtb2RlbHsKICAgICNMaWtlbGlob29kCiAgICBmb3IgKGkgaW4gMTpuKSB7CiAgICAgICAgb3pvbmVbaV0gfiBkbm9ybShtdVtpXSwgdGF1KQogICAgICAgIG11W2ldID0gYWxwaGEgKyBpbnByb2QoWFtpLCBdLCBiZXRhW10pCiAgICAgICAgWV9yZXBbaV0gfiBkbm9ybShtdVtpXSwgdGF1KQogICAgfQogICAgCiAgICBmb3IgKGkgaW4gMTpwKSB7CiAgICAgICAgYmV0YVtpXSB+IGRub3JtKDAsIDAuMDAxKQogICAgfQogICAgCiAgICBhbHBoYSB+IGRub3JtKDAsIDAuMDAxKQogICAgdGF1IH4gZGdhbW1hKDAuMDEsIDAuMDEpCiAgICBzaWdtYTIgPSAxIC8gdGF1OwogICAgCn0iKQoKbW9kZWwgPC0gamFncy5tb2RlbCgKICAgIG1vZGVsX3N0cmluZywKICAgIGRhdGEgPSBkYXRhLAogICAgbi5jaGFpbnMgPSA0LAogICAgcXVpZXQgPSBUUlVFCikKCnVwZGF0ZShtb2RlbCwgNTAwMCkKCnBhcmFtcyA8LSBjKCJhbHBoYSIsICJiZXRhIiwgInNpZ21hMiIsICJZX3JlcCIpCnNhbXBsZXMgPC0gY29kYS5zYW1wbGVzKAogICAgbW9kZWwsCiAgICB2YXJpYWJsZS5uYW1lcyA9IHBhcmFtcywKICAgIG4uaXRlciA9IDUwMDAKKQoKcG9zdGVyaW9yX2phZ3MgPC0gc2FtcGxlcyB8PiAKICAgIGFzX2RyYXdzX2RmKCkKYGBgCgpXZSBmaXJzdCBsb29rIGF0IHN1bW1hcnkgc3RhdGlzdGljcyBhbmQgdHJhY2UgcGxvdHMgYW5kIHNlZSB0aGF0IG91ciBjaGFpbnMgc2VlbSB0byBoYXZlIGNvbnZlcmdlZCB3ZWxsLgoKYGBge3J9CnBvc3Rlcmlvcl9qYWdzIHw+IAogICAgc3Vic2V0X2RyYXdzKHZhcmlhYmxlID0gYygiYWxwaGEiLCAiYmV0YSIsICJzaWdtYTIiKSkgfD4gCiAgICBzdW1tYXJpc2VfZHJhd3MoKSB8PiAKICAgIGd0KCkgfD4gCiAgICBmbXRfbnVtYmVyKCkKYGBgCgpgYGB7cn0Kc2FtcGxlcyB8PiAKICAgIG1jbWNfdHJhY2UoCiAgICAgICAgcmVnZXhfcGFycyA9IGMoImFscGhhIiwgImJldGEiLCAic2lnbWEiKQogICAgKQpgYGAKCgoKVGhlbiB3ZSBjYW4gdXNlIHRoZSBgYmF5ZXNwbG90YCBwYWNrYWdlIGZvciBlYXN5IHBvc3RlcmlvciBwcmVkaWN0aXZlIGNoZWNrcy4gVG8gZG8gdGhpcyB3ZSBmaXJzdCBjcmVhdGUgYSBtYXRyaXggYHlfcmVwYCBjb250YWluaW5nIHNvbWUgb2YgdGhlIGRyYXdzIGZyb20gb3VyIHBvc3RlcmlvciBwcmVkaWN0aXZlIGRpc3RyaWJ1dGlvbiAoUFBEKSB3ZSBzYW1wbGVkIHVzaW5nIEpBR1MgYWJvdmUuIFdlIGNob29zZSB0byB1c2Ugb25seSBhIHN1YnNldCBvZiB0aGUgcG9zdGVyaW9yIGRyYXdzIGluIG9yZGVyIHRvIG1ha2Ugb3VyIHBsb3R0aW5nIGdvIGZhc3Rlci4KCkZpcnN0IHdlIGxvb2sgYXQgdGhlIHdob2xlIGRpc3RyaWJ1dGlvbiBvZiBvdXIgcHJlZGljdGlvbnMgYW5kIGNvbXBhcmUgaXQgdG8gdGhlIG9ic2VydmVkIGRpc3RyaWJ1dGlvbiBpbiBvdXIgZGF0YS4gV2Ugbm90aWNlIHRoZSBvYnNlcnZlZCBkaXN0cmlidXRpb24gaXMgcmlnaHQtc2tld2VkLiBUaGlzIGRvZXMgbm90IG5lY2Vzc2FyaWx5IG1lYW4gd2Ugc2hvdWxkIHVzZSBhIG5vbi1ub3JtYWwgbGlrZWxpaG9vZC4gSXQgY291bGQgYWxzbyBtZWFuIHdlIHNpbXBseSBkaWRuJ3QgY2FwdHVyZSBlbm91Z2ggb2YgdGhlIHZhcmlhbmNlIGluIHRoZSBkYXRhIHdpdGggdGhlIHByZWRpY3RvciB2YXJpYWJsZSBhdmFpbGFibGUgdG8gdXMuCgpgYGB7cn0KeV9yZXAgPC0gcG9zdGVyaW9yX2phZ3MgfD4gCiAgICBzdWJzZXRfZHJhd3ModmFyaWFibGUgPSAiWV9yZXAiKSB8PiAKICAgIHJlc2FtcGxlX2RyYXdzKG5kcmF3cyA9IDIwMCkgfD4gCiAgICBhc19kcmF3c19tYXRyaXgoKQoKcHBjX2RlbnNfb3ZlcmxheShvem9uZSwgeV9yZXApICsKICAgIGxhYnMoCiAgICAgICAgdGl0bGUgPSAiT3VyIFBQRCBpcyBsZXNzIHNrZXdlZCB0aGFuIHRoZSBvYnNlcnZlZCBkYXRhIgogICAgKQpgYGAKClRoZSBwbG90cyBiZWxvdyB0ZWxsIHVzIHRoYXQgdGhlIHJhbmdlIGFuZCBzdGFuZGFyZCBkZXZpYXRpb24gb2YgcHJlZGljdGlvbnMgYXJlIGFkZXF1YXRlIGJ1dCBvdXIgbW9kZWwgcGVyZm9ybXMgdmVyeSBiYWRseSBvbiBtYXgsIG1pbiwgc2tldyBhbmQga3VydG9zaXMuIEt1cnRvc2lzIGlzIGEgbWVhc3VyZSBvZiBoZWF2eSB0aGUgdGFpbHMgb2YgYSBkaXN0cmlidXRpb24gaXMsIGEgaGlnaGVyIGt1cnRvc2lzIG1lYW5zIHRoYXQgdGhlIGRpc3RyaWJ1dGlvbiBoYXMgbG9uZ2VyIHRhaWxzICh0aGluayBzdHVkZW50LXQgdmVyc3VzIG5vcm1hbCkuIEEgbGFyZ2UgcG9zaXRpdmUgdmFsdWUgb2Ygc2tldyBtZWFucyB0aGF0IGEgZGlzdHJpYnV0aW9uIHNsb3BlcyBsb25nZXIgdG8gdGhlIHJpZ2h0LCBhIGxhcmdlIG5lZ2F0aXZlIHZhbHVlIG1lYW5zIGl0IHNsb3BlcyBsb25nZXIgdG8gdGhlIHJpZ2h0IGFuZCBhIHZhbHVlIG9mIDAgbWVhbnMgc3ltbWV0cnkuIAoKCgpgYGB7cn0KcmFuZ2UgPC0gZnVuY3Rpb24oeCkgbWF4KHgpIC0gbWluKHgpCm15X3N0YXRzIDwtIGxpc3QoIm1heCIsICJtaW4iLCAicmFuZ2UiLCAic2QiLCAic2tldyIsICJrdXJ0b3NpIikKcGxvdF9nb2ZfY2hlY2sgPC0gZnVuY3Rpb24oY2hlY2spIHsKICAgIHBwY19zdGF0KG96b25lLCB5X3JlcCwgc3RhdCA9IGNoZWNrKSArCiAgICAgICAgbGFicygKICAgICAgICAgICAgdGl0bGUgPSBjaGVjawogICAgICAgICkKfQoKbXlfc3RhdHMgfD4gCiAgICBtYXAocGxvdF9nb2ZfY2hlY2spIHw+IAogICAgd3JhcF9wbG90cygpCmBgYAoKVGhlc2UgZ29vZG5lc3Mgb2YgZml0IGNoZWNrcyBpbXBseSB0aGF0IHdlIG1pZ2h0IG5lZWQgdG8gdXNlIGEgbGlrZWxpaG9vZCB0aGF0IGhhcyBsb25nZXIgdGFpbHMgYW5kIGlzIHBvc2l0aXZlbHkgc2tld2VkLiBPbmUgd2F5IHRvIG1vZGVsIHRoZSBkYXRhIGluIHRoYXQgd2F5IGlzIHRvIG1vZGVsIGl0IG9uIHRoZSBsb2cgc2NhbGUgKHNpbmNlIGFsbCB0aGUgb2JzZXJ2ZWQgdmFsdWVzIGFyZSA+IDApIGFuZCBtYXliZSB1c2luZyBhIHN0dWRlbnQtdCBpbnN0ZWFkIG9mIGEgbm9ybWFsIGRpc3RyaWJ1dGlvbi4KClN1Y2ggYSBtb2RlbCBtaWdodCBsb29rIHNvbWV0aGluZyBsaWtlIHRoaXMgaW4gSkFHUyBjb2RlCgpgYGB7cn0KbW9kZWxfc3RyaW5nIDwtIHRleHRDb25uZWN0aW9uKCJtb2RlbHsKICAgICNMaWtlbGlob29kCiAgICBmb3IgKGkgaW4gMTpuKSB7CiAgICAgICAgIyMjIyMgTmV3IGxpa2VsaWhvb2QgIyMjIyMKICAgICAgICBvem9uZVtpXSB+IGR0KG11W2ldLCB0YXUsIGspCiAgICAgICAgIyMjIyMgTG9nIGxpbmsgZnVuY3Rpb24gIyMKICAgICAgICBsb2cobXVbaV0pID0gYWxwaGEgKyBpbnByb2QoWFtpLCBdLCBiZXRhW10pCiAgICAgICAgWV9yZXBbaV0gfiBkbm9ybShtdVtpXSwgdGF1KQogICAgfQogICAgCiAgICBmb3IgKGkgaW4gMTpwKSB7CiAgICAgICAgYmV0YVtpXSB+IGRub3JtKDAsIDAuMDAxKQogICAgfQogICAgCiAgICBhbHBoYSB+IGRub3JtKDAsIDAuMDAxKQogICAgdGF1IH4gZGdhbW1hKDAuMDEsIDAuMDEpCiAgICBzaWdtYTIgPSAxIC8gdGF1OwogICAgIyMjIyMgUHJpb3IgZm9yIGssIHRoZSBkZWdyZWVzIG9mIGZyZWVkb20gIyMjIyMjCiAgICBrIH4gZGdhbW1hKDAuMDEsIDAuMDEpOwogICAgCn0iKQpgYGAKCi0tLQoKIyA0CgpVc2UgdGhlICJNci4gT2N0b2JlciIgZGF0YS4gQ29tcGFyZSB0aGUgdHdvIG1vZGVsczoKCiFbXShmaWcxLnBuZykKCnVzaW5nIEJheWVzIGZhY3RvcnMsIERJQyBhbmQgV0FJQy4gQXNzdW1lIHRoZSBVbmlmb3JtKDAsIGMpIHByaW9yIGZvciBhbGwgJFxsYW1iZGFfaiQgYW5kIGNvbXBhcmUgdGhlIHJlc3VsdHMgZm9yICRjID0gMSQgYW5kICRjID0gMTAkLgoKLS0tCgoKCgoqKlNvbHV0aW9uOioqCgpUaGVyZSBhcmUgdHdvIHdheXMgb2YgY2FsY3VsYXRpbmcgdGhlIEJheWVzIGZhY3RvcnMgaW4gdGhpcyBhc3NpZ25tZW50OiAKCjEuIFNpbmNlIHRoaXMgaXMgYSBjb21wYXJpc29uIG9mIHJlbGF0aXZlbHkgc2ltcGxlIG1vZGVscyB3ZSBjYW4gd3JpdGUgb3V0IHRoZSBlcXVhdGlvbnMgZm9yICRQKFxtYXRoY2FsIE1fMSBcdmVydCBZKSQgYW5kICRQKFxtYXRoY2FsIE1fMiBcdmVydCBZKSQKCiQkClxiZWdpbnthbGlnbmVkfQpQKFxtYXRoY2FsIE1fMiBcdmVydCBZKSAmPSBcZnJhY3tQKFlcdmVydFxtYXRoY2FsIE1fMikgUChcbWF0aGNhbCBNXzIpfXtQKFkpfSBcXAomXHByb3B0byBQKFlcdmVydCBcbWF0aGNhbCBNXzIpUChcbWF0aGNhbCBNXzIpIFxcCiY9IFAoXG1hdGhjYWwgTV8yKVxpbnRfMF5jIFxwcm9kX3tpPTF9XjJmKFlfaSBcdmVydCBcbGFtYmRhXzApXHBpKFxsYW1iZGFfMClkXGxhbWJkYV8wIFxcCiY9IFAoXG1hdGhjYWwgTV8yKVxpbnRfMF5jIFxwcm9kX3tpPTF9XjJmKFlfaSBcdmVydCBcbGFtYmRhXzApXGZyYWN7MX17Y30gZFxsYW1iZGFfMCBcXAomPSBcZnJhY3sxfXtjfVAoXG1hdGhjYWwgTV8yKVxpbnRfMF5jIFxwcm9kX3tpPTF9XjIgXGZyYWN7KE5faVxsYW1iZGFfMClee1lfaX1lXnstTl9pXGxhbWJkYV8wfX17WV9pIX0gZFxsYW1iZGFfMCBcXAomPSBcZnJhYzFjIFAoXG1hdGhjYWwgTV8yKSBcaW50XzBeYyBcZnJhY3tOXzFee1lfMX1OXzJee1lfMn19e1lfMSFZXzIhfVxsYW1iZGFfMF57WV8xK1lfMn1lXnstKE5fMStOXzIpXGxhbWJkYV8wfWRcbGFtYmRhXzAgXFwKJj0gXGZyYWMxYyBQKFxtYXRoY2FsIE1fMikgXGZyYWN7Tl8xXntZXzF9Tl8yXntZXzJ9fXtZXzEhWV8yIX1caW50XzBeYyBcbGFtYmRhXzBee1lfMStZXzJ9ZV57LShOXzErTl8yKVxsYW1iZGFfMH1kXGxhbWJkYV8wIApcZW5ke2FsaWduZWR9CiQkCgpUaGlzIGxvb2tzIGxpa2UgdGhlIGtlcm5lbCBvZiBhIEdhbW1hKEEsIEIpIGRpc3RyaWJ1dGlvbiB3aXRoICRBID0gWV8xICsgWV8yICsgMSQgYW5kICRCID0gTl8xICsgTl8yJC4gCgokJApcYmVnaW57YWxpZ25lZH0KUChcbWF0aGNhbCBNXzIgXHZlcnQgWSkgJj0gXGZyYWMxYyBQKFxtYXRoY2FsIE1fMikgXGZyYWN7Tl8xXntZXzF9Tl8yXntZXzJ9fXtZXzEhWV8yIX0gXGZyYWN7XEdhbW1hKEEpfXtCXkF9IFxpbnRfMF5jIFxmcmFje0JeQX17XEdhbW1hKEEpfSBcbGFtYmRhXzBee0EgLSAxfWVeey1CXGxhbWJkYV8wfWRcbGFtYmRhXzAgXFwKJj0gXGZyYWMxYyBQKFxtYXRoY2FsIE1fMikgXGZyYWN7Tl8xXntZXzF9Tl8yXntZXzJ9fXtZXzEhWV8yIX0gXGZyYWN7KFlfMSArIFlfMikhfXsoTl8xICsgTl8yKV57WV8xICsgWV8yICsgMX19IFAoXGxhbWJkYV8wIDwgYyBcdmVydCBZKSwKXGVuZHthbGlnbmVkfQokJAoKd2hlcmUgJFxsYW1iZGFfMCBcc2ltIFxtYXRocm17R2FtbWF9KFlfMSArIFlfMiArIDEsIE5fMSArIE5fMikkLgoKSW4gYSBzaW1pbGFyIHdheSB3ZSBlbmQgdXAgZ2V0dGluZwoKJCQKXGJlZ2lue2FsaWduZWR9ClAoXG1hdGhjYWwgTV8xIFx2ZXJ0IFkpICY9IFxmcmFjezF9e2NeMn0gUChcbWF0aGNhbCBNXzEpIFxmcmFjezF9e05fMU5fMn0gXGludF8wXmMgXGZyYWN7Tl8xXntZXzErMX19e1xHYW1tYShZXzErMSl9IFxsYW1iZGFfMV57WV8xICsgMSAtIDF9ZV57LU5fMVxsYW1iZGFfMX1kXGxhbWJkYV8xIFxpbnRfMF5jIFxmcmFje05fMl57WV8yKzF9fXtcR2FtbWEoWV8yKzEpfSBcbGFtYmRhXzJee1lfMiArIDEgLSAxfWVeey1OXzJcbGFtYmRhXzJ9ZFxsYW1iZGFfMiBcXAomPSBcZnJhY3sxfXtjXjJ9IFAoXG1hdGhjYWwgTV8xKVxmcmFjezF9e05fMU5fMn0gUChcbGFtYmRhXzEgPCBjIFx2ZXJ0IFkpIFAoXGxhbWJkYV8yIDwgYyBcdmVydCBZKSwKXGVuZHthbGlnbmVkfQokJAoKd2hlcmUgJFxsYW1iZGFfMSBcc2ltIFxtYXRocm17R2FtbWF9KFlfMSArIDEsIE5fMSkkIGFuZCAkXGxhbWJkYV8yIFxzaW0gXG1hdGhybXtHYW1tYX0oWV8yICsgMSwgTl8yKSQuIFdyaXRpbmcgdXAgdGhlIHJhdGlvIG9mIHRoZXNlIHR3bywgd2UgZ2V0CgokJApcYmVnaW57YWxpZ25lZH0KQkYgJj0gXGZyYWN7UChZXHZlcnQgXG1hdGhjYWwgTV8xKX17UChZIFx2ZXJ0IFxtYXRoY2FsIE1fMil9IFxcCiY9IFxmcmFje1AoXG1hdGhjYWwgTV8xIFx2ZXJ0IFkpIC8gUChcbWF0aGNhbCBNXzEpfXtQKFxtYXRoY2FsIE1fMiBcdmVydCBZKSAvIFAoXG1hdGhjYWwgTV8yKX0gXFwKJj0gXGZyYWN7XGZyYWN7MX17Y14yfSBcZnJhY3sxfXtOXzFOXzJ9IFAoXGxhbWJkYV8xIDwgYyBcdmVydCBZKSBQKFxsYW1iZGFfMiA8IGMgXHZlcnQgWSl9e1xmcmFjMWMgXGZyYWN7Tl8xXntZXzF9Tl8yXntZXzJ9fXtZXzEhWV8yIX0gXGZyYWN7XEdhbW1hKEEpfXtCXkF9IFAoXGxhbWJkYV8wIDwgYyBcdmVydCBZKX0gXFwKJj0gXGZyYWMxYyBcZnJhY3tZXzEhWV8yIX17Tl8xXntZXzErMX1OXzJee1lfMisxfX0gXGZyYWN7Ql5BfXtcR2FtbWEoQSl9IFxmcmFje1AoXGxhbWJkYV8xIDwgYyBcdmVydCBZKSBQKFxsYW1iZGFfMiA8IGMgXHZlcnQgWSl9e1AoXGxhbWJkYV8wIDwgYyBcdmVydCBZKX0gXFwKJj0gXGZyYWMxYyBcZnJhY3tZXzEhWV8yIX17KFlfMStZXzIpIX0gXGZyYWN7KE5fMStOXzIpXntZXzErWV8yKzF9fXtOXzFee1lfMSsxfU5fMl57WV8yKzF9fSBcZnJhY3tQKFxsYW1iZGFfMSA8IGMgXHZlcnQgWSkgUChcbGFtYmRhXzIgPCBjIFx2ZXJ0IFkpfXtQKFxsYW1iZGFfMCA8IGMgXHZlcnQgWSl9LApcZW5ke2FsaWduZWR9CiQkCgp3aGVyZSAkXGxhbWJkYV8wIFxzaW0gXG1hdGhybXtHYW1tYX0oWV8xICsgWV8yICsgMSwgTl8xICsgTl8yKSQsICRcbGFtYmRhXzEgXHNpbSBcbWF0aHJte0dhbW1hfShZXzEgKyAxLCBOXzEpJCBhbmQgJFxsYW1iZGFfMiBcc2ltIFxtYXRocm17R2FtbWF9KFlfMiArIDEsIE5fMikkCgpXcml0aW5nIHRoaXMgYXMgYW4gUiBmdW5jdGlvbiwgd2UgZ2V0CgpgYGB7cn0KI3wgZWNobzogZmVuY2VkCmJmIDwtIGZ1bmN0aW9uKEMsIFkgPSBjKDU2MywgMTApLCBOID0gYygyODIwLCAyNykpIHsKICAgIAogICAgb3V0IDwtIGxmYWN0b3JpYWwoWVsxXSkgKyBsZmFjdG9yaWFsKFlbMl0pIC0gbGZhY3RvcmlhbChzdW0oWSkpCiAgICBvdXQgPC0gb3V0ICsgKHN1bShZKSArIDEpICogbG9nKHN1bShOKSkgLSBzdW0oKFkgKyAxKSAqIGxvZyhOKSkKICAgIG91dCA8LSBvdXQgKyBwZ2FtbWEoQywgc2hhcGUgPSBZWzFdICsgMSwgcmF0ZSA9IE5bMV0sIGxvZy5wID0gVFJVRSkKICAgIG91dCA8LSBvdXQgKyBwZ2FtbWEoQywgc2hhcGUgPSBZWzJdICsgMSwgcmF0ZSA9IE5bMl0sIGxvZy5wID0gVFJVRSkKICAgIG91dCA8LSBvdXQgLSBwZ2FtbWEoQywgc2hhcGUgPSBzdW0oWSkgKyAxLCByYXRlID0gc3VtKE4pLCBsb2cucCA9IFRSVUUpCiAgICBvdXQgPC0gb3V0IC0gbG9nKEMpCiAgICAKICAgIGV4cChvdXQpCn0KCmJmKEMgPSAxKQpiZihDID0gMTApCmBgYAoKMi4gVGhlIG90aGVyIHBvc3NpYmlsaXR5IGlzIHRvIHVzZSBKQUdTIHRvIGFwcHJveGltYXRlIHRoZSBwb3N0ZXJpb3IgcHJvYmFiaWxpdHkgb2YgZWFjaCBtb2RlbCBmb3IgdXMgYW5kIHRoZW4gY2FsY3VsYXRlIHRoZSBCYXllcyBmYWN0b3IgYmFzZWQgb24gdGhlIHBvc3RlcmlvciBkaXN0cmlidXRpb24uIFRvIGRvIHRoaXMsIHdlIGFkZCBhbiBhdXhpbGlhcnkgdmFyaWFibGUsICR6JCwgdG8gb3VyIHNhbXBsZXIgYW5kIHdyaXRlIHRoZSB0d28gbW9kZWxzIGludG8gdGhlIHNhbWUgc2FtcGxlciBhcyBiZWxvdy4gRm9yIGVhY2ggc2FtcGxlIGluIG91ciBwb3N0ZXJpb3Igd2hlcmUgJHo9MSQsIG91ciBzYW1wbGVyIHdpbGwgc2FtcGxlIGZyb20gJFxtYXRoY2FsIE1fMiQgYW5kIG90aGVyd2lzZSBzYW1wbGUgZnJvbSAkXG1hdGhjYWwgTV8yJC4gSWYgb3VyIHNhbXBsZXIgY29udmVyZ2VzLCB3ZSBjYW4gdGhlbiBjYWxjdWxhdGUgdGhlIHBvc3RlcmlvciBtZWFuIG9mICR6JCBhcyBhIGNsb3NlIGFwcHJveGltYXRpb24gdG8gdGhlIEJheWVzIGZhY3Rvci4KCmBgYHtyfQojfCBldmFsOiBmYWxzZQojfCBlY2hvOiBmZW5jZWQKbW9kZWxfc3RyaW5nX2JmIDwtIHRleHRDb25uZWN0aW9uKCJtb2RlbHsKICAgICNMaWtlbGlob29kCiAgICBmb3IgKGkgaW4gMToyKSB7CiAgICAgICAgWVtpXSB+IGRwb2lzKE5baV0gKiBpZmVsc2UoeiA9PSAxLCBsYW1iZGFfMCwgbGFtYmRhW2ldKSkKICAgICAgICBsYW1iZGFbaV0gfiBkdW5pZigwLCBDKQogICAgICAgIGxpa2VbaV0gPC0gZHBvaXMoWVtpXSwgbGFtYmRhW2ldICogTltpXSkKICAgIH0KICAgIAogICAgeiB+IGRiZXJuKDAuNSkKICAgIGxhbWJkYV8wIH4gZHVuaWYoMCwgQykKfSIpCmBgYAoKV2Ugbm93IGRlZmluZSB0d28gZnVuY3Rpb25zIGZvciBjb21wYXJpbmcgdGhlIHR3byBtb2RlbHMuIEV4cGFuZCB0aGUgY29kZSBibG9ja3MgdG8gc2VlIHRoZSBjb2RlLgoKCmBgYHtyfQojfCBjb2RlLWZvbGQ6IHRydWUKYmZfamFncyA8LSBmdW5jdGlvbihDLCBZID0gYyg1NjMsIDEwKSwgTiA9IGMoMjgyMCwgMjcpKSB7CiAgICBZIDwtIGMoNTYzLCAxMCkKICAgIE4gPC0gYygyODIwLCAyNykKICAgIAogICAgZGF0YSA8LSBsaXN0KAogICAgICAgIFkgPSBZLAogICAgICAgIE4gPSBOLAogICAgICAgIEMgPSBDCiAgICApCiAgICAKICAgIG1vZGVsX3N0cmluZ19iZiA8LSB0ZXh0Q29ubmVjdGlvbigibW9kZWx7CiAgICAjTGlrZWxpaG9vZAogICAgZm9yIChpIGluIDE6MikgewogICAgICAgIFlbaV0gfiBkcG9pcyhOW2ldICogaWZlbHNlKHogPT0gMSwgbGFtYmRhXzAsIGxhbWJkYVtpXSkpCiAgICAgICAgbGFtYmRhW2ldIH4gZHVuaWYoMCwgQykKICAgICAgICBsaWtlW2ldIDwtIGRwb2lzKFlbaV0sIGxhbWJkYVtpXSAqIE5baV0pCiAgICB9CiAgICAKICAgIHogfiBkYmVybigwLjUpCiAgICBsYW1iZGFfMCB+IGR1bmlmKDAsIEMpCn0iKQogICAgCiAgICAKICAgIG1vZGVsX2JmIDwtIGphZ3MubW9kZWwoCiAgICAgICAgbW9kZWxfc3RyaW5nX2JmLAogICAgICAgIGRhdGEgPSBkYXRhLAogICAgICAgIG4uY2hhaW5zID0gNCwKICAgICAgICBxdWlldCA9IFRSVUUKICAgICkKICAgIAogICAgdXBkYXRlKG1vZGVsX2JmLCAxMDAwMCwgcHJvZ3Jlc3MuYmFyID0gIm5vbmUiKQogICAgCiAgICBzYW1wbGVzX2JmIDwtIGNvZGEuc2FtcGxlcygKICAgICAgICBtb2RlbF9iZiwKICAgICAgICB2YXJpYWJsZS5uYW1lcyA9IGMoInoiKSwKICAgICAgICBuLml0ZXIgPSAzMDAwMDAsCiAgICAgICAgdGhpbiA9IDEwLAogICAgICAgIHByb2dyZXNzLmJhciA9ICJub25lIgogICAgKQogICAgCiAgICBwX20yIDwtIHNhbXBsZXNfYmYgfD4gCiAgICAgICAgYXNfZHJhd3NfZGYoKSB8PiAKICAgICAgICBzdWJzZXRfZHJhd3ModmFyaWFibGUgPSAieiIpIHw+IAogICAgICAgIHN1bW1hcmlzZV9kcmF3cyhtZWFuKSB8PiAKICAgICAgICBwdWxsKG1lYW4pCiAgICAKICAgIHBfbTEgPC0gMSAtIHBfbTIKICAgIAogICAgcF9tMSAvICgxIC0gcF9tMSkKfQpgYGAKCmBgYHtyfQojfCBjb2RlLWZvbGQ6IHRydWUKZml0X21vZGVsIDwtIGZ1bmN0aW9uKEMsIFkgPSBjKDU2MywgMTApLCBOID0gYygyODIwLCAyNykpIHsKICAgIGRhdGEgPC0gbGlzdCgKICAgICAgICBZID0gWSwKICAgICAgICBOID0gTiwKICAgICAgICBDID0gQwogICAgKQogICAgCiAgICBtb2RlbF9zdHJpbmcxIDwtIHRleHRDb25uZWN0aW9uKCJtb2RlbHsKICAgICNMaWtlbGlob29kCiAgICBmb3IgKGkgaW4gMToyKSB7CiAgICAgICAgWVtpXSB+IGRwb2lzKE5baV0gKiBsYW1iZGFbaV0pCiAgICAgICAgbGFtYmRhW2ldIH4gZHVuaWYoMCwgQykKICAgICAgICBsaWtlW2ldIDwtIGRwb2lzKFlbaV0sIGxhbWJkYVtpXSAqIE5baV0pCiAgICB9Cn0iKQogICAgCiAgICBtb2RlbF9zdHJpbmcyIDwtIHRleHRDb25uZWN0aW9uKCJtb2RlbHsKICAgICNMaWtlbGlob29kCiAgICBmb3IgKGkgaW4gMToyKSB7CiAgICAgICAgWVtpXSB+IGRwb2lzKE5baV0gKiBsYW1iZGEpCiAgICAgICAgbGlrZVtpXSA8LSBkcG9pcyhZW2ldLCBsYW1iZGEgKiBOW2ldKQogICAgfQogICAgbGFtYmRhIH4gZHVuaWYoMCwgQykKfSIpCiAgICAKICAgIG1vZGVsMSA8LSBqYWdzLm1vZGVsKAogICAgICAgIG1vZGVsX3N0cmluZzEsCiAgICAgICAgZGF0YSA9IGRhdGEsCiAgICAgICAgbi5jaGFpbnMgPSA0LAogICAgICAgIHF1aWV0ID0gVFJVRQogICAgKQogICAgCiAgICBtb2RlbDIgPC0gamFncy5tb2RlbCgKICAgICAgICBtb2RlbF9zdHJpbmcyLAogICAgICAgIGRhdGEgPSBkYXRhLAogICAgICAgIG4uY2hhaW5zID0gNCwKICAgICAgICBxdWlldCA9IFRSVUUKICAgICkKICAgIAogICAgdXBkYXRlKG1vZGVsMSwgMTAwMDAsIHByb2dyZXNzLmJhciA9ICJub25lIikKICAgIHVwZGF0ZShtb2RlbDIsIDEwMDAwLCBwcm9ncmVzcy5iYXIgPSAibm9uZSIpCiAgICAKICAgIHBhcmFtcyA8LSBjKCAibGlrZSIpCiAgICBzYW1wbGVzIDwtIGNvZGEuc2FtcGxlcygKICAgICAgICBtb2RlbDEsCiAgICAgICAgdmFyaWFibGUubmFtZXMgPSBwYXJhbXMsCiAgICAgICAgbi5pdGVyID0gNTAwMDAsLAogICAgICAgIHByb2dyZXNzLmJhciA9ICJub25lIgogICAgKQogICAgCiAgICBESUMxIDwtIGRpYy5zYW1wbGVzKG1vZGVsMSwgbi5pdGVyID0gNTAwMDAsIHByb2dyZXNzLmJhciA9ICJub25lIikKICAgIERJQzEgPC0gc3VtKERJQzEkZGV2aWFuY2UgKyBESUMxJHBlbmFsdHkpCiAgICAKICAgIGxpa2UgPC0gcmJpbmQoc2FtcGxlc1tbMV1dLCBzYW1wbGVzW1syXV0sIHNhbXBsZXNbWzNdXSwgc2FtcGxlc1tbNF1dKQogICAgZmJhciA8LSBjb2xNZWFucyhsaWtlKQogICAgUHcgPC0gc3VtKGFwcGx5KGxvZyhsaWtlKSwgMiwgdmFyKSkKICAgIFdBSUMxIDwtIC0yICogc3VtKGxvZyhmYmFyKSkgKyAyICogUHcKICAgIAogICAgCiAgICBzYW1wbGVzIDwtIGNvZGEuc2FtcGxlcygKICAgICAgICBtb2RlbDIsCiAgICAgICAgdmFyaWFibGUubmFtZXMgPSBwYXJhbXMsCiAgICAgICAgbi5pdGVyID0gNTAwMDAsLAogICAgICAgIHByb2dyZXNzLmJhciA9ICJub25lIgogICAgKQogICAgCiAgICBESUMyIDwtIGRpYy5zYW1wbGVzKG1vZGVsMiwgbi5pdGVyID0gNTAwMDAsIHByb2dyZXNzLmJhciA9ICJub25lIikKICAgIERJQzIgPC0gc3VtKERJQzIkZGV2aWFuY2UgKyBESUMyJHBlbmFsdHkpCiAgICAKICAgIGxpa2UgPC0gcmJpbmQoc2FtcGxlc1tbMV1dLCBzYW1wbGVzW1syXV0sIHNhbXBsZXNbWzNdXSwgc2FtcGxlc1tbNF1dKQogICAgZmJhciA8LSBjb2xNZWFucyhsaWtlKQogICAgUHcgPC0gc3VtKGFwcGx5KGxvZyhsaWtlKSwgMiwgdmFyKSkKICAgIFdBSUMyIDwtIC0yICogc3VtKGxvZyhmYmFyKSkgKyAyICogUHcKICAgIAogICAgYmYgPC0gYmZfamFncyhDLCBZLCBOKQogICAgCiAgICB0aWJibGUoCiAgICAgICAgbW9kZWwgPSBjKCJUd28gbGFtYmRhcyIsICJPbmUgbGFtYmRhIiksCiAgICAgICAgQkYgPSBjKGJmLCAxIC8gYmYpLAogICAgICAgIERJQyA9IGMoRElDMSwgRElDMiksCiAgICAgICAgV0FJQyA9IGMoV0FJQzEsIFdBSUMyKQogICAgKQp9CmBgYAoKVGhlIHRhYmxlIGJlbG93IHNob3dzIHVzIHRoZSByZXN1bHRzLiBXZSBzZWUgdGhhdCB0aGUgQmF5ZXMgZmFjdG9ycyB3ZSBjYWxjdWxhdGVkIHVzaW5nIEpBR1MgYXJlIG5vdCBmYXIgYXdheSBmcm9tIHRoZSBjb3JyZWN0IHZhbHVlcyBjYWxjdWxhdGVkIGFib3ZlLgoKYGBge3J9CnJlc3VsdHMgPC0gdGliYmxlKAogICAgQyA9IGMoMSwgMTApCikgfD4gCiAgICBtdXRhdGUoCiAgICAgICAgcmVzdWx0cyA9IG1hcChDLCBmaXRfbW9kZWwpCiAgICApCgpyZXN1bHRzIHw+IAogICAgdW5uZXN0KHJlc3VsdHMpIHw+IAogICAgbXV0YXRlKAogICAgICAgIEMgPSBzdHJfYygiYyA9ICIsIEMpCiAgICApIHw+IAogICAgZ3JvdXBfYnkoQykgfD4gCiAgICBndCgpIHw+IAogICAgZm10X251bWJlcihkZWNpbWFscyA9IDMpIHw+IAogICAgY29sc19sYWJlbCgKICAgICAgICBCRiA9ICJCYXllcyBGYWN0b3IiLAogICAgICAgIG1vZGVsID0gIk1vZGVsIgogICAgKQpgYGAKCgotLS0KCgojIDEwCgpEb3dubG9hZCB0aGUgYFdXV3VzYWdlYCBkYXRhc2V0IGluIFIuIFVzaW5nIGRhdGEgZnJvbSB0aW1lcyAkdCA9IDUsIFxkb3RzLCAxMDAkIGFzIG91dGNvbWVzLCBmaXQgdGhlIGF1dG9yZWdyZXNzaXZlIG1vZGVsCgokJApZX3QgXHZlcnQgWV97dC0xfSwgXGRvdHMsIFlfMSBcc2ltIFxtYXRocm17Tm9ybWFsfShcYmV0YV8wICsgXGJldGFfMSBZX3t0LTF9ICsgXGRvdHMgKyBcYmV0YV9MIFlfe3QtTH0sIFxzaWdtYV4yKSwKJCQKCndoZXJlICRZX3QkIGlzIHRoZSBXV1cgdXNhZ2UgYXQgdGltZSAkdCQuIENvbXBhcmUgdGhlIG1vZGVscyB3aXRoICRMID0gMSwgMiwgMywgNCQgYW5kIHNlbGVjdCB0aGUgYmVzdCB0aW1lIGxhZyBMLgoKCi0tLQoKKipTb2x1dGlvbjoqKiBXZSBkZWZpbmUgdGhlIGZ1bmN0aW9uIGBmaXRfYXJfbW9kZWwoKWAgYmVsb3cgdGhhdCBhbGxvd3MgdXMgdG8gc2tpcCB3cml0aW5nIGV4dHJhIGNvZGUuCgpgYGB7cn0KZml0X2FyX21vZGVsIDwtIGZ1bmN0aW9uKEwpIHsKICAgIFkgPC0gV1dXdXNhZ2UKICAgIAogICAgZGF0YSA8LSBsaXN0KAogICAgICAgIFkgPSBZLAogICAgICAgIEwgPSBMCiAgICApCiAgICAKICAgIG1vZGVsX3N0cmluZyA8LSB0ZXh0Q29ubmVjdGlvbigibW9kZWx7CiAgICAjTGlrZWxpaG9vZAogICAgZm9yICh0IGluIDU6MTAwKSB7CiAgICAgICAgWVt0XSB+IGRub3JtKG11W3RdLCB0YXUpCiAgICAgICAgbXVbdF0gPC0gYWxwaGEgKyBpbnByb2QoWVsodC1MKToodC0xKV0sIGJldGFbXSkKICAgICAgICBsaWtlW3RdIDwtIGRub3JtKFlbdF0sIG11W3RdLCB0YXUpCiAgICB9CiAgICAKICAgIGZvciAoaSBpbiAxOkwpIHsKICAgICAgICBiZXRhW2ldIH4gZG5vcm0oMCwgMC4wMDEpCiAgICB9CiAgICAKICAgIGFscGhhIH4gZG5vcm0oMCwgMC4wMDEpCiAgICB0YXUgfiBkZ2FtbWEoMC4wMSwgMC4wMSkKICAgIHNpZ21hMiA8LSAxIC8gdGF1Cn0iKQogICAgCiAgICBtb2RlbCA8LSBqYWdzLm1vZGVsKAogICAgICAgIG1vZGVsX3N0cmluZywKICAgICAgICBkYXRhID0gZGF0YSwKICAgICAgICBuLmNoYWlucyA9IDQsCiAgICAgICAgcXVpZXQgPSBUUlVFCiAgICApCiAgICB1cGRhdGUobW9kZWwsIDEwMDAwLCBwcm9ncmVzcy5iYXIgPSAibm9uZSIpCiAgICAKICAgIAogICAgcGFyYW1zIDwtIGMoImxpa2UiKQogICAgCiAgICBzYW1wbGVzIDwtIGNvZGEuc2FtcGxlcygKICAgICAgICBtb2RlbCwKICAgICAgICB2YXJpYWJsZS5uYW1lcyA9IHBhcmFtcywKICAgICAgICBuLml0ZXIgPSA1MDAwMCwsCiAgICAgICAgcHJvZ3Jlc3MuYmFyID0gIm5vbmUiCiAgICApCiAgICAKICAgIERJQyA8LSBkaWMuc2FtcGxlcyhtb2RlbCwgbi5pdGVyID0gNTAwMDAsIHByb2dyZXNzLmJhciA9ICJub25lIikKICAgIERJQyA8LSBzdW0oRElDJGRldmlhbmNlICsgRElDJHBlbmFsdHkpCiAgICAKICAgIGxpa2UgPC0gcmJpbmQoc2FtcGxlc1tbMV1dLCBzYW1wbGVzW1syXV0sIHNhbXBsZXNbWzNdXSwgc2FtcGxlc1tbNF1dKQogICAgZmJhciA8LSBjb2xNZWFucyhsaWtlKQogICAgUHcgPC0gc3VtKGFwcGx5KGxvZyhsaWtlKSwgMiwgdmFyKSkKICAgIFdBSUMgPC0gLTIgKiBzdW0obG9nKGZiYXIpKSArIDIgKiBQdwogICAgCiAgICB0aWJibGUoCiAgICAgICAgTCA9IEwsCiAgICAgICAgRElDID0gRElDLAogICAgICAgIFdBSUMgPSBXQUlDCiAgICApCn0KYGBgCgpXZSB0aGVuIGFwcGx5IHRoZSBgZml0X2FyX21vZGVsKClgIGZvdXIgdGltZXMgdG8gZ2V0IHJlc3VsdHMgZm9yIHRoZSBmb3VyIG1vZGVscy4gVGhlIHRhYmxlIGJlbG93IHRlbGxzIHVzIHRoYXQgdGhlIG1vZGVsIHRoYXQgdXNlcyB0aGUgbGFzdCBmb3VyIGRheXMgYXMgcHJlZGljdG9ycyBmaXRzIHRoZSBkYXRhIGJlc3QuCgpgYGB7cn0KcmVzdWx0cyA8LSBtYXBfZGZyKDE6NCwgZml0X2FyX21vZGVsKQoKcmVzdWx0cyB8PgogICAgZ3QoKSB8PiAKICAgIGZtdF9udW1iZXIoKQpgYGAKCgotLS0KCg==').then(res => res.blob()).then(blob => {
+<p><a href="#dnldts663" onclick="fetch('data:text/plain;base64,LS0tCnRpdGxlOiAiSG9tZXdvcmsgIzgiCnN1YnRpdGxlOiAiRXhlcmNpc2UgZnJvbSBDaGFwdGVyIDYuNTogNCIKZGVzY3JpcHRpb246IHwKICAgICoqQXNzaWduZWQ6KiogRnJpZGF5LCBOb3ZlbWJlciAzcmQsIDIwMjMgPGJyPgogICAgKipEdWU6KiogRnJpZGF5LCBOb3ZlbWJlciAxMHRoLCAyMDIzCmF1dGhvcjogCiAgICAtICAgbmFtZTogQnJ5bmrDs2xmdXIgR2F1dGkgR3XDsHLDum5hciBKw7Nuc3NvbgogICAgICAgIGVtYWlsOiBicnluam9sZnVyQGhpLmlzCiAgICAgICAgdXJsOiBodHRwczovL3d3dy5oaS5pcy9zdGFmZi9icnluam9sZnVyCiAgICAgICAgYWZmaWxpYXRpb246IAogICAgICAgIC0gICBuYW1lOiBTY2hvb2wgb2YgRW5naW5lZXJpbmcgYW5kIE5hdHVyYWwgU2NpZW5jZXMsIFVuaXZlcnNpdHkgb2YgSWNlbGFuZAogICAgICAgICAgICBjaXR5OiBSZXlramF2w61rCiAgICAgICAgICAgIHVybDogaHR0cHM6Ly9lbmdsaXNoLmhpLmlzL3NjaG9vbF9vZl9lbmdpbmVlcmluZ19hbmRfbmF0dXJhbF9zY2llbmNlcwojIENoYW5nZSB0aGlzIHRvIHBkZiBpZiB5b3UnZCByYXRoZXIgd29yayBpbiB0aGF0IGZvcm1hdApmb3JtYXQ6IGh0bWwgCmVkaXRvcjogc291cmNlCnRpdGxlLWJsb2NrLWJhbm5lcjogdHJ1ZQojIyMjIFRoZSBzZXR0aW5nIGJlbG93IG1ha2VzIG91ciBIVE1MIGRvY3VtZW50IHNlbGYtY29udGFpbmVkIHNvIHRoYXQgd2UgY2FuIHR1cm4gaXQgaW4gIyMjIwojIyMjIFVOQ09NTUVOVCBUSEUgTE9ORSBCRUxPVyBTTyBUSEFUIFlPVSBDQU4gVFVSTiBJTiBZT1VSIEhUTUwgRE9DVU1FTlQgIyMjIyMjIyMjIyMjIyMjIyMjIwojIGVtYmVkLXJlc291cmNlczogdHJ1ZSAKLS0tCgp7ezwgZG93bmxvYWR0aGlzIGluZGV4LnFtZCBkbmFtZT0iaHc4X3NvbHV0aW9uIiBsYWJlbD0iRG93bmxvYWQgdGhlIFF1YXJ0byBkb2N1bWVudCB1c2VkIHRvIHJlbmRlciB0aGlzIGZpbGUiIHR5cGU9cHJpbWFyeSBjbGFzcz1kb3dubG9hZGJ1dHRvbiA+fX0KCmBgYHtyfQojfCBlY2hvOiBmZW5jZWQKI3wgb3V0cHV0OiBoaWRlCmxpYnJhcnkodGlkeXZlcnNlKQpsaWJyYXJ5KGdncGxvdDIpCmxpYnJhcnkocmphZ3MpCmxpYnJhcnkocG9zdGVyaW9yKQpsaWJyYXJ5KGJheWVzcGxvdCkKbGlicmFyeShndCkKbGlicmFyeShEaWFncmFtbWVSKQp0aGVtZV9zZXQodGhlbWVfY2xhc3NpYygpKQpgYGAKCgojIDQKCkRvd25sb2FkIHRoZSBtYXJhdGhvbiBkYXRhIG9mIFNlY3Rpb24gNi40IGZyb20gdGhlIGNvdXJzZSB3ZWJwYWdlLiBMZXQgJFlfe2lqfSQgYmUgdGhlIHNwZWVkIG9mIHJ1bm5lciAkaSQgaW4gbWlsZSAkaiQuIEZpdCB0aGUgaGllcmFyY2hpY2FsIG1vZGVsCgokJApcYmVnaW57YWxpZ25lZH0KWV97aTF9ICZcc2ltIFxtYXRocm17Tm9ybWFsfShcbXVfaSwgXHNpZ21hXzBeMikgXFwKWV97aWp9IFx2ZXJ0IFlfe2lqLTF9ICZcc2ltIFxtYXRocm17Tm9ybWFsfVxsZWZ0KFxtdV9pICsgXHJob19pKFlfe2lqLTF9IC0gXG11X2kpLCBcc2lnbWFfaV4yXHJpZ2h0KSBcXApcbXVfaSAmXHNpbSBcbWF0aHJte05vcm1hbH0oXHRoZXRhXzEsIFx0aGV0YV8yKSBcXApccmhvX2kgJlxzaW0gXG1hdGhybXtOb3JtYWx9KFx0aGV0YV8zLCBcdGhldGFfNCkgXFwKXHNpZ21hX2leMiAmXHNpbSBcbWF0aHJte0ludkdhbW1hfShcdGhldGFfNSwgXHRoZXRhXzYpClxlbmR7YWxpZ25lZH0KJCQKCmBgYHtyfQpsb2FkKHVybCgiaHR0cHM6Ly93d3c0LnN0YXQubmNzdS5lZHUvfmJqcmVpY2gvQlNNZGF0YS9Cb3N0b25NYXJhdGhvbjIwMTYuUkRhdGEiKSkKYGBgCgoKCmEuIERyYXcgYSBEQUcgZm9yIHRoaXMgbW9kZWwgYW5kIGdpdmUgYW4gaW50ZXJwcmV0YXRpb24gZm9yIGVhY2ggcGFyYW1ldGVyIGluIHRoZSBtb2RlbC4KCi0tLQoKKipTb2x1dGlvbjoqKgoKYGBge2RvdH0KZGlncmFwaCBib3hlc19hbmRfY2lyY2xlcyB7CgogICAgIyBhICdncmFwaCcgc3RhdGVtZW50CiAgICBncmFwaCBbb3ZlcmxhcCA9IHRydWUsIGZvbnRzaXplID0gMTBdCgogICAgdGhldGExW2xhYmVsID08zrg8c3ViPjE8L3N1Yj4+XTsKICAgIHRoZXRhMltsYWJlbCA9PM64PHN1Yj4yPC9zdWI+Pl07IAogICAgdGhldGEzW2xhYmVsID08zrg8c3ViPjM8L3N1Yj4+XTsgCiAgICB0aGV0YTRbbGFiZWwgPTzOuDxzdWI+NDwvc3ViPj5dOyAKICAgIHRoZXRhNVtsYWJlbCA9PM64PHN1Yj41PC9zdWI+Pl07IAogICAgdGhldGE2W2xhYmVsID08zrg8c3ViPjY8L3N1Yj4+XTsgCiAgICBtdVtsYWJlbCA9IDzOvD5dOwogICAgcmhvW2xhYmVsID0gPM+BPl07CiAgICBzaWdtYTFbbGFiZWwgPSA8z4M8c3ViPjE8L3N1Yj4+XTsKICAgIHNpZ21haVtsYWJlbCA9IDzPgzxzdWI+aTwvc3ViPj5dOwoKICAgIFlpMVtsYWJlbCA9IDxZPHN1Yj5pMTwvc3ViPj5dCiAgICBZaWpbbGFiZWwgPSA8WTxzdWI+aWo8L3N1Yj4+XQogICAgCiAgICAjIGVkZ2Ugc3RhdGVtZW50cwogICAgdGhldGExLT5tdSB0aGV0YTItPm11CiAgICB0aGV0YTMtPnJobyB0aGV0YTQtPiByaG8KICAgIHRoZXRhNS0+c2lnbWExIHRoZXRhNi0+c2lnbWExCiAgICB0aGV0YTUtPnNpZ21haSB0aGV0YTYtPnNpZ21haQogICAgCiAgICBtdS0+WWkxIHNpZ21hMS0+WWkxCiAgICAKICAgIG11LT5ZaWogc2lnbWFpLT5ZaWogcmhvLT5ZaWogWWlqLT5ZaWogWWkxLT5ZaWoKfQpgYGAKCi0tLQoKYi4gU2VsZWN0IHVuaW5mb3JtYXRpdmUgcHJpb3IgZGlzdHJpYnV0aW9ucyBmb3IgJFx0aGV0YV8xLCBcZG90cywgXHRoZXRhXzYkLgoKLS0tCgoqKlNvbHV0aW9uOioqCgotLS0KCmMuIEZpdCB0aGUgbW9kZWwgaW4gYEpBR1NgIHVzaW5nIHRocmVlIGNoYWlucyBlYWNoIHdpdGggMjUsMDAwIGl0ZXJhdGlvbnNhbmQgdGhvcm91Z2hseSBhc3Nlc3MgTUNNQyBjb252ZXJnZW5jZSBmb3IgdGhlICRcdGhldGFfaiQuCgotLS0KCioqU29sdXRpb246KioKCi0tLQoKZC4gQXJlIHRoZSBkYXRhIGluZm9ybWF0aXZlIGFib3V0IHRoZSAkXHRoZXRhX2okPyBUaGF0IGlzLCBhcmUgdGhlIHBvc3RlcmlvciBkaXN0cmlidXRpb25zIG1vcmUgY29uY2VudHJhdGVkIHRoYW4gdGhlIHByaW9yIGRpc3RyaWJ1dGlvbnM/CgotLS0KCioqU29sdXRpb246KioKCi0tLQoKZS4gSW4gbGlnaHQgb2YgKmMuKiBhbmQgKmQuKiwgYXJlIHRoZXJlIGFueSBzaW1wbGlmaWNhdGlvbnMgeW91IG1pZ2h0IGNvbnNpZGVyIGFuZCBpZiBzbywgaG93IHdvdWxkIHlvdSBjb21wYXJlIHRoZSBmdWxsIGFuZCBzaW1wbGlmaWVkIG1vZGVscz8K').then(res => res.blob()).then(blob => {
       const downloadURL = window.URL.createObjectURL(blob);
       const a = document.createElement('a');
       document.body.appendChild(a);
       a.href = downloadURL;
-      a.download = 'hw7_solution.qmd'; a.click();
+      a.download = 'hw8_solution.qmd'; a.click();
       window.URL.revokeObjectURL(downloadURL);
       document.body.removeChild(a);
-        });"><button class="btn btn-primary downloadthis  downloadbutton" id="dnldts26290"><i class="bi bi-download"></i> Download the Quarto document used to render this file </button></a></p>
+        });"><button class="btn btn-primary downloadthis  downloadbutton" id="dnldts663"><i class="bi bi-download"></i> Download the Quarto document used to render this file </button></a></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r setup}</span></span>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="in">#| output: hide</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="in">library(tidyverse)</span></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="in">library(ggplot2)</span></span>
@@ -324,1969 +324,238 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="in">library(posterior)</span></span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="in">library(bayesplot)</span></span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="in">library(gt)</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="in">library(purrr)</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="in">library(patchwork)</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="in">library(psych, include.only = c("kurtosi", "skew"))</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="in">theme_set(theme_classic())</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="in">library(DiagrammeR)</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="in">theme_set(theme_classic())</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="section" class="level1">
-<h1>2</h1>
-<p>Download the <code>airquality</code> dataset in R. Fit the following model to the data</p>
-<p><span class="math display">\[
-\mathrm{ozone_i} \sim \mathrm{Normal}(\beta_1 + \beta_2\mathrm{solar.R_i} + \beta_3\mathrm{temp_i} + \beta_4\mathrm{wind_i}, \sigma^2)
-\]</span></p>
-<p>Use posterior predictive checks to verify that the model fits well. If you find model misspecification, suggest (but do not fit) alternatives.</p>
-<hr>
-<p><strong>Solution:</strong></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">na.omit</span>(airquality)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>ozone <span class="ot">&lt;-</span> d<span class="sc">$</span>Ozone</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>X <span class="ot">&lt;-</span> d[ , <span class="fu">c</span>(<span class="st">"Solar.R"</span>, <span class="st">"Wind"</span>, <span class="st">"Temp"</span>)] <span class="sc">|&gt;</span> <span class="fu">as.matrix</span>() <span class="sc">|&gt;</span> <span class="fu">scale</span>()</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">ozone =</span> ozone,</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">X =</span> X,</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">n =</span> <span class="fu">nrow</span>(X),</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">p =</span> <span class="fu">ncol</span>(X)</span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>model_string <span class="ot">&lt;-</span> <span class="fu">textConnection</span>(<span class="st">"model{</span></span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="st">    #Likelihood</span></span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="st">    for (i in 1:n) {</span></span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="st">        ozone[i] ~ dnorm(mu[i], tau)</span></span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="st">        mu[i] = alpha + inprod(X[i, ], beta[])</span></span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="st">        Y_rep[i] ~ dnorm(mu[i], tau)</span></span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="st">    }</span></span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="st">    </span></span>
-<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="st">    for (i in 1:p) {</span></span>
-<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a><span class="st">        beta[i] ~ dnorm(0, 0.001)</span></span>
-<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a><span class="st">    }</span></span>
-<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a><span class="st">    </span></span>
-<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a><span class="st">    alpha ~ dnorm(0, 0.001)</span></span>
-<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a><span class="st">    tau ~ dgamma(0.01, 0.01)</span></span>
-<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a><span class="st">    sigma2 = 1 / tau;</span></span>
-<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a><span class="st">    </span></span>
-<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a><span class="st">}"</span>)</span>
-<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">jags.model</span>(</span>
-<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>    model_string,</span>
-<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> data,</span>
-<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>    <span class="at">n.chains =</span> <span class="dv">4</span>,</span>
-<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>    <span class="at">quiet =</span> <span class="cn">TRUE</span></span>
-<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a><span class="fu">update</span>(model, <span class="dv">5000</span>)</span>
-<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a>params <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"alpha"</span>, <span class="st">"beta"</span>, <span class="st">"sigma2"</span>, <span class="st">"Y_rep"</span>)</span>
-<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a>samples <span class="ot">&lt;-</span> <span class="fu">coda.samples</span>(</span>
-<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a>    model,</span>
-<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a>    <span class="at">variable.names =</span> params,</span>
-<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a>    <span class="at">n.iter =</span> <span class="dv">5000</span></span>
-<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a>posterior_jags <span class="ot">&lt;-</span> samples <span class="sc">|&gt;</span> </span>
-<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a>    <span class="fu">as_draws_df</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>We first look at summary statistics and trace plots and see that our chains seem to have converged well.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>posterior_jags <span class="sc">|&gt;</span> </span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">subset_draws</span>(<span class="at">variable =</span> <span class="fu">c</span>(<span class="st">"alpha"</span>, <span class="st">"beta"</span>, <span class="st">"sigma2"</span>)) <span class="sc">|&gt;</span> </span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise_draws</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">gt</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">fmt_number</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div id="foxbrbujcc" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#foxbrbujcc table {
-  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-#foxbrbujcc thead, #foxbrbujcc tbody, #foxbrbujcc tfoot, #foxbrbujcc tr, #foxbrbujcc td, #foxbrbujcc th {
-  border-style: none;
-}
-
-#foxbrbujcc p {
-  margin: 0;
-  padding: 0;
-}
-
-#foxbrbujcc .gt_table {
-  display: table;
-  border-collapse: collapse;
-  line-height: normal;
-  margin-left: auto;
-  margin-right: auto;
-  color: #333333;
-  font-size: 16px;
-  font-weight: normal;
-  font-style: normal;
-  background-color: #FFFFFF;
-  width: auto;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #A8A8A8;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #A8A8A8;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-}
-
-#foxbrbujcc .gt_caption {
-  padding-top: 4px;
-  padding-bottom: 4px;
-}
-
-#foxbrbujcc .gt_title {
-  color: #333333;
-  font-size: 125%;
-  font-weight: initial;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-color: #FFFFFF;
-  border-bottom-width: 0;
-}
-
-#foxbrbujcc .gt_subtitle {
-  color: #333333;
-  font-size: 85%;
-  font-weight: initial;
-  padding-top: 3px;
-  padding-bottom: 5px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-top-color: #FFFFFF;
-  border-top-width: 0;
-}
-
-#foxbrbujcc .gt_heading {
-  background-color: #FFFFFF;
-  text-align: center;
-  border-bottom-color: #FFFFFF;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-}
-
-#foxbrbujcc .gt_bottom_border {
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-
-#foxbrbujcc .gt_col_headings {
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-}
-
-#foxbrbujcc .gt_col_heading {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: normal;
-  text-transform: inherit;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: bottom;
-  padding-top: 5px;
-  padding-bottom: 6px;
-  padding-left: 5px;
-  padding-right: 5px;
-  overflow-x: hidden;
-}
-
-#foxbrbujcc .gt_column_spanner_outer {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: normal;
-  text-transform: inherit;
-  padding-top: 0;
-  padding-bottom: 0;
-  padding-left: 4px;
-  padding-right: 4px;
-}
-
-#foxbrbujcc .gt_column_spanner_outer:first-child {
-  padding-left: 0;
-}
-
-#foxbrbujcc .gt_column_spanner_outer:last-child {
-  padding-right: 0;
-}
-
-#foxbrbujcc .gt_column_spanner {
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  vertical-align: bottom;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  overflow-x: hidden;
-  display: inline-block;
-  width: 100%;
-}
-
-#foxbrbujcc .gt_spanner_row {
-  border-bottom-style: hidden;
-}
-
-#foxbrbujcc .gt_group_heading {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: middle;
-  text-align: left;
-}
-
-#foxbrbujcc .gt_empty_group_heading {
-  padding: 0.5px;
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  vertical-align: middle;
-}
-
-#foxbrbujcc .gt_from_md > :first-child {
-  margin-top: 0;
-}
-
-#foxbrbujcc .gt_from_md > :last-child {
-  margin-bottom: 0;
-}
-
-#foxbrbujcc .gt_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  margin: 10px;
-  border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: middle;
-  overflow-x: hidden;
-}
-
-#foxbrbujcc .gt_stub {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-right-style: solid;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#foxbrbujcc .gt_stub_row_group {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-right-style: solid;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  padding-left: 5px;
-  padding-right: 5px;
-  vertical-align: top;
-}
-
-#foxbrbujcc .gt_row_group_first td {
-  border-top-width: 2px;
-}
-
-#foxbrbujcc .gt_row_group_first th {
-  border-top-width: 2px;
-}
-
-#foxbrbujcc .gt_summary_row {
-  color: #333333;
-  background-color: #FFFFFF;
-  text-transform: inherit;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#foxbrbujcc .gt_first_summary_row {
-  border-top-style: solid;
-  border-top-color: #D3D3D3;
-}
-
-#foxbrbujcc .gt_first_summary_row.thick {
-  border-top-width: 2px;
-}
-
-#foxbrbujcc .gt_last_summary_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-
-#foxbrbujcc .gt_grand_summary_row {
-  color: #333333;
-  background-color: #FFFFFF;
-  text-transform: inherit;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#foxbrbujcc .gt_first_grand_summary_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-top-style: double;
-  border-top-width: 6px;
-  border-top-color: #D3D3D3;
-}
-
-#foxbrbujcc .gt_last_grand_summary_row_top {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-style: double;
-  border-bottom-width: 6px;
-  border-bottom-color: #D3D3D3;
-}
-
-#foxbrbujcc .gt_striped {
-  background-color: rgba(128, 128, 128, 0.05);
-}
-
-#foxbrbujcc .gt_table_body {
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-
-#foxbrbujcc .gt_footnotes {
-  color: #333333;
-  background-color: #FFFFFF;
-  border-bottom-style: none;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-}
-
-#foxbrbujcc .gt_footnote {
-  margin: 0px;
-  font-size: 90%;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#foxbrbujcc .gt_sourcenotes {
-  color: #333333;
-  background-color: #FFFFFF;
-  border-bottom-style: none;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-}
-
-#foxbrbujcc .gt_sourcenote {
-  font-size: 90%;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#foxbrbujcc .gt_left {
-  text-align: left;
-}
-
-#foxbrbujcc .gt_center {
-  text-align: center;
-}
-
-#foxbrbujcc .gt_right {
-  text-align: right;
-  font-variant-numeric: tabular-nums;
-}
-
-#foxbrbujcc .gt_font_normal {
-  font-weight: normal;
-}
-
-#foxbrbujcc .gt_font_bold {
-  font-weight: bold;
-}
-
-#foxbrbujcc .gt_font_italic {
-  font-style: italic;
-}
-
-#foxbrbujcc .gt_super {
-  font-size: 65%;
-}
-
-#foxbrbujcc .gt_footnote_marks {
-  font-size: 75%;
-  vertical-align: 0.4em;
-  position: initial;
-}
-
-#foxbrbujcc .gt_asterisk {
-  font-size: 100%;
-  vertical-align: 0;
-}
-
-#foxbrbujcc .gt_indent_1 {
-  text-indent: 5px;
-}
-
-#foxbrbujcc .gt_indent_2 {
-  text-indent: 10px;
-}
-
-#foxbrbujcc .gt_indent_3 {
-  text-indent: 15px;
-}
-
-#foxbrbujcc .gt_indent_4 {
-  text-indent: 20px;
-}
-
-#foxbrbujcc .gt_indent_5 {
-  text-indent: 25px;
-}
-</style>
-
-<table class="gt_table table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
-<thead>
-<tr class="header gt_col_headings">
-<th id="variable" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">variable</th>
-<th id="mean" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">mean</th>
-<th id="median" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">median</th>
-<th id="sd" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">sd</th>
-<th id="mad" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">mad</th>
-<th id="q5" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">q5</th>
-<th id="q95" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">q95</th>
-<th id="rhat" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">rhat</th>
-<th id="ess_bulk" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">ess_bulk</th>
-<th id="ess_tail" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">ess_tail</th>
-</tr>
-</thead>
-<tbody class="gt_table_body">
-<tr class="odd">
-<td class="gt_row gt_left" headers="variable">alpha</td>
-<td class="gt_row gt_right" headers="mean">41.91</td>
-<td class="gt_row gt_right" headers="median">41.92</td>
-<td class="gt_row gt_right" headers="sd">2.02</td>
-<td class="gt_row gt_right" headers="mad">1.98</td>
-<td class="gt_row gt_right" headers="q5">38.57</td>
-<td class="gt_row gt_right" headers="q95">45.23</td>
-<td class="gt_row gt_right" headers="rhat">1.00</td>
-<td class="gt_row gt_right" headers="ess_bulk">19,806.36</td>
-<td class="gt_row gt_right" headers="ess_tail">19,511.76</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="variable">beta[1]</td>
-<td class="gt_row gt_right" headers="mean">5.46</td>
-<td class="gt_row gt_right" headers="median">5.46</td>
-<td class="gt_row gt_right" headers="sd">2.13</td>
-<td class="gt_row gt_right" headers="mad">2.11</td>
-<td class="gt_row gt_right" headers="q5">1.99</td>
-<td class="gt_row gt_right" headers="q95">8.97</td>
-<td class="gt_row gt_right" headers="rhat">1.00</td>
-<td class="gt_row gt_right" headers="ess_bulk">16,799.71</td>
-<td class="gt_row gt_right" headers="ess_tail">18,627.88</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="variable">beta[2]</td>
-<td class="gt_row gt_right" headers="mean">−11.85</td>
-<td class="gt_row gt_right" headers="median">−11.88</td>
-<td class="gt_row gt_right" headers="sd">2.34</td>
-<td class="gt_row gt_right" headers="mad">2.32</td>
-<td class="gt_row gt_right" headers="q5">−15.65</td>
-<td class="gt_row gt_right" headers="q95">−7.95</td>
-<td class="gt_row gt_right" headers="rhat">1.00</td>
-<td class="gt_row gt_right" headers="ess_bulk">12,300.99</td>
-<td class="gt_row gt_right" headers="ess_tail">16,964.20</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="variable">beta[3]</td>
-<td class="gt_row gt_right" headers="mean">15.68</td>
-<td class="gt_row gt_right" headers="median">15.70</td>
-<td class="gt_row gt_right" headers="sd">2.44</td>
-<td class="gt_row gt_right" headers="mad">2.45</td>
-<td class="gt_row gt_right" headers="q5">11.67</td>
-<td class="gt_row gt_right" headers="q95">19.67</td>
-<td class="gt_row gt_right" headers="rhat">1.00</td>
-<td class="gt_row gt_right" headers="ess_bulk">11,259.56</td>
-<td class="gt_row gt_right" headers="ess_tail">15,908.93</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="variable">sigma2</td>
-<td class="gt_row gt_right" headers="mean">457.07</td>
-<td class="gt_row gt_right" headers="median">451.63</td>
-<td class="gt_row gt_right" headers="sd">64.21</td>
-<td class="gt_row gt_right" headers="mad">62.16</td>
-<td class="gt_row gt_right" headers="q5">362.76</td>
-<td class="gt_row gt_right" headers="q95">571.77</td>
-<td class="gt_row gt_right" headers="rhat">1.00</td>
-<td class="gt_row gt_right" headers="ess_bulk">18,409.68</td>
-<td class="gt_row gt_right" headers="ess_tail">19,200.83</td>
-</tr>
-</tbody>
-</table>
-
-</div>
-</div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>samples <span class="sc">|&gt;</span> </span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mcmc_trace</span>(</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">regex_pars =</span> <span class="fu">c</span>(<span class="st">"alpha"</span>, <span class="st">"beta"</span>, <span class="st">"sigma"</span>)</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p><img src="index_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="672"></p>
-</div>
-</div>
-<p>Then we can use the <code>bayesplot</code> package for easy posterior predictive checks. To do this we first create a matrix <code>y_rep</code> containing some of the draws from our posterior predictive distribution (PPD) we sampled using JAGS above. We choose to use only a subset of the posterior draws in order to make our plotting go faster.</p>
-<p>First we look at the whole distribution of our predictions and compare it to the observed distribution in our data. We notice the observed distribution is right-skewed. This does not necessarily mean we should use a non-normal likelihood. It could also mean we simply didn’t capture enough of the variance in the data with the predictor variable available to us.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>y_rep <span class="ot">&lt;-</span> posterior_jags <span class="sc">|&gt;</span> </span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">subset_draws</span>(<span class="at">variable =</span> <span class="st">"Y_rep"</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">resample_draws</span>(<span class="at">ndraws =</span> <span class="dv">200</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">as_draws_matrix</span>()</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ppc_dens_overlay</span>(ozone, y_rep) <span class="sc">+</span></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(</span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>        <span class="at">title =</span> <span class="st">"Our PPD is less skewed than the observed data"</span></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p><img src="index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
-</div>
-</div>
-<p>The plots below tell us that the range and standard deviation of predictions are adequate but our model performs very badly on max, min, skew and kurtosis. Kurtosis is a measure of heavy the tails of a distribution is, a higher kurtosis means that the distribution has longer tails (think student-t versus normal). A large positive value of skew means that a distribution slopes longer to the right, a large negative value means it slopes longer to the right and a value of 0 means symmetry.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>range <span class="ot">&lt;-</span> <span class="cf">function</span>(x) <span class="fu">max</span>(x) <span class="sc">-</span> <span class="fu">min</span>(x)</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>my_stats <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="st">"max"</span>, <span class="st">"min"</span>, <span class="st">"range"</span>, <span class="st">"sd"</span>, <span class="st">"skew"</span>, <span class="st">"kurtosi"</span>)</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>plot_gof_check <span class="ot">&lt;-</span> <span class="cf">function</span>(check) {</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ppc_stat</span>(ozone, y_rep, <span class="at">stat =</span> check) <span class="sc">+</span></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>        <span class="fu">labs</span>(</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">title =</span> check</span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>        )</span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>my_stats <span class="sc">|&gt;</span> </span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">map</span>(plot_gof_check) <span class="sc">|&gt;</span> </span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">wrap_plots</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p><img src="index_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
-</div>
-</div>
-<p>These goodness of fit checks imply that we might need to use a likelihood that has longer tails and is positively skewed. One way to model the data in that way is to model it on the log scale (since all the observed values are &gt; 0) and maybe using a student-t instead of a normal distribution.</p>
-<p>Such a model might look something like this in JAGS code</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>model_string <span class="ot">&lt;-</span> <span class="fu">textConnection</span>(<span class="st">"model{</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="st">    #Likelihood</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="st">    for (i in 1:n) {</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="st">        ##### New likelihood #####</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="st">        ozone[i] ~ dt(mu[i], tau, k)</span></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="st">        ##### Log link function ##</span></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="st">        log(mu[i]) = alpha + inprod(X[i, ], beta[])</span></span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="st">        Y_rep[i] ~ dnorm(mu[i], tau)</span></span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="st">    }</span></span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="st">    </span></span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="st">    for (i in 1:p) {</span></span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="st">        beta[i] ~ dnorm(0, 0.001)</span></span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="st">    }</span></span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a><span class="st">    </span></span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a><span class="st">    alpha ~ dnorm(0, 0.001)</span></span>
-<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a><span class="st">    tau ~ dgamma(0.01, 0.01)</span></span>
-<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a><span class="st">    sigma2 = 1 / tau;</span></span>
-<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a><span class="st">    ##### Prior for k, the degrees of freedom ######</span></span>
-<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a><span class="st">    k ~ dgamma(0.01, 0.01);</span></span>
-<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a><span class="st">    </span></span>
-<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a><span class="st">}"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<hr>
-</section>
-<section id="section-1" class="level1">
 <h1>4</h1>
-<p>Use the “Mr.&nbsp;October” data. Compare the two models:</p>
-<p><img src="fig1.png" class="img-fluid"></p>
-<p>using Bayes factors, DIC and WAIC. Assume the Uniform(0, c) prior for all <span class="math inline">\(\lambda_j\)</span> and compare the results for <span class="math inline">\(c = 1\)</span> and <span class="math inline">\(c = 10\)</span>.</p>
+<p>Download the marathon data of Section 6.4 from the course webpage. Let <span class="math inline">\(Y_{ij}\)</span> be the speed of runner <span class="math inline">\(i\)</span> in mile <span class="math inline">\(j\)</span>. Fit the hierarchical model</p>
+<p><span class="math display">\[
+\begin{aligned}
+Y_{i1} &amp;\sim \mathrm{Normal}(\mu_i, \sigma_0^2) \\
+Y_{ij} \vert Y_{ij-1} &amp;\sim \mathrm{Normal}\left(\mu_i + \rho_i(Y_{ij-1} - \mu_i), \sigma_i^2\right) \\
+\mu_i &amp;\sim \mathrm{Normal}(\theta_1, \theta_2) \\
+\rho_i &amp;\sim \mathrm{Normal}(\theta_3, \theta_4) \\
+\sigma_i^2 &amp;\sim \mathrm{InvGamma}(\theta_5, \theta_6)
+\end{aligned}
+\]</span></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="fu">url</span>(<span class="st">"https://www4.stat.ncsu.edu/~bjreich/BSMdata/BostonMarathon2016.RData"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol type="a">
+<li>Draw a DAG for this model and give an interpretation for each parameter in the model.</li>
+</ol>
 <hr>
 <p><strong>Solution:</strong></p>
-<p>There are two ways of calculating the Bayes factors in this assignment:</p>
-<ol type="1">
-<li>Since this is a comparison of relatively simple models we can write out the equations for <span class="math inline">\(P(\mathcal M_1 \vert Y)\)</span> and <span class="math inline">\(P(\mathcal M_2 \vert Y)\)</span></li>
-</ol>
-<p><span class="math display">\[
-\begin{aligned}
-P(\mathcal M_2 \vert Y) &amp;= \frac{P(Y\vert\mathcal M_2) P(\mathcal M_2)}{P(Y)} \\
-&amp;\propto P(Y\vert \mathcal M_2)P(\mathcal M_2) \\
-&amp;= P(\mathcal M_2)\int_0^c \prod_{i=1}^2f(Y_i \vert \lambda_0)\pi(\lambda_0)d\lambda_0 \\
-&amp;= P(\mathcal M_2)\int_0^c \prod_{i=1}^2f(Y_i \vert \lambda_0)\frac{1}{c} d\lambda_0 \\
-&amp;= \frac{1}{c}P(\mathcal M_2)\int_0^c \prod_{i=1}^2 \frac{(N_i\lambda_0)^{Y_i}e^{-N_i\lambda_0}}{Y_i!} d\lambda_0 \\
-&amp;= \frac1c P(\mathcal M_2) \int_0^c \frac{N_1^{Y_1}N_2^{Y_2}}{Y_1!Y_2!}\lambda_0^{Y_1+Y_2}e^{-(N_1+N_2)\lambda_0}d\lambda_0 \\
-&amp;= \frac1c P(\mathcal M_2) \frac{N_1^{Y_1}N_2^{Y_2}}{Y_1!Y_2!}\int_0^c \lambda_0^{Y_1+Y_2}e^{-(N_1+N_2)\lambda_0}d\lambda_0
-\end{aligned}
-\]</span></p>
-<p>This looks like the kernel of a Gamma(A, B) distribution with <span class="math inline">\(A = Y_1 + Y_2 + 1\)</span> and <span class="math inline">\(B = N_1 + N_2\)</span>.</p>
-<p><span class="math display">\[
-\begin{aligned}
-P(\mathcal M_2 \vert Y) &amp;= \frac1c P(\mathcal M_2) \frac{N_1^{Y_1}N_2^{Y_2}}{Y_1!Y_2!} \frac{\Gamma(A)}{B^A} \int_0^c \frac{B^A}{\Gamma(A)} \lambda_0^{A - 1}e^{-B\lambda_0}d\lambda_0 \\
-&amp;= \frac1c P(\mathcal M_2) \frac{N_1^{Y_1}N_2^{Y_2}}{Y_1!Y_2!} \frac{(Y_1 + Y_2)!}{(N_1 + N_2)^{Y_1 + Y_2 + 1}} P(\lambda_0 &lt; c \vert Y),
-\end{aligned}
-\]</span></p>
-<p>where <span class="math inline">\(\lambda_0 \sim \mathrm{Gamma}(Y_1 + Y_2 + 1, N_1 + N_2)\)</span>.</p>
-<p>In a similar way we end up getting</p>
-<p><span class="math display">\[
-\begin{aligned}
-P(\mathcal M_1 \vert Y) &amp;= \frac{1}{c^2} P(\mathcal M_1) \frac{1}{N_1N_2} \int_0^c \frac{N_1^{Y_1+1}}{\Gamma(Y_1+1)} \lambda_1^{Y_1 + 1 - 1}e^{-N_1\lambda_1}d\lambda_1 \int_0^c \frac{N_2^{Y_2+1}}{\Gamma(Y_2+1)} \lambda_2^{Y_2 + 1 - 1}e^{-N_2\lambda_2}d\lambda_2 \\
-&amp;= \frac{1}{c^2} P(\mathcal M_1)\frac{1}{N_1N_2} P(\lambda_1 &lt; c \vert Y) P(\lambda_2 &lt; c \vert Y),
-\end{aligned}
-\]</span></p>
-<p>where <span class="math inline">\(\lambda_1 \sim \mathrm{Gamma}(Y_1 + 1, N_1)\)</span> and <span class="math inline">\(\lambda_2 \sim \mathrm{Gamma}(Y_2 + 1, N_2)\)</span>. Writing up the ratio of these two, we get</p>
-<p><span class="math display">\[
-\begin{aligned}
-BF &amp;= \frac{P(Y\vert \mathcal M_1)}{P(Y \vert \mathcal M_2)} \\
-&amp;= \frac{P(\mathcal M_1 \vert Y) / P(\mathcal M_1)}{P(\mathcal M_2 \vert Y) / P(\mathcal M_2)} \\
-&amp;= \frac{\frac{1}{c^2} \frac{1}{N_1N_2} P(\lambda_1 &lt; c \vert Y) P(\lambda_2 &lt; c \vert Y)}{\frac1c \frac{N_1^{Y_1}N_2^{Y_2}}{Y_1!Y_2!} \frac{\Gamma(A)}{B^A} P(\lambda_0 &lt; c \vert Y)} \\
-&amp;= \frac1c \frac{Y_1!Y_2!}{N_1^{Y_1+1}N_2^{Y_2+1}} \frac{B^A}{\Gamma(A)} \frac{P(\lambda_1 &lt; c \vert Y) P(\lambda_2 &lt; c \vert Y)}{P(\lambda_0 &lt; c \vert Y)} \\
-&amp;= \frac1c \frac{Y_1!Y_2!}{(Y_1+Y_2)!} \frac{(N_1+N_2)^{Y_1+Y_2+1}}{N_1^{Y_1+1}N_2^{Y_2+1}} \frac{P(\lambda_1 &lt; c \vert Y) P(\lambda_2 &lt; c \vert Y)}{P(\lambda_0 &lt; c \vert Y)},
-\end{aligned}
-\]</span></p>
-<p>where <span class="math inline">\(\lambda_0 \sim \mathrm{Gamma}(Y_1 + Y_2 + 1, N_1 + N_2)\)</span>, <span class="math inline">\(\lambda_1 \sim \mathrm{Gamma}(Y_1 + 1, N_1)\)</span> and <span class="math inline">\(\lambda_2 \sim \mathrm{Gamma}(Y_2 + 1, N_2)\)</span></p>
-<p>Writing this as an R function, we get</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="in">bf &lt;- function(C, Y = c(563, 10), N = c(2820, 27)) {</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="in">    </span></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="in">    out &lt;- lfactorial(Y[1]) + lfactorial(Y[2]) - lfactorial(sum(Y))</span></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="in">    out &lt;- out + (sum(Y) + 1) * log(sum(N)) - sum((Y + 1) * log(N))</span></span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="in">    out &lt;- out + pgamma(C, shape = Y[1] + 1, rate = N[1], log.p = TRUE)</span></span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="in">    out &lt;- out + pgamma(C, shape = Y[2] + 1, rate = N[2], log.p = TRUE)</span></span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="in">    out &lt;- out - pgamma(C, shape = sum(Y) + 1, rate = sum(N), log.p = TRUE)</span></span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="in">    out &lt;- out - log(C)</span></span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="in">    </span></span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="in">    exp(out)</span></span>
-<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="in">}</span></span>
-<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a><span class="in">bf(C = 1)</span></span>
-<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a><span class="in">bf(C = 10)</span></span>
-<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 1.397494
-[1] 0.1397724</code></pre>
-</div>
-</div>
-<ol start="2" type="1">
-<li>The other possibility is to use JAGS to approximate the posterior probability of each model for us and then calculate the Bayes factor based on the posterior distribution. To do this, we add an auxiliary variable, <span class="math inline">\(z\)</span>, to our sampler and write the two models into the same sampler as below. For each sample in our posterior where <span class="math inline">\(z=1\)</span>, our sampler will sample from <span class="math inline">\(\mathcal M_2\)</span> and otherwise sample from <span class="math inline">\(\mathcal M_2\)</span>. If our sampler converges, we can then calculate the posterior mean of <span class="math inline">\(z\)</span> as a close approximation to the Bayes factor.</li>
-</ol>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="in">#| eval: false</span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="in">model_string_bf &lt;- textConnection("model{</span></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="in">    #Likelihood</span></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="in">    for (i in 1:2) {</span></span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="in">        Y[i] ~ dpois(N[i] * ifelse(z == 1, lambda_0, lambda[i]))</span></span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="in">        lambda[i] ~ dunif(0, C)</span></span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="in">        like[i] &lt;- dpois(Y[i], lambda[i] * N[i])</span></span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="in">    }</span></span>
-<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="in">    </span></span>
-<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a><span class="in">    z ~ dbern(0.5)</span></span>
-<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a><span class="in">    lambda_0 ~ dunif(0, C)</span></span>
-<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a><span class="in">}")</span></span>
-<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>We now define two functions for comparing the two models. Expand the code blocks to see the code.</p>
-<div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>bf_jags <span class="ot">&lt;-</span> <span class="cf">function</span>(C, <span class="at">Y =</span> <span class="fu">c</span>(<span class="dv">563</span>, <span class="dv">10</span>), <span class="at">N =</span> <span class="fu">c</span>(<span class="dv">2820</span>, <span class="dv">27</span>)) {</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    Y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">563</span>, <span class="dv">10</span>)</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    N <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2820</span>, <span class="dv">27</span>)</span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    data <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">Y =</span> Y,</span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>        <span class="at">N =</span> N,</span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>        <span class="at">C =</span> C</span>
-<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>    model_string_bf <span class="ot">&lt;-</span> <span class="fu">textConnection</span>(<span class="st">"model{</span></span>
-<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a><span class="st">    #Likelihood</span></span>
-<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a><span class="st">    for (i in 1:2) {</span></span>
-<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a><span class="st">        Y[i] ~ dpois(N[i] * ifelse(z == 1, lambda_0, lambda[i]))</span></span>
-<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a><span class="st">        lambda[i] ~ dunif(0, C)</span></span>
-<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a><span class="st">        like[i] &lt;- dpois(Y[i], lambda[i] * N[i])</span></span>
-<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a><span class="st">    }</span></span>
-<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a><span class="st">    </span></span>
-<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a><span class="st">    z ~ dbern(0.5)</span></span>
-<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a><span class="st">    lambda_0 ~ dunif(0, C)</span></span>
-<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a><span class="st">}"</span>)</span>
-<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a>    model_bf <span class="ot">&lt;-</span> <span class="fu">jags.model</span>(</span>
-<span id="cb11-25"><a href="#cb11-25" aria-hidden="true" tabindex="-1"></a>        model_string_bf,</span>
-<span id="cb11-26"><a href="#cb11-26" aria-hidden="true" tabindex="-1"></a>        <span class="at">data =</span> data,</span>
-<span id="cb11-27"><a href="#cb11-27" aria-hidden="true" tabindex="-1"></a>        <span class="at">n.chains =</span> <span class="dv">4</span>,</span>
-<span id="cb11-28"><a href="#cb11-28" aria-hidden="true" tabindex="-1"></a>        <span class="at">quiet =</span> <span class="cn">TRUE</span></span>
-<span id="cb11-29"><a href="#cb11-29" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb11-30"><a href="#cb11-30" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb11-31"><a href="#cb11-31" aria-hidden="true" tabindex="-1"></a>    <span class="fu">update</span>(model_bf, <span class="dv">10000</span>, <span class="at">progress.bar =</span> <span class="st">"none"</span>)</span>
-<span id="cb11-32"><a href="#cb11-32" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb11-33"><a href="#cb11-33" aria-hidden="true" tabindex="-1"></a>    samples_bf <span class="ot">&lt;-</span> <span class="fu">coda.samples</span>(</span>
-<span id="cb11-34"><a href="#cb11-34" aria-hidden="true" tabindex="-1"></a>        model_bf,</span>
-<span id="cb11-35"><a href="#cb11-35" aria-hidden="true" tabindex="-1"></a>        <span class="at">variable.names =</span> <span class="fu">c</span>(<span class="st">"z"</span>),</span>
-<span id="cb11-36"><a href="#cb11-36" aria-hidden="true" tabindex="-1"></a>        <span class="at">n.iter =</span> <span class="dv">300000</span>,</span>
-<span id="cb11-37"><a href="#cb11-37" aria-hidden="true" tabindex="-1"></a>        <span class="at">thin =</span> <span class="dv">10</span>,</span>
-<span id="cb11-38"><a href="#cb11-38" aria-hidden="true" tabindex="-1"></a>        <span class="at">progress.bar =</span> <span class="st">"none"</span></span>
-<span id="cb11-39"><a href="#cb11-39" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb11-40"><a href="#cb11-40" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb11-41"><a href="#cb11-41" aria-hidden="true" tabindex="-1"></a>    p_m2 <span class="ot">&lt;-</span> samples_bf <span class="sc">|&gt;</span> </span>
-<span id="cb11-42"><a href="#cb11-42" aria-hidden="true" tabindex="-1"></a>        <span class="fu">as_draws_df</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb11-43"><a href="#cb11-43" aria-hidden="true" tabindex="-1"></a>        <span class="fu">subset_draws</span>(<span class="at">variable =</span> <span class="st">"z"</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb11-44"><a href="#cb11-44" aria-hidden="true" tabindex="-1"></a>        <span class="fu">summarise_draws</span>(mean) <span class="sc">|&gt;</span> </span>
-<span id="cb11-45"><a href="#cb11-45" aria-hidden="true" tabindex="-1"></a>        <span class="fu">pull</span>(mean)</span>
-<span id="cb11-46"><a href="#cb11-46" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb11-47"><a href="#cb11-47" aria-hidden="true" tabindex="-1"></a>    p_m1 <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">-</span> p_m2</span>
-<span id="cb11-48"><a href="#cb11-48" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb11-49"><a href="#cb11-49" aria-hidden="true" tabindex="-1"></a>    p_m1 <span class="sc">/</span> (<span class="dv">1</span> <span class="sc">-</span> p_m1)</span>
-<span id="cb11-50"><a href="#cb11-50" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-<div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>fit_model <span class="ot">&lt;-</span> <span class="cf">function</span>(C, <span class="at">Y =</span> <span class="fu">c</span>(<span class="dv">563</span>, <span class="dv">10</span>), <span class="at">N =</span> <span class="fu">c</span>(<span class="dv">2820</span>, <span class="dv">27</span>)) {</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    data <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">Y =</span> Y,</span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">N =</span> N,</span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">C =</span> C</span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>    model_string1 <span class="ot">&lt;-</span> <span class="fu">textConnection</span>(<span class="st">"model{</span></span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="st">    #Likelihood</span></span>
-<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a><span class="st">    for (i in 1:2) {</span></span>
-<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a><span class="st">        Y[i] ~ dpois(N[i] * lambda[i])</span></span>
-<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a><span class="st">        lambda[i] ~ dunif(0, C)</span></span>
-<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a><span class="st">        like[i] &lt;- dpois(Y[i], lambda[i] * N[i])</span></span>
-<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a><span class="st">    }</span></span>
-<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a><span class="st">}"</span>)</span>
-<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>    model_string2 <span class="ot">&lt;-</span> <span class="fu">textConnection</span>(<span class="st">"model{</span></span>
-<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a><span class="st">    #Likelihood</span></span>
-<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a><span class="st">    for (i in 1:2) {</span></span>
-<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a><span class="st">        Y[i] ~ dpois(N[i] * lambda)</span></span>
-<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a><span class="st">        like[i] &lt;- dpois(Y[i], lambda * N[i])</span></span>
-<span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a><span class="st">    }</span></span>
-<span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a><span class="st">    lambda ~ dunif(0, C)</span></span>
-<span id="cb12-24"><a href="#cb12-24" aria-hidden="true" tabindex="-1"></a><span class="st">}"</span>)</span>
-<span id="cb12-25"><a href="#cb12-25" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb12-26"><a href="#cb12-26" aria-hidden="true" tabindex="-1"></a>    model1 <span class="ot">&lt;-</span> <span class="fu">jags.model</span>(</span>
-<span id="cb12-27"><a href="#cb12-27" aria-hidden="true" tabindex="-1"></a>        model_string1,</span>
-<span id="cb12-28"><a href="#cb12-28" aria-hidden="true" tabindex="-1"></a>        <span class="at">data =</span> data,</span>
-<span id="cb12-29"><a href="#cb12-29" aria-hidden="true" tabindex="-1"></a>        <span class="at">n.chains =</span> <span class="dv">4</span>,</span>
-<span id="cb12-30"><a href="#cb12-30" aria-hidden="true" tabindex="-1"></a>        <span class="at">quiet =</span> <span class="cn">TRUE</span></span>
-<span id="cb12-31"><a href="#cb12-31" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb12-32"><a href="#cb12-32" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb12-33"><a href="#cb12-33" aria-hidden="true" tabindex="-1"></a>    model2 <span class="ot">&lt;-</span> <span class="fu">jags.model</span>(</span>
-<span id="cb12-34"><a href="#cb12-34" aria-hidden="true" tabindex="-1"></a>        model_string2,</span>
-<span id="cb12-35"><a href="#cb12-35" aria-hidden="true" tabindex="-1"></a>        <span class="at">data =</span> data,</span>
-<span id="cb12-36"><a href="#cb12-36" aria-hidden="true" tabindex="-1"></a>        <span class="at">n.chains =</span> <span class="dv">4</span>,</span>
-<span id="cb12-37"><a href="#cb12-37" aria-hidden="true" tabindex="-1"></a>        <span class="at">quiet =</span> <span class="cn">TRUE</span></span>
-<span id="cb12-38"><a href="#cb12-38" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb12-39"><a href="#cb12-39" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb12-40"><a href="#cb12-40" aria-hidden="true" tabindex="-1"></a>    <span class="fu">update</span>(model1, <span class="dv">10000</span>, <span class="at">progress.bar =</span> <span class="st">"none"</span>)</span>
-<span id="cb12-41"><a href="#cb12-41" aria-hidden="true" tabindex="-1"></a>    <span class="fu">update</span>(model2, <span class="dv">10000</span>, <span class="at">progress.bar =</span> <span class="st">"none"</span>)</span>
-<span id="cb12-42"><a href="#cb12-42" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb12-43"><a href="#cb12-43" aria-hidden="true" tabindex="-1"></a>    params <span class="ot">&lt;-</span> <span class="fu">c</span>( <span class="st">"like"</span>)</span>
-<span id="cb12-44"><a href="#cb12-44" aria-hidden="true" tabindex="-1"></a>    samples <span class="ot">&lt;-</span> <span class="fu">coda.samples</span>(</span>
-<span id="cb12-45"><a href="#cb12-45" aria-hidden="true" tabindex="-1"></a>        model1,</span>
-<span id="cb12-46"><a href="#cb12-46" aria-hidden="true" tabindex="-1"></a>        <span class="at">variable.names =</span> params,</span>
-<span id="cb12-47"><a href="#cb12-47" aria-hidden="true" tabindex="-1"></a>        <span class="at">n.iter =</span> <span class="dv">50000</span>,,</span>
-<span id="cb12-48"><a href="#cb12-48" aria-hidden="true" tabindex="-1"></a>        <span class="at">progress.bar =</span> <span class="st">"none"</span></span>
-<span id="cb12-49"><a href="#cb12-49" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb12-50"><a href="#cb12-50" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb12-51"><a href="#cb12-51" aria-hidden="true" tabindex="-1"></a>    DIC1 <span class="ot">&lt;-</span> <span class="fu">dic.samples</span>(model1, <span class="at">n.iter =</span> <span class="dv">50000</span>, <span class="at">progress.bar =</span> <span class="st">"none"</span>)</span>
-<span id="cb12-52"><a href="#cb12-52" aria-hidden="true" tabindex="-1"></a>    DIC1 <span class="ot">&lt;-</span> <span class="fu">sum</span>(DIC1<span class="sc">$</span>deviance <span class="sc">+</span> DIC1<span class="sc">$</span>penalty)</span>
-<span id="cb12-53"><a href="#cb12-53" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb12-54"><a href="#cb12-54" aria-hidden="true" tabindex="-1"></a>    like <span class="ot">&lt;-</span> <span class="fu">rbind</span>(samples[[<span class="dv">1</span>]], samples[[<span class="dv">2</span>]], samples[[<span class="dv">3</span>]], samples[[<span class="dv">4</span>]])</span>
-<span id="cb12-55"><a href="#cb12-55" aria-hidden="true" tabindex="-1"></a>    fbar <span class="ot">&lt;-</span> <span class="fu">colMeans</span>(like)</span>
-<span id="cb12-56"><a href="#cb12-56" aria-hidden="true" tabindex="-1"></a>    Pw <span class="ot">&lt;-</span> <span class="fu">sum</span>(<span class="fu">apply</span>(<span class="fu">log</span>(like), <span class="dv">2</span>, var))</span>
-<span id="cb12-57"><a href="#cb12-57" aria-hidden="true" tabindex="-1"></a>    WAIC1 <span class="ot">&lt;-</span> <span class="sc">-</span><span class="dv">2</span> <span class="sc">*</span> <span class="fu">sum</span>(<span class="fu">log</span>(fbar)) <span class="sc">+</span> <span class="dv">2</span> <span class="sc">*</span> Pw</span>
-<span id="cb12-58"><a href="#cb12-58" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb12-59"><a href="#cb12-59" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb12-60"><a href="#cb12-60" aria-hidden="true" tabindex="-1"></a>    samples <span class="ot">&lt;-</span> <span class="fu">coda.samples</span>(</span>
-<span id="cb12-61"><a href="#cb12-61" aria-hidden="true" tabindex="-1"></a>        model2,</span>
-<span id="cb12-62"><a href="#cb12-62" aria-hidden="true" tabindex="-1"></a>        <span class="at">variable.names =</span> params,</span>
-<span id="cb12-63"><a href="#cb12-63" aria-hidden="true" tabindex="-1"></a>        <span class="at">n.iter =</span> <span class="dv">50000</span>,,</span>
-<span id="cb12-64"><a href="#cb12-64" aria-hidden="true" tabindex="-1"></a>        <span class="at">progress.bar =</span> <span class="st">"none"</span></span>
-<span id="cb12-65"><a href="#cb12-65" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb12-66"><a href="#cb12-66" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb12-67"><a href="#cb12-67" aria-hidden="true" tabindex="-1"></a>    DIC2 <span class="ot">&lt;-</span> <span class="fu">dic.samples</span>(model2, <span class="at">n.iter =</span> <span class="dv">50000</span>, <span class="at">progress.bar =</span> <span class="st">"none"</span>)</span>
-<span id="cb12-68"><a href="#cb12-68" aria-hidden="true" tabindex="-1"></a>    DIC2 <span class="ot">&lt;-</span> <span class="fu">sum</span>(DIC2<span class="sc">$</span>deviance <span class="sc">+</span> DIC2<span class="sc">$</span>penalty)</span>
-<span id="cb12-69"><a href="#cb12-69" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb12-70"><a href="#cb12-70" aria-hidden="true" tabindex="-1"></a>    like <span class="ot">&lt;-</span> <span class="fu">rbind</span>(samples[[<span class="dv">1</span>]], samples[[<span class="dv">2</span>]], samples[[<span class="dv">3</span>]], samples[[<span class="dv">4</span>]])</span>
-<span id="cb12-71"><a href="#cb12-71" aria-hidden="true" tabindex="-1"></a>    fbar <span class="ot">&lt;-</span> <span class="fu">colMeans</span>(like)</span>
-<span id="cb12-72"><a href="#cb12-72" aria-hidden="true" tabindex="-1"></a>    Pw <span class="ot">&lt;-</span> <span class="fu">sum</span>(<span class="fu">apply</span>(<span class="fu">log</span>(like), <span class="dv">2</span>, var))</span>
-<span id="cb12-73"><a href="#cb12-73" aria-hidden="true" tabindex="-1"></a>    WAIC2 <span class="ot">&lt;-</span> <span class="sc">-</span><span class="dv">2</span> <span class="sc">*</span> <span class="fu">sum</span>(<span class="fu">log</span>(fbar)) <span class="sc">+</span> <span class="dv">2</span> <span class="sc">*</span> Pw</span>
-<span id="cb12-74"><a href="#cb12-74" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb12-75"><a href="#cb12-75" aria-hidden="true" tabindex="-1"></a>    bf <span class="ot">&lt;-</span> <span class="fu">bf_jags</span>(C, Y, N)</span>
-<span id="cb12-76"><a href="#cb12-76" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb12-77"><a href="#cb12-77" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tibble</span>(</span>
-<span id="cb12-78"><a href="#cb12-78" aria-hidden="true" tabindex="-1"></a>        <span class="at">model =</span> <span class="fu">c</span>(<span class="st">"Two lambdas"</span>, <span class="st">"One lambda"</span>),</span>
-<span id="cb12-79"><a href="#cb12-79" aria-hidden="true" tabindex="-1"></a>        <span class="at">BF =</span> <span class="fu">c</span>(bf, <span class="dv">1</span> <span class="sc">/</span> bf),</span>
-<span id="cb12-80"><a href="#cb12-80" aria-hidden="true" tabindex="-1"></a>        <span class="at">DIC =</span> <span class="fu">c</span>(DIC1, DIC2),</span>
-<span id="cb12-81"><a href="#cb12-81" aria-hidden="true" tabindex="-1"></a>        <span class="at">WAIC =</span> <span class="fu">c</span>(WAIC1, WAIC2)</span>
-<span id="cb12-82"><a href="#cb12-82" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb12-83"><a href="#cb12-83" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-<p>The table below shows us the results. We see that the Bayes factors we calculated using JAGS are not far away from the correct values calculated above.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>results <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">C =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">10</span>)</span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>) <span class="sc">|&gt;</span> </span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(</span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">results =</span> <span class="fu">map</span>(C, fit_model)</span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>results <span class="sc">|&gt;</span> </span>
-<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">unnest</span>(results) <span class="sc">|&gt;</span> </span>
-<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(</span>
-<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>        <span class="at">C =</span> <span class="fu">str_c</span>(<span class="st">"c = "</span>, C)</span>
-<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">|&gt;</span> </span>
-<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(C) <span class="sc">|&gt;</span> </span>
-<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">gt</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">fmt_number</span>(<span class="at">decimals =</span> <span class="dv">3</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">cols_label</span>(</span>
-<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a>        <span class="at">BF =</span> <span class="st">"Bayes Factor"</span>,</span>
-<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a>        <span class="at">model =</span> <span class="st">"Model"</span></span>
-<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="ouboufebfi" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#ouboufebfi table {
-  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-#ouboufebfi thead, #ouboufebfi tbody, #ouboufebfi tfoot, #ouboufebfi tr, #ouboufebfi td, #ouboufebfi th {
-  border-style: none;
-}
-
-#ouboufebfi p {
-  margin: 0;
-  padding: 0;
-}
-
-#ouboufebfi .gt_table {
-  display: table;
-  border-collapse: collapse;
-  line-height: normal;
-  margin-left: auto;
-  margin-right: auto;
-  color: #333333;
-  font-size: 16px;
-  font-weight: normal;
-  font-style: normal;
-  background-color: #FFFFFF;
-  width: auto;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #A8A8A8;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #A8A8A8;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-}
-
-#ouboufebfi .gt_caption {
-  padding-top: 4px;
-  padding-bottom: 4px;
-}
-
-#ouboufebfi .gt_title {
-  color: #333333;
-  font-size: 125%;
-  font-weight: initial;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-color: #FFFFFF;
-  border-bottom-width: 0;
-}
-
-#ouboufebfi .gt_subtitle {
-  color: #333333;
-  font-size: 85%;
-  font-weight: initial;
-  padding-top: 3px;
-  padding-bottom: 5px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-top-color: #FFFFFF;
-  border-top-width: 0;
-}
-
-#ouboufebfi .gt_heading {
-  background-color: #FFFFFF;
-  text-align: center;
-  border-bottom-color: #FFFFFF;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-}
-
-#ouboufebfi .gt_bottom_border {
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-
-#ouboufebfi .gt_col_headings {
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-}
-
-#ouboufebfi .gt_col_heading {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: normal;
-  text-transform: inherit;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: bottom;
-  padding-top: 5px;
-  padding-bottom: 6px;
-  padding-left: 5px;
-  padding-right: 5px;
-  overflow-x: hidden;
-}
-
-#ouboufebfi .gt_column_spanner_outer {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: normal;
-  text-transform: inherit;
-  padding-top: 0;
-  padding-bottom: 0;
-  padding-left: 4px;
-  padding-right: 4px;
-}
-
-#ouboufebfi .gt_column_spanner_outer:first-child {
-  padding-left: 0;
-}
-
-#ouboufebfi .gt_column_spanner_outer:last-child {
-  padding-right: 0;
-}
-
-#ouboufebfi .gt_column_spanner {
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  vertical-align: bottom;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  overflow-x: hidden;
-  display: inline-block;
-  width: 100%;
-}
-
-#ouboufebfi .gt_spanner_row {
-  border-bottom-style: hidden;
-}
-
-#ouboufebfi .gt_group_heading {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: middle;
-  text-align: left;
-}
-
-#ouboufebfi .gt_empty_group_heading {
-  padding: 0.5px;
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  vertical-align: middle;
-}
-
-#ouboufebfi .gt_from_md > :first-child {
-  margin-top: 0;
-}
-
-#ouboufebfi .gt_from_md > :last-child {
-  margin-bottom: 0;
-}
-
-#ouboufebfi .gt_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  margin: 10px;
-  border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: middle;
-  overflow-x: hidden;
-}
-
-#ouboufebfi .gt_stub {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-right-style: solid;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#ouboufebfi .gt_stub_row_group {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-right-style: solid;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  padding-left: 5px;
-  padding-right: 5px;
-  vertical-align: top;
-}
-
-#ouboufebfi .gt_row_group_first td {
-  border-top-width: 2px;
-}
-
-#ouboufebfi .gt_row_group_first th {
-  border-top-width: 2px;
-}
-
-#ouboufebfi .gt_summary_row {
-  color: #333333;
-  background-color: #FFFFFF;
-  text-transform: inherit;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#ouboufebfi .gt_first_summary_row {
-  border-top-style: solid;
-  border-top-color: #D3D3D3;
-}
-
-#ouboufebfi .gt_first_summary_row.thick {
-  border-top-width: 2px;
-}
-
-#ouboufebfi .gt_last_summary_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-
-#ouboufebfi .gt_grand_summary_row {
-  color: #333333;
-  background-color: #FFFFFF;
-  text-transform: inherit;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#ouboufebfi .gt_first_grand_summary_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-top-style: double;
-  border-top-width: 6px;
-  border-top-color: #D3D3D3;
-}
-
-#ouboufebfi .gt_last_grand_summary_row_top {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-style: double;
-  border-bottom-width: 6px;
-  border-bottom-color: #D3D3D3;
-}
-
-#ouboufebfi .gt_striped {
-  background-color: rgba(128, 128, 128, 0.05);
-}
-
-#ouboufebfi .gt_table_body {
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-
-#ouboufebfi .gt_footnotes {
-  color: #333333;
-  background-color: #FFFFFF;
-  border-bottom-style: none;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-}
-
-#ouboufebfi .gt_footnote {
-  margin: 0px;
-  font-size: 90%;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#ouboufebfi .gt_sourcenotes {
-  color: #333333;
-  background-color: #FFFFFF;
-  border-bottom-style: none;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-}
-
-#ouboufebfi .gt_sourcenote {
-  font-size: 90%;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#ouboufebfi .gt_left {
-  text-align: left;
-}
-
-#ouboufebfi .gt_center {
-  text-align: center;
-}
-
-#ouboufebfi .gt_right {
-  text-align: right;
-  font-variant-numeric: tabular-nums;
-}
-
-#ouboufebfi .gt_font_normal {
-  font-weight: normal;
-}
-
-#ouboufebfi .gt_font_bold {
-  font-weight: bold;
-}
-
-#ouboufebfi .gt_font_italic {
-  font-style: italic;
-}
-
-#ouboufebfi .gt_super {
-  font-size: 65%;
-}
-
-#ouboufebfi .gt_footnote_marks {
-  font-size: 75%;
-  vertical-align: 0.4em;
-  position: initial;
-}
-
-#ouboufebfi .gt_asterisk {
-  font-size: 100%;
-  vertical-align: 0;
-}
-
-#ouboufebfi .gt_indent_1 {
-  text-indent: 5px;
-}
-
-#ouboufebfi .gt_indent_2 {
-  text-indent: 10px;
-}
-
-#ouboufebfi .gt_indent_3 {
-  text-indent: 15px;
-}
-
-#ouboufebfi .gt_indent_4 {
-  text-indent: 20px;
-}
-
-#ouboufebfi .gt_indent_5 {
-  text-indent: 25px;
-}
-</style>
-
-<table class="gt_table table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
-<thead>
-<tr class="header gt_col_headings">
-<th id="Model" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Model</th>
-<th id="Bayes Factor" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Bayes Factor</th>
-<th id="DIC" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">DIC</th>
-<th id="WAIC" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">WAIC</th>
-</tr>
-</thead>
-<tbody class="gt_table_body">
-<tr class="odd gt_group_heading_row">
-<td colspan="4" id="c = 1" class="gt_group_heading" data-quarto-table-cell-role="th" scope="colgroup">c = 1</td>
-</tr>
-<tr class="even gt_row_group_first">
-<td class="gt_row gt_left" headers="c = 1  model">Two lambdas</td>
-<td class="gt_row gt_right" headers="c = 1  BF">1.379</td>
-<td class="gt_row gt_right" headers="c = 1  DIC">16.320</td>
-<td class="gt_row gt_right" headers="c = 1  WAIC">15.751</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="c = 1  model">One lambda</td>
-<td class="gt_row gt_right" headers="c = 1  BF">0.725</td>
-<td class="gt_row gt_right" headers="c = 1  DIC">17.438</td>
-<td class="gt_row gt_right" headers="c = 1  WAIC">17.212</td>
-</tr>
-<tr class="even gt_group_heading_row">
-<td colspan="4" id="c = 10" class="gt_group_heading" data-quarto-table-cell-role="th" scope="colgroup">c = 10</td>
-</tr>
-<tr class="odd gt_row_group_first">
-<td class="gt_row gt_left" headers="c = 10  model">Two lambdas</td>
-<td class="gt_row gt_right" headers="c = 10  BF">0.082</td>
-<td class="gt_row gt_right" headers="c = 10  DIC">16.346</td>
-<td class="gt_row gt_right" headers="c = 10  WAIC">15.740</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="c = 10  model">One lambda</td>
-<td class="gt_row gt_right" headers="c = 10  BF">12.143</td>
-<td class="gt_row gt_right" headers="c = 10  DIC">17.423</td>
-<td class="gt_row gt_right" headers="c = 10  WAIC">17.231</td>
-</tr>
-</tbody>
-</table>
-
+<div>
+<div>
+<svg width="672" height="480" viewbox="0.00 0.00 422.00 260.00" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" style="; max-width: none; max-height: none">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 256)">
+<title>boxes_and_circles</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-256 418,-256 418,4 -4,4"></polygon>
+<!-- theta1 -->
+<g id="node1" class="node">
+<title>theta1</title>
+<ellipse fill="none" stroke="black" cx="27" cy="-234" rx="27" ry="18"></ellipse>
+<text text-anchor="start" x="20" y="-230.8" font-family="Times,serif" font-size="14.00">θ</text>
+<text text-anchor="start" x="27" y="-230.8" font-family="Times,serif" baseline-shift="sub" font-size="14.00">1</text>
+</g>
+<!-- mu -->
+<g id="node7" class="node">
+<title>mu</title>
+<ellipse fill="none" stroke="black" cx="99" cy="-162" rx="27" ry="18"></ellipse>
+<text text-anchor="start" x="95.5" y="-157.8" font-family="Times,serif" font-size="14.00">μ</text>
+</g>
+<!-- theta1&#45;&gt;mu -->
+<g id="edge1" class="edge">
+<title>theta1-&gt;mu</title>
+<path fill="none" stroke="black" d="M41.57,-218.83C51.75,-208.94 65.52,-195.55 77.03,-184.36"></path>
+<polygon fill="black" stroke="black" points="79.47,-186.87 84.2,-177.38 74.59,-181.85 79.47,-186.87"></polygon>
+</g>
+<!-- theta2 -->
+<g id="node2" class="node">
+<title>theta2</title>
+<ellipse fill="none" stroke="black" cx="99" cy="-234" rx="27" ry="18"></ellipse>
+<text text-anchor="start" x="92" y="-230.8" font-family="Times,serif" font-size="14.00">θ</text>
+<text text-anchor="start" x="99" y="-230.8" font-family="Times,serif" baseline-shift="sub" font-size="14.00">2</text>
+</g>
+<!-- theta2&#45;&gt;mu -->
+<g id="edge2" class="edge">
+<title>theta2-&gt;mu</title>
+<path fill="none" stroke="black" d="M99,-215.7C99,-207.98 99,-198.71 99,-190.11"></path>
+<polygon fill="black" stroke="black" points="102.5,-190.1 99,-180.1 95.5,-190.1 102.5,-190.1"></polygon>
+</g>
+<!-- theta3 -->
+<g id="node3" class="node">
+<title>theta3</title>
+<ellipse fill="none" stroke="black" cx="387" cy="-162" rx="27" ry="18"></ellipse>
+<text text-anchor="start" x="380" y="-158.8" font-family="Times,serif" font-size="14.00">θ</text>
+<text text-anchor="start" x="387" y="-158.8" font-family="Times,serif" baseline-shift="sub" font-size="14.00">3</text>
+</g>
+<!-- rho -->
+<g id="node8" class="node">
+<title>rho</title>
+<ellipse fill="none" stroke="black" cx="315" cy="-90" rx="27" ry="18"></ellipse>
+<text text-anchor="start" x="311.5" y="-85.8" font-family="Times,serif" font-size="14.00">ρ</text>
+</g>
+<!-- theta3&#45;&gt;rho -->
+<g id="edge3" class="edge">
+<title>theta3-&gt;rho</title>
+<path fill="none" stroke="black" d="M372.43,-146.83C362.25,-136.94 348.48,-123.55 336.97,-112.36"></path>
+<polygon fill="black" stroke="black" points="339.41,-109.85 329.8,-105.38 334.53,-114.87 339.41,-109.85"></polygon>
+</g>
+<!-- theta4 -->
+<g id="node4" class="node">
+<title>theta4</title>
+<ellipse fill="none" stroke="black" cx="315" cy="-162" rx="27" ry="18"></ellipse>
+<text text-anchor="start" x="308" y="-158.8" font-family="Times,serif" font-size="14.00">θ</text>
+<text text-anchor="start" x="315" y="-158.8" font-family="Times,serif" baseline-shift="sub" font-size="14.00">4</text>
+</g>
+<!-- theta4&#45;&gt;rho -->
+<g id="edge4" class="edge">
+<title>theta4-&gt;rho</title>
+<path fill="none" stroke="black" d="M315,-143.7C315,-135.98 315,-126.71 315,-118.11"></path>
+<polygon fill="black" stroke="black" points="318.5,-118.1 315,-108.1 311.5,-118.1 318.5,-118.1"></polygon>
+</g>
+<!-- theta5 -->
+<g id="node5" class="node">
+<title>theta5</title>
+<ellipse fill="none" stroke="black" cx="171" cy="-234" rx="27" ry="18"></ellipse>
+<text text-anchor="start" x="164" y="-230.8" font-family="Times,serif" font-size="14.00">θ</text>
+<text text-anchor="start" x="171" y="-230.8" font-family="Times,serif" baseline-shift="sub" font-size="14.00">5</text>
+</g>
+<!-- sigma1 -->
+<g id="node9" class="node">
+<title>sigma1</title>
+<ellipse fill="none" stroke="black" cx="171" cy="-162" rx="27" ry="18"></ellipse>
+<text text-anchor="start" x="164" y="-158.8" font-family="Times,serif" font-size="14.00">σ</text>
+<text text-anchor="start" x="171" y="-158.8" font-family="Times,serif" baseline-shift="sub" font-size="14.00">1</text>
+</g>
+<!-- theta5&#45;&gt;sigma1 -->
+<g id="edge5" class="edge">
+<title>theta5-&gt;sigma1</title>
+<path fill="none" stroke="black" d="M171,-215.7C171,-207.98 171,-198.71 171,-190.11"></path>
+<polygon fill="black" stroke="black" points="174.5,-190.1 171,-180.1 167.5,-190.1 174.5,-190.1"></polygon>
+</g>
+<!-- sigmai -->
+<g id="node10" class="node">
+<title>sigmai</title>
+<ellipse fill="none" stroke="black" cx="243" cy="-162" rx="27" ry="18"></ellipse>
+<text text-anchor="start" x="237.56" y="-158.8" font-family="Times,serif" font-size="14.00">σ</text>
+<text text-anchor="start" x="244.56" y="-158.8" font-family="Times,serif" baseline-shift="sub" font-size="14.00">i</text>
+</g>
+<!-- theta5&#45;&gt;sigmai -->
+<g id="edge7" class="edge">
+<title>theta5-&gt;sigmai</title>
+<path fill="none" stroke="black" d="M185.57,-218.83C195.75,-208.94 209.52,-195.55 221.03,-184.36"></path>
+<polygon fill="black" stroke="black" points="223.47,-186.87 228.2,-177.38 218.59,-181.85 223.47,-186.87"></polygon>
+</g>
+<!-- theta6 -->
+<g id="node6" class="node">
+<title>theta6</title>
+<ellipse fill="none" stroke="black" cx="243" cy="-234" rx="27" ry="18"></ellipse>
+<text text-anchor="start" x="236" y="-230.8" font-family="Times,serif" font-size="14.00">θ</text>
+<text text-anchor="start" x="243" y="-230.8" font-family="Times,serif" baseline-shift="sub" font-size="14.00">6</text>
+</g>
+<!-- theta6&#45;&gt;sigma1 -->
+<g id="edge6" class="edge">
+<title>theta6-&gt;sigma1</title>
+<path fill="none" stroke="black" d="M228.43,-218.83C218.25,-208.94 204.48,-195.55 192.97,-184.36"></path>
+<polygon fill="black" stroke="black" points="195.41,-181.85 185.8,-177.38 190.53,-186.87 195.41,-181.85"></polygon>
+</g>
+<!-- theta6&#45;&gt;sigmai -->
+<g id="edge8" class="edge">
+<title>theta6-&gt;sigmai</title>
+<path fill="none" stroke="black" d="M243,-215.7C243,-207.98 243,-198.71 243,-190.11"></path>
+<polygon fill="black" stroke="black" points="246.5,-190.1 243,-180.1 239.5,-190.1 246.5,-190.1"></polygon>
+</g>
+<!-- Yi1 -->
+<g id="node11" class="node">
+<title>Yi1</title>
+<ellipse fill="none" stroke="black" cx="171" cy="-90" rx="27" ry="18"></ellipse>
+<text text-anchor="start" x="160.5" y="-86.8" font-family="Times,serif" font-size="14.00">Y</text>
+<text text-anchor="start" x="170.61" y="-86.8" font-family="Times,serif" baseline-shift="sub" font-size="14.00">i1</text>
+</g>
+<!-- mu&#45;&gt;Yi1 -->
+<g id="edge9" class="edge">
+<title>mu-&gt;Yi1</title>
+<path fill="none" stroke="black" d="M113.57,-146.83C123.75,-136.94 137.52,-123.55 149.03,-112.36"></path>
+<polygon fill="black" stroke="black" points="151.47,-114.87 156.2,-105.38 146.59,-109.85 151.47,-114.87"></polygon>
+</g>
+<!-- Yij -->
+<g id="node12" class="node">
+<title>Yij</title>
+<ellipse fill="none" stroke="black" cx="207" cy="-18" rx="27" ry="18"></ellipse>
+<text text-anchor="start" x="198.06" y="-14.8" font-family="Times,serif" font-size="14.00">Y</text>
+<text text-anchor="start" x="208.17" y="-14.8" font-family="Times,serif" baseline-shift="sub" font-size="14.00">ij</text>
+</g>
+<!-- mu&#45;&gt;Yij -->
+<g id="edge11" class="edge">
+<title>mu-&gt;Yij</title>
+<path fill="none" stroke="black" d="M102.84,-144.18C107.81,-125.16 117.93,-93.98 135,-72 146.59,-57.08 163.44,-44.36 177.92,-35.13"></path>
+<polygon fill="black" stroke="black" points="179.86,-38.05 186.57,-29.84 176.21,-32.07 179.86,-38.05"></polygon>
+</g>
+<!-- rho&#45;&gt;Yij -->
+<g id="edge13" class="edge">
+<title>rho-&gt;Yij</title>
+<path fill="none" stroke="black" d="M296.19,-76.81C279,-65.67 253.38,-49.06 234.01,-36.5"></path>
+<polygon fill="black" stroke="black" points="235.89,-33.56 225.6,-31.05 232.08,-39.43 235.89,-33.56"></polygon>
+</g>
+<!-- sigma1&#45;&gt;Yi1 -->
+<g id="edge10" class="edge">
+<title>sigma1-&gt;Yi1</title>
+<path fill="none" stroke="black" d="M171,-143.7C171,-135.98 171,-126.71 171,-118.11"></path>
+<polygon fill="black" stroke="black" points="174.5,-118.1 171,-108.1 167.5,-118.1 174.5,-118.1"></polygon>
+</g>
+<!-- sigmai&#45;&gt;Yij -->
+<g id="edge12" class="edge">
+<title>sigmai-&gt;Yij</title>
+<path fill="none" stroke="black" d="M238.73,-144.15C232.56,-119.81 221.09,-74.57 213.76,-45.67"></path>
+<polygon fill="black" stroke="black" points="217.12,-44.66 211.27,-35.82 210.33,-46.38 217.12,-44.66"></polygon>
+</g>
+<!-- Yi1&#45;&gt;Yij -->
+<g id="edge15" class="edge">
+<title>Yi1-&gt;Yij</title>
+<path fill="none" stroke="black" d="M179.35,-72.76C183.71,-64.28 189.15,-53.71 194.04,-44.2"></path>
+<polygon fill="black" stroke="black" points="197.23,-45.64 198.7,-35.15 191.01,-42.44 197.23,-45.64"></polygon>
+</g>
+<!-- Yij&#45;&gt;Yij -->
+<g id="edge14" class="edge">
+<title>Yij-&gt;Yij</title>
+<path fill="none" stroke="black" d="M226.9,-30.43C239.69,-33.68 252,-29.53 252,-18 252,-9.62 245.5,-5.14 237.04,-4.56"></path>
+<polygon fill="black" stroke="black" points="236.5,-1.1 226.9,-5.57 237.19,-8.07 236.5,-1.1"></polygon>
+</g>
+</g>
+</svg>
+</div>
 </div>
 </div>
 </div>
 <hr>
-</section>
-<section id="section-2" class="level1">
-<h1>10</h1>
-<p>Download the <code>WWWusage</code> dataset in R. Using data from times <span class="math inline">\(t = 5, \dots, 100\)</span> as outcomes, fit the autoregressive model</p>
-<p><span class="math display">\[
-Y_t \vert Y_{t-1}, \dots, Y_1 \sim \mathrm{Normal}(\beta_0 + \beta_1 Y_{t-1} + \dots + \beta_L Y_{t-L}, \sigma^2),
-\]</span></p>
-<p>where <span class="math inline">\(Y_t\)</span> is the WWW usage at time <span class="math inline">\(t\)</span>. Compare the models with <span class="math inline">\(L = 1, 2, 3, 4\)</span> and select the best time lag L.</p>
+<ol start="2" type="a">
+<li>Select uninformative prior distributions for <span class="math inline">\(\theta_1, \dots, \theta_6\)</span>.</li>
+</ol>
 <hr>
-<p><strong>Solution:</strong> We define the function <code>fit_ar_model()</code> below that allows us to skip writing extra code.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>fit_ar_model <span class="ot">&lt;-</span> <span class="cf">function</span>(L) {</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    Y <span class="ot">&lt;-</span> WWWusage</span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>    data <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">Y =</span> Y,</span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">L =</span> L</span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>    model_string <span class="ot">&lt;-</span> <span class="fu">textConnection</span>(<span class="st">"model{</span></span>
-<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a><span class="st">    #Likelihood</span></span>
-<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a><span class="st">    for (t in 5:100) {</span></span>
-<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a><span class="st">        Y[t] ~ dnorm(mu[t], tau)</span></span>
-<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a><span class="st">        mu[t] &lt;- alpha + inprod(Y[(t-L):(t-1)], beta[])</span></span>
-<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a><span class="st">        like[t] &lt;- dnorm(Y[t], mu[t], tau)</span></span>
-<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a><span class="st">    }</span></span>
-<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a><span class="st">    </span></span>
-<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a><span class="st">    for (i in 1:L) {</span></span>
-<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a><span class="st">        beta[i] ~ dnorm(0, 0.001)</span></span>
-<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a><span class="st">    }</span></span>
-<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a><span class="st">    </span></span>
-<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a><span class="st">    alpha ~ dnorm(0, 0.001)</span></span>
-<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a><span class="st">    tau ~ dgamma(0.01, 0.01)</span></span>
-<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a><span class="st">    sigma2 &lt;- 1 / tau</span></span>
-<span id="cb14-24"><a href="#cb14-24" aria-hidden="true" tabindex="-1"></a><span class="st">}"</span>)</span>
-<span id="cb14-25"><a href="#cb14-25" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb14-26"><a href="#cb14-26" aria-hidden="true" tabindex="-1"></a>    model <span class="ot">&lt;-</span> <span class="fu">jags.model</span>(</span>
-<span id="cb14-27"><a href="#cb14-27" aria-hidden="true" tabindex="-1"></a>        model_string,</span>
-<span id="cb14-28"><a href="#cb14-28" aria-hidden="true" tabindex="-1"></a>        <span class="at">data =</span> data,</span>
-<span id="cb14-29"><a href="#cb14-29" aria-hidden="true" tabindex="-1"></a>        <span class="at">n.chains =</span> <span class="dv">4</span>,</span>
-<span id="cb14-30"><a href="#cb14-30" aria-hidden="true" tabindex="-1"></a>        <span class="at">quiet =</span> <span class="cn">TRUE</span></span>
-<span id="cb14-31"><a href="#cb14-31" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb14-32"><a href="#cb14-32" aria-hidden="true" tabindex="-1"></a>    <span class="fu">update</span>(model, <span class="dv">10000</span>, <span class="at">progress.bar =</span> <span class="st">"none"</span>)</span>
-<span id="cb14-33"><a href="#cb14-33" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb14-34"><a href="#cb14-34" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb14-35"><a href="#cb14-35" aria-hidden="true" tabindex="-1"></a>    params <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"like"</span>)</span>
-<span id="cb14-36"><a href="#cb14-36" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb14-37"><a href="#cb14-37" aria-hidden="true" tabindex="-1"></a>    samples <span class="ot">&lt;-</span> <span class="fu">coda.samples</span>(</span>
-<span id="cb14-38"><a href="#cb14-38" aria-hidden="true" tabindex="-1"></a>        model,</span>
-<span id="cb14-39"><a href="#cb14-39" aria-hidden="true" tabindex="-1"></a>        <span class="at">variable.names =</span> params,</span>
-<span id="cb14-40"><a href="#cb14-40" aria-hidden="true" tabindex="-1"></a>        <span class="at">n.iter =</span> <span class="dv">50000</span>,,</span>
-<span id="cb14-41"><a href="#cb14-41" aria-hidden="true" tabindex="-1"></a>        <span class="at">progress.bar =</span> <span class="st">"none"</span></span>
-<span id="cb14-42"><a href="#cb14-42" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb14-43"><a href="#cb14-43" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb14-44"><a href="#cb14-44" aria-hidden="true" tabindex="-1"></a>    DIC <span class="ot">&lt;-</span> <span class="fu">dic.samples</span>(model, <span class="at">n.iter =</span> <span class="dv">50000</span>, <span class="at">progress.bar =</span> <span class="st">"none"</span>)</span>
-<span id="cb14-45"><a href="#cb14-45" aria-hidden="true" tabindex="-1"></a>    DIC <span class="ot">&lt;-</span> <span class="fu">sum</span>(DIC<span class="sc">$</span>deviance <span class="sc">+</span> DIC<span class="sc">$</span>penalty)</span>
-<span id="cb14-46"><a href="#cb14-46" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb14-47"><a href="#cb14-47" aria-hidden="true" tabindex="-1"></a>    like <span class="ot">&lt;-</span> <span class="fu">rbind</span>(samples[[<span class="dv">1</span>]], samples[[<span class="dv">2</span>]], samples[[<span class="dv">3</span>]], samples[[<span class="dv">4</span>]])</span>
-<span id="cb14-48"><a href="#cb14-48" aria-hidden="true" tabindex="-1"></a>    fbar <span class="ot">&lt;-</span> <span class="fu">colMeans</span>(like)</span>
-<span id="cb14-49"><a href="#cb14-49" aria-hidden="true" tabindex="-1"></a>    Pw <span class="ot">&lt;-</span> <span class="fu">sum</span>(<span class="fu">apply</span>(<span class="fu">log</span>(like), <span class="dv">2</span>, var))</span>
-<span id="cb14-50"><a href="#cb14-50" aria-hidden="true" tabindex="-1"></a>    WAIC <span class="ot">&lt;-</span> <span class="sc">-</span><span class="dv">2</span> <span class="sc">*</span> <span class="fu">sum</span>(<span class="fu">log</span>(fbar)) <span class="sc">+</span> <span class="dv">2</span> <span class="sc">*</span> Pw</span>
-<span id="cb14-51"><a href="#cb14-51" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb14-52"><a href="#cb14-52" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tibble</span>(</span>
-<span id="cb14-53"><a href="#cb14-53" aria-hidden="true" tabindex="-1"></a>        <span class="at">L =</span> L,</span>
-<span id="cb14-54"><a href="#cb14-54" aria-hidden="true" tabindex="-1"></a>        <span class="at">DIC =</span> DIC,</span>
-<span id="cb14-55"><a href="#cb14-55" aria-hidden="true" tabindex="-1"></a>        <span class="at">WAIC =</span> WAIC</span>
-<span id="cb14-56"><a href="#cb14-56" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb14-57"><a href="#cb14-57" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>We then apply the <code>fit_ar_model()</code> four times to get results for the four models. The table below tells us that the model that uses the last four days as predictors fits the data best.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>results <span class="ot">&lt;-</span> <span class="fu">map_dfr</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, fit_ar_model)</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>results <span class="sc">|&gt;</span></span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">gt</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">fmt_number</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div id="yaudbutird" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#yaudbutird table {
-  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-#yaudbutird thead, #yaudbutird tbody, #yaudbutird tfoot, #yaudbutird tr, #yaudbutird td, #yaudbutird th {
-  border-style: none;
-}
-
-#yaudbutird p {
-  margin: 0;
-  padding: 0;
-}
-
-#yaudbutird .gt_table {
-  display: table;
-  border-collapse: collapse;
-  line-height: normal;
-  margin-left: auto;
-  margin-right: auto;
-  color: #333333;
-  font-size: 16px;
-  font-weight: normal;
-  font-style: normal;
-  background-color: #FFFFFF;
-  width: auto;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #A8A8A8;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #A8A8A8;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-}
-
-#yaudbutird .gt_caption {
-  padding-top: 4px;
-  padding-bottom: 4px;
-}
-
-#yaudbutird .gt_title {
-  color: #333333;
-  font-size: 125%;
-  font-weight: initial;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-color: #FFFFFF;
-  border-bottom-width: 0;
-}
-
-#yaudbutird .gt_subtitle {
-  color: #333333;
-  font-size: 85%;
-  font-weight: initial;
-  padding-top: 3px;
-  padding-bottom: 5px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-top-color: #FFFFFF;
-  border-top-width: 0;
-}
-
-#yaudbutird .gt_heading {
-  background-color: #FFFFFF;
-  text-align: center;
-  border-bottom-color: #FFFFFF;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-}
-
-#yaudbutird .gt_bottom_border {
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-
-#yaudbutird .gt_col_headings {
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-}
-
-#yaudbutird .gt_col_heading {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: normal;
-  text-transform: inherit;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: bottom;
-  padding-top: 5px;
-  padding-bottom: 6px;
-  padding-left: 5px;
-  padding-right: 5px;
-  overflow-x: hidden;
-}
-
-#yaudbutird .gt_column_spanner_outer {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: normal;
-  text-transform: inherit;
-  padding-top: 0;
-  padding-bottom: 0;
-  padding-left: 4px;
-  padding-right: 4px;
-}
-
-#yaudbutird .gt_column_spanner_outer:first-child {
-  padding-left: 0;
-}
-
-#yaudbutird .gt_column_spanner_outer:last-child {
-  padding-right: 0;
-}
-
-#yaudbutird .gt_column_spanner {
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  vertical-align: bottom;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  overflow-x: hidden;
-  display: inline-block;
-  width: 100%;
-}
-
-#yaudbutird .gt_spanner_row {
-  border-bottom-style: hidden;
-}
-
-#yaudbutird .gt_group_heading {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: middle;
-  text-align: left;
-}
-
-#yaudbutird .gt_empty_group_heading {
-  padding: 0.5px;
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  vertical-align: middle;
-}
-
-#yaudbutird .gt_from_md > :first-child {
-  margin-top: 0;
-}
-
-#yaudbutird .gt_from_md > :last-child {
-  margin-bottom: 0;
-}
-
-#yaudbutird .gt_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  margin: 10px;
-  border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: middle;
-  overflow-x: hidden;
-}
-
-#yaudbutird .gt_stub {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-right-style: solid;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#yaudbutird .gt_stub_row_group {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-right-style: solid;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  padding-left: 5px;
-  padding-right: 5px;
-  vertical-align: top;
-}
-
-#yaudbutird .gt_row_group_first td {
-  border-top-width: 2px;
-}
-
-#yaudbutird .gt_row_group_first th {
-  border-top-width: 2px;
-}
-
-#yaudbutird .gt_summary_row {
-  color: #333333;
-  background-color: #FFFFFF;
-  text-transform: inherit;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#yaudbutird .gt_first_summary_row {
-  border-top-style: solid;
-  border-top-color: #D3D3D3;
-}
-
-#yaudbutird .gt_first_summary_row.thick {
-  border-top-width: 2px;
-}
-
-#yaudbutird .gt_last_summary_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-
-#yaudbutird .gt_grand_summary_row {
-  color: #333333;
-  background-color: #FFFFFF;
-  text-transform: inherit;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#yaudbutird .gt_first_grand_summary_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-top-style: double;
-  border-top-width: 6px;
-  border-top-color: #D3D3D3;
-}
-
-#yaudbutird .gt_last_grand_summary_row_top {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-style: double;
-  border-bottom-width: 6px;
-  border-bottom-color: #D3D3D3;
-}
-
-#yaudbutird .gt_striped {
-  background-color: rgba(128, 128, 128, 0.05);
-}
-
-#yaudbutird .gt_table_body {
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-
-#yaudbutird .gt_footnotes {
-  color: #333333;
-  background-color: #FFFFFF;
-  border-bottom-style: none;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-}
-
-#yaudbutird .gt_footnote {
-  margin: 0px;
-  font-size: 90%;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#yaudbutird .gt_sourcenotes {
-  color: #333333;
-  background-color: #FFFFFF;
-  border-bottom-style: none;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-}
-
-#yaudbutird .gt_sourcenote {
-  font-size: 90%;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#yaudbutird .gt_left {
-  text-align: left;
-}
-
-#yaudbutird .gt_center {
-  text-align: center;
-}
-
-#yaudbutird .gt_right {
-  text-align: right;
-  font-variant-numeric: tabular-nums;
-}
-
-#yaudbutird .gt_font_normal {
-  font-weight: normal;
-}
-
-#yaudbutird .gt_font_bold {
-  font-weight: bold;
-}
-
-#yaudbutird .gt_font_italic {
-  font-style: italic;
-}
-
-#yaudbutird .gt_super {
-  font-size: 65%;
-}
-
-#yaudbutird .gt_footnote_marks {
-  font-size: 75%;
-  vertical-align: 0.4em;
-  position: initial;
-}
-
-#yaudbutird .gt_asterisk {
-  font-size: 100%;
-  vertical-align: 0;
-}
-
-#yaudbutird .gt_indent_1 {
-  text-indent: 5px;
-}
-
-#yaudbutird .gt_indent_2 {
-  text-indent: 10px;
-}
-
-#yaudbutird .gt_indent_3 {
-  text-indent: 15px;
-}
-
-#yaudbutird .gt_indent_4 {
-  text-indent: 20px;
-}
-
-#yaudbutird .gt_indent_5 {
-  text-indent: 25px;
-}
-</style>
-
-<table class="gt_table table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
-<thead>
-<tr class="header gt_col_headings">
-<th id="L" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">L</th>
-<th id="DIC" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">DIC</th>
-<th id="WAIC" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">WAIC</th>
-</tr>
-</thead>
-<tbody class="gt_table_body">
-<tr class="odd">
-<td class="gt_row gt_right" headers="L">1.00</td>
-<td class="gt_row gt_right" headers="DIC">612.78</td>
-<td class="gt_row gt_right" headers="WAIC">612.36</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_right" headers="L">2.00</td>
-<td class="gt_row gt_right" headers="DIC">512.36</td>
-<td class="gt_row gt_right" headers="WAIC">511.91</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_right" headers="L">3.00</td>
-<td class="gt_row gt_right" headers="DIC">507.93</td>
-<td class="gt_row gt_right" headers="WAIC">506.30</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_right" headers="L">4.00</td>
-<td class="gt_row gt_right" headers="DIC">493.83</td>
-<td class="gt_row gt_right" headers="WAIC">493.61</td>
-</tr>
-</tbody>
-</table>
-
-</div>
-</div>
-</div>
+<p><strong>Solution:</strong></p>
 <hr>
+<ol start="3" type="a">
+<li>Fit the model in <code>JAGS</code> using three chains each with 25,000 iterationsand thoroughly assess MCMC convergence for the <span class="math inline">\(\theta_j\)</span>.</li>
+</ol>
+<hr>
+<p><strong>Solution:</strong></p>
+<hr>
+<ol start="4" type="a">
+<li>Are the data informative about the <span class="math inline">\(\theta_j\)</span>? That is, are the posterior distributions more concentrated than the prior distributions?</li>
+</ol>
+<hr>
+<p><strong>Solution:</strong></p>
+<hr>
+<ol start="5" type="a">
+<li>In light of <em>c.</em> and <em>d.</em>, are there any simplifications you might consider and if so, how would you compare the full and simplified models?</li>
+</ol>
 
 
 </section>
