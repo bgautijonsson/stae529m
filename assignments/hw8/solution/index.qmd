@@ -131,27 +131,6 @@ c. Fit the model in `JAGS` using three chains each with 25,000 iterations and th
 First we prepare the data. 
 
 ```{r}
-men <- Marathon_male$SPEED_mile |> 
-    as_tibble() |> 
-    rownames_to_column("runner") |> 
-    pivot_longer(c(-runner), names_to = "mile", values_to = "speed") |> 
-    mutate(
-        mile = parse_number(mile),
-        runner = parse_number(runner)
-    )
-
-women <- Marathon_female$SPEED_mile |> 
-    as_tibble() |> 
-    rownames_to_column("runner") |> 
-    pivot_longer(c(-runner), names_to = "mile", values_to = "speed") |> 
-    mutate(
-        mile = parse_number(mile),
-        runner = parse_number(runner),
-        runner = runner + max(men$runner)
-    )
-
-d <- bind_rows(men, women)
-
 Y <- rbind(Marathon_male$SPEED_mile, Marathon_female$SPEED_mile)
 
 jags_data <- list(
