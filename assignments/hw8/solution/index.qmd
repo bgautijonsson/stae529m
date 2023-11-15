@@ -32,7 +32,6 @@ library(rjags)
 library(posterior)
 library(bayesplot)
 library(gt)
-library(DiagrammeR)
 theme_set(theme_classic())
 ```
 
@@ -66,32 +65,32 @@ a. Draw a DAG for this model and give an interpretation for each parameter in th
 ```{dot}
 digraph boxes_and_circles {
 
-    # a 'graph' statement
-    graph [overlap = true, fontsize = 10]
+# a 'graph' statement
+graph [overlap = true, fontsize = 10]
 
-    theta1[label =<θ<sub>1</sub>>];
-    theta2[label =<θ<sub>2</sub>>]; 
-    theta3[label =<θ<sub>3</sub>>]; 
-    theta4[label =<θ<sub>4</sub>>]; 
-    theta5[label =<θ<sub>5</sub>>]; 
-    theta6[label =<θ<sub>6</sub>>]; 
-    mu[label = <μ>];
-    rho[label = <ρ>];
-    sigma1[label = <σ<sub>1</sub>>];
-    sigmai[label = <σ<sub>i</sub>>];
+theta1[label =<θ<sub>1</sub>>];
+theta2[label =<θ<sub>2</sub>>]; 
+theta3[label =<θ<sub>3</sub>>]; 
+theta4[label =<θ<sub>4</sub>>]; 
+theta5[label =<θ<sub>5</sub>>]; 
+theta6[label =<θ<sub>6</sub>>]; 
+mu[label = <μ<sub>i</sub>>];
+rho[label = <ρ<sub>i</sub>>];
+sigma1[label = <σ<sub>0</sub>>];
+sigmai[label = <σ<sub>i</sub>>];
 
-    Yi1[label = <Y<sub>i1</sub>>]
-    Yij[label = <Y<sub>ij</sub>>]
-    
-    # edge statements
-    theta1->mu theta2->mu
-    theta3->rho theta4-> rho
-    theta5->sigma1 theta6->sigma1
-    theta5->sigmai theta6->sigmai
-    
-    mu->Yi1 sigma1->Yi1
-    
-    mu->Yij sigmai->Yij rho->Yij Yij->Yij Yi1->Yij
+Yi1[label = <Y<sub>i1</sub>>]
+Yij[label = <Y<sub>ij</sub>>]
+
+# edge statements
+theta1->mu theta2->mu
+theta3->rho theta4-> rho
+theta5->sigma1 theta6->sigma1
+theta5->sigmai theta6->sigmai
+
+mu->Yi1 sigma1->Yi1
+
+mu->Yij sigmai->Yij rho->Yij Yij->Yij Yi1->Yij
 }
 ```
 
@@ -103,13 +102,129 @@ b. Select uninformative prior distributions for $\theta_1, \dots, \theta_6$.
 
 **Solution:**
 
+Since $\theta_1$ and $\theta_3$ are both parameters for the mean of normal distributions, it makes sense to give them normal priors. To make them uninformative we can give them large variances, such as for example
+
+$$
+\theta_1, \theta_3 \sim \mathrm{Normal}(0, 100).
+$$
+
+$\theta_2$ and $\theta_4$ are both variances in normal distributions, so we could give them Inverse Gamma priors. To make them uninformative we make the prior variance high, for example
+
+$$
+\theta_2, \theta_4 \sim \mathrm{InvGamma}(0.01, 0.01)
+$$
+
+$\theta_5$ and $\theta_6$ are the shape and scale parameters in an Inverse Gamma distribution. We know that they are both positive and unbounded, so we could for example give them both weak Gamma priors, for example
+
+$$
+\theta_5, \theta_6 \sim \mathrm{Gamma}(0.1, 0.1)
+$$
+
 ---
 
-c. Fit the model in `JAGS` using three chains each with 25,000 iterationsand thoroughly assess MCMC convergence for the $\theta_j$.
+c. Fit the model in `JAGS` using three chains each with 25,000 iterations and thoroughly assess MCMC convergence for the $\theta_j$.
 
 ---
 
 **Solution:**
+
+```{r}
+men <- Marathon_male$SPEED_mile |> 
+    as_tibble() |> 
+    rownames_to_column("runner") |> 
+    pivot_longer(c(-runner), names_to = "mile", values_to = "speed") |> 
+    mutate(
+        mile = parse_number(mile),
+        runner = parse_number(runner)
+    )
+
+women <- Marathon_female$SPEED_mile |> 
+    as_tibble() |> 
+    rownames_to_column("runner") |> 
+    pivot_longer(c(-runner), names_to = "mile", values_to = "speed") |> 
+    mutate(
+        mile = parse_number(mile),
+        runner = parse_number(runner),
+        runner = runner + max(men$runner)
+    )
+
+d <- bind_rows(men, women)
+
+Y <- rbind(Marathon_male$SPEED_mile, Marathon_female$SPEED_mile)
+
+jags_data <- list(
+    N_obs = ncol(Y),
+    N_runners = nrow(Y),
+    Y = Y
+)
+```
+
+```{r}
+model_string <- textConnection("model{
+    
+    for (i in 1:N_runners) {
+        mu[i] ~ dnorm(theta[1], inv_theta2)
+        rho[i] ~ dnorm(theta[3], inv_theta4)
+        tau[i] ~ dgamma(theta[5], theta[6])
+        sigma[i] <- pow(tau[i], -1)
+        Y[i, 1] ~ dnorm(mu[i], tau0)
+    
+        for (j in 2:N_obs) {
+            Y[i, j] ~ dnorm(mu[i] + rho[i] * (Y[i, j - 1] - mu[i]), tau[i])
+        }
+    }
+    
+    tau0 ~ dgamma(theta[5], theta[6])
+    sigma0 <- pow(tau0, -1)
+    
+    theta[1] ~ dnorm(0, 0.0001)
+    theta[3] ~ dnorm(0, 0.0001)
+    
+    inv_theta2 ~ dgamma(0.001, 0.001)
+    theta[2] <- pow(inv_theta2, -1)
+    inv_theta4 ~ dgamma(0.001, 0.001)
+    theta[4] <- pow(inv_theta4, -1)
+    
+    theta[5] ~ dgamma(0.001, 0.001)
+    theta[6] ~ dgamma(0.001, 0.001)
+    
+    
+}")
+
+model <- jags.model(
+    model_string,
+    jags_data,
+    n.chains = 3
+)
+
+update(model, 10000)
+
+samples <- coda.samples(
+  model,
+  variable.names = c("mu", "sigma", "tau", "rho", "theta", "sigma0", "Y[5,11]", "Y[5,12]", "Y[5,13]"),
+  n.iter = 25000
+)
+
+posterior_jags <- samples |> 
+  as_draws_df()
+```
+
+```{r}
+posterior_jags |> 
+    mcmc_trace(
+        regex_pars = "theta"
+    )
+```
+
+```{r}
+posterior_jags |> 
+    subset_draws(variable = "theta") |> 
+    summarise_draws(rhat, ess_bulk, ess_tail) |> 
+    gt() |> 
+    fmt_number()
+```
+
+
 
 ---
 
@@ -119,6 +234,45 @@ d. Are the data informative about the $\theta_j$? That is, are the posterior dis
 
 **Solution:**
 
+
+```{r}
+sds <- posterior_jags |> 
+    subset_draws(variable = "theta") |> 
+    summarise_draws() |> 
+    pull(sd) |> 
+    as.numeric()
+    
+tribble(
+    ~theta, ~prior_variance,
+    "theta[1]", 100,
+    "theta[2]", Inf,
+    "theta[3]", 100,
+    "theta[4]", Inf,
+    "theta[5]", 1000,
+    "theta[6]", 1000
+) |> 
+    mutate(
+        posterior_variance = sds^2
+    )
+```
+
+
 ---
 
 e. In light of *c.* and *d.*, are there any simplifications you might consider and if so, how would you compare the full and simplified models?
+
+
+```{r}
+posterior_jags |> 
+    mcmc_dens(
+        regex_pars = "theta"
+    )
+```
+
+```{r}
+posterior_jags |> 
+    mcmc_intervals(
+        regex_pars = "rho"
+    )
+```
+
