@@ -1,5 +1,5 @@
 ---
-title: "Homework #8"
+title: "Homework #8 (Solution)"
 subtitle: "Exercise from Chapter 6.5: 4"
 description: |
     **Assigned:** Friday, November 3rd, 2023 <br>
@@ -114,7 +114,7 @@ $$
 \theta_2, \theta_4 \sim \mathrm{InvGamma}(0.01, 0.01)
 $$
 
-$\theta_5$ and $\theta_6$ are the shape and scale parameters in an Inverse Gamma distribution. We know that they are both positive and unbounded, so we could for example give them both weak Gamma priors, for example
+$\theta_5$ and $\theta_6$ are the shape and scale parameters in an Inverse Gamma distribution. We know that they are both positive and unbounded, so we could for example give them both Gamma priors with high variance, for example
 
 $$
 \theta_5, \theta_6 \sim \mathrm{Gamma}(0.1, 0.1)
@@ -127,6 +127,8 @@ c. Fit the model in `JAGS` using three chains each with 25,000 iterations and th
 ---
 
 **Solution:**
+
+First we prepare the data. 
 
 ```{r}
 men <- Marathon_male$SPEED_mile |> 
@@ -159,7 +161,11 @@ jags_data <- list(
 )
 ```
 
+Then we code the model and sample from its posterior.
+
 ```{r}
+#| cache: true
+
 model_string <- textConnection("model{
     
     for (i in 1:N_runners) {
@@ -209,12 +215,7 @@ posterior_jags <- samples |>
   as_draws_df()
 ```
 
-```{r}
-posterior_jags |> 
-    mcmc_trace(
-        regex_pars = "theta"
-    )
-```
+The table and trace plots below show us that the chains seem to have converged. 
 
 ```{r}
 posterior_jags |> 
@@ -223,6 +224,15 @@ posterior_jags |>
     gt() |> 
     fmt_number()
 ```
+
+```{r}
+posterior_jags |> 
+    mcmc_trace(
+        regex_pars = "theta"
+    )
+```
+
+
 
 
 
@@ -234,6 +244,7 @@ d. Are the data informative about the $\theta_j$? That is, are the posterior dis
 
 **Solution:**
 
+To check whether the daa are informative, we compare the prior variance of each $\theta_j$ to its posterior variance. If the posterior variance is much smaller than the prior variance we can conclude that the data are informative for the parameter
 
 ```{r}
 sds <- posterior_jags |> 
@@ -261,6 +272,11 @@ tribble(
 
 e. In light of *c.* and *d.*, are there any simplifications you might consider and if so, how would you compare the full and simplified models?
 
+In addition to the results from *c.* and *d.*, we can also look at the marginal densities of each $\theta_j$. In the figure below, we see that $\theta_4$, the variance of the normal distribution from which we draw $\rho_i$ is very small in comparison to $\theta_3$ the mean of the normal distribution.
+
+Our results from *c.* tell us that this parameter is well estimated.
+
+The results in *d.* tell us that our priors aren't artificially making this posterior density narrow.
 
 ```{r}
 posterior_jags |> 
@@ -269,10 +285,34 @@ posterior_jags |>
     )
 ```
 
+We could thus consider simplifying our model by using one $\rho$ parameter that is shared by all the participants. Looking at the figure of the posterior density of each $\rho_i$, it seems like this might work for most participants, but there are some $\rho_i$ that seem to be different from the rest.
+
 ```{r}
-posterior_jags |> 
-    mcmc_intervals(
-        regex_pars = "rho"
-    )
+#| cache: true
+
+plot_dat <- posterior_jags |> 
+  subset_draws("rho") |> 
+  summarise_draws()
+```
+
+```{r}
+#| fig-asp: 1.5
+
+plot_dat |> 
+  mutate(
+    id = parse_number(variable)
+  ) |> 
+  ggplot(aes(id, mean, ymin = q5, ymax = q95)) +
+  geom_pointrange(
+    linewidth = 0.5,
+    size = 0.5
+  ) +
+  coord_flip() +
+  labs(
+    x = "Individual",
+    y = expression(rho[i]),
+    title = expression(paste("Individual-specific ", rho[i], " estimates")),
+    subtitle = "Posterior mean and 95% credible intervals"
+  )
 ```
 

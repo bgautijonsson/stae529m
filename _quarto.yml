@@ -28,6 +28,7 @@ website:
           - assignments/hw5/solution/index.qmd
           - assignments/hw6/solution/index.qmd
           - assignments/hw7/solution/index.qmd
+          - assignments/hw8/solution/index.qmd
 
 format: 
   html:
