@@ -105,19 +105,19 @@ b. Select uninformative prior distributions for $\theta_1, \dots, \theta_6$.
 Since $\theta_1$ and $\theta_3$ are both parameters for the mean of normal distributions, it makes sense to give them normal priors. To make them uninformative we can give them large variances, such as for example
 
 $$
-\theta_1, \theta_3 \sim \mathrm{Normal}(0, 100).
+\theta_1, \theta_3 \sim \mathrm{Normal}(0, 10^4).
 $$
 
 $\theta_2$ and $\theta_4$ are both variances in normal distributions, so we could give them Inverse Gamma priors. To make them uninformative we make the prior variance high, for example
 
 $$
-\theta_2, \theta_4 \sim \mathrm{InvGamma}(0.01, 0.01)
+\theta_2, \theta_4 \sim \mathrm{InvGamma}(0.001, 0.001)
 $$
 
 $\theta_5$ and $\theta_6$ are the shape and scale parameters in an Inverse Gamma distribution. We know that they are both positive and unbounded, so we could for example give them both Gamma priors with high variance, for example
 
 $$
-\theta_5, \theta_6 \sim \mathrm{Gamma}(0.1, 0.1)
+\theta_5, \theta_6 \sim \mathrm{Gamma}(0.001, 0.001)
 $$
 
 ---
