@@ -62,6 +62,16 @@ a. Draw a DAG for this model and give an interpretation for each parameter in th
 
 **Solution:**
 
+The dag is plotted below. The variables can be interpreted as follows
+
+* $\mu_i$: This is the mean running speed of runner $i$.
+* $\sigma^2_i$: This is how varied the speed of runner $i$ is around their mean, $\mu_i$.
+* $\rho_i$: This parameter governs how a runner's speed in mile $j$ depends on their speed during mile $j - 1$.
+  - $\rho_i > 1$: The difference between the runner's current speed and average speed increases with each mile in the same direction, i.e. if a runner is running above their average, then we expect them to keep accelerating until they reach goal.
+  - $0 < \rho_i < 1$: The difference $Y_{ij} - \mu_i$ is then expected to be smaller than the previous mile, $Y_{ij-1} - \mu_i$, but in the same direction. I.e. if the runnar ran faster than $\mu_i$ during mile $j - 1$ we still expect them to run faster during mile $j$ but less so.
+  - $-1 < \rho_i < 0$: The difference $Y_{ij} - \mu_i$ is then expected to be smaller than the previous mile, $Y_{ij-1} - \mu_i$, in absolute value, but also in the opposite direction. So, if a runner ran slower than $\mu_i$ during mile $j - 1$, we expect them to run faster than $\mu_i$ during mile $j$ and vice versa.
+  - $\rho_i < -1$: The runner is always running at a speed that is further and further away from $\mu_i$, but it is swinging between slower and faster speeds.
+
 ```{dot}
 digraph boxes_and_circles {
 
@@ -85,7 +95,6 @@ Yij[label = <Y<sub>ij</sub>>]
 # edge statements
 theta1->mu theta2->mu
 theta3->rho theta4-> rho
-theta5->sigma1 theta6->sigma1
 theta5->sigmai theta6->sigmai
 
 mu->Yi1 sigma1->Yi1
@@ -93,6 +102,12 @@ mu->Yi1 sigma1->Yi1
 mu->Yij sigmai->Yij rho->Yij Yij->Yij Yi1->Yij
 }
 ```
+
+The parameters above are split into a data layer, a process layer and a prior layer as follows:
+
+* Data layer: $Y_{ij}$, $i = 1, \dots, n$, $j = 1, \dots 26$.
+* Process layer: $\mu_i$, $\sigma^2_i$, $\rho_i$, $i = 1, \dots, n$
+* Prior layer: $\sigma^2_0$, $\theta_1, \dots, \theta_6$
 
 ---
 
@@ -159,7 +174,7 @@ model_string <- textConnection("model{
         }
     }
     
-    tau0 ~ dgamma(theta[5], theta[6])
+    tau0 ~ dgamma(0.001, 0.001)
     sigma0 <- pow(tau0, -1)
     
     theta[1] ~ dnorm(0, 0.0001)
@@ -223,7 +238,9 @@ d. Are the data informative about the $\theta_j$? That is, are the posterior dis
 
 **Solution:**
 
-To check whether the daa are informative, we compare the prior variance of each $\theta_j$ to its posterior variance. If the posterior variance is much smaller than the prior variance we can conclude that the data are informative for the parameter
+To check whether the data are informative, we compare the prior variance of each $\theta_j$ to its posterior variance. If the posterior variance is much smaller than the prior variance we can conclude that the data are informative for the parameter.
+
+As we see in the table below, this is the case for each of $\theta_1, \dots, \theta_6$
 
 ```{r}
 sds <- posterior_jags |> 
@@ -243,7 +260,8 @@ tribble(
 ) |> 
     mutate(
         posterior_variance = sds^2
-    )
+    ) |> 
+  gt()
 ```
 
 
